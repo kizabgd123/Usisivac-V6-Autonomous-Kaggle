@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Checklist for building the Mistral fine-tuning pipeline from brain/ conversation logs.",
+  "updatedAt": "2026-02-27T18:54:03.998154863Z",
+  "version": "17"
+}

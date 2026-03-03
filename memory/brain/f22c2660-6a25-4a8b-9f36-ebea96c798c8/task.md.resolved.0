@@ -1,0 +1,10 @@
+# Break 0.95400 on Heart Disease Challenge (S6E2)
+
+- [/] Analyze existing code ([heart_disease_v3_16_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease_v3_16_elite.py))
+- [ ] Research missing components (RealMLP, AutoGluon, UCI Target Stats integration)
+- [ ] Formulate implementation plan
+- [ ] Request user review of the plan
+- [ ] Implement the plan (adding new models/features)
+- [ ] Generate predictions and evaluate internal CV score
+- [ ] Ensure process complies with Guardrails and Constitution
+- [ ] Submit predictions to Kaggle

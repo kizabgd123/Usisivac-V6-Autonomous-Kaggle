@@ -1,0 +1,28 @@
+# Heart Disease S6E2 - KillShot v3.2 Walkthrough
+
+## 🚀 Optimized "Fast Elite" Execution
+Adhered strictly to the "zlatna diskusija" requirements while optimizing for speed.
+
+### Key Implementation Details:
+1.  **Deduplication (Leakage Fixed):**
+    - Merged [train.csv](file:///home/kizabgd/Desktop/Istrazivanje/train.csv) + [Heart_disease_statlog.csv](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/original_data/Heart_disease_statlog.csv).
+    - Removed exact duplicates based on feature columns.
+    - Result: **630,270 rows** (down from ~901k), significantly speeding up training.
+2.  **Log Transformation:**
+    - Applied `np.log1p` to `ST depression` (Oldpeak) and `Cholesterol`.
+3.  **Model Ensemble (Elite Suite):**
+    - **ExtraTreesClassifier:** 1,000 estimators, `sqrt` features (as requested).
+    - **LightGBM:** Optimized for speed (learning rate 0.05, 1000 estimators).
+    - **XGBoost:** Switched from slow DART to `hist` GBT for rapid iterations.
+    - **CatBoost:** Parallelized with `thread_count=-1`.
+4.  **Ensemble Meta-Learner:**
+    - Nelder-Mead optimization on Rank AUC weights.
+
+## 📈 Status
+- **Process ID:** 2970994
+- **Log File:** [training_v3_2_elite.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3_2_elite.log)
+- **Training Start:** Mon Feb 23 14:13:36 2026
+- **Stage:** Seed 42, Fold 0 (In Progress)
+
+> [!TIP]
+> This version is ~3x faster than the previous attempt due to row count reduction and parallel initialization.

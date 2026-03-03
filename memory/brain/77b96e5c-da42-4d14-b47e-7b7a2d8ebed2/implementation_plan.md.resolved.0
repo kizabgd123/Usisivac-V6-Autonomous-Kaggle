@@ -1,0 +1,27 @@
+# Goal Description
+The objective is to modify the unpacked `ResearchProAI_Template` to allow it to search the internet exclusively for science and academic research. Since the current template only implements local RAG (reading local files into ChromaDB), we need to add an internet search capability and constrain it geographically (e.g., specific domains) and contextually (system prompt).
+
+## Proposed Changes
+
+### generate_report.py
+We will modify [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py) to:
+1. Include an internet search function using `duckduckgo_search` (which the user might need to install via `pip install duckduckgo-search`).
+2. Constrain the search queries by appending terms like `site:edu OR site:gov OR domain:arxiv.org OR domain:ncbi.nlm.nih.gov`.
+3. Combine the online search results with the local ChromaDB context.
+4. Update the Llama-3 system prompt to prioritize scientific and academic research strictly.
+
+#### [MODIFY] generate_report.py
+- Add `from duckduckgo_search import DDGS`
+- Add a new function `academic_internet_search(query)` that calls `DDGS().text(query + " (site:edu OR site:gov OR domain:arxiv.org OR domain:nature.com)", max_results=3)`.
+- Update [generate_report(query)](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py#24-41) to call `academic_internet_search` and append its output to the [context](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py#15-21).
+- Update the system message to: `"You are ResearchPro AI, an academic research assistant. Analyze the context (which includes local documents and academic internet search results) and provide a structured report. Strictly focus on science and academic research."`
+
+## Verification Plan
+
+### Automated Tests
+* There are no automated tests in this template. We will manually verify it.
+
+### Manual Verification
+1. Install requirements (`pip install duckduckgo-search`).
+2. Run `python3 src/generate_report.py "What is the latest research on CRISPR?"`
+3. Verify that the output includes information specifically sourced from academic/science domains and that it successfully ran the internet search.

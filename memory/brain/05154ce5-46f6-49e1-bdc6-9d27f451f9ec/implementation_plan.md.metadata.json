@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Grandmaster-level strategy for March Machine Learning Mania 2026. Uses Elo ratings, efficiency metrics, Massey ordinals, and ML ensembles (XGBoost + LightGBM + CatBoost) to predict NCAA tournament win probabilities. Three submission shots targeting top 10 on the Brier Score leaderboard.",
+  "updatedAt": "2026-02-20T22:14:29.367104206Z",
+  "version": "3"
+}

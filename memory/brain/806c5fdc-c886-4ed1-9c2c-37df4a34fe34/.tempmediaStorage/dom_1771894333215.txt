@@ -1,0 +1,244 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Deep Past Challenge - Translate Akkadian to English />
+	[94] (54,554)<a aria-label='Two practical stumbling blocks in Akkadian → English MT (and how to address them)' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/665209' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Two practical stumbling blocks in Akkadian → English MT (and how to address them) />
+	[101] (54,584)<a aria-label='Natural Language Processing with Disaster Tweets' class='sc-eXVaYZ cPXxFg' href='/competitions/nlp-getting-started' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Natural Language Processing with Disaster Tweets />
+	[108] (54,615)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Bidding Predictions for Construction />
+	[115] (54,645)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Predicting Heart Disease />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >auto_awesome_motion />
+		[128] (58,979)<p >View Active Events />
+	[129] (556,24)<div  />
+		[130] (556,24)<div  />
+			[131] (302,24)<span >search />
+			[132] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r6:' placeholder='Search' />
+	[133] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[134] (986,24)<div  />
+	[135] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		[136] (293,80)<a aria-label='Deep Past Initiative's profile' class='sc-lhsSio kfuoVB' href='/organizations/deep-past-initiative' />
+			[137] (293,80)<div  />
+		Deep Past Initiative
+		·
+		Featured Code Competition
+		·
+		a month to go
+		[138] (768,80)<button class='sc-pYNGo cZrOun' role='button' />
+			[139] (768,80)<span >Submit Prediction />
+		[140] (820,80)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		Deep Past Challenge - Translate Akkadian to English
+		Bringing Bronze Age Voices Back to Life – Machine Translation of Old Assyrian Cuneiform
+		[141] (763,164)<img  />
+		[142] (307,261)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview' role='tab' />
+			[143] (307,261)<span >Overview />
+		[144] (342,261)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/data' role='tab' />
+			[145] (342,261)<span >Data />
+		[146] (369,261)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/code' role='tab' />
+			[147] (369,261)<span >Code />
+		[148] (402,261)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/models' role='tab' />
+			[149] (402,261)<span >Models />
+		[150] (444,261)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/discussion' role='tab' />
+			[151] (444,261)<span >Discussion />
+		[152] (495,261)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/leaderboard' role='tab' />
+			[153] (495,261)<span >Leaderboard />
+		[154] (537,261)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules' role='tab' />
+			[155] (537,261)<span >Rules />
+		[156] (566,261)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/team' role='tab' />
+			[157] (566,261)<span >Team />
+		[158] (608,261)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/submissions' role='tab' />
+			[159] (608,261)<span >Submissions />
+		check_circle
+		You have accepted the rules for this competition. Good luck!
+		[160] (492,392)<div  />
+			[161] (481,392)<div  />
+				[162] (481,392)<div  />
+					[163] (326,392)<div  />
+						[164] (326,392)<div  />
+							[165] (326,392)<h2 >Competition Rules />
+					[166] (665,392)<div >create />
+						create
+			[167] (686,392)<button aria-label='Collapse undefined' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse undefined'>keyboard_arrow_up />
+		ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES.
+		[168] (338,482)<a aria-label='See Section 3.18 for defined terms (opens in a new tab)' href='rules#18.-terms'>See Section 3.18 for defined terms />
+		The Competition named below is a skills-based competition to promote and further the field of data science. You must register via the Competition Website to enter. To enter the Competition, you must agree to these Official Competition Rules, which incorporate by reference the provisions and content of the Competition Website and any Specific Competition Rules herein (collectively, the "Rules"). Please read these Rules carefully before entry to ensure you understand and agree. You further agree that Submission in the Competition constitutes agreement to these Rules. You may not submit to the Competition and are not eligible to receive the prizes associated with this Competition unless you agree to these Rules. These Rules form a binding legal agreement between you and the Competition Sponsor with respect to the Competition. Your competition Submissions  must conform to the requirements stated on the Competition Website. Your Submissions will be scored based on the evaluation metric described on the Competition Website. Subject to compliance with the Competition Rules, Prizes, if any, will be awarded to Participants with the best scores, based on the merits of the data science models submitted. See below for the complete Competition Rules. For Competitions designated as hackathons by the Competition Sponsor (“Hackathons”), your Submissions will be judged by the Competition Sponsor based on the evaluation rubric set forth on the Competition Website (“Evaluation Rubric”).  The Prizes, if any, will be awarded to Participants with the highest ranking(s) as determined by the Competition Sponsor based on such rubric.
+		You cannot sign up to Kaggle from multiple accounts and therefore you cannot enter or submit from multiple accounts.
+		1. COMPETITION-SPECIFIC TERMS
+		1. COMPETITION TITLE
+		Deep Past Challenge - Translate Akkadian to English
+		2. COMPETITION SPONSOR
+		Deep Past Initiative
+		3. COMPETITION SPONSOR ADDRESS
+		234 Front St, New Haven CT 06513
+		4. COMPETITION WEBSITE
+		[169] (404,989)<a aria-label='https://www.kaggle.com/competitions/deep-past-initiative-machine-translation (opens in a new tab)' href='https://www.kaggle.com/competitions/deep-past-initiative-machine-translation'>https://www.kaggle.com/competitions/deep-past-initiative-machine-translation />
+		[170] (765,803)<div class='MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-240b6p' scrollable='true' />
+			Rules
+			[171] (782,403)<a aria-label='Competition Rules, 1 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#competition-rules' role='tab' />
+				[172] (782,403)<span >Competition Rules />
+			[173] (811,430)<a aria-label='ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES., 2 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#entry-in-this-competition-constitutes-your-acceptance-of-these-official-competition-rules.' role='tab' />
+				[174] (811,430)<span >ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES. />
+			[175] (807,457)<a aria-label='1. COMPETITION-SPECIFIC TERMS, 3 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#1.-competition-specific-terms' role='tab' />
+				[176] (807,457)<span >1. COMPETITION-SPECIFIC TERMS />
+			[177] (797,484)<a aria-label='1. COMPETITION TITLE, 4 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#1.-competition-title' role='tab' />
+				[178] (797,484)<span >1. COMPETITION TITLE />
+			[179] (804,511)<a aria-label='2. COMPETITION SPONSOR, 5 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#2.-competition-sponsor' role='tab' />
+				[180] (804,511)<span >2. COMPETITION SPONSOR />
+			[181] (819,538)<a aria-label='3. COMPETITION SPONSOR ADDRESS, 6 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#3.-competition-sponsor-address' role='tab' />
+				[182] (819,538)<span >3. COMPETITION SPONSOR ADDRESS />
+			[183] (803,565)<a aria-label='4. COMPETITION WEBSITE, 7 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#4.-competition-website' role='tab' />
+				[184] (803,565)<span >4. COMPETITION WEBSITE />
+			[185] (819,593)<a aria-label='5. TOTAL PRIZES AVAILABLE: $50,000, 8 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#5.-total-prizes-available-50000' role='tab' />
+				[186] (819,593)<span >5. TOTAL PRIZES AVAILABLE: $50,000 />
+			[187] (802,620)<a aria-label='6. WINNER LICENSE TYPE, 9 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#6.-winner-license-type' role='tab' />
+				[188] (802,620)<span >6. WINNER LICENSE TYPE />
+			[189] (802,647)<a aria-label='7. DATA ACCESS AND USE, 10 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#7.-data-access-and-use' role='tab' />
+				[190] (802,647)<span >7. DATA ACCESS AND USE />
+			[191] (807,674)<a aria-label='2. COMPETITION-SPECIFIC RULES, 11 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#2.-competition-specific-rules' role='tab' />
+				[192] (807,674)<span >2. COMPETITION-SPECIFIC RULES />
+			[193] (786,701)<a aria-label='1. TEAM LIMITS, 12 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#1.-team-limits' role='tab' />
+				[194] (786,701)<span >1. TEAM LIMITS />
+			[195] (797,728)<a aria-label='2. SUBMISSION LIMITS, 13 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#2.-submission-limits' role='tab' />
+				[196] (797,728)<span >2. SUBMISSION LIMITS />
+			[197] (803,755)<a aria-label='3. COMPETITION TIMELINE, 14 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#3.-competition-timeline' role='tab' />
+				[198] (803,755)<span >3. COMPETITION TIMELINE />
+			[199] (797,783)<a aria-label='4. COMPETITION DATA, 15 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#4.-competition-data' role='tab' />
+				[200] (797,783)<span >4. COMPETITION DATA />
+			[201] (793,810)<a aria-label='5. WINNER LICENSE, 16 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#5.-winner-license' role='tab' />
+				[202] (793,810)<span >5. WINNER LICENSE />
+			[203] (810,837)<a aria-label='6. EXTERNAL DATA AND TOOLS, 17 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#6.-external-data-and-tools' role='tab' />
+				[204] (810,837)<span >6. EXTERNAL DATA AND TOOLS />
+			[205] (783,864)<a aria-label='7. ELIGIBILITY, 18 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#7.-eligibility' role='tab' />
+				[206] (783,864)<span >7. ELIGIBILITY />
+			[207] (803,891)<a aria-label='8. WINNER’S OBLIGATIONS, 19 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#8.-winners-obligations' role='tab' />
+				[208] (803,891)<span >8. WINNER’S OBLIGATIONS />
+			[209] (792,918)<a aria-label='9. GOVERNING LAW, 20 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#9.-governing-law' role='tab' />
+				[210] (792,918)<span >9. GOVERNING LAW />
+			[211] (811,945)<a aria-label='3. GENERAL COMPETITION RULES - BINDING AGREEMENT, 21 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#3.-general-competition-rules-binding-agreement' role='tab' />
+				[212] (811,945)<span >3. GENERAL COMPETITION RULES - BINDING AGREEMENT />
+			[213] (783,973)<a aria-label='1. ELIGIBILITY, 22 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules#1.-eligibility' role='tab' />
+				[214] (783,973)<span >1. ELIGIBILITY />
+			2. SPONSOR AND HOSTING PLATFORM
+
+</current_dom>

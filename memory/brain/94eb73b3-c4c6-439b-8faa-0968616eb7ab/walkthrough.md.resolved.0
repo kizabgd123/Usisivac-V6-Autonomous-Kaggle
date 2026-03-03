@@ -1,0 +1,30 @@
+# Walkthrough - Trinity v4.0 Alignment
+
+Uspešno sam izvršio usklađivanje projekta "Spaceship Titanic" sa **Trinity Protocol v4.0** na osnovu analize vaše [calibration.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_calibration.py) skripte.
+
+## Key Accomplishments
+
+### ⚙️ Infrastrukturna Unifikacija
+- **[NEW] [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json)**: Centralni registar metapodataka projekta, faza i zavisnosti.
+- **[MODIFY] [Makefile](file:///home/kizabgd/Desktop/kaggle-arena/Makefile)**: Dodata podrška za fazno treniranje:
+  - `make baseline` ➔ Pokreće bazni model.
+  - `make calibration` ➔ Pokreće vašu najnapredniju skriptu sa survival kalibracijom.
+  - `make submit FILE=submission_calibration.csv COMP=spaceship-titanic` ➔ Poboljšana submit komanda.
+
+### 🧠 Tactic Registry Integration
+- **[NEW] [spaceship_titanic.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/spaceship_titanic.md)**: Dokumentovana je **Fold-Safe Survival Calibration** taktika kao "Golden Recipe". Ovo osigurava da buduće iteracije (ili budući agenti) ne ponove greške sa curenjem podataka.
+
+### 🔧 Konfiguraciona Stabilizacija
+- **[MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)**: 
+  - Postavljen `current_baseline` na **0.8125**.
+  - Popunjeni `structured_params` sa parametrima modela iz kalibracione skripte radi Single Source of Truth principa.
+
+## Proof of Work
+Novi [Makefile](file:///home/kizabgd/Desktop/kaggle-arena/Makefile) targeti omogućavaju čistu orkestraciju:
+```bash
+# Primer pokretanja kalibracije preko Makefile-a
+make calibration
+```
+
+Vaša [calibration.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_calibration.py) skripta je sada "srce" projekta i služi kao standard za buduće Synthesis faze. 
+✅ **Projekat je sada 100% usklađen sa Trinity Protocol v4.0.**

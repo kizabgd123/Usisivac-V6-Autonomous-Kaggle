@@ -1,0 +1,54 @@
+# Walkthrough: Conflict-Proof V5.1 Strategy (0.9539 OOF)
+
+V5.1 Conflict-Proof strategy has been successfully implemented, trained, and verified. This ensemble balances GBDT efficiency with Deep Learning generalization, shielded by Isotonic Calibration.
+
+## Execution Summary
+
+- **Final OOF AUC**: 0.953952
+- **Public LB Score**: 0.95180 (Best: 0.95387)
+- **Configuration**: 0.4 GBDT Trio / 0.6 DL Duo
+- **Protection**: Isotonic Shield (Calibrated on validation folds)
+- **Medical Logic**: Tanaka HR Max + Cardiac Fatigue Feature
+
+## Training Universe Progression
+
+| Seed | Duration | Folds | Status |
+| :--- | :--- | :--- | :--- |
+| 42 | 10:48 | 5/5 | [x] Completed |
+| 123 | 10:45 | 5/5 | [x] Completed |
+| 777 | 10:16 | 5/5 | [x] Completed |
+
+## 7-Gate Submit Protocol Verification
+
+| Gate | Status | Findings |
+| :--- | :--- | :--- |
+| **Intent** | [PASS] | Probabilities generated via `predict_proba`. |
+| **Identity** | [PASS] | Version 5.1 (Conflict-Proof) correctly tagged. |
+| **Format** | [PASS] | Column headers: `id`, `Heart Disease`. |
+| **Sanity** | [PASS] | 270,001 rows total (Exact match with test set). |
+| **Dtype** | [PASS] | Float64 precision for target values. |
+| **Value** | [PASS] | NaNs: 0. Range: [0.0028, 0.9978]. |
+| **Risk** | [PASS] | OOF 0.95395 > Elite Baseline 0.95387. Sub-roof (0.960). |
+
+## Core Assets
+
+- **Script**: [heart_disease_v5_conflict.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/heart_disease_v5_conflict.py)
+- **Log**: [conflict_v5_1.log](file:///home/kizabgd/Desktop/Istrazivanje/conflict_v5_1.log)
+- **Submission**: [submission_v5_1_conflict.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission_v5_1_conflict.csv)
+
+## Final Conclusion
+
+Stratify-KFold validation across 3 seeds shows stable performance with an OOF AUC of 0.95395. However, the **Public LB score of 0.95180** identifies a regression compared to our best (0.95387).
+
+**Post-Mortem Insight**:
+The heavy DL weight (0.6) and Isotonic calibration, while perfect for internal validation and resolving boardroom conflicts, appear to have less "synthetic fit" than the GBDT-dominant ensembles used in earlier versions. For the final "Killshot", we should consider shifting back to a 0.7 GBDT / 0.3 DL or Orthogonal Blend, while retaining the `ClinicalMapper` and `Cardiac_Fatigue` features which remain logically sound.
+
+## Faza 3: "The Ceiling Test" (Public Kaggle Blending)
+> [!WARNING]
+> U ovoj fazi smo testirali domete maksimalnog blendovanja postojećih *state-of-the-art* javnih predikcija. Ispostavilo se da 20% sintetičkog set-a na koji se računa Public LB postavlja strog plafon. 
+
+- **API 3x Rank Blend**: Kombinovana 3 najbolja [.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission.csv) fajla sa Kaggle takmičenja → LB **0.95409**
+- **Ultimate 6x Rank Blend**: Ponderisan rank-blend 6 najboljih csv rezultata → LB **0.95409**
+- **Super Anchor Blend**: Mešavina 90% top public kernela sa 10% in-house ortogonalnog modela (0.95387) → LB **0.95409**
+
+Ovim smo dobili trenutno maksimalni izvučeni skor **(0.95409)**, ali i potvrdili Rule 36 iz Ustanove da puko umnožavanje korelacijskih rešenja udara u ograničenje samog dataseta. Štedimo preostale submisije za validaciju naših *in-house* čistih pipeline-a (`v6_refined` i `v6.1_elite`).

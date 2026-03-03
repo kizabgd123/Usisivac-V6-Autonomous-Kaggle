@@ -1,0 +1,49 @@
+# MCP-GUARDIAN & MCP-VETOBOARD Implementation Plan
+
+Implementation of the first two custom MCP servers for the Trinity Orchestrator to handle project security and validation.
+
+## Proposed Changes
+
+### Configuration and Setup
+- Ensure dependencies for Python `mcp` SDK, `groq`, `openai` (for OpenRouter/Mistral), and `python-dotenv` are specified.
+- The [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) file at the workspace root will be used to load `GROQ_API_KEY` and `OPENROUTER_API_KEY`. (Mistral might use LOCAL URL or specific key).
+
+---
+
+### `.mcp/mcp-guardian/` (MCP-GUARDIAN)
+This server enforces the 7-Gate protocol and JudgeGuard rules.
+#### [NEW] `server.py`
+- Exposes `check_submission` tool which takes a file path.
+- Performs programmatic checks (NaN/Inf, dtype).
+- Uses Groq (Llama-3-70b) to perform fast Risk Gate and context checks.
+- If it fails, Vetoes the command and automatically invokes the forensics skill logic:
+  - Tries to read `.agent/skills/_system/agent_forensics_and_hardening/SKILL.md` to analyze the failure.
+  - If the skill or proper analysis is missing, uses OpenRouter to dynamically generate a new Forensics skill and saves it.
+
+#### [NEW] [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt)
+- `mcp`, `pandas`, `groq`, `openai`, `python-dotenv`.
+
+---
+
+### `.mcp/mcp-vetoboard/` (MCP-VETOBOARD)
+This server acts as a board of authorities to approve or veto action plans before they are executed.
+#### [NEW] `server.py`
+- Exposes `evaluate_action` tool which takes an action plan/description.
+- Sends the plan to three LLM personas:
+  - **Analyst (Thesis)**: Groq (Llama-3) - score out of 2.
+  - **Critic (Antithesis)**: OpenRouter (Claude 3.5 Sonnet) - score out of 3.
+  - **Oracle (Veto)**: Local Mistral - score out of 3.
+- Tallies the score. If total >= 6 (6/8 consensus), it returns PASS. Otherwise returns VETO with justifications.
+- Uses `python-dotenv` to fetch API keys.
+
+#### [NEW] [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt)
+- `mcp`, `groq`, `openai`, `python-dotenv`.
+
+## Verification Plan
+
+### Automated Tests
+- Run `python -m mcp_guardian.server` and test it with the MCP inspector (`npx @modelcontextprotocol/inspector node path/to/server.js` or via stdio). Since we are building in Python, we can write a small client script `test_client.py` using `mcp` SDK to call `check_submission` with a dummy CSV and verify it invokes Groq and behaves correctly.
+- Run `python -m mcp_vetoboard.server` and test `evaluate_action` with a dummy plan to ensure the 3 LLMs are called concurrently and the score tallying logic works.
+
+### Manual Verification
+- We will ask the user to configure the standard MCP client (e.g., Claude Desktop, Cursor, or AI Agent IDE) to point to the new python entry points and verify they initialize properly.

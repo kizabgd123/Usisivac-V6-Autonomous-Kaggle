@@ -1,0 +1,7 @@
+# Forensic Recommendations Execution
+
+- [ ] R1: Focus on Heart Disease S6E2 — ignore stale FORENSIC_*.md
+- [ ] R2: Check `make killshot` result (was it running earlier?)
+- [ ] R3: Add `seed_wisdom` target to [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile)
+- [ ] R4: Update [trinity_start.md](file:///home/kizabgd/Desktop/Istrazivanje/.agents/workflows/trinity_start.md) workflow to auto-run seed_wisdom
+- [ ] R5: Project isolation analysis — each challenge in its own folder

@@ -1,0 +1,29 @@
+# Implementation Plan: Bidding V9 \"Apex\"
+
+Objective: Beat V6's score of 0.3980 and move towards the 0.2750 1st place benchmark.
+
+## User Review Required
+> [!IMPORTANT]
+> V8 showed that predicting a ratio is harder than predicting the absolute bid. V9 will return to predicting `log1p(total_bid)` directly, but will use the **Robust Median Estimate** as a dominant feature. This allows the model to learn precisely when a contractor deviates from the baseline.
+
+## Proposed Changes
+
+### [1] Feature Refinement
+- **Baseline Feature**: `log1p(estimate_amount_sum)` (from V8 median logic).
+- **Delta Feature**: `log1p(total_bid) - log1p(estimate_amount_sum)` (This is what V8 tried to predict, we'll keep it as a feature if possible, or just let the model learn it).
+- **Contractor DNA**: Avg historical multiplier, win rate (approximated), job frequency.
+- **Competition Intensity**: `num_bidders` per job.
+
+### [2] Modeling
+- Target: `log1p(total_bid)`.
+- Multi-seed Ensemble: XGBoost, LightGBM, CatBoost.
+- Meta-Learner: Ridge regression.
+- Validation: 2024 Holdout.
+
+### [3] Stacking
+- Stack predictions from all base models on the 2024 holdout.
+- Use the 2024 meta-learner to predict 2025.
+
+## Verification Plan
+- Target CV RMSE: < 0.35 (on 2024 holdout).
+- Public LB goal: < 0.35.

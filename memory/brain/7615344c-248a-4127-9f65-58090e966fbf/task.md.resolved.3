@@ -1,0 +1,24 @@
+# Task: Heart Disease Pipeline Upgrade — Target >0.9400 AUC
+
+## Phase 1: Research & Audit
+- [x] Read PROJECT_AUDIT_PROTOCOL workflow
+- [x] Read previous competition KIs (Heart Disease strategy, discussions)
+- [x] Identify current bottlenecks in v9.2
+
+## Phase 2: Plan
+- [x] Write implementation_plan.md with all improvements
+- [x] Get user review (Incorporated Phase 2 + Blend feedback)
+
+## Phase 3: Turbo Implementation (V10.1 Kaggle Script)
+- [x] Apply `RobustScaler` to numerical columns
+- [x] Optimize CV folds (4) and seeds (1) for speed
+- [x] Implement Level-1 GPU Stacking (XGB, LGBM, CatBoost)
+- [x] Implement Level-2 `RidgeClassifier` Meta-Learner
+- [x] Implement Recirculation Loop (Pseudo-Labeling test rows)
+- [x] Assemble standalone Python script for Kaggle
+
+## Phase 4: Final Validation & Leakage Fix
+- [x] Identify and fix Target Encoding Leakage (v10.12)
+- [/] Verify Honest AUC on 10% Holdout
+- [ ] Achieve LB > 0.95400
+- [ ] Write walkthrough.md

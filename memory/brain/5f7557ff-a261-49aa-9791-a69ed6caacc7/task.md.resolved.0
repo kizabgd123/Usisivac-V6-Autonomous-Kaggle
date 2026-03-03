@@ -1,0 +1,31 @@
+# Multi-Agent Trinity Architecture — Task Tracker
+
+## Faza 1: Istraživanje i Analiza
+- [x] Analiza [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) v4.0 (koncizan ustav, 159 linija)
+- [x] Analiza [kaggle_dataset_export/GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/GEMINI.md) (Q&A format, 50+ tačaka)
+- [x] Pregled 5 postojećih MCP servera (guardian, config-state, vetoboard, trinity-kb, mistral-vetoboard)
+- [x] Istraživanje besplatnih AI API servisa (Groq, OpenRouter, Google AI Studio, HuggingFace)
+- [x] Istraživanje besplatnog fine-tuning-a (Colab T4, Kaggle GPU)
+- [x] Istraživanje MCP multi-agent orkestracijskih paterna
+
+## Faza 2: Dizajn Arhitekture
+- [/] Kreiranje implementacionog plana za multi-agent sistem
+- [ ] Review i odobrenje od korisnika
+
+## Faza 3: Implementacija MCP Servera
+- [ ] `mcp-research` — Akademski istraživački agent
+- [ ] `mcp-ml-engine` — ML agent za modele i feature engineering
+- [ ] `mcp-kaggle-master` — Kaggle community i challenge tracker
+- [ ] `mcp-orchestrator` — Centralni supervisor koji konsultuje sve agente
+- [ ] Nadogradnja postojećih: `mcp-guardian`, `mcp-config-state`
+
+## Faza 4: Fine-Tuning Pipeline
+- [ ] Priprema dataseta iz [kaggle_dataset_export/GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/GEMINI.md) (Q&A format)
+- [ ] QLoRA fine-tuning notebook za Colab/Kaggle
+- [ ] Push adaptera na HuggingFace Hub
+- [ ] Integracija fine-tuned modela u MCP servere
+
+## Faza 5: Verifikacija
+- [ ] Testiranje svakog MCP servera zasebno
+- [ ] End-to-end test: korisnik → orchestrator → agenti → odgovor
+- [ ] Validacija besplatnih API limita

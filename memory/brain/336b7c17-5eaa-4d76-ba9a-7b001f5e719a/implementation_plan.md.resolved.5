@@ -1,0 +1,31 @@
+# Hardened JudgeGuard v3.0 Integration Plan
+
+Initialize the next-generation security layer for the Antigravity system, implementing the 3-Layer Guardian model.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This upgrade enforces stricter verification rules:
+> 1. **Work Log Enforcement**: Every action must be logged in [WORK_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/WORK_LOG.md) before execution.
+> 2. **Proactive Architecture Check**: Vetoes training if architectural diversity is missing (Rule 50).
+> 3. **Semantic Drift Check**: Monitors for deviation (>20%) from the Project Essence.
+> 4. **Meta-LLM VetoBoard**: Automated Gemini-driven consensus on every critical action.
+
+## Proposed Changes
+
+### Antigravity Core
+
+#### [MODIFY] [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py)
+- Full rewrite to implement the hardened instruction set.
+- Integration with [AuditLogger](file:///home/kizabgd/Desktop/Istrazivanje/scripts/audit_logger.py#14-64), [KeyVault](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/key_vault.py#13-68), and [GeminiClient](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/gemini_client.py#9-140).
+- Addition of [_meta_overseer_check](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#334-384), [_pre_flight_architecture_check](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#189-225), and [_sync_to_notion](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#295-312).
+
+## Verification Plan
+
+### Automated Tests
+- Run `python3 scripts/test_security_phase.py` to ensure core functionality (Rate Limiting, KeyVault) remains intact.
+- Perform a simulated "Veto" by triggering architectural lack of diversity.
+
+### Manual Verification
+- Verify that [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) correctly logs info/veto events with the new schema.
+- Check if Notion sync is triggered for research actions.

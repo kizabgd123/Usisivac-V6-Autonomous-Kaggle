@@ -1,0 +1,43 @@
+# Shot 3: Geometric Fusion & Multi-Target
+
+This plan addresses the CV/LB discrepancy by fixing the MICE imputation lookahead bias and pushes the performance ceiling using auxiliary targets and stable rank blending.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Lookahead Bias Identified:** The current `Elite Breach v3.2` pipeline fits the MICE imputer on combined `train + test` data. This causes optimistic CV scores (~0.955) that don't hold on the LB (~0.953).
+> 
+> **Proposed Fix:** Fit the imputer on [train](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Top3_KillShot.py#202-244) only.
+
+## Proposed Changes
+
+### [Component] Heart Disease Prediction Pipeline (Shot 3)
+
+#### [MODIFY] [heart_disease_shot3.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_disease_shot3.py) [NEW]
+
+- **1. Imputation Hardening**:
+  - `mice.fit(train[impute_cols])` then `mice.transform(test[impute_cols])`.
+- **2. Multi-Target Rotation**:
+  - Train secondary models to predict `Cholesterol` (log-transformed) and `RestingBP`.
+  - Use these predictions as "deep features" or meta-features for the final classifier.
+- **3. Feature Engineering (The Elite Core)**:
+  - `Ischemic Burden`: `Oldpeak * MaxHR` (relative to age bounds).
+  - `Metabolic Efficiency`: `MaxHR / RestingBP`.
+  - `Young Signal`: [(Age < 35) & (ST_Slope == 'Down')](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py#49-51).
+- **4. Model Stack**:
+  - LightGBM (GOSS + DART variants).
+  - XGBoost (DART + Exact variants).
+  - CatBoost (MVS sampling).
+- **5. Geometric Fusion**:
+  - Instead of `np.mean(probs)`, use geometric mean of sorted ranks: `final_rank = (rank1 * rank2 * ... * rankN) ** (1/N)`.
+  - This is more robust to outlier predictions from uncalibrated models.
+
+## Verification Plan
+
+### Automated Tests
+- `python heart_disease_shot3.py --mode cv_only`
+- Expected OOF AUC: 0.955+ (Real, without leakage).
+- Adversarial Validation: Check if `is_original` vs [id](file:///home/kizabgd/Desktop/Istrazivanje/api.pid) is still a lead signal.
+
+### Manual Verification
+- Deploy to Kaggle with corrected imputation to verify LB alignment.

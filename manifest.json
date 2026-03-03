@@ -1,0 +1,17 @@
+{
+  "name": "new-challenge-trinity",
+  "version": "1.0.0",
+  "description": "Kaggle S6E3 Telco Churn Prediction - Trinity Protocol Implementation",
+  "author": "Antigravity Agent",
+  "entry_point": "telco_churn_baseline.ipynb",
+  "dependencies": [
+    "catboost",
+    "xgboost",
+    "lightgbm",
+    "pandas",
+    "numpy",
+    "scikit-learn",
+    "shap"
+  ],
+  "trinity_phase": "Thesis"
+}

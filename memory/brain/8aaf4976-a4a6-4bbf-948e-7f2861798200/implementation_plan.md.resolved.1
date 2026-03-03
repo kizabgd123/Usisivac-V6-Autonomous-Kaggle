@@ -1,0 +1,106 @@
+# 🎯 S6E2 Battle Tactics — Consolidated Intelligence
+
+> Based on 40+ submissions, 4 days of R&D, and deep sequential analysis.
+
+---
+
+## Situation Assessment
+
+| Metric | Value |
+|--------|-------|
+| **Best Public LB** | 0.95387 |
+| **Achieved with** | Simple XGB+LGBM+CAT, all features, mean blend |
+| **Score ceiling** | ~0.954 (synthetic data noise floor) |
+| **Remaining juice** | +0.001–0.003 via multi-seed & rank averaging |
+
+---
+
+## Phase 0: Reproduce Anchor (0.95387)
+
+Replicate the exact recipe that achieved our best score:
+- All 13 original features + basic ratios (RPP, Chol/Age)
+- XGBoost + LightGBM + CatBoost, 5-fold CV
+- Simple probability mean across 3 models
+- No denoising, no pseudo-labels, no subspacing
+
+> [!IMPORTANT]
+> This is the **anchor**. Every future attempt must be compared against this, not against inflated OOF scores.
+
+---
+
+## Phase 1: Multi-Seed Averaging (+0.001 expected)
+
+Train the SAME 3-model ensemble with **5 different random seeds** and average all predictions:
+- Seeds: [42, 123, 777, 2024, 31337]
+- 5 seeds × 3 models × 5 folds = 75 models total
+- Average all 15 OOF vectors → single blend
+
+**Why it works**: Reduces variance without increasing bias. Each seed explores a slightly different optimization path.
+
+---
+
+## Phase 2: Rank Averaging (+0.0005 expected)
+
+Convert raw probabilities to ranks before averaging:
+```python
+from scipy.stats import rankdata
+ranked = rankdata(preds) / len(preds)
+```
+
+**Why it works**: Models may have different calibration scales. Rank averaging normalizes them, preventing one model from dominating.
+
+---
+
+## Phase 3: Target Encoding (+0.0005 expected)
+
+Add leave-one-fold-out target encoding for categorical features:
+- `Chest pain type`, `Thallium`, `Number of vessels fluro`
+- Encode using ONLY training fold data, apply to validation fold
+- Use smoothing (alpha=10) to prevent overfit on rare categories
+
+---
+
+## 🔴 ANTI-PATTERNS (PROVEN TO HURT)
+
+| Technique | Avg LB Impact | Evidence |
+|-----------|--------------|----------|
+| Pseudo-labeling | **−0.003 to −0.005** | 3/3 attempts worse |
+| Feature subspacing | **−0.004** | V4 scored 0.950 |
+| Cleanlab denoising | **Fake OOF gain** | OOF 0.977, LB 0.953 |
+| OOF > 0.960 | **Overfitting signal** | Every case confirmed |
+| Differential Evolution weights | **−0.001** | Overfits to CV noise |
+
+---
+
+## 🟢 OOF CALIBRATION RULE
+
+> **If OOF exceeds 0.960, STOP. You are overfitting.**
+
+| OOF Range | LB Range | Diagnosis |
+|-----------|----------|-----------|
+| 0.955–0.957 | 0.953–0.954 | ✅ Optimal |
+| 0.960–0.970 | 0.952–0.953 | ⚠️ Mild overfitting |
+| 0.970+ | 0.950–0.953 | ❌ Severe overfitting |
+
+---
+
+## Verification Plan
+
+### Automated
+- Run golden recipe script, confirm OOF in 0.955–0.957 range
+- Submit to Kaggle, confirm LB ≥ 0.95387
+- ProcessGuard: verify all correlations < 0.95 threshold
+
+### Manual
+- Compare against anchor score (0.95387)
+- Verify OOF-LB gap < 0.003
+
+---
+
+## Deliverables
+
+#### [NEW] [s6e2_golden_recipe.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_golden_recipe.py)
+Multi-seed ensemble with rank averaging — the proven winning approach.
+
+#### [MODIFY] [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md)
+Add entries 30–37 with battle-tested competition intelligence.

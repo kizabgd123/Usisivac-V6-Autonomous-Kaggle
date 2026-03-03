@@ -1,0 +1,9 @@
+# S6E2 Heart Disease — Elite Pipeline Enhancement
+
+- [x] Review [s6e2_submission_8_elite_denoise.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_submission_8_elite_denoise.py) vs suggested improvements
+- [x] Confirm: `import lightgbm as lgb`, OOF storage, Nelder-Mead all present
+- [/] Integrate Adversarial Validation into codebase
+  - [/] Add `run_adversarial_validation()` to [s6e2_utils.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_utils.py)
+  - [ ] Create standalone `s6e2_adversarial_diagnostic.py` script
+  - [ ] Verify it works with current feature pipeline
+- [ ] Check current pipeline run status

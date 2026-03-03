@@ -1,0 +1,19 @@
+# Task: S6E2 Battle Tactics & GEMINI Knowledge Update
+
+- [x] Analyze clinical PDF and research papers
+- [x] Implement Hybrid Breakthrough (V5) master script
+- [x] Integrate clinical findings (Tanaka, Ischemic Burden) into GEMINI.md
+- [x] Analyze "Trinity Protocol Analiza.md" for systemic improvements.
+- [x] Refactor [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) to separate Core Engine (DEO II) from Tactic Registry (DEO III).
+- [x] Create [trinity_tool_registry/heart_disease_tactic.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/heart_disease_tactic.json) (Rule 45 compliance).
+- [x] Integrate advanced cardiology clinical findings (Rules 38-43) into the registry.
+- [x] Upgrade [scripts/judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py) to support dynamic JSON alerts (Rule 46).
+- [x] Update Vetoboard (API & Dashboard) to display live Guard Alerts.
+- [x] Verify system integrity with automated pass/fail scenarios.
+
+# Trinity Protocol Proactive Hardening (v3.15)
+- [ ] Update [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) with Rules 48-50 (Encapsulation, Sandbox, Pre-flight).
+- [ ] Define Model Families and Sandbox Limits in [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json).
+- [ ] Standardize [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py) alerts with Opaque Payload.
+- [ ] Implement Pre-flight Architecture Diverity check in [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-380).
+- [ ] Verify Sandbox Timeout Alert mechanism.

@@ -1,0 +1,35 @@
+# Implementation Plan: Work Log Visualization Dashboard
+
+The goal is to create a dynamic, visually "premium" dashboard (Kaggle Notebook) that tracks agent activities, tactics, and ML research progress by parsing [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md), [WORKING_FALL.md](file:///home/kizabgd/Desktop/new-challenge/WORKING_FALL.md), and research artifacts.
+
+## User Review Required
+> [!IMPORTANT]
+> The dashboard script will use local Kaggle API credentials to push updates. Ensure `KAGGLE_USERNAME` and `KAGGLE_KEY` in [.env](file:///home/kizabgd/Desktop/new-challenge/.env) are correct.
+
+## Proposed Changes
+
+### [Dashboard Engine]
+#### [NEW] [dashboard_generator.py](file:///home/kizabgd/Desktop/new-challenge/Usisivac/dashboard_generator.py)
+A Python script that:
+- Parses [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) for daily activity counts and milestones.
+- Parses [WORKING_FALL.md](file:///home/kizabgd/Desktop/new-challenge/WORKING_FALL.md) for task completion percentages (using checkbox states).
+- Parses [research_report.md](file:///home/kizabgd/.gemini/antigravity/brain/34bf72c1-fd6d-4cfe-bb89-09758da12e93/research_report.md) for SOTA tactics.
+- Generates a Jupyter Notebook `usisivac_dashboard.ipynb` using `nbformat`.
+- Injects Plotly-based visualizations (Gantt charts for tasks, pie charts for categories, time-series for activity).
+
+### [Monitoring System]
+#### [NEW] [monitor_dashboard.sh](file:///home/kizabgd/Desktop/new-challenge/monitor_dashboard.sh)
+A shell script intended to be run in a Gemini CLI terminal that:
+- Watches the log files for changes.
+- Automatically triggers `dashboard_generator.py` upon changes.
+- Uses `kaggle kernels push` to keep the online notebook updated (if required).
+
+## Verification Plan
+
+### Automated Tests
+- Run `python3 Usisivac/dashboard_generator.py` and verify the output `usisivac_dashboard.ipynb` is valid.
+- Verify that Markdown parsing correctly identifies `[x]` vs `[ ]` tasks.
+
+### Manual Verification
+- Open the generated `.ipynb` file to check visualization aesthetics.
+- Verify that terminal output from the monitor script correctly tracks log updates.

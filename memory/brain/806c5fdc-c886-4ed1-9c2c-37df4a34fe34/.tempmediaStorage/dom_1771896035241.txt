@@ -1,0 +1,308 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Deep Past Challenge - Translate Akkadian to English />
+	[94] (54,554)<a aria-label='Two practical stumbling blocks in Akkadian → English MT (and how to address them)' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/665209' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Two practical stumbling blocks in Akkadian → English MT (and how to address them) />
+	[101] (54,584)<a aria-label='Natural Language Processing with Disaster Tweets' class='sc-eXVaYZ cPXxFg' href='/competitions/nlp-getting-started' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Natural Language Processing with Disaster Tweets />
+	[108] (54,615)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Bidding Predictions for Construction />
+	[115] (54,645)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Predicting Heart Disease />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >auto_awesome_motion />
+			[128] (19,967)<div >1 />
+		[129] (58,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':ra:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Deep Past Challenge - Translate Akkadian to English
+		[137] (768,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[138] (768,62)<span >Submit Prediction />
+		[139] (820,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[140] (307,94)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview' role='tab' />
+			[141] (307,93)<span >Overview />
+		[142] (342,94)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/data' role='tab' />
+			[143] (342,93)<span >Data />
+		[144] (369,94)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/code' role='tab' />
+			[145] (369,93)<span >Code />
+		[146] (402,94)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/models' role='tab' />
+			[147] (402,93)<span >Models />
+		[148] (444,94)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/discussion' role='tab' />
+			[149] (444,93)<span >Discussion />
+		[150] (495,94)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/leaderboard' role='tab' />
+			[151] (495,93)<span >Leaderboard />
+		[152] (537,94)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules' role='tab' />
+			[153] (537,93)<span >Rules />
+		[154] (566,94)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/team' role='tab' />
+			[155] (566,93)<span >Team />
+		[156] (608,94)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/submissions' role='tab' />
+			[157] (608,93)<span >Submissions />
+		Your task is to build neural machine-translation models that convert transliterated Akkadian into English. The challenge: Akkadian is a low-resource, morphologically complex language where a single word can encode what takes multiple words in English. Standard architectures built for modern, data-rich languages fail here.
+		Crack this problem and you’ll give voice to 10,000+ untranslated tablets. And you'll do more than revive the past: you'll help pioneer a blueprint for translating the thousands of endangered and overlooked languages—ancient and modern—that the AI age has yet to reach.
+		Visit
+		this website
+		to learn more about the organizing team, the Deep Past Initiative, and to find more background materials.
+		[158] (488,155)<div  />
+			[159] (478,155)<div  />
+				[160] (478,155)<div  />
+					[161] (309,155)<div  />
+						[162] (309,155)<div  />
+							[163] (309,155)<h3 >Evaluation />
+					[164] (659,155)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[165] (680,155)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[166] (466,341)<div >Submissions are evaluated by the
+, with each score's sufficient statistics being aggregated across the entire corpus (that is, each score is a
+).
+You may refer to the
+library for implementation details. A notebook implementing the metric on Kaggle may be found here:
+.
+Submission File
+For each
+in the test set, you must predict an English translation of the associated Akkadian transliteration. Each translation should comprise a single sentence. The file should contain a header and have the following format: />
+			Submissions are evaluated by the
+			Geometric Mean of the
+			[167] (467,197)<a aria-label='BLEU (opens in a new tab)' href='https://aclanthology.org/P02-1040.pdf'>BLEU />
+			and the
+			[168] (513,197)<a aria-label='chrF++ (opens in a new tab)' href='https://statmt.org/wmt17/pdf/WMT70.pdf'>chrF++ />
+			scores
+			, with each score's sufficient statistics being aggregated across the entire corpus (that is, each score is a
+			micro-average
+			).
+			You may refer to the
+			[169] (364,242)<a aria-label='SacreBLEU (opens in a new tab)' href='https://github.com/mjpost/sacrebleu/'>SacreBLEU />
+			library for implementation details. A notebook implementing the metric on Kaggle may be found here:
+			[170] (387,259)<a aria-label='Geometric Mean of BLEU and chrF++ (opens in a new tab)' href='https://www.kaggle.com/code/metric/dpi-bleu-chrf'>Geometric Mean of BLEU and chrF++ />
+			.
+			Submission File
+			For each
+			id
+			in the test set, you must predict an English translation of the associated Akkadian transliteration. Each translation should comprise a single sentence. The file should contain a header and have the following format:
+			id
+			,translation
+			0
+			,Thus Kanesh,
+			say
+			to
+			the
+			-payers, our messenger,
+			every
+			single colony,
+			and
+			the
+			...
+			1
+			,In
+			the
+			letter
+			of
+			the
+			City (
+			it
+			is
+			written): From this
+			day
+			on
+			, whoever buys meteoric...
+			2
+			,As soon
+			as
+			you have heard our letter, who(ever)
+			over
+			there has either sold
+			it
+			to
+			...
+			3
+			,Send a
+			copy
+			of
+			(this) letter
+			of
+			ours
+			to
+			every
+			single colony
+			and
+			to
+			all
+			the
+			trading...
+...
+		[171] (488,539)<div  />
+			[172] (478,539)<div  />
+				[173] (478,539)<div  />
+					[174] (305,539)<div  />
+						[175] (305,539)<div  />
+							[176] (305,539)<h3 >Timeline />
+					[177] (659,539)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[178] (680,539)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[179] (466,655)<div >All deadlines are at 11:59 PM UTC on the corresponding day unless otherwise noted. The competition organizers reserve the right to update the contest timeline if they deem it necessary. />
+			December 16, 2025
+			- Start Date.
+			March 16, 2026
+			- Entry Deadline. You must accept the competition rules before this date in order to compete.
+			March 16, 2026
+			- Team Merger Deadline. This is the last day participants may join or merge teams.
+			March 23, 2026
+			- Final Submission Deadline.
+			All deadlines are at 11:59 PM UTC on the corresponding day unless otherwise noted. The competition organizers reserve the right to update the contest timeline if they deem it necessary.
+		[180] (488,784)<div  />
+			[181] (478,784)<div  />
+				[182] (478,784)<div  />
+					[183] (300,784)<div  />
+						[184] (300,784)<div  />
+							[185] (300,784)<h3 >Prizes />
+					[186] (659,784)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[187] (680,784)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[188] (466,900)<div  />
+			1st Place - $ 15,000
+			2nd Place - $ 10,000
+			3rd Place - $ 8,000
+			4th Place - $ 7,000
+			5th Place - $ 5,000
+			6th Place - $ 5,000
+		Table of Contents
+		[189] (820,134)<button aria-label='Collapse all sections' class='sc-koBvLg jxMomE google-symbols notranslate' title='Collapse all sections'>collapse_all />
+		[190] (764,253)<div  />
+			[191] (723,158)<a aria-label='Overview, 1 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/abstract' id='578620' role='tab' />
+				[192] (723,158)<span >Overview />
+			[193] (726,186)<a aria-label='Description, 2 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/description' id='578614' role='tab' />
+				[194] (726,186)<span >Description />
+			[195] (724,213)<a aria-label='Evaluation, 3 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/evaluation' id='578615' role='tab' />
+				[196] (724,213)<span >Evaluation />
+			[197] (721,240)<a aria-label='Timeline, 4 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/timeline' id='578616' role='tab' />
+				[198] (721,240)<span >Timeline />
+			[199] (718,267)<a aria-label='Prizes, 5 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/prizes' id='578618' role='tab' />
+				[200] (718,267)<span >Prizes />
+			[201] (738,294)<a aria-label='Code Requirements, 6 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/code-requirements' id='578619' role='tab' />
+				[202] (738,294)<span >Code Requirements />
+			[203] (739,321)<a aria-label='Dataset Instructions, 7 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/dataset-instructions' id='597956' role='tab' />
+				[204] (739,321)<span >Dataset Instructions />
+			[205] (720,348)<a aria-label='Citation, 8 of 8' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview/citation' id='99999' role='tab' />
+				[206] (720,348)<span >Citation />
+
+</current_dom>

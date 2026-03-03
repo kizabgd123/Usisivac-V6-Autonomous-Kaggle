@@ -1,0 +1,27 @@
+# Deep Past Initiative Machine Translation Improvement Plan
+
+## Status Analysis
+- **Competition:** Akkadian (Old Assyrian) to English translation.
+- **Metric:** Geometric Mean of BLEU and chrF++.
+- **Key Challenges:** Low-resource, morphological complexity, diacritics, gap handling, named entities (onomasticon).
+- **Current Standings:** Top scores ~39.5, common plateau ~35.1.
+
+## Proposed Strategy
+1. **Preprocessing & Normalization:**
+   - Handle Unicode/diacritics consistently.
+   - Standardize gap markers (`<gap>`, etc.).
+   - Use the provided Onomasticon for named entity normalization.
+2. **Model Architecture:**
+   - Ensure sub-word tokenization is optimized for Akkadian morphology.
+   - Explore smaller, more robust Transformer variants or adapters for low-resource settings.
+3. **Data Augmentation:**
+   - Leverage `published_texts.csv` (semi-supervised/back-translation).
+   - Use Lexicon for better token-level understanding.
+
+## Task Checklist
+- [ ] Review current translation pipeline in `deep_past` directory.
+- [ ] Audit preprocessing steps for diacritics and gap handling.
+- [ ] Integrate Onomasticon for named entity consistency.
+- [ ] Optimize tokenization (BPE/WordPiece) for Akkadian.
+- [ ] Experiment with chrF++ optimized training/fine-tuning.
+- [ ] Generate improved submission and verify locally.

@@ -1,0 +1,43 @@
+# 🏗️ PROJECT MASTER PLAN: Bidding Challenge Resurrection
+
+## 📡 1. EXECUTIVE STRATEGY (THE LAW)
+The core objective is to recover from the **v16 Catastrophic Regression (LB 0.4510)** and return to the **v12 Alpha State (LB 0.3981)**. We will follow the **Quad-Core Architecture** to ensure no further regressions.
+
+### The Quad-Core Enforcement
+| Core | Component | Status | Responsibility |
+| :--- | :--- | :--- | :--- |
+| **🧠 BRAIN** | Mistral Agentic Loop | 🏗️ BUILDING | `workspace_dashboard.py` (Tool access) |
+| **📂 MEMORY** | Project Bible / KB | 🏗️ BUILDING | `PROJECT_BIBLE.md` + `BUG_LOG.md` |
+| **🛡️ SHIELD** | JudgeGuard | 🟡 PENDING | `judge_guard.py` local instantiation |
+| **⚖️ LAW** | Master Orchestration | 🟢 ACTIVE | `MASTER_ORCHESTRATION.md` hierarchy |
+
+---
+
+## 🏎️ 2. OPERATIONAL PHASES
+
+### Phase 1: Shield & Structure (Immediate)
+- **Goal:** Create an environment where an agent CANNOT make a mistake without a VETO.
+- **Action:** Instantiate `.agent` project folders. Create `WORK_LOG.md`.
+- **Action:** Sync `MASTER_ORCHESTRATION.md` and `ORCHESTRATION_RULES.json` to project root.
+
+### Phase 2: The Agentic Dashboard (Dashboard 3.0)
+- **Goal:** Give Mistral "Hands" (Tools).
+- **Tool Suite:** `read_file`, `write_file`, `run_command`, `list_dir`.
+- **Constraint:** All AI actions must pass a `dry-run` or `JudgeGuard` check.
+
+### Phase 3: Forensic Retrieval (Back to v12)
+- **Goal:** Extract why `v12` worked and why `v15/v16` poison the model.
+- **Hypothesis:** Namazani features introduce massive leakage or noise that masks the Contractor Win-Rate signal.
+- **Action:** Re-run v12 locally with the 10,621 row dataset.
+
+---
+
+## 🚨 CRITICAL RULES
+1. **10,621 ROWS:** No execution without `assert len(df) == 10621`.
+2. **VETO = HALT:** Any regression prediction in JudgeGuard stops the commit.
+3. **MISTRAL ONLY:** All strategic chat goes through the humble recovery dashboard.
+
+---
+
+> [!IMPORTANT]
+> This plan is the PROJECT BIBLE. All deviations must be recorded in `BUG_LOG.md`.

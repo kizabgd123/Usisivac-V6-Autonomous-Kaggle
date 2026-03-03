@@ -1,0 +1,8 @@
+# Probijanje 0.95387 LB Barijere
+
+- [/] Faza 1: Post-Hoc Rank Blend (instant)
+  - [ ] Kreirati rank_blend_submissions.py
+  - [ ] Generisati rank-blend submisije
+  - [ ] Submitovati najbolji blend
+- [ ] Faza 2: Replika Best + Hyper-Refinement
+- [ ] Faza 3: RealMLP Hybrid (65% GBDT / 35% RealMLP)

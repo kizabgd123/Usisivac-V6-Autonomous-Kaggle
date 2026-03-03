@@ -1,0 +1,9 @@
+# Task Checklist
+
+- [ ] Analyze existing code and data for S6E2
+- [ ] Formulate implementation plan for "Hidden Noise" and "Medical Feature Engineering"
+- [ ] Implement Medical Feature Engineering (Pulse Pressure, MAP, RPP, Thallium Traps)
+- [ ] Implement Denoising strategy (Cleanlab or OOF soft labels, Label Smoothing)
+- [ ] Add original UCI dataset for robustness
+- [ ] Train and evaluate model with Stratified K-Fold
+- [ ] Generate submission file

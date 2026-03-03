@@ -1,0 +1,36 @@
+# Spaceship Titanic - Stabilization Phase (De-biasing & Diversity)
+
+Cilj ove faze je sanacija curenja podataka i eliminacija šuma koji je doveo do pada rezultata na 0.77.
+
+## Proposed Changes
+
+### [Component: Fold-Safe Feature Engineering]
+
+#### [NEW] [spaceship_titanic_stabilization.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_stabilization.py)
+Implementacija sigurnog cevovoda:
+- **Fold-Safe Target Encoding:**
+    - Target encoding za `GroupId` i `Deck` računa se isključivo na $k-1$ foldova i mapira na $k$-ti fold.
+    - Smoothing parametar za smanjenje varijanse kod grupa sa malim brojem članova.
+- **Missing Cabin Strategy:** 
+    - Specijalno tretiranje 'M' (Missing) vrednosti kao primarnog signala.
+
+### [Component: De-biased Modeling]
+
+#### [STRATEGY] Fold-integrated Pseudo-labeling
+- Pseudo-labeling se vrši **unutar** CV petlje. 
+- Samo primeri sa verovatnoćom > 0.99 se dodaju u trening set.
+
+#### [MODEL] Ensemble Diversification
+- Uvođenje **SVM** (RBF Kernel) ili jednostavne **Neuralne Mreže (MLP)**.
+- Cilj: Smanjenje korelacije ranga između modela kako bi Lasso meta-stacking dobio balansiranije težine.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/judge_guard.py --action "Training Stabilization"`
+- Metrika stabilnosti: Razlika OOF vs LB < 0.01.
+- Target Accuracy: **> 0.81**.
+
+### Manual Verification
+- Analiza Lasso koeficijenata (očekivana šira distribucija težina).
+- Provera odsustva preklapanja podataka između foldova tokom Target Encodinga.

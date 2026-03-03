@@ -1,0 +1,28 @@
+# Knowledge Base Orchestrator
+
+- [x] Investigate existing Notion integration ([workspace_engine/api_clients.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py) and similar files).
+- [x] Determine how to sync the knowledge base between Notion and local storage (pulling pages from Notion).
+- [x] Implement index updates for efficient retrieval (e.g. SQLite, JSON, or Vector DB depending on existing dependencies).
+- [x] Ensure consistency across knowledge graphs (handling updates, deletes, and resolving conflicts).
+- [x] Build a script or module `kb_sync.py` (implemented as [scripts/sync_notion_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/sync_notion_kb.py)) to automate this workflow.
+- [x] Verify the sync works by running a dry-run or syncing a test block.
+
+# Heart Disease Pipeline Enhancement
+- [x] Analyze [heart_disease_top3_colab.py](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py) for Optuna tracking gaps.
+- [x] Implement Arize Phoenix/OpenInference tracing for Optuna trials.
+- [x] Log Learning Rate (LR) and ROC-AUC for each model trial.
+- [x] Verify tracking in Phoenix UI.
+
+# Spaceship Titanic Notebook Tracking
+- [x] Analyze [spaceship_titanic_rag_v15_10_hpo.py](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/spaceship_titanic_rag_v15_10_hpo.py) for Optuna logic.
+- [x] Construct modular Python cells for [Untitled-2.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/kaggle_push/trinity-v19-gold/final_promotion/Untitled-2.ipynb).
+- [x] Implement manual tracing for Optuna trials (AUC, AUF/Accuracy, LR).
+- [x] Log additional metrics like AUF (if identified) or standard Accuracy.
+- [x] Provide the code to the user via JSON notebook structure.
+- [x] Resolve `ModuleNotFoundError` by using `arize-phoenix` and optional instrumentation.
+- [x] Implement "Bulletproof" MockTracer fallback to prevent crashes.
+- [x] Fix `KeyError: 'target'` with dynamic column detection.
+- [x] Implement Live Results (Progress bar, Console Output, Optimization Plots).
+- [x] Enhance Phoenix Dashboard visibility in notebook output.
+- [x] Implement Persistent Optuna Storage (SQLite `optuna.db`).
+- [x] Add Study Export to CSV (Auto-Database Backup).

@@ -1,0 +1,59 @@
+
+# 🕵️ Trinity: Project Master Plan (Melting Point Prediction)
+
+**Date:** 2026-02-17
+**Status:** 🟡 PRE-MEDAL (MAE 14.05 vs Target 6.7)
+**Strategy:** "Representation Learning" & Strict Data Hygiene
+**Compute:** Kaggle T4 (Local environment is CPU-bound)
+
+---
+
+## 1. Executive Summary
+The project has hit a "small data" ceiling at MAE 14.05. Use of ~3k training points is insufficient for medal contention. We are pivoting to a **Representation Learning** approach using 275k+ external molecules. 
+
+**Critical Shift:** We will not just "add data." We will:
+1.  **Pretrain** a GNN on chemical structure (Self-Supervised).
+2.  **Fine-tune** on melting point data (Supervised).
+3.  **Ensemble** with our high-precision lookup engine.
+
+## 2. The "Working" Layer (Current Capabilities)
+- **External Lookup**: [scripts/external_lookup.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/external_lookup.py) (High Precision).
+- **Features**: [scripts/engineer_rdkit_descriptors.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/engineer_rdkit_descriptors.py) (200+ RDKit descriptors).
+- **Ensemble**: [scripts/train_phase2_rich.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/train_phase2_rich.py) (GBDT Stacking).
+- **Data Sources**: Bradley (28k), OCHEM (275k) - *Ready for ingestion*.
+
+## 3. End-to-End Roadmap (The "Killshot")
+
+### Phase 3: The Big Data Foundation (Strict Hygiene)
+**Goal:** Create `data/gold/pretrain_dataset.csv` (275k) and `data/gold/finetune_dataset.csv` (Cleaned Labeled).
+**Rules (Non-Negotiable):**
+-   **Deduplication:** Canonical SMILES -> Salt Removal -> Tautomer Standardization.
+-   **Leakage Block:** **ANY** molecule in Kaggle Test Set must be REMOVED from training/pretraining labels.
+-   **Label Cleaning:** Median aggregation for duplicates; drop if std_dev > 15°C.
+-   **Distribution Check:** Reweight if external data distribution shifts significantly from Kaggle train.
+
+### Phase 4: Representation Learning (Kaggle T4 Execution)
+**Constraint:** heavy training must run on Kaggle GPUs.
+
+#### Phase 4A: Self-Supervised Pretraining
+-   **Task:** Masked Atom Prediction / Graph Context Prediction.
+-   **Data:** All 275k molecules (Labels Ignored).
+-   **Objective:** Learn robust molecular embeddings (prevent overfitting to noisy MP data).
+-   **Architecture:** GIN (5-7 layers, 300 dim) or AttentiveFP.
+
+#### Phase 4B: Supervised Fine-Tuning
+-   **Init:** Load Phase 4A encoder weights.
+-   **Task:** Regression (Huber Loss, delta=5).
+-   **Data:** Cleaned Labeled Dataset (Train + External).
+-   **Validation:** **Scaffold Split** (Random split is strictly forbidden).
+
+### Phase 5: The "Trinity" Ensemble
+**Strategy:** Uncertainty-Aware Stacking.
+1.  **Lookup (Tier 1):** Exact match? Use it. (Confidence: 100%)
+2.  **Model Blend (Tier 2):**
+    -   GBDT (Tabular features)
+    -   GNN (Learned features)
+    -   *Weighting based on local uncertainty / distance to training data.*
+
+---
+**Authority**: Antigravity Trinity Architecture

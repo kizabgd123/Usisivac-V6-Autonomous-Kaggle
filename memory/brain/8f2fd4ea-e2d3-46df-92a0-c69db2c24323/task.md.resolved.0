@@ -1,0 +1,6 @@
+# CPU Optimization & Kaggle Push
+
+- [ ] Revert `enable_gpu` to `false` in [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/kernel-metadata.json)
+- [ ] Optimize Gemma loading (`bfloat16`, `low_cpu_mem_usage=True`) in [Deep_Past_Kaggle_Submission.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py)
+- [ ] Optimize Gemma text generation (reduce `max_new_tokens`, `do_sample=False`)
+- [ ] Push kernel to Kaggle without GPU

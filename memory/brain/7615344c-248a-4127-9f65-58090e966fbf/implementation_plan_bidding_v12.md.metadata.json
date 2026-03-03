@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "V12 \"Overdrive\" is designed for maximum Public LB score. It abandons temporal holdout in favor of 10-fold K-fold and full-history features. Key additions: Contractor Win Rates, Rank, and pseudo-labeling. Aiming to break 0.398 and push towards 0.275.",
+  "updatedAt": "2026-02-24T00:18:01.477998141Z"
+}

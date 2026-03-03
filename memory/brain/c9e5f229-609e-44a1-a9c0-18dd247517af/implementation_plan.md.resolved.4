@@ -1,0 +1,55 @@
+# House Prices - Shot 1: The Elite Stacking Protocol
+
+## Goal
+Surpass the 0.12008 LB score by implementing a refined "Elite Stacking" ensemble that leverages topological feature groups and Tabular RAG.
+
+## Proposed Changes
+
+### [house_prices]
+#### [NEW]# Shot 3: Geometric Fusion & Pseudo-Labeling (House Prices)
+
+Aggressively break the 0.12008 plateau using geometric blending, pseudo-labeling, and target log-rotation.
+
+## User Review Required
+
+> [!WARNING]
+> **Pseudo-labeling**: I will use the high-confidence predictions from Shot 2 to augment the training set. This is a "risky" technique that can lead to overfitting if not carefully validated, but it is often the key to breaking a leaderboard plateau.
+
+> [!TIP]
+> **Geometric Averaging**: Switching from arithmetic mean to geometric mean for blending. This is mathematically superior for minimizing RMSE on log-transformed prices.
+
+## Proposed Changes
+
+### [Feature Engineering V3]
+
+#### [MODIFY] house_prices_elite_shot3.py (New Script)
+- **Pseudo-labeling**: Identify top 100 most "confident" test samples from Shot 2 and add them to training.
+- **Log-Rotation**: Optimize `log(y + shift)` to minimize target skewness.
+- **Neighborhood Clustering**: Add K-Means clusters based on longitude/latitude (if available) or latent features.
+
+### [Ensemble Architecture V3]
+
+#### [Blending Layer]
+- **Geometric Mean Blending**: Use weighted geometric mean of Level 1 models.
+- **Diversity Boost**: Integrate a "DART" XGBoost and a "Large Leaf" LGBM to capture outliers.
+
+#### [Level 2 Meta-Learner]
+- **Ridge (alpha=10)**: High regularization to combat pseudo-labeling noise.
+
+## Verification Plan
+
+### Automated Verification
+- Run `house_prices_elite_shot3.py`.
+- Monitor OOF RMSE vs pseudo-label noise.
+- Submit to Kaggle via CLI.
+
+### Manual Verification
+- Verify if LB score breaks the 0.12008 threshold.
+*   **Evaluation**: 10-fold Stratified CV (on quantiles of log-SalePrice) to ensure stability.
+
+## Verification Plan
+### Automated Tests
+- Run `python3 house_prices_elite_shot1.py` to verify OOF score < 0.112.
+
+### Manual Verification
+- Execute `kaggle competitions submit` and monitor the LB score.

@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Mistral VetoBoard implementation plan. Proposes using a lightweight API connection rather than HuggingFace fine-tuning to enforce GEMINI.md rules, keeping token output strictly limited to protect the free tier.",
+  "updatedAt": "2026-02-27T18:40:27.833854154Z",
+  "version": "3"
+}

@@ -1,0 +1,9 @@
+# Task: Project State Audit (GEMINI.md Compliance)
+
+- [/] Explore workspace and identify subprojects
+- [ ] Check for core Trinity files (`trinity_config.json`, `manifest.json`, `Makefile`)
+- [ ] Audit `MemoryIntegrity` implementation (Rule 27)
+- [ ] Audit `ToolRegistry` for modularity (Rule 12)
+- [ ] Audit `ProcessGuard` implementation
+- [ ] Identify deviations and proposed fixes
+- [ ] Generate comprehensive "Stanje" (State) report

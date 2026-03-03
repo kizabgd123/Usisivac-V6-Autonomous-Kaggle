@@ -1,0 +1,32 @@
+# Task: Analiza i implementacija "Neural Refinery" Notebook-a
+
+## Analiza postojećeg stanja
+- [/] Pull `kiza123123/trinity-3-6-2-dialectic-kaggle-agent-tactics` sa Kaggle-a
+- [ ] Analiza postojećeg notebook koda
+- [ ] Analiza postojećeg `trinity_knowledge` izvora
+
+## Implementacija 5-Stage Neural Refinery
+- [ ] **Stage 1: The Sieve (Sito)** - Implementacija filtriranja (Gemma-2b-it / Phi-3-mini) za izolaciju "visoko signalnih" rečenica.
+- [ ] **Stage 2: The Architect (Arhitekta)** - Strukturiranje teksta (Qwen-2.5 / Llama-3.1) u atribute (K-Fold, Seed, Feature).
+- [ ] **Stage 3: The Validator & Temp DB** - Validacija koda i upis u `temp_parsed_chroma.db`.
+- [ ] **Stage 4: Agent Assembly** - Rekonstrukcija logičkih celina (npr. Baseline script).
+- [ ] **Stage 5: Final Merge** - Verifikacija i prebacivanje u `Trinity_Master.db` za download.
+
+## Validacija i Deploy
+- [x] Povezivanje generisanog ChromaDB izvora kao Kaggle dataset (`kiza123123/trinity-knowledge-chromadb`).
+- [x] Programsko generisanje notebook-a na osnovu analize (`neural_refinery.ipynb`).
+- [x] Push nazad na Kaggle (Zbog 401 API greške na Kaggle strani, potreban ručni upload .ipynb fajla)
+
+## 🏛️ ResearchPro & Meta-Refinery Integration
+- [x] Analiza `README_RESEARCH_PRO.md` (Testiranje dual-RAG inteligencije uspešno završeno 🚀)
+- [ ] Analiza `ingest.py` i `audit_ingest.py` za unifikaciju RAG procesa
+- [ ] Povezivanje lokalnog `refinery_dashboard.py` sa Kaggle output-ima
+- [ ] Finalni Synthesis: Unificirani Trinity Master Engine konfigurisan u `trinity_config.json`
+
+## 🛡️ De-zombifikacija i 7-Gate Submit (Antigravity Launch)
+- [x] Reorganizacija foldera: move `.py` skripti u `scripts/`, `.ipynb` u `notebooks/`, `.md` u `docs/`
+- [x] Optimizacija `manifest.json` (uklanjanje 3000+ suvišnih linija)
+- [x] Implementacija `src/trinity_guardian.py` (7-Gate Protocol)
+- [x] Instrumentacija Arize OTel tracing-a u `generate_report.py` i `refinery_dashboard.py`
+- [x] **Final Shot**: Pokretanje unificiranog pipeline-a i finalni Kaggle submit
+- [x] **Guardian Audit**: Detaljna provera `trinity_guardian.py`, dodavanje `GUARD_ALERT.json` podrške, Inf provera i integracija Arize OTel tracing-a.

@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Finalized ROI optimization and Kaggle submission for S6E2. Documented Constitutional Hardening v2.0 and bug fixes in judge_guard.py. Verified final AUC of 0.96964.",
+  "updatedAt": "2026-02-26T15:35:13.520632870Z",
+  "version": "6"
+}

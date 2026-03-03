@@ -1,0 +1,28 @@
+# House Prices - Shot 1: The Elite Stacking Protocol
+
+## Goal
+Surpass the 0.12008 LB score by implementing a refined "Elite Stacking" ensemble that leverages topological feature groups and Tabular RAG.
+
+## Proposed Changes
+
+### [house_prices]
+#### [NEW] [house_prices_elite_shot1.py](file:///home/kizabgd/.gemini/antigravity/scratch/house_prices/house_prices_elite_shot1.py)
+*   **Feature Engineering**:
+    - **Tabular RAG 2.0**: Neighbor-based target proxy using `NearestNeighbors` on `OverallQual`, `GrLivArea`, and `YearBuilt`.
+    - **Target Encoding**: Smooth target encoding for `Neighborhood`, `MSSubClass`, and `Exterior1st`.
+    - **Ordinal Mapping**: Detailed mapping for quality/condition features (`Ex`, `Gd`, `TA`, `Fa`, `Po`).
+    - **Skew Handling**: Box-Cox transformation for features with skewness > 0.75.
+    - **Outlier Removal**: Hard filter for `GrLivArea > 4000` sqft if `SalePrice < 300000`.
+*   **Ensemble Architecture**:
+    - **Level 1**: Lasso, Ridge, ElasticNet, SVR, GradientBoostingRegressor, XGBoost, LightGBM, CatBoost.
+    - **Level 2 (Meta-Learner)**: Ridge (to handle Level 1 correlated predictions).
+    - **Level 3 (Final Blending)**: Weighted average of Level 2 stack and top individual models (LGBM, CatBoost).
+*   **Evaluation**: 10-fold Stratified CV (on quantiles of log-SalePrice) to ensure stability.
+
+## Verification Plan
+### Automated Tests
+- Run `python3 house_prices_elite_shot1.py` to verify OOF score < 0.112.
+- Check that `submission_shot1.csv` is created.
+
+### Manual Verification
+- Execute `kaggle competitions submit` and monitor the LB score.

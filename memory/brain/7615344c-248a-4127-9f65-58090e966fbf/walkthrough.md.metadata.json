@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Final walkthrough for v10.12 heart disease pipeline upgrade. Details the target leakage fix, Platt calibration, and the optimized weighted blend strategy to reach >0.954 LB AUC.",
+  "updatedAt": "2026-02-23T23:13:59.164411320Z"
+}

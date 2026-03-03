@@ -1,0 +1,92 @@
+# Trinity Knowledge Vacuum: Usisivač → ChromaDB → 3-6-2 → Sub-agent JSON
+
+## Cilj
+
+**Notebook koji radi sledeće:**
+1. **Usisavanje** — Kaggle winning solutions datasete (tekst + metrike + slike) → ChromaDB
+2. **3-6-2 Prolaz** — 3 agenta sekvencijalno diskutuju i filtriraju znanje kroz Thesis, Antithesis, Synthesis faze
+3. **Finalni output** — strukturirani JSON koji sub-agent model razume i izvlači Best Knowledge
+
+---
+
+## Dataseti za Usisivanje
+
+| Dataset | Ref | Sadržaj |
+|---|---|---|
+| **Kaggle Meta** | `kaggle/meta-kaggle` | Sve kompetitcije, kerneli, timovi, skore |
+| **Winning Solutions Methods** | `thedrcat/kaggle-winning-solutions-methods` | Taktike pobednika (tekst) |
+| **Kiza Usisivac dataset** | `kiza123123/usisivac` | Postojeći vacuum program |
+| **Trinity ChromaDB** | `kiza123123/trinity-knowledge-chromadb` | Postojeći lokalni ChromaDB |
+
+---
+
+## Arhitektura Notebooka
+
+### 🔵 FAZA 0: Ingestion (Usisivač)
+```
+meta_kaggle CSV + winning_solutions CSV + local ChromaDB
+        ↓
+Multimodal parser (tekst + metrike + slike ako postoje)
+        ↓
+ChromaDB kolekcija: "vacuum_intake" (persistentna)
+```
+
+### 🟡 FAZA 1: THESIS — Agent A (Analyst)
+- Model: `llama-3.1-8b-instant`
+- Uloga: Prima ChromaDB query → proizvodi faktički summary pobedničkih tehnika
+- Output: `thesis_signals[]` — lista taktika sa metrikama
+
+### 🔴 FAZA 2: ANTITHESIS — Agent B (Critic) × 6 rundi
+- Model: `llama-3.3-70b-versatile`  
+- Uloga: Kritikuje thesis, pronalazi kontradikcije, dodaje alternativne pristupe
+- Diskusija: 6 iteracija, svaka iteracija B odgovara na prethodnu A, A se adaptira
+- Output: `antithesis_debate[]` — debata sa refined taktikama
+
+### 🟢 FAZA 3: SYNTHESIS — Agent C (Architect) × 2 sintetizacije
+- Model: `llama-3.3-70b-versatile`
+- Uloga: Kombinuje Thesis + Antithesis u akcioni knowledge graph
+- Output finalni: **`trinity_knowledge.json`** — strukturirani JSON
+
+### 📦 Final JSON Schema (za sub-agent)
+```json
+{
+  "meta": {"version": "3.6.2", "date": "...", "source_docs": N},
+  "thesis": [
+    {"rank": 1, "tactic": "...", "metric_gain": "+2.3%", "competition": "...", "phase": "synthesis"}
+  ],
+  "antithesis": [
+    {"counter": "...", "original_tactic": "...", "confidence": 0.87}
+  ],
+  "synthesis": {
+    "top_tactics": [...],
+    "code_snippets": {...},
+    "anti_patterns": [...],
+    "recommended_pipeline": "..."
+  }
+}
+```
+
+---
+
+## Promene u Notebook-u
+
+### [MODIFY] [fork-of-trinity-neural-refinery-v1.ipynb](file:///tmp/refinery_pull/fork-of-trinity-neural-refinery-v1.ipynb)
+Dodati 4 dataseta kao input:
+- `kaggle/meta-kaggle` 
+- `thedrcat/kaggle-winning-solutions-methods`
+- `kiza123123/usisivac`
+- `kiza123123/trinity-knowledge-chromadb`
+
+Restrukturisati ćelije sa:
+1. `[VACUUM]` — Ingestion iz CSV-ova u ChromaDB
+2. `[THESIS]` — Agent A loop
+3. `[ANTITHESIS]` — Agent B debate loop (6 rundi)
+4. `[SYNTHESIS]` — Agent C kombinuje → JSON
+5. `[OUTPUT]` — Sačuvati `trinity_knowledge.json` za download
+
+---
+
+## Verifikacija
+- `ai-doc prompt` generisanje sa novim JSON-om kao kontekst
+- Provera da li `trinity_knowledge.json` ima sve 3 sekcije
+- Provera da ChromaDB kolekcija `vacuum_intake` ima >100 zapisa

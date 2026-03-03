@@ -1,0 +1,23 @@
+# AI Agent Context Sync Hardening Plan
+
+Configure the `ai-doc` tool to use English and adhere to the Trinity Protocol.
+
+## User Review Required
+> [!NOTE]
+> We are using the `.ai-workspace` directory to manage these rules. This will overwrite existing `.cursorrules` and other IDE-specific rule files upon running `ai-doc build`.
+
+## Proposed Changes
+
+### Configuration
+#### [MODIFY] [.ai-workspace/rules/project/trinity_protocol.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/rules/project/trinity_protocol.md) [NEW]
+- Inject [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) contents.
+- Add instruction to prioritize English for AI interaction.
+
+### Execution
+- Run `ai-doc build` to propagate rules to all IDEs (Cursor, Trae, Windsurf, etc.).
+
+## Verification Plan
+
+### Manual Verification
+- Check if [.trae/rules/project_rules.md](file:///home/kizabgd/Desktop/Istrazivanje/.trae/rules/project_rules.md) (currently open) contains the new rules.
+- Test `ai-doc chat "test"` to see if response is in English.

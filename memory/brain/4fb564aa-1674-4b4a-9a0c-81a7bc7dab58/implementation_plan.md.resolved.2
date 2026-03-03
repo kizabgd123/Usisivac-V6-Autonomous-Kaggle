@@ -1,0 +1,28 @@
+# Implementation Plan - Groq Audit Agent Integration
+
+## Overview
+Integrate a blazing-fast "Audit Oracle" powered by Groq (via `mixtral-8x7b-32768`) to handle interactive Exploratory Data Analysis (EDA) and Data Cleaning tasks within the Trinity ecosystem. This bypasses the heavier Gemini/Mistral APIs for lighter, repetitive tasks and incorporates local context injection (CSV structures).
+
+## Proposed Changes
+
+### [MODIFY] [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env)
+- Add `GROQ_API_KEY` to the environment variables list to securely auth the Groq client.
+
+### [NEW] [GROQ_AUDIT.md](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/GROQ_AUDIT.md)
+- Define the "Brain" of the Groq Agent.
+- Set rules for missing values, duplicates, EDA priority, and PII masking.
+
+### [NEW] [groq_audit_agent.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py)
+- Create the `GroqAuditAgent` class.
+- Implement system prompt loading from `GROQ_AUDIT.md`.
+- Implement `audit_with_file` to ingest `pandas` DataFrame summaries (shape, missing, types) directly into the context window.
+- Implement session persistence via [json](file:///home/kizabgd/Desktop/Istrazivanje/metrics.json) logging, aligning with Trinity's `ProcessGuard` rules for Memory Integrity.
+
+## Verification Plan
+
+### Automated Tests
+1. Run `python3 trinity_tool_registry/groq_audit_agent.py` in interactive mode to confirm successful script compilation.
+2. Provide a dummy command (e.g., `check missing values`) to verify Groq API connectivity and prompt interpretation.
+
+### Manual Verification
+- Ask the user to run the tool against a sample Kaggle CSV (e.g., `raw_train.csv` or similar) to ensure the file context injected into Groq produces accurate cleaning code.

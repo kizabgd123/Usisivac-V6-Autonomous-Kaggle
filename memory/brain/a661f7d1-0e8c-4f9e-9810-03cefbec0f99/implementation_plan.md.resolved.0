@@ -1,0 +1,33 @@
+# Implementation Plan - Project Trinity: Bidding Sovereign (v22)
+
+## Goal
+Achieve a breakthrough in the 'Bidding Predictions for Construction' Kaggle competition (RMSLE < 0.39) within a 2-hour window.
+
+## Proposed Changes
+
+### [Component: Modeling Engine - v22_sovereign.py]
+
+#### [NEW] [v22_sovereign.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/v22_sovereign.py)
+Summary of changes:
+- **Baseline Integration**: Combining the 0.3981-scoring logic from v12 with the v21 Bible protocol.
+- **Enhanced Feature Factory**:
+    - **T01 IAME**: Inflation-Adjusted Market Estimate with 5-fold LOFO.
+    - **T02 Professionalism**: Contractor win rates and bid variances.
+    - **T03 Job Gravity**: Interacting quantity with complexity.
+    - **Additions from Namazani**: `days_since_bid` and [contractor_clustering](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/namazani_features.py#39-63).
+- **Ensemble Strategy**:
+    - 5-Fold GroupKFold (Speed optimization for the 2h window).
+    - GBDT Trio (XGB, LGBM, CatBoost - Forcing CPU to avoid CUDA errors).
+    - Linear Diversity (Ridge Regression).
+    - MLP (Neural hybrid).
+    - **Final Synthesis**: Rank-based blending + Isotonic Calibration.
+
+## Verification Plan
+
+### Automated Tests
+1. **CV Check**: Run `python v22_sovereign.py` and monitor the console for OOF RMSLE. 
+    - Criterion: OOF RMSLE < 0.42 to consider for submission.
+2. **Format Check**: Verify that `submission_v22_sovereign.csv` matches [sample_submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/sample_submission.csv) in row count (Expect ~58k rows).
+
+### Manual Verification
+1. **Pre-Submission Audit**: Use `trinity_guardian` (if present) or `JudgeGuard` logic to check for NaN and Out-of-Bounds values before final submission.

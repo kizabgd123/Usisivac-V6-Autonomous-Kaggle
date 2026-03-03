@@ -1,0 +1,414 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Deep Past Challenge - Translate Akkadian to English />
+	[94] (54,554)<a aria-label='Natural Language Processing with Disaster Tweets' class='sc-eXVaYZ cPXxFg' href='/competitions/nlp-getting-started' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Natural Language Processing with Disaster Tweets />
+	[101] (54,584)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Bidding Predictions for Construction />
+	[108] (54,615)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Predicting Heart Disease />
+	[115] (54,645)<a aria-label='Heart Disease S6E2 V10.12 Final' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-12-final' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Heart Disease S6E2 V10.12 Final />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >update />
+			[128] (19,967)<div >2 />
+		[129] (58,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':ra:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		[137] (293,80)<a aria-label='Deep Past Initiative's profile' class='sc-lhsSio kfuoVB' href='/organizations/deep-past-initiative' />
+			[138] (293,80)<div  />
+		Deep Past Initiative
+		·
+		Featured Code Competition
+		·
+		a month to go
+		[139] (768,80)<button class='sc-pYNGo cZrOun' role='button' />
+			[140] (768,80)<span >Submit Prediction />
+		[141] (820,80)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		Deep Past Challenge - Translate Akkadian to English
+		Bringing Bronze Age Voices Back to Life – Machine Translation of Old Assyrian Cuneiform
+		[142] (763,164)<img  />
+		[143] (307,261)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview' role='tab' />
+			[144] (307,261)<span >Overview />
+		[145] (342,261)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/data' role='tab' />
+			[146] (342,261)<span >Data />
+		[147] (369,261)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/code' role='tab' />
+			[148] (369,261)<span >Code />
+		[149] (402,261)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/models' role='tab' />
+			[150] (402,261)<span >Models />
+		[151] (444,261)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/discussion' role='tab' />
+			[152] (444,261)<span >Discussion />
+		[153] (495,261)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/leaderboard' role='tab' />
+			[154] (495,261)<span >Leaderboard />
+		[155] (537,261)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules' role='tab' />
+			[156] (537,261)<span >Rules />
+		[157] (566,261)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/team' role='tab' />
+			[158] (566,261)<span >Team />
+		[159] (608,261)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/submissions' role='tab' />
+			[160] (608,261)<span >Submissions />
+		Discussion
+		[161] (732,323)<button class='sc-pYNGo blcDRF sc-ckjosM cchCkb' role='button' />
+			[162] (715,323)<span >notifications />
+			[163] (733,323)<span >Follow />
+			[164] (751,323)<span >arrow_drop_down />
+		[165] (797,323)<button class='sc-pYNGo Cossg' role='button' />
+			[166] (778,323)<span >add />
+			[167] (802,323)<span >New Topic />
+		[168] (556,379)<div  />
+			[169] (302,379)<span >search />
+			[170] (545,379)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart MuiInputBase-inputAdornedEnd css-10gwgie' id=':r4m:' placeholder='Search discussions' />
+			[171] (801,379)<div  />
+				[172] (801,379)<span  />
+					[173] (801,379)<button aria-label='Filters' class='sc-pYNGo jVXLrJ' role='button' title='Filters' />
+						[174] (789,379)<span >filter_list />
+						[175] (806,379)<span >Filters />
+		[176] (296,434)<button aria-label='All, 1 of 3' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' role='tab' />
+			[177] (296,434)<span >All />
+		[178] (323,434)<button aria-label='Owned, 2 of 3' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' role='tab' />
+			[179] (323,434)<span >Owned />
+		[180] (365,434)<button aria-label='Bookmarks, 3 of 3' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' role='tab' />
+			[181] (365,434)<span >Bookmarks />
+		[182] (805,434)<div  />
+			[183] (805,434)<div aria-label='Select Sort. Hotness currently selected.' class='MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-136dg50' role='combobox' />
+				[184] (802,434)<div  />
+					[185] (802,434)<div >Hotness />
+		Pinned topics
+		[186] (525,510)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/674136' role='link' />
+			[187] (529,510)<div  />
+				[188] (304,510)<div  />
+					[189] (304,510)<div  />
+						[190] (304,510)<a aria-label='Ryan Holbrook's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/ryanholbrook' />
+							[191] (304,510)<div  />
+							[192] (312,523)<div  />
+								[193] (312,523)<span >push_pin />
+				[194] (394,510)<div  />
+					[195] (394,501)<div  />
+						[196] (394,501)<div >Dataset Update - Mind the Gaps />
+					[197] (394,520)<span >· />
+						[198] (341,520)<span  />
+							[199] (341,520)<a class='sc-kjwdDK idbUxX' href='/ryanholbrook'>Ryan Holbrook />
+						[200] (416,520)<span >Last
+by tucking_fired />
+							[201] (390,520)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/674136#3410865'>comment />
+							[202] (413,520)<span >5h ago />
+		[203] (798,501)<div >16 />
+			[204] (784,501)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[205] (784,501)<span >arrow_drop_up />
+			16
+			[206] (812,501)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[207] (811,501)<span >arrow_drop_down />
+		39
+		comments
+		[208] (813,522)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[209] (525,571)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/665209' role='link' />
+			[210] (529,571)<div  />
+				[211] (304,571)<div  />
+					[212] (304,571)<div  />
+						[213] (304,571)<a aria-label='Adam Anderson's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/deeppast' />
+							[214] (304,571)<div  />
+							[215] (312,584)<div  />
+								[216] (312,584)<span >push_pin />
+				[217] (469,571)<div  />
+					[218] (469,562)<div  />
+						[219] (469,562)<div >Two practical stumbling blocks in Akkadian → English MT (and how to address them) />
+					[220] (469,581)<span >· />
+						[221] (343,581)<span  />
+							[222] (343,581)<a class='sc-kjwdDK idbUxX' href='/deeppast'>Adam Anderson />
+						[223] (423,581)<span >Last
+by Oscar Guarnizo />
+							[224] (394,581)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/665209#3408964'>comment />
+							[225] (417,581)<span >2d ago />
+		[226] (798,562)<div >61 />
+			[227] (784,562)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[228] (784,562)<span >arrow_drop_up />
+			61
+			[229] (812,562)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[230] (811,562)<span >arrow_drop_down />
+		50
+		comments
+		[231] (813,583)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[232] (527,632)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/668485' role='link' />
+			[233] (531,632)<div  />
+				[234] (304,632)<div  />
+					[235] (304,632)<div  />
+						[236] (304,632)<a aria-label='Adam Anderson's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/deeppast' />
+							[237] (304,632)<div  />
+							[238] (312,645)<div  />
+								[239] (312,645)<span >push_pin />
+				[240] (404,632)<div  />
+					[241] (404,623)<div  />
+						[242] (404,623)<div >Old Assyrian dataset updates />
+					[243] (404,642)<span >· />
+						[244] (343,642)<span  />
+							[245] (343,642)<a class='sc-kjwdDK idbUxX' href='/deeppast'>Adam Anderson />
+						[246] (428,642)<span >Last
+by Oleg Yaroshevskiy />
+							[247] (394,642)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/668485#3403168'>comment />
+							[248] (418,642)<span >16d ago />
+		[249] (798,623)<div >31 />
+			[250] (784,623)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[251] (784,623)<span >arrow_drop_up />
+			31
+			[252] (812,623)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[253] (811,623)<span >arrow_drop_down />
+		4
+		comments
+		[254] (813,644)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[255] (527,693)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/663210' role='link' />
+			[256] (531,693)<div  />
+				[257] (304,693)<div  />
+					[258] (304,693)<div  />
+						[259] (304,693)<a aria-label='Adam Anderson's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/deeppast' />
+							[260] (304,693)<div  />
+							[261] (312,706)<div  />
+								[262] (312,706)<span >push_pin />
+				[263] (439,693)<div  />
+					[264] (439,684)<div  />
+						[265] (439,684)<div >Welcome to the Deep Past Initiative Machine Translation Challenge! />
+					[266] (439,703)<span >· />
+						[267] (343,703)<span  />
+							[268] (343,703)<a class='sc-kjwdDK idbUxX' href='/deeppast'>Adam Anderson />
+						[269] (418,703)<span >Last
+by Eleftheria 14 />
+							[270] (394,703)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/663210#3409127'>comment />
+							[271] (417,703)<span >2d ago />
+		[272] (798,684)<div >18 />
+			[273] (784,684)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[274] (784,684)<span >arrow_drop_up />
+			18
+			[275] (812,684)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[276] (811,684)<span >arrow_drop_down />
+		8
+		comments
+		[277] (813,705)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[278] (525,754)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/664177' role='link' />
+			[279] (529,754)<div  />
+				[280] (304,754)<div  />
+					[281] (304,754)<div  />
+						[282] (304,754)<a aria-label='Ryan Holbrook's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/ryanholbrook' />
+							[283] (304,754)<div  />
+							[284] (312,767)<div  />
+								[285] (312,767)<span >push_pin />
+				[286] (397,754)<div  />
+					[287] (397,745)<div  />
+						[288] (397,745)<div >Data Update />
+					[289] (397,764)<span >· />
+						[290] (341,764)<span  />
+							[291] (341,764)<a class='sc-kjwdDK idbUxX' href='/ryanholbrook'>Ryan Holbrook />
+						[292] (418,764)<span >Last
+by Khushi Yadav />
+							[293] (390,764)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/664177#3389548'>comment />
+							[294] (415,764)<span >1mo ago />
+		[295] (798,745)<div >41 />
+			[296] (784,745)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[297] (784,745)<span >arrow_drop_up />
+			41
+			[298] (812,745)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[299] (811,745)<span >arrow_drop_down />
+		33
+		comments
+		[300] (813,766)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[301] (527,815)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/663183' role='link' />
+			[302] (531,815)<div  />
+				[303] (304,815)<div  />
+					[304] (304,815)<div  />
+						[305] (304,815)<a aria-label='María Cruz's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/macruzbar' />
+							[306] (304,815)<div  />
+							[307] (312,828)<div  />
+								[308] (312,828)<span >push_pin />
+				[309] (410,815)<div  />
+					[310] (410,806)<div  />
+						[311] (410,806)<div >How to get started + Competition's Official Discord />
+					[312] (410,825)<span >· />
+						[313] (336,825)<span  />
+							[314] (336,825)<a class='sc-kjwdDK idbUxX' href='/macruzbar'>María Cruz />
+						[315] (415,825)<span >Last
+by Dheeraj Kashalkar />
+							[316] (381,825)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/663183#3388289'>comment />
+							[317] (406,825)<span >2mo ago />
+		[318] (799,806)<div >6 />
+			[319] (786,806)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[320] (787,806)<span >arrow_drop_up />
+			6
+			[321] (812,806)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[322] (811,806)<span >arrow_drop_down />
+		2
+		comments
+		[323] (813,827)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		All other topics
+		[324] (525,903)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/674469' role='link' />
+			[325] (529,903)<div  />
+				[326] (304,903)<div  />
+					[327] (304,903)<div  />
+						[328] (304,903)<a aria-label='Adarsh Kumar's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/adarsh2626' />
+							[329] (304,903)<div  />
+				[330] (401,903)<div  />
+					[331] (401,894)<div  />
+						[332] (401,894)<div >Why 300-350 people are stuck at 35.1 score? />
+					[333] (401,914)<span >· />
+						[334] (340,913)<span  />
+							[335] (340,913)<a class='sc-kjwdDK idbUxX' href='/adarsh2626'>Adarsh Kumar />
+						[336] (417,913)<span >Last
+by Adarsh Kumar />
+							[337] (389,913)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/674469#3410584'>comment />
+							[338] (413,913)<span >14h ago />
+		[339] (799,894)<div >5 />
+			[340] (787,894)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[341] (787,894)<span >arrow_drop_up />
+			5
+			[342] (812,894)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[343] (811,894)<span >arrow_drop_down />
+		23
+		comments
+		[344] (813,915)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+		[345] (529,964)<a class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation/discussion/674843' role='link' />
+			[346] (533,964)<div  />
+				[347] (304,964)<div  />
+					[348] (304,964)<div  />
+						[349] (304,964)<a aria-label='Adarsh Kumar's profile (opens in a new tab)' class='sc-lhsSio kXhNmm discussions-item-avatar' href='/adarsh2626' />
+							[350] (304,964)<div  />
+				[351] (394,964)<div  />
+					[352] (394,955)<div  />
+						[353] (394,955)<div >A small doubt related to private test set />
+					[354] (394,975)<span >· />
+						[355] (340,974)<span  />
+							[356] (340,974)<a class='sc-kjwdDK idbUxX' href='/adarsh2626'>Adarsh Kumar />
+						[357] (415,974)<span >Last
+by Geremie Yeo />
+							[358] (389,974)<a class='sc-kjwdDK idbUxX' href='/competitions/deep-past-initiative-machine-translation/discussion/674843#3410526'>comment />
+							[359] (413,974)<span >17h ago />
+		[360] (799,955)<div >2 />
+			[361] (787,955)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[362] (787,955)<span >arrow_drop_up />
+			2
+			[363] (812,955)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[364] (811,955)<span >arrow_drop_down />
+		1
+		comment
+		[365] (813,976)<button aria-label='More options for this topic' class='sc-koBvLg jxMomE google-symbols notranslate sc-esvisy hoWqbZ' title='More options for this topic'>more_horiz />
+
+</current_dom>

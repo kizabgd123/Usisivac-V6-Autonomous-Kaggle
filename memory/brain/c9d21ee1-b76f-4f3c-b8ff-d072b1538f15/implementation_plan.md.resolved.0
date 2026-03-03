@@ -1,0 +1,32 @@
+# [Goal Description]
+
+The goal is to configure the AI Agent IDE Context Sync extension according to [TRINITY_AGENT_PROMPT.md](file:///home/kizabgd/Desktop/Istrazivanje/TRINITY_AGENT_PROMPT.md). This involves explicitly defining AI personas to focus on specific sections of the [trinity_gemini_training.jsonl](file:///home/kizabgd/Desktop/Istrazivanje/trinity_gemini_training.jsonl) file, creating two structured task boards (Spaceship Titanic V15.6 Upgrade and ML Knowledge Integration), and automatically including necessary context files ([GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md), [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json), [trinity_gemini_training.jsonl](file:///home/kizabgd/Desktop/Istrazivanje/trinity_gemini_training.jsonl)).
+
+## Proposed Changes
+
+### Configuration of `.ai-workspace/personas`
+Update the existing persona definitions to enforce the focus areas from `trinity_gemini_training.jsonl`.
+#### [MODIFY] [thesis_builder.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/personas/thesis_builder.md)
+- Update roles/instructions to focus specifically on `THESIS` sections of the training examples.
+#### [MODIFY] [antithesis_engineer.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/personas/antithesis_engineer.md)
+- Update roles/instructions to focus on `ANTITHESIS` (identifying Logic/Schema gaps) in the examples.
+#### [MODIFY] [synthesis_ensembler.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/personas/synthesis_ensembler.md)
+- Update roles/instructions to focus closely on `SYNTHESIS (KILL SHOT)` final solutions.
+
+### Configuration of `.ai-workspace/tasks`
+Create new task files representing the specific project directives.
+#### [NEW] [spaceship_titanic_v15_6_upgrade.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/tasks/spaceship_titanic_v15_6_upgrade.md)
+- Project board using the plan from `KAGGLE_GRANDMASTER_HARVEST.md`.
+#### [NEW] [ml_knowledge_integration.md](file:///home/kizabgd/Desktop/Istrazivanje/.ai-workspace/tasks/ml_knowledge_integration.md)
+- Task integration focusing on "Kill Shot" strategies from `trinity_gemini_training.jsonl`.
+
+### Context Sync Updates
+#### [MODIFY] [trinity_ai_personas.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_ai_personas.json)
+- Ensure all relevant personas include `trinity_gemini_training.jsonl` in their `context` arrays.
+- Confirm `GEMINI.md` and `trinity_config.json` remain in context.
+
+## Verification Plan
+### Automated Tests
+- Not applicable for markdown configuration files. (Valid JSON format checking via python `json.loads` if needed).
+### Manual Verification
+- View the workspace IDE interface to see if personas update and the task loads.

@@ -1,0 +1,30 @@
+# Fix Bugs and Improve [verify_kaggle_logic.py](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py)
+
+Identified several issues in the current verification script:
+1. `catboost` was missing (Fixed via pip).
+2. `StratifiedKFold` is initialized but not used in the training loop.
+3. Training and prediction are done on the same data, leading to leakage.
+4. The "Trinity Engine" lacks a proper consensus or weighted voting mechanism as described in the architecture.
+
+## Elite Breach v3.2 Implementation (Current Focus)
+
+The user has provided a refined "COLAB FAST VERSION" of the heart disease pipeline, which implements the "Elite Breach" v3.2 strategy. This version includes:
+- **CatBoost + LightGBM Ensemble**: Multi-seed, multi-fold stacking.
+- **Improved Feature Engineering**: Medical domain features (Ischemic Burden, AgeHR, Risk Score) and "orig-stats" from a reference dataset.
+- **Fast Training**: Optimized for GPU performance.
+
+### Proposed Changes
+
+#### [NEW] [heart_top5_v3_2_elite.py](file:///home/kizabgd/heart_top5_v3_2_elite.py)
+This script implements the full pipeline provided by the user, adapted for the local file system paths.
+
+### Verification Plan
+
+#### Automated Tests
+- Run `python3 heart_top5_v3_2_elite.py` and verify:
+    - OOF AUC score meets the target (> 0.9555).
+    - Submission file is generated.
+    - Data paths are correctly detected.
+
+#### Manual Verification
+- Review the AUC scores per fold to ensure stability.

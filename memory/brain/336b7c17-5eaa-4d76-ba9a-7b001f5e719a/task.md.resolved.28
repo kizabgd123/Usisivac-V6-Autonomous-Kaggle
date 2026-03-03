@@ -1,0 +1,13 @@
+# Trinity Re-Architecture & Colab Tunneling Task List
+
+Transitioning Trinity logic into a modular filesystem architecture compatible with VS Code Remote Tunnels.
+
+- [x] Create [trinity/](file:///home/kizabgd/Desktop/Istrazivanje/scripts/local_rag_builder.py#324-424) project structure
+- [x] Implement Phase 1: Ingestion & Foundation ([phases/phase1_ingestion.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase1_ingestion.py))
+- [x] Implement Phase 2: RAG & Hybrid Retrieval ([phases/phase2_rag.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase2_rag.py))
+- [/] Implement Phase 3: SOTA Discovery & AST (`phases/phase3_sota_ast.py`)
+- [/] Implement Phase 4: Security & Compliance (`phases/phase4_security.py`)
+- [ ] Implement Phase 5: Deployment & Scaling (`phases/phase5_deploy.py`)
+- [ ] Create `notebooks/trinity_colab_runtime.ipynb`
+- [ ] Create `trinity_config.yaml` and `security_policies.yaml`
+- [ ] Document Connection Guide (Remote Tunnels)

@@ -1,0 +1,40 @@
+# Walkthrough: Kaggle Profile Optimization
+
+**Goal**: Elevate profile to "Expert" status by deploying high-quality notebooks for Spaceship Titanic and AIMO competitions.
+
+## 🚀 Deployed Artifacts
+
+### 1. Spaceship Titanic: Trinity Killshot [Expert]
+- **URL**: [Spaceship Trinity Expert Final V1](https://www.kaggle.com/code/kiza123123/spaceship-trinity-expert-final-v1)
+- **Status**: ✅ Version 1 Pushed
+- **Key Features**:
+    - **Trinity Protocol**: Thesis-Antithesis-Synthesis loop for model selection.
+    - **Tabular RAG**: FAISS-based retrieval for feature augmentation (disabled for public kernel due to complexity, but logic present).
+    - **Optimized**: CPU-only mode for broad compatibility.
+
+### 2. AIMO Trinity Solver: Dialectic Math [Expert]
+- **URL**: [AIMO Trinity Dialectic Solver [Expert]](https://www.kaggle.com/code/kiza123123/aimo-trinity-dialectic-solver-expert)
+- **Status**: ✅ Version 3 Pushed
+- **Key Features**:
+    - **3-6-2 Dialectic**: Structuring the reasoning process.
+    - **Visuals**: Mermaid diagrams explaining the agent flow.
+    - **Simulation**: Can run without API keys for public demonstration.
+
+## 🛠️ Execution Log
+
+### Challenges & Solutions
+1.  **"Notebook Not Found" Error**: The `kaggle` CLI was unable to push the Spaceship notebook with the original long ID.
+    -   *Fix*: Simplified the Kernel ID to `spaceship-trinity-expert-final-v1` and filename to `Spaceship_Trinity_Expert.ipynb`.
+2.  **GPU Quota**: Initial configuration requested GPU, which exceeded the weekly quota.
+    -   *Fix*: Switched `enable_gpu` to `false` in [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json).
+3.  **Conflict Errors**: Encountered ID conflicts with previous attempts.
+    -   *Fix*: Used a unique versioned ID for the final push.
+
+### Verification
+- Both kernels return "Success" on push.
+- Metadata configured correctly (Internet Enabled, Private until manually made Public).
+
+## 📝 Next Steps for User
+1.  **Open Links**: Click the headers above to view your notebooks.
+2.  **Check Visibility**: Make them "Public" via the Kaggle UI sharing settings.
+3.  **Monitor**: Check the "Logs" tab in Kaggle to ensure they run successfully on the server.

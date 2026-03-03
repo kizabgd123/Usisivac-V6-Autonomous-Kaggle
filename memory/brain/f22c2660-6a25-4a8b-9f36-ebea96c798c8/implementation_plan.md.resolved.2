@@ -1,0 +1,32 @@
+# Goal Description
+
+The objective is to break the 0.95400 Public LB limit on the S6E2 Heart Disease Challenge. According to the tactic registry ([tactic_registries/heart_disease.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/heart_disease.md)), this can be achieved by blending tabular neural networks (RealMLP/TabNet) with our existing GBDT ensemble (Golden Recipe), as GBDTs hit a "Hybrid Correlation Wall".
+
+## Proposed Changes
+
+### 1. Model Diversification (Qwen & Qodo's Advice)
+We will introduce orthogonal models to break the "Correlation Wall" of GBDTs:
+- **Random Forest Classifier**: `n_estimators=100` (for stability).
+- **Support Vector Classifier (SVC)**: `C=1.0` (standard regularization).
+- **TabM / RealMLP**: We will attempt to use `pytabkit` if available, or a robust MLP fallback to ensure architecture diversity.
+- **5-Seed Averaging**: Seeds `[42, 123, 777, 2024, 31337]` for all models.
+
+### 2. Medical Conscience (Kimi's Advice)
+- **Ischemic Burden**: Interaction `ST depression * Exercise angina`.
+- **Tanaka Formula**: `MaxHR_pred = 208 - 0.7 * Age`.
+- **UCI Bayesian Shift**: Apply UCI clinical priors with a weight of **0.6** to anchor the synthetic predictions in real clinical probability.
+
+### 3. Safety & Generalization (Mistral's Advice)
+- **OOF Calibration**: Hard limit at **0.960**. If CV > 0.960, we trigger a regression warning and simplify the ensemble.
+- **Rank-Based Blending**: Final ensemble will use rank blending to normalize inconsistent model calibrations.
+- **Parameters**: `rf_n_estimators: 100`, `svc_C: 1.0`, `uci_prior_weight: 0.6`, `use_tabm_ensemble: True`.
+
+## Implementation: `scripts/heart_disease_v4_breakthrough.py`
+A monolithic script implementing the 3-6-2 Dialectic:
+1. **Thesis**: Baseline GBDTs.
+2. **Antithesis**: Advanced features + Neural/SVC models.
+3. **Synthesis**: Rank blending + Calibration check.
+
+
+### Next Steps
+Once approved, I will install the dependencies, execute the script, and verify the OOF AUC score. If OOF is promising (around 0.954 - 0.955), we will submit it to Kaggle.

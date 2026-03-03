@@ -1,0 +1,42 @@
+# Neural Refinery: 5-Stage Architecture Plan
+
+Cilj ovog plana je pretvaranje postojećeg "Dialectic" Kaggle agent taktika procesa, kao i našeg lokalnog ChromaDB `trinity_knowledge` repozitorijuma fragmentiranog znanja, u potpuno funkcionalnu neuronsku rafineriju sa 5 faza.
+
+## User Review Required
+Nema blokirajućih dizajnerskih odluka. Uvešćemo LLM klijente prilagođene za lokalno i API okruženje (Groq, Llama, Qwen, Gemma, Phi) prema korisnikovom zahtevu.
+
+## Arhitektura (5 Faza)
+
+### Stage 1: The Sieve (Sito)
+- **Modeli:** Gemma-2b-it / Phi-3-mini
+- **Ulaz:** Raw blokovi iz `trinity_knowledge` (preko 500 karaktera).
+- **Zadatak:** Klasifikacija rečenica. Modeli cross-check metodom proveravaju da li blok/rečenica sadrži *visok signal* (kod, metrika, taktička odluka).
+- **Izlaz:** Samo filtrirani visoko-signalni stringovi.
+
+### Stage 2: The Architect (Arhitekta)
+- **Modeli:** Qwen-2.5-Coder-32B (specijalista za kod) i Llama-3.1-70B/Llama-3.3 (za domensku logiku).
+- **Zadatak:** Konverzija filtriranih rečenica u strukturirani JSON (npr. `{"K-Fold": 5, "Seed": 42, "Feature": "LogTransform"}`).
+- **Izlaz:** Strukturirani atributni podaci (Metapodaci).
+
+### Stage 3: The Validator & Temp DB
+- **Proces:** Python bazirana validacija.
+- **Zadatak:** Sintaksna i logička provera izdvojenog koda i atributa.
+- **Skladište:** Ukoliko prođe validaciju, podaci se upisuju u privremenu bazu `temp_parsed_chroma.db` (ChromaDB instanca za staging).
+
+### Stage 4: Agent Assembly
+- **Proces:** Orkestracija (LLM Assembler).
+- **Zadatak:** Spajanje strukturiranih izolovanih celina iz Stage 3 u veće, smislene skripte (npr. pun "Baseline Script" ili "Kill Shot Blend" funkcija).
+
+### Stage 5: Final Merge
+- **Proces:** Veto i Promocija.
+- **Zadatak:** Finalna provera sastavljenih agenata/skripti. Ako prođe verifikaciju, znanje se seli iz `temp_parsed_chroma.db` u produkcionu master bazu `Trinity_Master.db`. 
+- Master baza se kompresuje i šalje kao Kaggle Dataset (ili GitHub izdanje).
+
+## Verification Plan
+
+### Automated Tests
+- Pokretanje Stage 1 na malom subsetu `trinity_knowledge` kolekcije (10 dokumenata) i validacija kvaliteta filtriranja.
+- Testiranje Stage 3 Validatora na lažnom i pravom Python kodu.
+
+### Manual Verification
+- Pregled `Trinity_Master.db` kolekcije nakon celokupnog pipeline run-a nad ograničenim brojem (npr. 50) raw unosa.

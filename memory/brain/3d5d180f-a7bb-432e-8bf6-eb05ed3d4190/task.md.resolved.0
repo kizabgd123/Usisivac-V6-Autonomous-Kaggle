@@ -1,0 +1,13 @@
+# Task: Upgrade Antigravity
+
+- [/] Research current version and upgrade requirements
+    - [/] Check [README.md](file:///home/kizabgd/Desktop/Istrazivanje/README.md) and [WORK_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/WORK_LOG.md) for context
+    - [ ] Inspect [src/antigravity_core/judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/judge_guard.py) for model configuration
+    - [ ] Check [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt) for outdated dependencies
+- [ ] Implement upgrade
+    - [ ] Update dependencies
+    - [ ] Update model configurations to support latest Gemini
+    - [ ] Verify system stability
+- [ ] Verification and Finalization
+    - [ ] Run smoke tests
+    - [ ] Update version strings

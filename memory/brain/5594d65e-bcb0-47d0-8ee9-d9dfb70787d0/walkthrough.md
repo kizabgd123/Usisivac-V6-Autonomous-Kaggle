@@ -1,0 +1,52 @@
+# Walkthrough: Local Trinity AI Organizer
+
+Tvoj lokalni "Command Center" je spreman! Umesto cloud rešenja, sada imaš robusnu Python skriptu koja radi na tvom računaru.
+
+## 🔍 Arize AI Tracing (Observability)
+Dodali smo duboku opservabilnost u tvoje ML sisteme:
+- **ML Pipelines:** `bidding_v14_trinity_fix.py` i `heart_v6_final_combined.py` sada automatski lansiraju **Arize Phoenix** i prate svaki korak treninga (Load, Features, Train).
+- **Boardroom Tracing:** Kreiran je [trinity_tracing_demo.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tracing_demo.py) koji pokazuje kako KIMI, QWEN i MISTRAL donose odluke.
+
+Možeš pokrenuti demo skriptu da vidiš vizuelni prikaz trace-ova u svom browseru:
+```bash
+python /home/kizabgd/Desktop/Istrazivanje/trinity_tracing_demo.py
+```
+
+Možeš baciti par fajlova u `Inbox` i pokrenuti workflow u n8n-u da testiraš Triple-AI magiju! 🚀
+
+## Lokacija Projekta
+Svi fajlovi su generisani u:
+`/home/kizabgd/Desktop/Istrazivanje/trinity_organizer/`
+
+## Šta smo uradili:
+1. **Lokalna Struktura:** Kreirani su folderi `Inbox`, `Kaggel_takmicenj`, `Work_i_work_log`, `Learning`, `Archive`, `Teme_diskusije`, `razno`.
+2. **Main Engine (`main.py`):** Skripta koristi `watchdog` za trenutnu reakciju na nove fajlove u Inbox-u.
+3. **Multi-AI Ruting:**
+   - **Mistral:** Prva faza detekcije.
+   - **Grok:** Strateška ML analiza (ako je Kaggle/Code).
+   - **OpenRouter (Llama 3 8B Free):** Finalna odluka o folderu.
+4. **Notion Sync:** Logovanje svake akcije direktno u tvoj Notion Dashboard.
+
+---
+
+## 🚀 Kako pokrenuti sistem
+
+### 1. Instaliraj zavisnosti
+Otvori terminal u folderu projekta i pokreni:
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Konfiguriši ključeve
+Preimenuj `.env.example` u `.env` i unesi svoje ključeve:
+```bash
+cp .env.example .env
+# Edituj .env fajl i unesi ključeve
+```
+
+### 3. Pokreni skriptu
+```bash
+python main.py
+```
+
+Sada samo ubaci bilo koji fajl u `Inbox` folder i prati terminal i svoj Notion! 🚀

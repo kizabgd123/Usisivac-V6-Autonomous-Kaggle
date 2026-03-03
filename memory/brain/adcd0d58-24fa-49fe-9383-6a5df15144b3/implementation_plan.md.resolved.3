@@ -1,0 +1,34 @@
+# Bidding Challenge: "Trinity Fusion" Strategy
+
+We are evolving the strategy to **Phase 8: Trinity Fusion**. After verifying that dataset correction fixed the regression (v15 OOF 0.46), we identified that combining v12's Bayesian Market Estimates with v15's Granular Namazani Features is the path to < 0.30 RMSLE.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Pivot to Fusion**: [v15](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v15_total_domination.py#65-155) proved that the dataset is fixed (0.45 public score), but `v12` remains superior (0.39) due to its [market_est](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v14_trinity_fix.py#76-107) logic. We are now fusing both.
+> **Validation Hardening**: We will use 10-fold `StratifiedGroupKFold` to ensure the most robust local CV possible.
+
+## Proposed Changes
+
+### Model Training
+
+#### [NEW] [bidding_v16_trinity_fusion.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v16_trinity_fusion.py)
+1. **Hybrid Feature Engineering**:
+   - **From v12**: [get_leak_free_estimates](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v12_overdrive.py#49-72) (Bayesian priors on item-level unit prices).
+   - **From v15**: [aggregate_namazani](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/S6E1_Phase7_TotalDomination.py#132-151) (Count/Category/Quantity aggregations), [apply_macro_features](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v15_total_domination.py#56-64) (Inflation + Temporal Lag), and `Contractor Clustering`.
+2. **Advanced Ensembling**:
+   - XGBoost, LightGBM, CatBoost, and Ridge.
+   - Weights optimized for balanced signal.
+3. **Double Calibration**:
+   - Isotonic Regression on the final ensemble OOF.
+
+## Verification Plan
+
+### Automated Tests
+1. **Local CV**: Target OOF RMSLE < 0.28.
+2. **Kaggle CLI**: Submit `submission_v16_trinity_fusion.csv`.
+
+### Manual Verification
+1. Run `python3 bidding_v16_trinity_fusion.py`.
+2. check `v16_run.log`.
+

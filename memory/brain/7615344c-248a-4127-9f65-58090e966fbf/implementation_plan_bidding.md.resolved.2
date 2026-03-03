@@ -1,0 +1,34 @@
+# Implementation Plan: Bidding V8 \"Sovereign\"
+
+Objective: Achieve 1st place (< 0.275 LB) by combining robust median price estimation with contractor-specific strategy modeling.
+
+## User Review Required
+> [!IMPORTANT]
+> V7 failed because the LightGBM unit-price model overfit. V8 will revert to a **Median Unit-Price** approach for the base estimate, but will focus heavily on predicting the **Multiplier** (the ratio between a specific contractor's bid and the market-median estimate).
+
+## Proposed Changes
+
+### [1] Robust Estimate Generation
+- Calculate `median_unit_price` for each `pay_item_id` using train data.
+- Fallback 1: `median_unit_price` by `category_id`.
+- Fallback 2: Global median unit price.
+- New Feature: `estimate_amount_sum` = `sum(quantity * median_unit_price)`.
+
+### [2] Contractor "DNA" Features
+- `hist_contractor_multiplier`: Historical average of `total_bid / estimate_amount_sum` for the contractor.
+- `hist_contractor_win_rate`: (If we can determine "wins" from `total_bid` being lowest in job).
+- `contractor_job_count`: Total bids placed by the contractor.
+
+### [3] Competition Dynamics
+- `num_bidders`: Number of contractors bidding on the same `job_id` (calculable from [test.csv](file:///home/kizabgd/Desktop/Istrazivanje/test.csv)).
+- `contractor_share`: Percentage of the contractor's 2025 bids that are in this specific `primary_location`.
+
+### [4] Modeling Setup
+- Target: [log(total_bid / estimate_amount_sum)](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_4_meta_upgrade.py#223-251).
+- Models: XGBoost, LightGBM, CatBoost.
+- Validation: 2024 Holdout.
+- Stacking: Ridge meta-learner.
+
+## Verification Plan
+- CV RMSE on 2024 holdout.
+- Submission to Kaggle.

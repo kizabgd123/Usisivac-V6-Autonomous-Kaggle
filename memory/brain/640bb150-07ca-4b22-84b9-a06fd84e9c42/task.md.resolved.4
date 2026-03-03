@@ -1,0 +1,23 @@
+# Task: Workspace Consolidation (Grandmaster Checklist)
+
+- [ ] 📂 1. Arhiviranje nasleđenih verzija (Legacy Cleanup) [/]
+    - [ ] Move pipelines v10_1 to v10_13 to `.legacy/archive/`
+    - [ ] Move associated CSV files to `.legacy/archive/`
+    - [x] Retain [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py) as primary
+- [ ] 🏗️ 2. Standardizacija direktorijuma (Strukturni integritet) [/]
+    - [ ] Consolidate `/src` logic and Tool Registry
+    - [ ] Move utility scripts to `/scripts` (trinity, error_handler, etc.)
+    - [ ] Unified `/logs` for logs and parquet audit trails
+    - [ ] Centralize data in `/data` (linked to `DATA_HUB`)
+- [ ] 📜 3. Sinhronizacija Manifesta i Konfiguracije (SSOT) [/]
+    - [x] Update `manifest.json` to v3.0.0
+    - [ ] Define deterministic entrypoint sequence in manifest
+    - [ ] Eliminate hardcoded thresholds (Pravilo 4)
+- [ ] 🛠️ 4. Standardizacija interfejsa (Unified Gateway) [/]
+    - [ ] Update Makefile: `make audit`, `make sota`, `make clean`, `make killshot`
+    - [ ] Set `trinity.py` as universal CLI entrypoint
+- [ ] 🛡️ 5. Verifikacija integriteta memorije (Pravilo 27) [/]
+    - [ ] Confirm milestone hashing in `TRINITY_MEMORY.json`
+    - [ ] Verify `.parquet` streaming to `/logs`
+- [ ] 🔧 Fail-Safe & Fixes [/]
+    - [ ] Fix `test_judge_guard_smoke.py` ImportError

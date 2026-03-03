@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for Trinity Protocol Proactive Hardening (v3.15).\nPrimary goals:\n- Standardize `guard_alert.json` schema to decouple core from domain.\n- Implement Sandbox Guardrails with CPU/RAM timeouts.\n- Add Pre-flight Architecture Diversity checks to prevent waste during training.\n- Update `JudgeGuard` to leverage the new `architecture_families` config.",
+  "updatedAt": "2026-02-27T15:44:50.652131348Z",
+  "version": "3"
+}

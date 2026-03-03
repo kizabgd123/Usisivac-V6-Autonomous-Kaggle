@@ -1,0 +1,41 @@
+# Titanic Intel Integration Strategy
+
+Modernizing the Workspace Dashboard with a specialized "Titanic Challenge" layer, allowing Mistral to execute Kaggle workflows directly through natural language.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This integration assumes that [titanic/train.csv](file:///home/kizabgd/Desktop/Istrazivanje/titanic/train.csv) and [test.csv](file:///home/kizabgd/Desktop/Istrazivanje/test.csv) are present in `~/Desktop/Istrazivanje/titanic/`.
+> The [kaggle](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_workspace_engine.py#196-223) CLI must be configured with an API token for submissions to work.
+
+## Proposed Changes
+
+### Dashboard Enhancements
+
+#### [MODIFY] [workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py)
+1. **New command**: [titanic](file:///home/kizabgd/Desktop/Istrazivanje/titanic) — Enters a specialized Titanic Challenge menu.
+2. **Sub-commands**:
+   - `train` — Runs CV on the selected feature version.
+   - [submit](file:///home/kizabgd/Desktop/Istrazivanje/trinity_titanic_challenge/TITANIC_TRINITY_PROTOCOL.py#93-133) — Generates and uploads a submission to Kaggle.
+   - `stats` — Shows the Trinity Knowledge Base (best scores, effectiveness).
+3. **AI Upgrade**: 
+   - Feed the [TitanicTrinityChallenge](file:///home/kizabgd/Desktop/Istrazivanje/trinity_titanic_challenge/TITANIC_TRINITY_PROTOCOL.py#51-179) feature engineering versions (v1-v4) into the Mistral `SYSTEM_PROMPT`.
+   - Allow Mistral to map natural language requests like "Istreniraj mi v3 model" to the internal protocol.
+
+---
+
+### Intelligence Layer
+
+#### [MODIFY] [trinity_titanic_challenge/TITANIC_TRINITY_PROTOCOL.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_titanic_challenge/TITANIC_TRINITY_PROTOCOL.py)
+*Minor refactors to ensure absolute paths are used for SQLite database and data files when called from the dashboard.*
+
+---
+
+## Verification Plan
+
+### Manual Verification
+1. Open Dashboard: `bash ~/Desktop/Istrazivanje/launch_dashboard.sh`
+2. Run [titanic](file:///home/kizabgd/Desktop/Istrazivanje/titanic) command.
+3. Attempt to chat with Mistral about Titanic: "Šta je v4 u Titanic protokolu?"
+4. Execute a Titanic command via chat: "Pokreni SHOT_1 trening".
+5. Verify `trinity_titanic_knowledge.db` is updated.

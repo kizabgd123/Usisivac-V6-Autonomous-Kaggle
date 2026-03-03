@@ -1,0 +1,58 @@
+# Walkthrough: ai-doc Integracija sa Trinity Protocol-om
+
+## Šta je urađeno
+
+### 1. Workspace Inicijalizacija
+Pokrenuto `ai-doc init` — kreirana `.ai-workspace/` struktura:
+```
+.ai-workspace/
+├── personas/       ← Trinity persona
+├── tasks/active/   ← 3 aktivna takmičenja
+├── tasks/completed/
+├── rules/project/  ← Trinity pravila
+├── cache/compiled/ ← Kompajlovani kontekst za IDE
+└── analysis/
+```
+
+### 2. Trinity Persona
+Kreiran [.ai-workspace/personas/trinity.json](file:///home/kizabgd/Desktop/kaggle-arena/.ai-workspace/personas/trinity.json):
+- Uloga: Kaggle Grand Master ML Engineer
+- Framework: 3-6-2 Dialectic
+- Guardrails: JudgeGuard v2.1, ProcessGuard, 7-Gate Submit
+
+### 3. Registrovana Takmičenja kao Tasks
+| Task ID | Naziv | Status |
+|---|---|---|
+| task-001 | Spaceship Titanic — Calibration (OOF 0.8125) | 🔥 ACTIVE |
+| task-002 | WiDS 2026 — Survival Analysis C-Index | 🔥 ACTIVE |
+| task-003 | AIMO 2026 — Math Olympiad Solver | 🔥 ACTIVE |
+
+### 4. ai-doc build Kompajlovanje
+`ai-doc build` automatski propagovao Trinity pravila u:
+- [.google/instructions.md](file:///home/kizabgd/Desktop/kaggle-arena/.google/instructions.md) ← **Gemini** odmah čita
+- [.claude/instructions.md](file:///home/kizabgd/Desktop/kaggle-arena/.claude/instructions.md) ← Claude
+- `.cursorrules` ← Cursor IDE
+- `.windsurfrules` ← Windsurf
+- [.github/copilot-instructions.md](file:///home/kizabgd/Desktop/kaggle-arena/.github/copilot-instructions.md) ← GitHub Copilot
+
+### 5. Makefile Proširenje
+```bash
+make ai-status    # kombinuje ai-doc + JudgeGuard status
+make ai-task      # lista svih Trinity tasks
+make ai-ritual    # auto-evolucija + kernel + build
+make ai-sync      # build + evolve
+make ai-kernel    # kernel navigacija
+make ai-prompt COMP=spaceship-titanic  # kontekstualni prompt
+```
+
+### 6. Novi Workflow
+[.agent/workflows/aidoc_sync.md](file:///home/kizabgd/Desktop/kaggle-arena/.agent/workflows/aidoc_sync.md) — `/aidoc_sync` slash komanda za ritual sinhronizacije.
+
+## Validacija
+
+```
+✅ ai-doc status → "AI CLI v2.0 Refactored"  
+✅ ai-doc task list → 3 tasks prikazana  
+✅ make ai-status → ai-doc + JudgeGuard u jednom prikazu  
+✅ ai-doc build → dokumentacija validirana, bez placeholder-a  
+```

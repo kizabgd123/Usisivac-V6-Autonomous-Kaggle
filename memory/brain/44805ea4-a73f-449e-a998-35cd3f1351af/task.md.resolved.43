@@ -1,0 +1,17 @@
+# 🩺 Heart Disease Pipeline Task Tracker
+
+## [✔] Phase 1: Execution Audit
+- [x] Review [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py) (v3 Fast) code
+- [x] Analyze [training_v3.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3.log) performance metrics
+- [x] Inspect [killshot_v10.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/killshot_v10.log) for V10 status
+
+## [✔] Phase 2: Comparison & Optimization
+- [x] Compare v3 Fast (AUC 0.95517) vs V10 KillShot methodology
+- [x] Identify degradation in stacking logic
+- [x] Integrate Boardroom Refinements (ElasticNet, Decades, Ischemic Burden)
+- [x] Apply 'Alpha' Factors (Native NaN handling, Surgical Imputation)
+- [x] Execute finalized 'Elite' [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py) (Completed: OOF 0.95531)
+
+## [/] Phase 3: Reporting
+- [ ] Generate comprehensive "Provera" report for the user
+- [ ] Create `walkthrough.md` with proof of work

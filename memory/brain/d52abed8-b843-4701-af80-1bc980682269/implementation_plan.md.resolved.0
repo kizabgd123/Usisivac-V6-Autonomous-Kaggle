@@ -1,0 +1,57 @@
+# ResearchProAI Template → GitHub Starter Kit
+
+Pretvaranje praznog [ResearchProAI_Template.zip](file:///home/kizabgd/Desktop/kaggle-arena/ResearchProAI_Template.zip) u potpuno funkcionalan, reproducibilan GitHub repo za bilo koju vrstu RAG znanja.
+
+## User Review Required
+
+> [!IMPORTANT]
+> GitHub MCP nema tvoje credentials. Treba mi tvoj **GitHub username** da bih kreirao repo. Alternativno, mogu pripremiti folder pa ti samo uradiš `git push`.
+
+## Pronađeni Problemi u Template-u
+
+| Problem | Fajl | Opis |
+|:---|:---|:---|
+| 🔴 BUG | `src/ingest.py:32` | Shadow varijabla: `for f in exclude_dirs` umesto `for ex in exclude_dirs` |
+| 🟡 MISSING | `README.md` | Nema uputstva za korišćenje |
+| 🟡 MISSING | `requirements.txt` | Nema liste dependency-ja |
+| 🟡 MISSING | `.env.example` | Nema template-a za API ključeve |
+| 🟡 MISSING | `.gitignore` | `chroma_db/` bi završio u git-u |
+| 🟡 MISSING | `src/dashboard.py` | Dokazano koristan — treba uključiti |
+
+## Proposed Changes
+
+### Core Scripts (Bug Fix)
+
+#### [MODIFY] [ingest.py](file:///tmp/template_audit/ResearchProAI_Template/src/ingest.py)
+- Fix linija 32: `for f in exclude_dirs` → `for ex in exclude_dirs`
+- Engleski stringovi za internacionalni template
+
+---
+
+### New Files
+
+#### [NEW] README.md
+- Opis projekta, Quick Start (3 koraka), komande, struktura
+- Sekcija "How to adapt to your domain"
+
+#### [NEW] requirements.txt
+- `chromadb`, `sentence-transformers`, `groq`, `python-dotenv`
+
+#### [NEW] .env.example
+- `GROQ_API_KEY=your_key_here`
+
+#### [NEW] .gitignore
+- `chroma_db/`, [.env](file:///home/kizabgd/Desktop/kaggle-arena/.env), `__pycache__/`, `*.zip`
+
+#### [NEW] src/dashboard.py
+- Genericka verzija (čita `knowledge_base` i `agent_history` — template default imena)
+
+## Verification Plan
+
+### Automated Tests
+1. `cd /tmp/test_clone && python3 src/ingest.py` — mora proći bez greške
+2. `python3 src/dashboard.py` — mora prikazati broj fragmenata (može biti 0 ako nema podataka)
+3. `python3 -c "from src.ingest import load_documents"` — import test
+
+### Manual Verification
+- Korisnik klonira repo i pokrene `pip install -r requirements.txt && python3 src/ingest.py`

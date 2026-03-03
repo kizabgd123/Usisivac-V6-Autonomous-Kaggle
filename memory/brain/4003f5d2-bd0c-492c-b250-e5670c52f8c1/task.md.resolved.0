@@ -1,0 +1,5 @@
+# Task List
+
+- [ ] Understand user goal for the tagged files ([README_BOARDROOM.md](file:///home/kizabgd/Desktop/kaggle-arena/README_BOARDROOM.md), [boardroom.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/hive/boardroom.py), `trinity_kb.db`) and the `Analyzing Trinity Tactics Report` conversation.
+- [ ] Execute Boardroom debate or query the knowledge base based on user instructions.
+- [ ] Provide requested analysis or modifications.

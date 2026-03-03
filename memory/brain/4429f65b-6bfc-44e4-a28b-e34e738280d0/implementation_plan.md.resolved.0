@@ -1,0 +1,19 @@
+# Implementation Plan: Arize & Kaggle Integration
+
+## Goal
+Automate the setup of Kaggle and Arize APIs in the Colab environment and integrate Arize tracing into the Heart Disease pipeline.
+
+## Proposed Changes
+
+### 1. Colab Setup Script
+- **Update**: Create a "Ready-to-Go" Colab cell that hardcodes the Kaggle credentials from the provided JSON.
+- **Arize Integration**: Add the Arize API key (JWT) and Space ID (extracted from JWT) to the setup.
+- **Tracing Setup**: Initialize `arize.otel.register` in the setup script.
+
+### 2. Heart Disease Pipeline Refinement
+- **Tracing Implementation**: Add tracing decorators or manual spans to the training and preprocessing steps in [heart_pipeline_v10_15_colab.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_pipeline_v10_15_colab.py).
+- **Effectiveness Scoring**: Ensure that effectiveness updates are also traced to Arize.
+
+## Verification Plan
+1. **Colab Test**: Manually verify the setup cell correctly downloads data and initializes Arize Phoenix/OTel.
+2. **Tracing Verification**: Check Arize dashboard (or Phoenix UI) for incoming traces after a pipeline run.

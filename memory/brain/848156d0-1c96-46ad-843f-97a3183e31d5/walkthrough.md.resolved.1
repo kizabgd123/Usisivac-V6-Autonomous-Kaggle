@@ -1,0 +1,32 @@
+# Heart Disease S6E2 Refinement Walkthrough
+
+I have successfully refined the Heart Disease Kaggle model, addressing the "mana" (flaws) from previous versions and providing a complete CPU-optimized pipeline.
+
+## 🛠️ Key Improvements
+
+1.  **Fixed `ischemic_burden` Logic**:
+    -   **Problem**: Previous versions encoded `ST_Slope` (1=up, 2=flat, 3=down) and used it in a division `Oldpeak / (ST_Slope + 0.1)`. This meant higher slopes (worse clinically) resulted in *lower* burden scores.
+    -   **Fix**: Reversed the mapping for burden calculation so that `Downsloping` (clinically worst) has the highest impact.
+2.  **Data Enrichment**:
+    -   Merged the **Original Statlog Heart Disease** dataset with the playground data to provide a stronger grounding signal.
+3.  **CPU Optimization**:
+    -   Removed `device='gpu'` and `task_type='GPU'` parameters from XGBoost and CatBoost.
+    -   Used a lightweight multi-model stacking ensemble (XGBoost, CatBoost, LightGBM) that runs efficiently on Kaggle's CPU environments.
+4.  **End-to-End Pipeline**:
+    -   The entire process (preprocessing, training, and inference) is contained within a single notebook.
+
+## 🚀 Deployment Status
+
+The notebook has been re-pushed with a fix for the data dependency and a new naming strategy to avoid Kaggle conflicts:
+- **Slug**: `kiza123123/heart-disease-s6e2-elite-recovery-v33-cpu`
+- **Link**: [heart-disease-s6e2-elite-recovery-v33-cpu](https://www.kaggle.com/code/kiza123123/heart-disease-s6e2-elite-recovery-v33-cpu)
+- **Fix**: Manually uploaded the `heart-disease-statlog` dataset to your account and linked it to the kernel.
+- **Status**: Running 🏗️
+
+## 🏁 Verification
+
+- [x] Baseline OOF metrics verified locally.
+- [x] Schema check for original data merge confirmed.
+- [x] Kaggle metadata configured for CPU and no internet requirements for submission.
+
+You can monitor the kernel progress or submit the generated `submission.csv` directly on Kaggle.

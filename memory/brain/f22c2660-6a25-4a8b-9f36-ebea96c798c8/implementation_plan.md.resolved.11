@@ -1,0 +1,39 @@
+# TRINITY_BIDDING_RESURRECTION_INIT
+
+Probijanje Leaderboard praga od 0.45 i povratak u Top 20 na takmičenju "Bidding Predictions for Construction".
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Kategorija targeta**: RMSLE zahteva optimizaciju u log-prostoru. 
+> **Eliminacija Leakage-a**: Bayesian market estimates se moraju računati isključivo unutar foldova kako bi se izbeglo curenje informacija iz validacionog seta u trening.
+
+## Proposed Changes
+
+### [Bidding Construction Engine]
+
+#### [NEW] [bidding_resurrection_v1_4_2.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_resurrection_v1_4_2.py)
+*   **Phase 5.2 Implementation (XGBoost API Fix)**:
+    *   **Top-10 Isolation**: Expanded feature set (`ITEM_000756`, `ITEM_002853`, `ITEM_001383`).
+    *   **XGBoost API Fix**: `early_stopping_rounds` and `eval_metric` moved to constructor.
+    *   **Hard Veto Protocol**: Automatic exit if any Fold RMSLE > 0.50.
+    *   **Cold-Start Imputation**: Category-based win-rate smoothing.
+*   **Guardrails**: `rmsle_leakage_veto` (0.25).
+
+#### [NEW] [KAGGLE_MISSION_CONTROL_bidding-predictions-for-construction.md](file:///home/kizabgd/Desktop/Istrazivanje/KAGGLE_MISSION_CONTROL_bidding-predictions-for-construction.md)
+*   Dokumentacija misije, trenutnog skora i ciljeva.
+
+## Verification Plan
+
+### Automated Tests
+*   `make test` unutar `construction_bidding` foldera.
+*   OOF RMSLE monitoring (Veto ako > 0.50).
+
+### 7-Gate Submit Protocol
+1. **Intent Gate**: RMSLE optimization?
+2. **Identity Gate**: v1_resurrection?
+3. **Format Gate**: CSV alignment?
+4. **Sanity Gate**: Row count check?
+5. **Dtype Gate**: Float probabilities/values?
+6. **Value Gate**: No NaN?
+7. **Risk Gate**: OOF-LB Gap < 0.05?

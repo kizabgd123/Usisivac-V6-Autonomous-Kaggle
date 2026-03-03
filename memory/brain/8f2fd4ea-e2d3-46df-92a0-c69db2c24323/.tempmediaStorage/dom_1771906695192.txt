@@ -1,0 +1,140 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+menu
+Create
+[0] (72,547)<div class='sc-bjzMPS fqvrks' scrollable='true' />
+	explore
+	Home
+	emoji_events
+	Competitions
+	table_chart
+	Datasets
+	tenancy
+	Models
+	leaderboard
+	Benchmarks
+	smart_toy
+	Game Arena
+	code
+	Code
+	comment
+	Discussions
+	school
+	Learn
+	expand_more
+	More
+	note_alt
+	Your Work
+	arrow_drop_down
+	Viewed
+	Predicting Heart Disease
+	Deep Past Challenge - Translate Akkadian to English
+	Fork of Fork of Trinity Akkadian SOTA - Off 00ecb6
+	Trinity Akkadian SOTA V2.0 — Beam Search Upgrade
+	ByT5-Base Akkadian Translator
+	arrow_right
+	Edited
+auto_awesome_motion
+2
+View Active Events
+search
+[1] (572,535)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+	Kaggle
+	·
+	Playground Prediction Competition
+	·
+	5 days to go
+	Submit Prediction
+	more_horiz
+	Predicting Heart Disease
+	Playground Series - Season 6 Episode 2
+	Overview
+	Data
+	Code
+	Models
+	Discussion
+	Leaderboard
+	Rules
+	Team
+	Submissions
+	Notebooks
+	add
+	New Notebook
+	search
+	filter_list
+	Filters
+	All
+	Your Work
+	Shared With You
+	Bookmarks
+	Hotness
+	Predicting Heart Disease
+	Updated
+	17h ago
+	Score: 0.95347
+	·
+	0 comments
+	·
+	Predicting Heart Disease
+	arrow_drop_up
+	30
+	Bronze
+	more_horiz
+	s6e2| blend3
+	Notebook copied with edits from
+	Yusuf Murtaza 01
+	·
+	Updated
+	16h ago
+	Score: 0.95406
+	·
+	0 comments
+	·
+	Predicting Heart Disease
+	+
+	4
+	arrow_drop_up
+	17
+	Bronze
+	more_horiz
+	EDEN #01 | Explained OOF Encoding + Rank Stacking
+	Updated
+	4h ago
+	Score: 0.95383
+	·
+	1 comment
+	·
+	Predicting Heart Disease
+	arrow_drop_up
+	23
+	Bronze
+	more_horiz
+	Heart Disease ❤️ | Meta Ensemble v1
+	arrow_drop_up
+	10
+[2] (500,500)<div  />
+[3] (882,630)<li aria-label='Hotness' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters Mui-selected Mui-focusVisible MuiMenuItem-root MuiMenuItem-gutters Mui-selected sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[4] (870,630)<div  />
+		[5] (870,630)<p >Hotness />
+[6] (882,660)<li aria-label='Most Votes' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[7] (874,660)<div  />
+		[8] (874,660)<p >Most Votes />
+[9] (882,689)<li aria-label='Most Comments' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[10] (881,689)<div  />
+		[11] (881,689)<p >Most Comments />
+[12] (882,719)<li aria-label='Recently Created' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[13] (882,719)<div  />
+		[14] (882,719)<p >Recently Created />
+[15] (882,749)<li aria-label='Recently Run' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[16] (876,749)<div  />
+		[17] (876,749)<p >Recently Run />
+[18] (882,779)<li aria-label='Public Score' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[19] (876,779)<div  />
+		[20] (876,779)<p >Public Score />
+[21] (882,809)<li aria-label='Relevance' class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters sc-fQLpxn cSbFmf css-1v0zhwg' role='option' />
+	[22] (873,809)<div  />
+		[23] (873,809)<p >Relevance />
+
+</current_dom>

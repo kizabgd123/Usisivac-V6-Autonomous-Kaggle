@@ -1,0 +1,28 @@
+# Knowledge Base & Model Tracking Implementation Plan
+
+## Goal Description
+1. **Knowledge Base Orchestrator**: Sync Notion KB to local SQLite index.
+2. **Heart Disease Pipeline**: Track Optuna trials for model tuning in [heart_disease_top3_colab.py](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py).
+3. **Spaceship Titanic Notebook**: Enhance [Untitled-2.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/kaggle_push/trinity-v19-gold/final_promotion/Untitled-2.ipynb) (or its eventual content) to track Optuna trials, AUC, and AUF (Accuracy/Metrics) using Arize Phoenix.
+
+## Proposed Changes
+
+### Spaceship Titanic Tracking
+
+#### [NEW] Modular Notebook Cells
+- **Cell 1: Environment & Tracing Setup**: Initialize Arize Phoenix and register the `tracer`.
+- **Cell 2: Data & Features**: Core preprocessing (CryoSleep constraints, Cabin splitting, etc.).
+- **Cell 3: Optuna Objectives with Tracing**:
+    - Add Arize tracing spans to [objective_catboost](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/spaceship_titanic_rag_v15_10_hpo.py#261-284), [objective_xgboost](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/spaceship_titanic_rag_v15_10_hpo.py#285-311), and [objective_lgbm](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/spaceship_titanic_rag_v15_10_hpo.py#312-338).
+    - Log `learning_rate`, `AUC`, and `Accuracy` (AUF) as span attributes.
+- **Cell 4: HPO Execution with SQLite**: 
+    - Use `optuna.create_study(storage="sqlite:///optuna.db", load_if_exists=True)`.
+    - This allows trials to be saved and resumed.
+- **Cell 5: Data Export**: Auto-export study results to `optuna_results.csv`.
+
+## Verification Plan
+
+### Manual Verification
+- Provide the code blocks to the user.
+- User runs blocks in [Untitled-2.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/kaggle_push/trinity-v19-gold/final_promotion/Untitled-2.ipynb).
+- Verify traces appear in Phoenix UI with `metric.auc` and `metric.accuracy` / `metric.auf`.

@@ -1,0 +1,46 @@
+# Implementation Plan - Vesuvius Challenge: Surface Detection
+
+Analysis and initial strategy for the Kaggle Vesuvius Challenge.
+
+## Competition Analysis
+
+### Goal & Metric
+The objective is to segment the "recto surface" of papyrus within 3D CT scans of carbonized scrolls.
+The evaluation metric is a weighted blend:
+**Score = 0.30 × TopoScore + 0.35 × SurfaceDice@2.0 + 0.35 × VOI_score**
+
+- **TopoScore**: Topology-based F1 (prevents mergers/splits).
+- **SurfaceDice**: Geometric accuracy within 2.0mm tolerance.
+- **VOI Score**: Information loss (penalizes over/under segmentation).
+
+### Data Overview
+- **Volumes**: 3D TIFF files (`.tif`) representing greyscale CT slices.
+- **Labels**: Binary masks (`0`: background, `1`: surface, `2`: unlabeled).
+- **Format**: Large volumes requiring efficient 3D/2.5D processing.
+
+## Proposed Strategy
+
+### Phase 1: Data Preparation & Baseline (Days 1-2)
+- **TIFF to NPY conversion**: Avoid slow TIFF loading during training.
+- **2.5D Data Pipeline**: Extract patches/volumes (e.g., 64x128x128) for training.
+- **Baseline Model**: Implement a 3D UNet or a 2.5D SegFormer (mit-b4) which shows promise in public kernels.
+
+### Phase 2: Refined Modeling & Topology (Days 3-5)
+- **Architectures**: Experiment with TransUNet or nnUNet variations.
+- **Loss Functions**: Move from Dice/BCE to losses that account for topological features (e.g., focal loss, surface-aware losses).
+- **Post-processing**: Implement thinning/skeletonization to ensure one-voxel-thick surfaces where required.
+
+### Phase 3: Ensembling & Optimization (Days 6-7)
+- **Multi-view ensembling**: Combine predictions from different orientations or models.
+- **Submission Script**: Optimize inference for the 9-hour Kaggle limit.
+
+## Verification Plan
+
+### Automated Tests
+- `python check_data.py`: Verify converted NPY shapes and label distributions.
+- `python test_model_output.py`: Ensure model output matches input dimensions.
+- `python local_evaluate.py`: Calculate local Dice score on validation fragments.
+
+### Manual Verification
+- Visualize predicted vs. ground truth masks using a slice viewer or Napari.
+- Submit a baseline 'zero' or 'sample' mask to verify the submission pipeline on Kaggle.

@@ -1,0 +1,36 @@
+# Goal Description
+The objective is to improve the prediction of `total_bid` for construction projects, targeting a Public LB score below 0.2000 (starting from 0.2984). The competition likely uses MAE or SMAPE on the `total_bid` variable.
+
+## Proposed Changes
+
+### [NEW] `bidding_v6_elite.py`
+A new script implementing Grandmaster-level regression tactics:
+
+#### 1. Advanced Feature Engineering
+- **Inflation Adjustment**: Use high-precision `INFLATION_MAP` to normalize `total_bid` over years (2018-2025).
+- **Temporal Contractor Features**: 
+  - `days_since_last_bid`: Identify the frequency of contractor participation.
+  - `cumulative_bid_count`: Total bids by contractor up to the current date.
+- **Pay Item Aggregations**: Merge [raw_train.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/raw_train.csv) and [raw_test.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/raw_test.csv) to extract job-level complexity:
+  - `total_quantity`, `avg_amount`, `num_categories`, `total_items`.
+- **Location & Category Encoding**: Use target encoding (within CV) and frequency encoding for `primary_location` and `job_category_description`.
+
+#### 2. Robust CV & Model Suite
+- **Time-Series Split or K-Fold**: Use 5-Fold stratified by `year` or `total_bid` deciles to ensure stability.
+- **Model Stack**:
+  - **XGBoost**: Focus on DART or basic GBDT with small learning rate.
+  - **LightGBM**: Use GOSS for faster convergence on skewed data.
+  - **CatBoost**: Handle categorical native encoding.
+- **Isotonic Calibration**: Maintain calibration layer if the target distribution is non-linear.
+
+### 3. Log-Target Transformation
+- Train models on `log1p(total_bid)` to minimize the impact of extreme outliers (common in construction bids).
+
+## Verification Plan
+
+### Automated Tests
+- Run `bidding_v6_elite.py` locally and verify OOF score.
+- Compare OOF with previous [bidding_v5_final.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v5_final.py) (LB 0.2984 benchmark).
+
+### Manual Verification
+- Push generated `submission_v6_elite.csv` to Kaggle.

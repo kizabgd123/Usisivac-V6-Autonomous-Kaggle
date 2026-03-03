@@ -1,0 +1,6 @@
+# Task: Researching Agent Activity
+
+- [/] Analyze `WORK_LOG.md` for recent entries
+- [ ] Check for `GUARD_LOG.md` for any security/process alerts
+- [ ] Review any other active log files or scripts mentioned
+- [ ] Summarize the Gemini CLI agent's actions to the user

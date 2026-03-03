@@ -1,0 +1,31 @@
+# Task: Analiza i implementacija "Neural Refinery" Notebook-a
+
+## Analiza postojećeg stanja
+- [/] Pull `kiza123123/trinity-3-6-2-dialectic-kaggle-agent-tactics` sa Kaggle-a
+- [ ] Analiza postojećeg notebook koda
+- [ ] Analiza postojećeg `trinity_knowledge` izvora
+
+## Implementacija 5-Stage Neural Refinery
+- [ ] **Stage 1: The Sieve (Sito)** - Implementacija filtriranja (Gemma-2b-it / Phi-3-mini) za izolaciju "visoko signalnih" rečenica.
+- [ ] **Stage 2: The Architect (Arhitekta)** - Strukturiranje teksta (Qwen-2.5 / Llama-3.1) u atribute (K-Fold, Seed, Feature).
+- [ ] **Stage 3: The Validator & Temp DB** - Validacija koda i upis u `temp_parsed_chroma.db`.
+- [ ] **Stage 4: Agent Assembly** - Rekonstrukcija logičkih celina (npr. Baseline script).
+- [ ] **Stage 5: Final Merge** - Verifikacija i prebacivanje u `Trinity_Master.db` za download.
+
+## Validacija i Deploy
+- [x] Povezivanje generisanog ChromaDB izvora kao Kaggle dataset (`kiza123123/trinity-knowledge-chromadb`).
+- [x] Programsko generisanje notebook-a na osnovu analize (`neural_refinery.ipynb`).
+- [x] Push nazad na Kaggle (Zbog 401 API greške na Kaggle strani, potreban ručni upload .ipynb fajla)
+
+## 🏛️ ResearchPro & Meta-Refinery Integration
+- [x] Analiza [README_RESEARCH_PRO.md](file:///home/kizabgd/Desktop/kaggle-arena/README_RESEARCH_PRO.md) (Testiranje dual-RAG inteligencije uspešno završeno 🚀)
+- [ ] Analiza [ingest.py](file:///tmp/ResearchProAI-Template/src/ingest.py) i [audit_ingest.py](file:///tmp/ResearchProAI-Template/src/audit_ingest.py) za unifikaciju RAG procesa
+- [ ] Povezivanje lokalnog [refinery_dashboard.py](file:///home/kizabgd/Desktop/kaggle-arena/refinery_dashboard.py) sa Kaggle output-ima
+- [ ] Finalni Synthesis: Unificirani Trinity Master Engine konfigurisan u [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+
+## 🛡️ De-zombifikacija i 7-Gate Submit (Antigravity Launch)
+- [ ] Reorganizacija foldera: move [.py](file:///tmp/migrate_collections.py) skripti u `scripts/`, [.ipynb](file:///home/kizabgd/Desktop/Sharp_Betting_Llama3_HighClass.ipynb) u `notebooks/`, [.md](file:///home/kizabgd/Desktop/1111111111.md) u `docs/`
+- [ ] Optimizacija [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json) (uklanjanje 3000+ suvišnih linija)
+- [ ] Implementacija `src/trinity_guardian.py` (7-Gate Protocol)
+- [ ] Instrumentacija Arize OTel tracing-a u [generate_report.py](file:///tmp/ResearchProAI-Template/src/generate_report.py) i [refinery_dashboard.py](file:///home/kizabgd/Desktop/kaggle-arena/refinery_dashboard.py)
+- [ ] **Final Shot**: Pokretanje unificiranog pipeline-a i finalni Kaggle submit

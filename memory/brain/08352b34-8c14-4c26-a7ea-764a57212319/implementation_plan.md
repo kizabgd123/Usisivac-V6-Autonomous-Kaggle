@@ -1,0 +1,28 @@
+# Final Execution Fixes (S6E2)
+
+The strategy is being refined to address critical calibration and mapping issues identified in the elite stacking blueprint.
+
+## Summary of Fixes
+
+### 1. Strict UCI Anchor Mapping
+UCI columns (e.g., `trestbps`, `thalch`, `num`) will be explicitly mapped to S6E2 names (`BP`, `Max HR`, `target`) before concatenation to avoid feature misalignment. Note: `thalch` is the correct name in the provided UCI CSV.
+
+### 2. Calibration Consistency
+Isotonic Regression will be fitted once per fold on the validation set, then applied to **both** the OOF predictions and the Test predictions. This ensures the Meta-Model (Logistic Regression) sees the same probability distribution it was trained on. The script will dynamically handle the target column name (`Heart Disease` or `target`) based on the environment.
+
+### 3. Feature Set
+- **RPP**: Rate Pressure Product (`Max HR` * `BP`).
+- **Thal_Pain**: Interaction between `Thallium` and `Chest pain type`.
+- **ST_Log**: Log transform of `ST depression` (`oldpeak`).
+- **Duke Score**: Removed (Noisy / No 'Duration' data).
+
+### 4. Robust Ensemble
+- **Phase 1**: Cleanlab denoising (preserving original UCI data).
+- **Phase 2**: 10-fold Stratified CV with XGBoost and LightGBM.
+- **Phase 3**: Auto-selection between Simplex Blend and Logistic Stacking based on OOF AUC.
+
+## Verification Plan
+
+### Automated Tests
+- Cross-validation AUC locally (>0.964 on clean data).
+- Check for `submission_final_exec.csv` generation.

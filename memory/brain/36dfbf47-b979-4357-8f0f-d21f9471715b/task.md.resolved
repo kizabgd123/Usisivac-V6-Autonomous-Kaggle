@@ -1,0 +1,17 @@
+# Task List - New Challenge Preparation
+
+- [x] Initial Environment Assessment [x]
+    - [x] List current project directory
+    - [x] Read [.env](file:///home/kizabgd/Desktop/kaggle-arena/.env) for key migration
+    - [x] Locate `Usisivac` repository/directory
+- [x] Workspace Preparation [x]
+    - [x] Create new workspace directory for the new challenge
+    - [x] Migrate keys from old [.env](file:///home/kizabgd/Desktop/kaggle-arena/.env) to new workspace [.env](file:///home/kizabgd/Desktop/kaggle-arena/.env)
+    - [x] Initialize new project structure (README, Makefile, manifest.json)
+- [x] Trinity Protocol Setup [x]
+    - [x] Setup [WORK_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/WORK_LOG.md) and [WORKING_FALL.md](file:///home/kizabgd/Desktop/kaggle-arena/WORKING_FALL.md) for the new challenge
+    - [x] Configure [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) for the new challenge
+    - [x] Verify `Usisivac` (Knowledge Vacuum) integration
+- [x] Final Verification [x]
+    - [x] Confirm no overlap with previous challenges
+    - [x] Validate new workspace configurations

@@ -1,0 +1,29 @@
+# Fix Bugs and Improve [verify_kaggle_logic.py](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py)
+
+Identified several issues in the current verification script:
+1. `catboost` was missing (Fixed via pip).
+2. `StratifiedKFold` is initialized but not used in the training loop.
+3. Training and prediction are done on the same data, leading to leakage.
+4. The "Trinity Engine" lacks a proper consensus or weighted voting mechanism as described in the architecture.
+
+## Proposed Changes
+
+### [Component] Kaggle Intelligence Harvester (Local Verification)
+
+#### [MODIFY] [verify_kaggle_logic.py](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py)
+
+- **Proper Cross-Validation**: Implement a `StratifiedKFold` loop to generate true OOF (Out-Of-Fold) predictions for the Stacking layer, fixing the current data leakage.
+- **Modularization (`run_pipeline`)**: Refactor the script into a `run_pipeline(config)` function that returns the OOF AUC score and predictions. This is mandatory for unit testing.
+- **CLI Interface (`argparse`)**: Add an `if __name__ == "__main__"` block with `argparse` to support parameters like `--seed`, `--n_splits`, and `--debug`.
+- **Improved Trinity Engine**: Ensure base models (XGBoost, CatBoost, LGBM) are trained within folds and their predictions are correctly aggregated.
+
+## Verification Plan
+
+### Automated Tests
+- Run `python verify_kaggle_logic.py` and verify that:
+    - All blocks (1-4) pass without exceptions.
+    - "ALL CHECKS PASSED. LOGIC IS SOUND." is printed.
+    - OOF predictions are reasonably scaled and used in the Ridge meta-learner.
+
+### Manual Verification
+- Review the output logs to ensure each fold of the cross-validation is training and predicting.

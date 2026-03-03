@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough instalacije i podešavanja Usisivac RAG sistema u kaggle-arena okruženju. Dokumentuje kloniranje, ingestovanje i verifikaciju ChromaDB vector store-a.",
+  "updatedAt":  "2026-03-02T13:42:51.257040692Z"
+}

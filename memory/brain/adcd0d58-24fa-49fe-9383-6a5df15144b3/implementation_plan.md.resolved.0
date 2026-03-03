@@ -1,0 +1,105 @@
+# Digital Workspace Automation — Intelligent File Router
+
+Build an event-driven file routing system that watches an `Inbox/` folder, classifies files using a multi-API intelligence chain (Mistral → Grok → OpenRouter), moves them to categorized folders, and logs every action to Notion.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Folder Paths**: The user's spec targets `~/Kiza/desktop/` which may not exist. The plan uses the spec's paths exactly. If you want different paths, let me know before I proceed.
+
+> [!WARNING]
+> **Existing [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py)**: The project already has a [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) (placeholder Grandmaster Engine). I will create a **separate** `workspace_main.py` to avoid breaking existing code. The old [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) stays untouched.
+
+> [!IMPORTANT]
+> **API Keys**: [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) already has `MISTRAL_API_KEY`, `OPENROUTER_API_KEY`, and `GROQ_API_KEY`. Missing: `GROK_API_KEY` (x.ai endpoint), `NOTION_API_KEY`, and `NOTION_DATABASE_ID`. I'll add placeholders.
+
+---
+
+## Proposed Changes
+
+### Config Layer
+
+#### [NEW] [.env.example](file:///home/kizabgd/Desktop/Istrazivanje/.env.example)
+Template with all required keys for the workspace system. Includes existing keys + new `GROK_API_KEY`, `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
+
+#### [NEW] [workspace_automation.yaml](file:///home/kizabgd/Desktop/Istrazivanje/configs/workspace_automation.yaml)
+YAML config for folder mappings, API models, scan intervals, and keyword triggers for Grok escalation. Externalizes all magic strings from code.
+
+#### [MODIFY] [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env)
+Add `GROK_API_KEY`, `NOTION_API_KEY`, `NOTION_DATABASE_ID` placeholders.
+
+---
+
+### Core Engine (`workspace_engine/`)
+
+#### [NEW] [__init__.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/__init__.py)
+Module init — exports key classes.
+
+#### [NEW] [api_clients.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py)
+Clean API wrappers for:
+- `call_mistral(file_name)` → basic file analysis
+- `call_grok(summary)` → advanced hyper-parameter extraction
+- `call_openrouter_routing(summary, grok_insight, folder_list)` → folder decision
+- `log_to_notion(file_name, category, summary, grok_insight, local_path)` → database logging
+
+Each function: proper timeout, error handling, returns structured data.
+
+#### [NEW] [file_processor.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/file_processor.py)
+The intelligence routing pipeline:
+1. Mistral analyzes the file name
+2. Grok is conditionally invoked (only for code/ML/Kaggle content)
+3. OpenRouter makes final folder decision
+4. File is moved → Notion is logged
+
+Includes `--dry-run` mode that logs decisions without moving files.
+
+#### [NEW] [watcher.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/watcher.py)
+- `InboxHandler(FileSystemEventHandler)` — real-time `on_created` event
+- `periodic_scan()` — backup sweep every 5 hours
+- `start_watching()` — Observer setup and main loop
+
+#### [NEW] [folder_manager.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/folder_manager.py)
+`setup_folders()` — creates Inbox + all category folders from YAML config.
+
+---
+
+### Entry Point
+
+#### [NEW] [workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_main.py)
+CLI entry point with `argparse`:
+- `python workspace_main.py` — start watcher (default)
+- `python workspace_main.py --scan` — one-shot scan only
+- `python workspace_main.py --dry-run` — simulate without moving files
+- `python workspace_main.py --setup` — create folders only
+
+---
+
+### Dependencies
+
+#### [MODIFY] [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt)
+Add `watchdog` (only missing dependency).
+
+---
+
+## Verification Plan
+
+### Automated Tests
+
+#### [NEW] [test_workspace_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_workspace_engine.py)
+
+Offline unit tests (no API calls, uses mocks):
+- Test `setup_folders()` creates all directories
+- Test `process_file()` with mocked API responses → verifies correct folder routing
+- Test keyword escalation logic (Grok is only called for ML-related content)
+- Test `InboxHandler.on_created` triggers `process_file`
+- Test dry-run mode doesn't move files
+
+```bash
+cd /home/kizabgd/Desktop/Istrazivanje && python -m pytest tests/test_workspace_engine.py -v
+```
+
+### Manual Verification
+
+1. Run `python workspace_main.py --setup` → verify all 7 folders are created under `~/Kiza/desktop/`
+2. Run `python workspace_main.py --dry-run --scan` → verify it processes files in Inbox without moving them, logs routing decisions to stdout
+3. *(Optional, requires live API keys)* Drop a file into `~/Kiza/desktop/Inbox/` and verify it gets classified and moved

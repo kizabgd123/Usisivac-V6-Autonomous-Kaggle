@@ -1,0 +1,7 @@
+# Forensic Recommendations Execution
+
+- [x] R1: Focus on Heart Disease S6E2 — stale FORENSIC_*.md are from Spaceship Titanic, ignored
+- [x] R2: `make killshot` — completed, produced `submission_v14_golden_0.95526.csv` at 19:15
+- [x] R3: Added `seed_wisdom` target to [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile) — verified with `make seed_wisdom` ✅
+- [x] R4: Updated [trinity_start.md](file:///home/kizabgd/Desktop/Istrazivanje/.agents/workflows/trinity_start.md) — auto-runs `make seed_wisdom` on startup
+- [x] R5: Project isolation — documented in walkthrough (15+ challenges in monolithic root)

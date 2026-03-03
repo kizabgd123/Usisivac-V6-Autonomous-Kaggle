@@ -1,0 +1,32 @@
+# Trinity Workspace Configuration
+- [x] Configure Personas
+- [x] Create Kanban Board / Tasks
+- [x] Set Context Sync rules
+
+# Analiza MCP & Bot Konverzacije
+- [x] Analiza Junie Jetbrains plugin funkcionalnosti.
+- [x] Integracija koncepata u Trinity OS.
+
+# Master Direktiva v5.0 - MCP Serveri
+- [x] Izrada `mcp-config-state` (SSOT za trinity_config.json)
+- [x] Izrada `mcp-guardian` (Autonomna 7-Gate Egzekucija)
+- [x] Izrada `mcp-mistral-vetoboard` (Kognitivni Checkpoint)
+- [x] Izrada `mcp-trinity-kb` (Dinamičko Znanje / Tactic Registry)
+
+# Project Audit & Roadmap (Protocol v4.0)
+- [x] Sveobuhvatni audit workspace-a (scripts, data_hub, .mcp)
+- [x] Identifikacija tehničkog duga i neiskorišćenih legacy skripti
+- [x] Generisanje Grandmaster Roadmap-e v2.0
+
+# Profile Refactoring & Arize Tracing (Zoran's Plan)
+- [x] Kreiranje [zoranstojanovic_refactor.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/zoranstojanovic_refactor.py) agent skripte
+- [x] Implementacija "Crno-Plava" Premium Aesthetic teme (Rule §1)
+- [x] Integracija Arize manualne instrumentacije za HTTP pozive
+- [x] Izvršavanje i validacija (Status 200 log)
+
+# Professional Portfolio Website (zoranstojanovic.link)
+- [/] Istraživanje workspace-a za podatke o korisniku
+- [/] Kreiranje premium portfolio HTML/CSS/JS stranice
+- [ ] Generisanje profilne slike
+- [ ] Testiranje i validacija
+- [ ] Deploy na zoranstojanovic.link

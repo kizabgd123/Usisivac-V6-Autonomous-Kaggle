@@ -1,0 +1,39 @@
+# Trinity Operational Architecture Implementation
+
+- [ ] **1. SECURITY & LOGS ([secure_logger.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/secure_logger.py) & [phase4_security.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase4_security.py))**
+  - [ ] Implement real AES-256 (Fernet) encryption using environment variable or config key.
+  - [ ] Implement robust PII scrubbing (RegEx for email, phone, cards, tokens) with masking (`****1234`).
+  - [ ] Implement GDPR validation (`gdpr_validate`) checking for un-scrubbed PII and encryption.
+  - [ ] Create `secure_log(event_type, payload, user_id=None)` API.
+  - [ ] Implement `run_security_audit()` to scan logs for violations.
+  - [ ] Replace all `print()` logs with `secure_log()`.
+
+- [ ] **2. AST ENGINE & SOTA REGISTRY ([phase3_sota_ast.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase3_sota_ast.py))**
+  - [ ] Use `ast` module to parse project [.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) files instead of hardcoded strings.
+  - [ ] Extract functions, classes, and compute complexity metrics (branching, length).
+  - [ ] Add static checks (hardcoded API keys, long functions, TODO/FIXME).
+  - [ ] Build `SOTADiscoveryEngine` backed by `sota_registry.json`.
+  - [ ] Implement `compare_run_to_sota(current_config)` with secure logging.
+
+- [ ] **3. HYBRID RAG ([phase2_rag.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase2_rag.py))**
+  - [ ] Define ingestion pipeline (parsing, chunking, embedding, vector store).
+  - [ ] Implement RDB layer (SQLite) with metadata (source, version, timestamp, tags).
+  - [ ] Implement Hybrid Retriever (`score = 0.7 * vector_score + 0.3 * rdb_score`).
+  - [ ] Add reasoning levels (Slim, Standard, Pro, Ultra) to [trinity_config.yaml](file:///home/kizabgd/Desktop/Istrazivanje/trinity/config/trinity_config.yaml).
+  - [ ] Implement `select_reasoning_level(query_or_context)`.
+
+- [ ] **4. DEPLOYMENT & SCALING ([phase5_deploy.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase5_deploy.py))**
+  - [ ] Implement PyTorch DDP skeleton (`torch.distributed.init_process_group`, `train(rank, world_size)`).
+  - [ ] Add `@measure_latency` decorator.
+  - [ ] Track p95 latency and trigger `schedule_reindex()` if > target.
+  - [ ] Add p95 target and scaling params to [trinity_config.yaml](file:///home/kizabgd/Desktop/Istrazivanje/trinity/config/trinity_config.yaml).
+
+- [ ] **5. INGESTION & FOUNDATION ([phase1_ingestion.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/phases/phase1_ingestion.py))**
+  - [ ] Correctly mock Colab/Kaggle environments for local compatibility.
+  - [ ] Use config-based cache paths.
+  - [ ] Implement robust [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) validation (existence, sections, version check).
+
+- [ ] **6. ORCHESTRATOR & DOCS ([main_trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity/main_trinity.py) & [walkthrough.md](file:///home/kizabgd/.gemini/antigravity/brain/336b7c17-5eaa-4d76-ba9a-7b001f5e719a/walkthrough.md))**
+  - [ ] Link all 5 phases to pass structured results (not just prints).
+  - [ ] Support CLI arguments (e.g., `--phase 2`) using `argparse`.
+  - [ ] Update [walkthrough.md](file:///home/kizabgd/.gemini/antigravity/brain/336b7c17-5eaa-4d76-ba9a-7b001f5e719a/walkthrough.md) to reflect the real implementations.

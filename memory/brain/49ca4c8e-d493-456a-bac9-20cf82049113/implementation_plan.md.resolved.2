@@ -1,0 +1,41 @@
+# Phase C: Proactive Defense 🛡️
+
+## Goal Description
+The objective of Phase C is to implement the updated rules from the Trinity Ecosystem v3.15 upgrade, particularly **Rule 50 (Phase-Aware Pre-flight Diversification)** and **Rule 48 (Structured GUARD_ALERT.json)** into [scripts/process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py). This provides autonomous agents with "graceful degradation" and machine-readable fallback hints instead of blind Halts.
+
+## Proposed Changes
+
+### ProcessGuard Upgrades ([scripts/process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py))
+#### [MODIFY] [scripts/process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py)
+We will introduce two major mechanisms to the [ProcessGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#9-72) class:
+
+1. **Phase-Aware Diversity Veto (`pre_flight_diversity_check`)**:
+    - **Logic**: Accepts a list of model names/families and the current `project_phase` (`thesis`, `antithesis`, or `synthesis`).
+    - **Rule 50 Check**: If all models fall into a homogeneous family (e.g., all GBDTs: XGBoost, LightGBM, CatBoost), the system behaves differently based on phase. In `thesis`/`antithesis`, it issues a soft `WARNING` to allow baseline exploration. In `synthesis` (late-stage ensembling), it emits a strict `VETO` and blocks execution, demanding an orthogonal model (e.g., Neural Network, SVM, TabPFN) to fulfill diversity requirements.
+
+2. **Actionable Structural Alerts (`emit_guard_alert`)**:
+    - **Logic**: A new JSON log emitter that fulfills Rule 48. Instead of blindly writing text logs that the agent cannot parse, it produces [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json).
+    - **Payload Structure**: 
+      ```json
+      {
+        "domain_context": "...",
+        "tactic_id": "...",
+        "severity": "VETO/WARNING/INFO",
+        "correlation_score": 0.99,
+        "opaque_payload": {
+            "human_context": "VETO: Obavezno ubaciti ortogonalni model u sintezi.",
+            "actionable_fallback": "switch_to_orthogonal_model"
+        }
+      }
+      ```
+   - This empowers the AI agent invoking [process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py) to autonomously parse `actionable_fallback` from [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) and adjust the training script at runtime.
+
+## Verification Plan
+
+### Automated Tests
+- Import [ProcessGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#9-72) into a test script, pass a homogenenous list of models `['XGB', 'LGBM']` under `phase='synthesis'` and ensure it raises a `VETO` alert.
+- Verify that [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) is generated correctly in the root folder with the expected JSON schema.
+
+## User Review Required
+> [!IMPORTANT]
+> Please review the architecture for [ProcessGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#9-72) adjustments to fulfill Rule 48 and Rule 50. If the structural JSON alerts and phase-aware checking logic look solid, let me know, and I will proceed with full execution.

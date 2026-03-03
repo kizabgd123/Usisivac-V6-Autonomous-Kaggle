@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Updated implementation plan for the Bidding Challenge Resurrection. It now includes the Dashboard 3.0 upgrade (Agentic Mode with tool-calling for Mistral), local JudgeGuard instantiation, and project-level orchestration structure. This plan focuses on recovering from the v16 regression using a robust, verified approach following the Quad-Core architecture.",
+  "updatedAt": "2026-02-25T14:38:35.254383186Z",
+  "version": "4"
+}

@@ -1,0 +1,27 @@
+# Kaggle Offline Submission Plan - Deep Past
+
+## Goal
+Submit the improved translation pipeline to Kaggle, ensuring it works in an **offline environment** (Internet: OFF) and follows competition rules.
+
+## Proposed Changes
+
+### [Deep_Past_Kaggle_Submission.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py)
+Update the submission script to be fully autonomous in an offline setting:
+
+1.  **Embedded Onomasticon**: Hardcode the 500+ name-translation mappings extracted from meta-data directly into the script. This avoids dependency on new datasets.
+2.  **Advanced Normalization Layer**: Port the improved [normalize_akkadian](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/preprocess_data.py#18-45) function from [preprocess_data.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/preprocess_data.py) to handle diacritics and gap markers at runtime.
+3.  **Offline Refinery**:
+    -   Modify [TrinityLoop](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py#724-765) to skip [SiderMT](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py#515-578) (API-based) when `KAGGLE_OFFLINE` is detected or internet is unavailable.
+    -   Implement a fallback that selects the top-ranked candidate based on the **Onomasticon consistency score** and **Lexicon domain score**.
+4.  **Path Management**: Ensure the script correctly locates `final-byt5` and `deep-past-lexicon` datasets on Kaggle.
+
+## Verification Plan
+
+### Automated Tests
+- Run the script locally with a dummy test set to ensure no imports error and the normalization works.
+- Perform a python syntax check.
+
+### Manual Verification
+- Review the [submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission.csv) format (id, translation).
+- Verify [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json) has `internet: false`.
+- Call `kaggle kernels push` once approved.

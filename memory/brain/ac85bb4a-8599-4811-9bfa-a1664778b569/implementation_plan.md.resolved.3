@@ -1,0 +1,56 @@
+# Trinity Protocol Evolution Plan
+
+This plan outlines the steps to implement the improvements proposed in the Trinity Protocol Roadmap.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This plan introduces a centralized `trinity` CLI and [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile) which will become the standard entry points for all project repositories. This will change the workflow for autonomous agents.
+
+## Proposed Changes
+
+### Documentation & Governance
+
+#### [MODIFY] [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md)
+
+- Populate with the Project Constitution (Phase 1 & 2).
+- Establish as the primary reference for system behavior.
+
+### Unification & Legacy Support
+
+#### [NEW] [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile)
+
+- Define standard targets: [train](file:///home/kizabgd/Desktop/Istrazivanje/scripts/training_pipeline.py#155-241), [predict](file:///home/kizabgd/Desktop/Istrazivanje/scripts/training_pipeline.py#363-386), [validate](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#24-36), `clean`.
+- Abstract environment setup and dependency execution.
+
+#### [NEW] [trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity.py)
+
+- A CLI tool to act as a single entry point.
+- **[NEW]** Add [init](file:///home/kizabgd/Desktop/Istrazivanje/judge_guard.py#63-73) command for Legacy Integration Protocol.
+
+#### [NEW] [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)
+
+- Declarative metadata for the project.
+
+### Hardening & Flexibility
+
+#### [NEW] [process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py)
+
+- Real-time performance monitoring.
+- **[NEW]** Load thresholds from `trinity_config.json` instead of hardcoding.
+
+#### [NEW] [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+
+- Domain-specific thresholds for correlation, metrics, and hashing.
+
+## Verification Plan
+
+### Automated Tests
+
+- `make validate` to run JudgeGuard and ProcessGuard checks.
+- Test `trinity init` on a legacy script to verify auto-manifest generation.
+
+### Manual Verification
+
+- Verify that `trinity train` correctly invokes the appropriate training script.
+- Review [GUARD_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_LOG.md) for quality assurance.

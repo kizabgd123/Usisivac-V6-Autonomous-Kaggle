@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Fast V3 Elite Pipeline Plan. Focuses on reusing LGB checkpoints, removing slow DART boosters, and optimizing parallelism for the 630k row dataset.",
+  "updatedAt": "2026-02-19T08:41:48.429162756Z",
+  "version": "1"
+}

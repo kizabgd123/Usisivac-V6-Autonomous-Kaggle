@@ -1,0 +1,24 @@
+# Walkthrough: Phase 0 — Research & Audit (Elite Evolution)
+
+## Pregled
+Završena je inicijalna faza audit-a i istraživanja za Kaggle Playground S6E2 (Heart Disease). Rezultati su pokazali izuzetnu robusnost Trinity Protocol v4.0 baseline modela.
+
+### Ključni Rezultati LB
+- **Public LB**: 0.95344
+- **Private LB**: 0.95502
+- **OOF AUC**: 0.9554
+- **Korelacija**: Visoka i stabilna (Private > Public), što ukazuje na odličnu generalizaciju bez overfittinga na Public leaderboard.
+
+## ResearchPro AI Audit (Llama-3.3)
+Generisan je strateški report koji je identifikovao sledeće prioritete za **Elite v9** fazu:
+
+1.  **Automation**: Zamena manuelnog tuninga sa Optuna orchestratorom.
+2.  **Feature Interaction**: Fokus na `oldpeak_slope_interaction` i target encoding za `cp` i `thal`.
+3.  **Model Diversity**: Uvođenje Stacking modela (Ridge/Logistic Regression) umesto čistog Rank Blendinga.
+4.  **Deep Learning**: Integracija bazičnog MLP-a radi hvatanja rezidualnih signala.
+
+## Status Ingestije
+- **Knowledge Base**: 2412 fajlova (InProgress)
+- **Audit Logs**: 538 fragmenata (DONE)
+
+Sledeći korak je **Phase 1: Elite Transformation**, gde ćemo integrisati Optuna tuning u bazične skripte.

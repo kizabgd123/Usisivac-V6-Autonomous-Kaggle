@@ -1,0 +1,23 @@
+# Task: Elite Breach v3.2 Optimization & Execution
+
+- [x] Optimize [heart_top5_v3_2_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py)
+    - [x] Replace `ExtraTreesRegressor` with `BayesianRidge` in MICE
+    - [x] Ensure `chol_zero_flag` and `Age < 40` interaction are preserved
+    - [x] Verify `Ischemic Burden` feature logic
+    - [x] Update Model parameters (XGBoost DART, LGBM/CatBoost regularization)
+- [x] Implement robust execution script
+    - [x] Use `nohup` for background execution
+    - [x] Ensure logs are captured correctly
+- [x] Monitor and Verify [x]
+    - [x] Check OOF AUC progress (Passed Step 2 Bottleneck)
+    - [x] Verify Adversarial Validation score (Integrated in Colab)
+    - [x] Generate final submission
+- [x] Transition to Colab GPU [x]
+    - [x] Create [Heart_Disease_S6E2_Elite_Breach_Colab.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Elite_Breach_Colab.ipynb)
+    - [x] Configure GPU parameters (XGBoost, LGBM, CatBoost)
+    - [x] Implement `userdata` for API keys
+    - [x] Ensure clinical feature parity (`Ischemic Burden`, `Young_Signal`)
+- [x] Prepare Colab for Deployment [x]
+    - [x] Inspect Notebook structure
+    - [x] Identify and verify all dependencies
+    - [x] Finalize "Turn-Key" summary for user

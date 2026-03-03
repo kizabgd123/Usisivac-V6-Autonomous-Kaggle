@@ -1,0 +1,19 @@
+- [x] Install missing Python dependencies (catboost, others if needed)
+- [x] Verify that all imports succeed in the target script/notebook
+- [x] Run the script to detect any runtime errors
+- [x] Refactor [verify_kaggle_logic.py](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py) for testability
+    - [x] Implement [run_pipeline()](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py#76-119) with proper cross-validation
+    - [x] Add `argparse` CLI interface
+    - [x] Fix data leakage in stacking layer
+- [x] Implement unit tests for [run_pipeline()](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py#76-119)
+- [x] Push [verify_kaggle_logic.py](file:///home/kizabgd/.gemini/antigravity/scratch/verify_kaggle_logic.py) to Kaggle
+    - [x] Create [kernel-metadata.json](file:///home/kizabgd/.gemini/antigravity/scratch/kernel-metadata.json)
+    - [x] Run `kaggle kernels push`
+    - [x] Verify kernel status on Kaggle
+
+## Elite Breach v3.2 Implementation
+- [x] Save the provided "COLAB FAST VERSION" script as [heart_top5_v3_2_elite.py](file:///home/kizabgd/heart_top5_v3_2_elite.py)
+- [x] Locate `Heart_Disease_Prediction.csv` for orig-stats FE
+- [x] Verify data paths and environment compatibility
+- [/] Run benchmark to verify OOF AUC score (> 0.9555 target)
+- [ ] Prepare for final Kaggle submission

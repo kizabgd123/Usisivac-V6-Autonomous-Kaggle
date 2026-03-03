@@ -1,0 +1,2897 @@
+# 🔬 Final Analysis: Golden Recipe Results
+
+> **Mission**: Multi-Seed Rank Averaging | **OOF**: 0.95506 | **Public LB**: 0.95305
+
+---
+
+## Results Summary
+
+| Metric | Golden Recipe | Best All-Time | Delta |
+|--------|--------------|---------------|-------|
+| **Public LB** | 0.95305 | **0.95387** | −0.00082 |
+| OOF AUC | 0.95506 | 0.95574 | −0.00068 |
+| OOF-LB Gap | 0.002 | 0.002 | Same |
+| Models Trained | 75 | 15 | +60 wasted |
+
+> [!CAUTION]
+> **75 models produced a WORSE score than 15 models.** Multi-seed averaging did NOT help.
+
+---
+
+## Why It Failed: Redundancy Ceiling
+
+ProcessGuard detected the root cause:
+```
+VETO: Correlation between XGB and LGBM = 0.9997
+VETO: Correlation between XGB and CAT = 0.9991
+VETO: Correlation between LGBM and CAT = 0.9991
+```
+
+**All 3 models are making nearly identical predictions.** Multi-seed averaging only reduces variance *between* meaningfully different models. When correlation is 0.999, different seeds produce essentially the same model — averaging adds noise, not signal.
+
+---
+
+## Individual Model Audit (15 vectors)
+
+| Seed | XGB | LGBM | CAT |
+|------|-----|------|-----|
+| 42 | 0.95507 | 0.95500 | 0.95478 |
+| 123 | 0.95507 | 0.95499 | 0.95480 |
+| 777 | 0.95505 | 0.95495 | 0.95478 |
+| 2024 | 0.95508 | 0.95500 | 0.95478 |
+| 31337 | 0.95509 | 0.95499 | 0.95479 |
+
+**Variance across seeds**: ~0.00004. This is pure noise — seeds make no meaningful difference.
+
+---
+
+## Definitive Top-5 All-Time Scoreboard
+
+| # | Submission | LB Score | Method |
+|---|-----------|----------|--------|
+| 🥇 | `submission_0.95574` | **0.95387** | Simple XGB+LGBM+CAT mean |
+| 🥈 | `v5_calibrated_0.95579` | 0.95385 | Basic calibrated blend |
+| 🥉 | `clean_baseline_v7` | 0.95379 | Clean ensemble, no tricks |
+| 4 | `restored_best` | 0.95354 | Restored v3 blend |
+| 5 | `killshot_v3` | 0.95316 | Denoising + Triple Blend |
+| ❌ | **Golden Recipe** | **0.95305** | Multi-seed rank averaging |
+
+---
+
+## Trinity Protocol Constitutional Upgrade (v3.14)
+
+Successfully refactored the project's core constitution ([GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md)) and guardian system ([JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-423)) to support modular domain tactics and dynamic alerting.
+
+### Core Enhancements
+- **Rule 45 (Registry Separation)**: Universal system rules are now decoupled from domain-specific knowledge. Domain tactics (like cardiology formulas) are moved to [trinity_tool_registry/heart_disease_tactic.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/heart_disease_tactic.json).
+- **Rule 46 (Dynamic Alerts)**: Replaced rigid `sys.exit(1)` halts with structured [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) logs, enabling graduated responses (INFO, WARNING, VETO, HALT) and real-time visualization.
+- **Rules 38-44 (Clinical Intelligence)**: Integrated advanced kardiološke metrike (Tanaka HR, Ischemic Burden, Oldpeak Normalization) into the system's "Standard of Truth".
+
+### Vetoboard Evolution
+The dashboard at port 8081 now polls `/api/alerts/latest` to display live feedback from the JudgeGuard, including logical hints for recovery.
+
+#### Trinity Protocol Hardening (v3.15)
+### Proactive Resilience & Diversity
+
+The latest update introduces proactive safeguards to prevent model correlation stalls and ensure technical decoupling.
+
+#### 1. Proactive Architecture Diversity (Rule 50)
+The [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-423) now identifies model families from [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) and veteos training sessions that lack diversity.
+
+```bash
+# Verification: Blocked a homogenous tree-based ensemble
+[GUARD] VETO: PROACTIVE VETO: Lack of Architectural Diversity. All models (['xgboost', 'lightgbm', 'catboost']) are tree-based.
+💡 HINT: Incorporate at least one orthogonal model family (e.g., Attention-based + Tree-based) to break the Correlation Wall.
+```
+
+## 🛠️ Knowledge Base Orchestrator (KNOWLEDGE_BASE_ORCHESTRATOR)
+
+I have unified the fragmented knowledge sync process into a single, Trinity-compliant master controller:
+
+- **Central Controller**: [kb_orchestrator.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kb_orchestrator.py) now manages both Notion and Local artifact syncing.
+- **Config-Driven**: [trinity_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_kb.py) was refactored to remove hardcoded paths and use [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json).
+- **Standardized Reporting**: Every sync operation now emits an `INFO`, `WARNING`, or `VETO` alert to [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) (Rule 48).
+
+### Verification
+Run the unified sync:
+```bash
+python3 scripts/kb_orchestrator.py
+```
+
+Search the Institutional Memory:
+```bash
+python3 scripts/trinity_kb.py recall "ischemic burden"
+```
+
+## 🛡️ Proactive Hardening (v3.15) - Verification Results
+
+| Feature | Status | Proof |
+| :--- | :--- | :--- |
+| standardized_alerts | ✅ Pass | [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) shows `domain_context` and `opaque_payload` (Rule 48). |
+| pre_flight_veto | ✅ Pass | Blocked a training attempt with redundant architectures (Rule 50). |
+| sandbox_guardrails | ✅ Pass | CPU/RAM limits configured in [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) (Rule 49). |
+| single_source_truth | ✅ Pass | Constitution (GEMINI.md) aligned with JSON config (Rule 24). |
+
+---
+
+> [!TIP]
+> Use the [KNOWLEDGE_BASE_ORCHESTRATOR.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/workflows/KNOWLEDGE_BASE_ORCHESTRATOR.md) workflow for future syncs.
+
+#### 2. Standardized Alert Schema (Rule 48)
+[GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) now follows a strict schema featuring `domain_context`, `tactic_id`, and `opaque_payload`. This allows the Core Engine to remain domain-agnostic while providing rich feedback to the user via the Vetoboard.
+
+#### 3. Sandbox Guardrails (Rule 49)
+Defined strict resource limits for legacy code profiling to ensure system stability during automated integration.
+
+```diff:GEMINI.md
+# Trinity Protocol Ecosystem: Project Constitution
+
+> [!IMPORTANT]
+> **META KOMANDA**: U slučaju bilo kakvog konflikta između tekstualnih instrukcija u ovom Ustavu i centralizovanog JSON konfiguracionog fajla (`trinity_config.json`), JSON konfiguracija uvek ima apsolutni prioritet. JSON je jedini izvor istine (Single Source of Truth).
+
+
+## 1. Šta je Trinity Protocol Ecosystem i na šta je fokusiran?
+
+Trinity Protocol Ecosystem je napredna metodologija za takmičarsko mašinsko učenje usmerena na iterativni razvoj, ansambl modele i integraciju autonomnih AI agenata kroz Anti-Gravity OS.
+
+## 2. Koji je glavni problem sa trenutnim sistemom pokretanja u Trinity ekosistemu?
+
+Glavni problem je fragmentacija u egzekuciji koda i nejasne instrukcije za pokretanje različitih repozitorijuma, što otežava automatizaciju i predstavlja rizik za autonomne AI agente.
+
+## 3. Zašto je fragmentacija u pokretanju koda problem za autonomne AI agente?
+
+Zato što agent može da pogrešno pokrene skripte, izmišlja komande ili pokreće fajlove u pogrešnom redosledu, što dovodi do grešaka i haosa u radu sa virtualnim okruženjima.
+
+## 4. Koji predlog je dat za rešavanje problema fragmentacije pokretanja?
+
+Predloženo je uvođenje centralizovanog CLI alata, poput Trinity CLI, koji bi apstraktovao sve zavisnosti i omogućio agentu da jednostavno prosledi ciljni zadatak bez nagađanja.
+
+## 5. Kako bi univerzalni makefile mogao pomoći u Trinity ekosistemu?
+
+Makefile bi omogućio agentu da lako pokrene projekte sa standardizovanim komandama, što je industrijski standard i olakšava parsiranje i automatizaciju procesa.
+
+## 6. Šta je manifest.json i kako bi pomogao AI agentu?
+
+Manifest.json bi bio fajl sa metapodacima koji jasno definiše redosled pokretanja skripti, čineći egzekuciju deklarativnom i smanjujući prostor za greške agenta.
+
+## 7. Koja je uloga JudgeGuard skripte u Trinity protokolu?
+
+JudgeGuard proverava finalni fajl pre podnošenja na takmičenje, validira da nema nevažećih vrednosti, da su predikcije u opsegu 0 do 1 i da postoji razuman prosek.
+
+## 8. Koji je nedostatak JudgeGuard validacije?
+
+JudgeGuard se aktivira prekasno, samo proverava finalni fajl, ne sprečava agenta da napravi logičke greške ranije u procesu, što može dovesti do gubitka resursa i loših rezultata.
+
+## 9. Šta je predloženo kao proširenje JudgeGuard filozofije?
+
+Predloženo je uvođenje ProcessGuard-a, koji bi kontinuirano validirao proces u realnom vremenu, proveravao metrike poboljšanja i prekidao rad ako agent pravi loše odluke.
+
+## 10. Kako ProcessGuard može pomoći u kontroli ansambla modela?
+
+ProcessGuard može blokirati dodavanje modela u ansambl ako nema dokaza o niskoj korelaciji predikcija, sprečavajući spajanje visoko korelisanih modela koje je loša praksa.
+
+## 11. Koji problem postoji sa naprednim tehnikama inženjeringa obeležja u Trinity ekosistemu?
+
+Napredne tehnike su često zakucane za specifične domene i teško ih je ponovo koristiti u drugim takmičenjima, što otežava automatizaciju i modularnost sistema.
+
+## 12. Kako se predlaže rešavanje problema specifičnosti naprednih tehnika?
+
+Predlaže se izdvajanje specijalizovanih tehnika u zaseban tool registry, gde agent može dinamički pristupati i koristiti ih kao plug-and-play module nezavisno od domena.
+
+## 13. Kako bi izgledao tabular RAG u tool registriju?
+
+Bio bi ekstraktovan u nezavisnu klasu koja prihvata standardizovani data frame i metapodatke, bez hardkodiranih kolona, omogućavajući primenu u različitim domenima.
+
+## 14. Koji su tri glavni koraci za unapređenje Trinity protokola?
+
+1. Unifikacija mehanizma za pokretanje svih repozitorijuma radi lakše automatizacije.
+2. Proširenje JudgeGuard logike na međukorake procesa.
+3. Izolovanje elitnih tehnika inženjeringa obeležja u plug-and-play module.
+
+## 15. Koji je glavni problem sa integracijom nasledđenih projekata u Trinity Protocol ekosistem?
+
+Glavni problem je što dokument ne pruža jasne logičke korak niti instrukcije agentu kako da generiše potrebne fajlove kao što su manifest.json ili makefile za postojeće, starije projekte, što može dovesti do beskonačne petlje grešaka.
+
+## 16. Šta se predlaže kao rešenje za problem integracije starih projekata?
+
+Predlaže se uvođenje nove podsekcije pod nazivom Legacy Integration Protocol, koja bi jasno definisala da agent mora pokušati da generiše osnovni manifest.json i makefile koristeći analizu ekstenzija fajlova i Python import komandi, pre nego što izvrši halt ili constitutional reboot.
+
+## 17. Zašto je problem fiksnih numeričkih pragova u pravilu logical gatekeepers?
+
+Fiksni numerički pragovi direktno u glavnom operativnom ustavu ograničavaju univerzalnu primenljivost sistema i mogu nepotrebno prekinuti uspešno izvršavanje u domenima sa specifičnim karakteristikama, kao što je detekcija anomalija sa nebalansiranim klasama.
+
+## 18. Kako se predlaže da se reši problem fiksnih pragova u pravilu logical gatekeepers?
+
+Predlaže se da se numerički pragovi izmeste iz glavnog teksta ustava u odvojene fleksibilne konfiguracione fajlove specifične za zadati domen, dok se u ustavu zadrži samo princip obaveze provere diverziteta.
+
+## 19. Koji je problem sa trenutnim pravilom o integritetu memorije u Trinity Protocolu?
+
+Trenutno pravilo nalaže kriptografsko heširanje svakog bloka evidentiranog u memorijskom fajlu, što stvara ogromno operativno opterećenje i usporava brzinu iteracija, naročito tokom duboke iterativne analize podataka.
+
+## 20. Koje je predloženo poboljšanje za optimizaciju beleženja memorije i heširanja?
+
+Predlaže se da se generisanje integrity hash-a vrši samo prilikom komitovanja rezultata na kraju glavnih faza (thesis, antithesis, synthesis) ili prilikom značajnih modifikacija, dok se za mikroakcije tokom istraživanja dozvoli jednostavno tekstualno beleženje bez heširanja.
+
+## 21. Koje su tri ključne izmene koje će poboljšati Trinity Protocol sistem?
+
+## 22. Koji je glavni problem sa internom konzistentnošću u Trinity protokolu?
+
+Glavni problem je konflikt između fiksnih vrednosti u ustavu projekta i dinamičkih vrednosti u centralizovanom JSON konfiguracionom fajlu, što dovodi do kognitivne disonance kod autonomnih AI agenata.
+
+## 23. Kako se predlaže rešavanje konflikta između ustava projekta i konfiguracionog fajla?
+
+Predlaže se da ustav projekta bude konceptualan i deklarativan, bez čvrsto kodiranih numeričkih vrednosti, dok se svi parametri definišu u centralizovanom JSON konfiguracionom fajlu koji je jedini izvor istine.
+
+## 24. Šta je meta komanda i koja je njena uloga u Trinity protokolu?
+
+Meta komanda je dodatak na početku ustava koji nalaže agentu da u slučaju konflikta između tekstualnih instrukcija i JSON konfiguracije uvek daje prednost JSON konfiguraciji, čime se eliminišu dileme u tumačenju pravila.
+
+## 25. Koji problem nastaje kada agent naiđe na grešku tokom izvršavanja zadatka?
+
+Trenutni sistem prekida proces bez povratne informacije, što onemogućava autonomnom agentu da nauči iz greške i prilagodi svoju strategiju, što sabotira dialektički metod učenja.
+
+## 26. Kako se predlaže da se poboljša hendlovanje izuzetaka u Trinity protokolu?
+
+Predlaže se implementacija strukturiranih povratnih informacija u formatu JSON i graciozna degradacija sistema, tako da agent može da nastavi rad sa alternativnim rešenjima umesto da se proces prekida.
+
+## 27. Kako se rešava problem memorijskog zagušenja u memory integrity modulu?
+
+Predlaže se razdvajanje čuvanja sirovih podataka od metapodataka, korišćenje optimizovanog binarnog formata (npr. parket) za skladištenje podataka na disku i streamovanje podataka u hash funkciju, čime se smanjuje memorijski otisak.
+
+## 28. Zašto je važno da agent koristi JSON izveštaje o greškama umesto da se proces prekida?
+
+JSON izveštaji omogućavaju agentu da razume uzrok greške i pronađe alternativna rešenja, čime se održava autonomija i kontinuitet rada bez potrebe za ljudskim nadzorom.
+
+## 29. Kako se u Trinity protokolu obezbeđuje da agent prati promene u konfiguraciji bez modifikacije prompta ili ustava?
+
+Agent se prebacuje na centralizovani JSON konfiguracionog fajlu gde se parametri menjaju, a agent automatski prilagođava svoje odluke u realnom vreme bez potrebe za izmenama u promptu ili ustavu.
+
+## 30. Koji je dokazano najbolji pristup za Playground Series sintetičke podatke?
+
+Jednostavan ansambl sa XGBoost + LightGBM + CatBoost, gde svaki model vidi SVE feature-e, sa prostim usrednjavanjem (mean blend) preko 5-fold stratifikovanog CV-a. Multi-seed averaging (5 semena × 3 modela) dodatno smanjuje varijansu bez povećanja biasa. Rank averaging (pretvaranje verovatnoća u rangove pre mešanja) normalizuje različite kalibracije modela.
+
+## 31. Koji su dokazani anti-patterni koji UVEK pogoršavaju skor na sintetičkim podacima?
+
+1. **Pseudo-labeling**: 3/3 pokušaja na S6E2 su rezultirali padom od -0.003 do -0.005 na Public LB.
+2. **Feature subspacing**: Ograničavanje kolona po modelu smanjuje kapacitet bez korisne diversifikacije (pad od -0.004).
+3. **Cleanlab denoising**: Daje lažno visoke OOF skorove ali NE poboljšava LB skor jer uklanja validne podatke.
+4. **Differential Evolution težine**: Overfituje se na CV šum umesto da pronalazi robusne težine.
+5. **Kompleksno stacking**: Na sintetičkim podacima, jednostavno usrednjavanje nadmašuje meta-modele.
+
+## 32. Šta je "OOF Calibration Rule" i zašto je kritično?
+
+Ako OOF skor prelazi 0.960 na sintetičkom datasetu, to je SIGNAL OVERFITTING-a, ne poboljšanja. Dokazane korelacije: OOF 0.955-0.957 → LB 0.953-0.954 (optimalno); OOF 0.970+ → LB 0.950-0.953 (overfitting). Agent MORA zaustaviti treniranje ako OOF prelazi ovaj prag i primeniti fallback na jednostavniji pristup.
+
+## 33. Šta je "Golden Recipe" za tabelarnu klasifikaciju na takmičenjima?
+
+Golden Recipe je dokazano optimalan pristup: (1) Sve originalne feature-e + minimalan feature engineering (samo dokazani ratiovi), (2) XGB+LGBM+CAT ensemble sa 5-fold stratifikovanim CV, (3) Multi-seed averaging sa 5 semena za smanjenje varijanse, (4) Rank-based blending za normalizaciju kalibracija, (5) ProcessGuard provera korelacije < 0.95, (6) Atomic save za submisiju. Ovaj pristup je dao 0.95387 Public LB — najbolji skor u 40+ pokušaja.
+
+## 34. Kako se pravilno implementira multi-seed averaging?
+
+Trenira se isti model sa 5 različitih random seed-ova (npr. 42, 123, 777, 2024, 31337). Svaki seed proizvodi neznatno drugačiju optimizacionu putanju. Usrednjavanjem svih 15 OOF vektora (5 semena × 3 modela) dobija se robustnija predikcija sa nižom varijansom. Očekivani dobitak: +0.001 na Public LB bez rizika od overfitting-a.
+
+## 35. Kako ProcessGuard treba koristiti u treniranju ansambla?
+
+ProcessGuard se koristi u tri tačke: (1) Pre treniranja — učitava pragove iz trinity_config.json, (2) Posle treniranja — proverava korelaciju između modela (< 0.95) i, opcionalno, hard_halt=True za kritične slučajeve, (3) Posle blendinga — proverava da li je finalni OOF bolji od baseline-a. Svaki incident se beleži u GUARD_LOG.md sa timestampom i nivoom (VETO, WARNING, HALT).
+
+## 36. Koje su ključne lekcije naučene iz S6E2 Heart Disease takmičenja?
+
+1. Jednostavnost pobeđuje složenost na sintetičkim podacima (0.954 vs 0.950).
+2. Visok OOF je signal overfitting-a, ne kvaliteta.
+3. OOF-LB gap manji od 0.003 znači dobru generalizaciju.
+4. Šum plafon za sintetičke Playground podatke je oko 0.954-0.955 Public LB.
+5. Vreme utrošeno na "napredne" tehnike (denoising, pseudo-labeling) je bilo kontraproduktivno.
+6. ProcessGuard je TAČNO identifikovao probleme (korelacija 0.999, regresija metrika).
+
+## 37. Kada agent treba da PRESTANE sa iteracijom i prihvati trenutni skor?
+
+Agent treba da prestane kada: (1) Poslednje 3 submisije ne donose poboljšanje > 0.001, (2) OOF-LB gap počinje da raste (signal overfitting-a), (3) Sve dokazane tehnike su isprobane i validirane, (4) Preostali potencijalni dobitak je manji od šuma u evaluaciji. Na S6E2, optimalna tačka zaustavljanja je bila na Day 2 (0.95387) — sve posle toga je bilo kontraproduktivno.
+
+## 38. Šta nauka kaže o HR_Pct formuli (MaxHR / predviđeni HRmax)?
+
+Tradicionalna Fox formula (220 − Age) nema naučnu osnovu. Meta-analiza 18.712 zdravih osoba (Tanaka, 2001) dokazuje da je Tanaka formula (HRmax = 208 − 0.7 × Age) tačnija, naročito za starije od 40 godina. Sve formule imaju široke limite slaganja (±20–25 bpm, RMSE ~11 bpm). Feature HR_Pct = MaxHR / (208 − 0.7 × Age) je fiziološki ispravniji od HR_Pct = MaxHR / (220 − Age). Hronotropna inkompetencija (<85% predviđenog HRmax) je klinički marker povećanog rizika ishemije. Agent MORA koristiti Tanaka verziju za bolju generalizaciju.
+
+## 39. Kako treba normalizovati Oldpeak (ST depresiju) u ML modelu?
+
+U UCI i sintetičkim podacima Oldpeak je desno-skewed (skew ~1.1–1.34) sa korelacijom sa targetom ρ ≈ 0.40. Preporučene transformacije: (1) Log1p transformacija za linearizaciju, (2) Z-score standardizacija za uklanjanje razlike u skali, (3) Outlier clipping umesto uklanjanja jer su ekstremi patološki relevantni. GBDT modeli tolerišu skewness, ali normalizacija pomaže MLP-u, LogRegression-u i kalibraciji. Za ensemble pristup koristiti obe verzije (raw i normalized) kao feature-e.
+
+## 40. Šta je tačan klinički koncept Ischemic Burden i kako ga implementirati?
+
+Pravi klinički "ischemic burden" = dubina ST depresije × trajanje epizode ili area-under-curve iz Holter monitoringa. Više epizoda (>6/48h) → 32% event rate godišnje vs. 13% za <2. Formula Oldpeak × Exercise_Angina je razumna aproksimacija. Nagib downslopinga je NAJGORI prognostički znak. Interakcije Age × Ischemic_Burden i BP × Age su podržane jer starost menja vaskularnu krutost. Klastering studije pokazuju da u visoko-rizičnim podgrupama (9% pacijenata) chest pain postaje IRELEVANTAN, a age/lipidi dominiraju.
+
+## 41. Kako klastering meta-features poboljšavaju ensemble diversitet?
+
+Unsupervised k-means na EMR podacima (19 feature-a) daje 2–4 klastera sa tačnošću 0.86–0.87 za CVD detekciju — bolje od KNN/LR/SVM. Klaster ID ili distanca do centroida kao feature-i imaju NISKU korelaciju sa GBDT predikcijama, što poboljšava stacking. KRITIČNO: klastering trenirati SAMO na train fold-u i primenjivati transformaciju na validacioni/test set (sprečava leakage). GMM verovatnoće po komponentama daju kontinuirani signal koji hvata interakcije više kliničkih varijabli.
+
+## 42. Šta nauka kaže o korišćenju originalnog UCI dataseta (270 redova)?
+
+UCI skup je mali i stariji, sakupljen po drugim protokolima. NIKADA ne spajati direktno sa sintetičkim podacima zbog distribution shift-a. Pravilna upotreba: (1) Target statistics / prior — iz UCI izračunati empirijske prevalencije bolesti za kombinacije kliničkih kategorija kao slab Bayesian prior, (2) Pseudo-labeling sa niskom težinom — koristiti kao dodatni slab signal, nikad kao primarni. Ovo uvodi blagu regularizaciju ka klinički viđenim obrascima. Radovi potvrđuju da modeli trenirani na obe domene (uz regularizaciju i domain-aware feature engineering) zadržavaju visoku tačnost uz manji rizik od overfitting-a.
+
+## 43. Po čemu ML modeli nadmašuju tradicionalni Framingham Risk Score?
+
+Meta-analiza (Krittanawong 2020): boosting/SVM AUC 0.88–0.93 za CAD vs. Framingham ~0.76–0.78. Noviji review-i (2025): RF/deep learning pooled AUC 0.815–0.865 vs. konvencionalno 0.765. XGBoost na Framingham podacima: AUC 0.83 (bolje za 6.4%). Prednost ML: hvata nelinearne interakcije (Oldpeak × ST_Slope × Age) koje tradicionalni skorovi linerano aproksimiraju. SHAP/LIME grafici moraju pokazati da su top feature-i klinički smisleni (Oldpeak, HR_Pct, ST_Slope, vessels) — to je jak signal da model uči prave obrasce, ne sintetički šum.
+===
+# Trinity Protocol Ecosystem: Project Constitution
+
+> [!IMPORTANT]
+> **META KOMANDA**: U slučaju bilo kakvog konflikta između tekstualnih instrukcija u ovom Ustavu i centralizovanog JSON konfiguracionog fajla (`trinity_config.json`), JSON konfiguracija uvek ima apsolutni prioritet. JSON je jedini izvor istine (Single Source of Truth).
+
+## 1. Šta je Trinity Protocol Ecosystem i na šta je fokusiran?
+
+Trinity Protocol Ecosystem je napredna metodologija za takmičarsko mašinsko učenje usmerena na iterativni razvoj, ansambl modele i integraciju autonomnih AI agenata kroz Anti-Gravity OS.
+
+## 2. Koji je glavni problem sa trenutnim sistemom pokretanja u Trinity ekosistemu?
+
+Glavni problem je fragmentacija u egzekuciji koda i nejasne instrukcije za pokretanje različitih repozitorijuma, što otežava automatizaciju i predstavlja rizik za autonomne AI agente.
+
+## 3. Zašto je fragmentacija u pokretanju koda problem za autonomne AI agente?
+
+Zato što agent može da pogrešno pokrene skripte, izmišlja komande ili pokreće fajlove u pogrešnom redosledu, što dovodi do grešaka i haosa u radu sa virtualnim okruženjima.
+
+## 4. Koji predlog je dat za rešavanje problema fragmentacije pokretanja?
+
+Predloženo je uvođenje centralizovanog CLI alata, poput Trinity CLI, koji bi apstraktovao sve zavisnosti i omogućio agentu da jednostavno prosledi ciljni zadatak bez nagađanja.
+
+## 5. Kako bi univerzalni makefile mogao pomoći u Trinity ekosistemu?
+
+Makefile bi omogućio agentu da lako pokrene projekte sa standardizovanim komandama, što je industrijski standard i olakšava parsiranje i automatizaciju procesa.
+
+## 6. Šta je manifest.json i kako bi pomogao AI agentu?
+
+Manifest.json bi bio fajl sa metapodacima koji jasno definiše redosled pokretanja skripti, čineći egzekuciju deklarativnom i smanjujući prostor za greške agenta.
+
+## 7. Koja je uloga JudgeGuard skripte u Trinity protokolu?
+
+JudgeGuard proverava finalni fajl pre podnošenja na takmičenje, validira da nema nevažećih vrednosti, da su predikcije u opsegu 0 do 1 i da postoji razuman prosek.
+
+## 8. Koji je nedostatak JudgeGuard validacije?
+
+JudgeGuard se aktivira prekasno, samo proverava finalni fajl, ne sprečava agenta da napravi logičke greške ranije u procesu, što može dovesti do gubitka resursa i loših rezultata.
+
+## 9. Šta je predloženo kao proširenje JudgeGuard filozofije?
+
+Predloženo je uvođenje ProcessGuard-a, koji bi kontinuirano validirao proces u realnom vremenu, proveravao metrike poboljšanja i prekidao rad ako agent pravi loše odluke.
+
+## 10. Kako ProcessGuard može pomoći u kontroli ansambla modela?
+
+ProcessGuard može blokirati dodavanje modela u ansambl ako nema dokaza o niskoj korelaciji predikcija, sprečavajući spajanje visoko korelisanih modela koje je loša praksa.
+
+## 11. Koji problem postoji sa naprednim tehnikama inženjeringa obeležja u Trinity ekosistemu?
+
+Napredne tehnike su često zakucane za specifične domene i teško ih je ponovo koristiti u drugim takmičenjima, što otežava automatizaciju i modularnost sistema.
+
+## 12. Kako se predlaže rešavanje problema specifičnosti naprednih tehnika?
+
+Predlaže se izdvajanje specijalizovanih tehnika u zaseban tool registry, gde agent može dinamički pristupati i koristiti ih kao plug-and-play module nezavisno od domena.
+
+## 13. Kako bi izgledao tabular RAG u tool registriju?
+
+Bio bi ekstraktovan u nezavisnu klasu koja prihvata standardizovani data frame i metapodatke, bez hardkodiranih kolona, omogućavajući primenu u različitim domenima.
+
+## 14. Koji su tri glavni koraci za unapređenje Trinity protokola?
+
+1. Unifikacija mehanizma za pokretanje svih repozitorijuma radi lakše automatizacije.
+2. Proširenje JudgeGuard logike na međukorake procesa.
+3. Izolovanje elitnih tehnika inženjeringa obeležja u plug-and-play module.
+
+## 15. Koji je glavni problem sa integracijom nasledđenih projekata u Trinity Protocol ekosistem?
+
+Glavni problem je što dokument ne pruža jasne logičke korak niti instrukcije agentu kako da generiše potrebne fajlove kao što su manifest.json ili makefile za postojeće, starije projekte, što može dovesti do beskonačne petlje grešaka.
+
+## 16. Šta se predlaže kao rešenje za problem integracije starih projekata?
+
+Predlaže se uvođenje nove podsekcije pod nazivom Legacy Integration Protocol, koja bi jasno definisala da agent mora pokušati da generiše osnovni manifest.json i makefile koristeći analizu ekstenzija fajlova i Python import komandi, pre nego što izvrši halt ili constitutional reboot.
+
+## 17. Zašto je problem fiksnih numeričkih pragova u pravilu logical gatekeepers?
+
+Fiksni numerički pragovi direktno u glavnom operativnom ustavu ograničavaju univerzalnu primenljivost sistema i mogu nepotrebno prekinuti uspešno izvršavanje u domenima sa specifičnim karakteristikama, kao što je detekcija anomalija sa nebalansiranim klasama.
+
+## 18. Kako se predlaže da se reši problem fiksnih pragova u pravilu logical gatekeepers?
+
+Predlaže se da se numerički pragovi izmeste iz glavnog teksta ustava u odvojene fleksibilne konfiguracione fajlove specifične za zadati domen, dok se u ustavu zadrži samo princip obaveze provere diverziteta.
+
+## 19. Koji je problem sa trenutnim pravilom o integritetu memorije u Trinity Protocolu?
+
+Trenutno pravilo nalaže kriptografsko heširanje svakog bloka evidentiranog u memorijskom fajlu, što stvara ogromno operativno opterećenje i usporava brzinu iteracija, naročito tokom duboke iterativne analize podataka.
+
+## 20. Koje je predloženo poboljšanje za optimizaciju beleženja memorije i heširanja?
+
+Predlaže se da se generisanje integrity hash-a vrši samo prilikom komitovanja rezultata na kraju glavnih faza (thesis, antithesis, synthesis) ili prilikom značajnih modifikacija, dok se za mikroakcije tokom istraživanja dozvoli jednostavno tekstualno beleženje bez heširanja.
+
+## 21. Koje su tri ključne izmene koje će poboljšati Trinity Protocol sistem?
+
+## 22. Koji je glavni problem sa internom konzistentnošću u Trinity protokolu?
+
+Glavni problem je konflikt između fiksnih vrednosti u ustavu projekta i dinamičkih vrednosti u centralizovanom JSON konfiguracionom fajlu, što dovodi do kognitivne disonance kod autonomnih AI agenata.
+
+## 23. Kako se predlaže rešavanje konflikta između ustava projekta i konfiguracionog fajla?
+
+Predlaže se da ustav projekta bude konceptualan i deklarativan, bez čvrsto kodiranih numeričkih vrednosti, dok se svi parametri definišu u centralizovanom JSON konfiguracionom fajlu koji je jedini izvor istine.
+
+## 24. Šta je meta komanda i koja je njena uloga u Trinity protokolu?
+
+Meta komanda je dodatak na početku ustava koji nalaže agentu da u slučaju konflikta između tekstualnih instrukcija i JSON konfiguracije uvek daje prednost JSON konfiguraciji, čime se eliminišu dileme u tumačenju pravila.
+
+## 25. Koji problem nastaje kada agent naiđe na grešku tokom izvršavanja zadatka?
+
+Trenutni sistem prekida proces bez povratne informacije, što onemogućava autonomnom agentu da nauči iz greške i prilagodi svoju strategiju, što sabotira dialektički metod učenja.
+
+## 26. Kako se predlaže da se poboljša hendlovanje izuzetaka u Trinity protokolu?
+
+Predlaže se implementacija strukturiranih povratnih informacija u formatu JSON i graciozna degradacija sistema, tako da agent može da nastavi rad sa alternativnim rešenjima umesto da se proces prekida.
+
+## 27. Kako se rešava problem memorijskog zagušenja u memory integrity modulu?
+
+Predlaže se razdvajanje čuvanja sirovih podataka od metapodataka, korišćenje optimizovanog binarnog formata (npr. parket) za skladištenje podataka na disku i streamovanje podataka u hash funkciju, čime se smanjuje memorijski otisak.
+
+## 28. Zašto je važno da agent koristi JSON izveštaje o greškama umesto da se proces prekida?
+
+JSON izveštaji omogućavaju agentu da razume uzrok greške i pronađe alternativna rešenja, čime se održava autonomija i kontinuitet rada bez potrebe za ljudskim nadzorom.
+
+## 29. Kako se u Trinity protokolu obezbeđuje da agent prati promene u konfiguraciji bez modifikacije prompta ili ustava?
+
+Agent se prebacuje na centralizovani JSON konfiguracionog fajlu gde se parametri menjaju, a agent automatski prilagođava svoje odluke u realnom vreme bez potrebe za izmenama u promptu ili ustavu.
+
+## DEO III: Registar Taktika (Heart Disease)
+
+> [!NOTE]
+> Ova sekcija sadrži domensko znanje specifično za analizu bolesti srca. U budućim domena (npr. finansije), ova sekcija se menja bez uticaja na jezgro sistema.
+
+## 30. Koji je dokazano najbolji pristup za Playground Series sintetičke podatke?
+
+## 31. Koji su dokazani anti-patterni koji UVEK pogoršavaju skor na sintetičkim podacima?
+
+1. **Pseudo-labeling**: 3/3 pokušaja na S6E2 su rezultirali padom od -0.003 do -0.005 na Public LB.
+2. **Feature subspacing**: Ograničavanje kolona po modelu smanjuje kapacitet bez korisne diversifikacije (pad od -0.004).
+3. **Cleanlab denoising**: Daje lažno visoke OOF skorove ali NE poboljšava LB skor jer uklanja validne podatke.
+4. **Differential Evolution težine**: Overfituje se na CV šum umesto da pronalazi robusne težine.
+5. **Kompleksno stacking**: Na sintetičkim podacima, jednostavno usrednjavanje nadmašuje meta-modele.
+
+## 32. Šta je "OOF Calibration Rule" i zašto je kritično?
+
+Ako OOF skor prelazi 0.960 na sintetičkom datasetu, to je SIGNAL OVERFITTING-a, ne poboljšanja. Dokazane korelacije: OOF 0.955-0.957 → LB 0.953-0.954 (optimalno); OOF 0.970+ → LB 0.950-0.953 (overfitting). Agent MORA zaustaviti treniranje ako OOF prelazi ovaj prag i primeniti fallback na jednostavniji pristup.
+
+## 33. Šta je "Golden Recipe" za tabelarnu klasifikaciju na takmičenjima?
+
+Golden Recipe je dokazano optimalan pristup: (1) Sve originalne feature-e + minimalan feature engineering (samo dokazani ratiovi), (2) XGB+LGBM+CAT ensemble sa 5-fold stratifikovanim CV, (3) Multi-seed averaging sa 5 semena za smanjenje varijanse, (4) Rank-based blending za normalizaciju kalibracija, (5) ProcessGuard provera korelacije < 0.95, (6) Atomic save za submisiju. Ovaj pristup je dao 0.95387 Public LB — najbolji skor u 40+ pokušaja.
+
+## 34. Kako se pravilno implementira multi-seed averaging?
+
+Trenira se isti model sa 5 različitih random seed-ova (npr. 42, 123, 777, 2024, 31337). Svaki seed proizvodi neznatno drugačiju optimizacionu putanju. Usrednjavanjem svih 15 OOF vektora (5 semena × 3 modela) dobija se robustnija predikcija sa nižom varijansom. Očekivani dobitak: +0.001 na Public LB bez rizika od overfitting-a.
+
+## 35. Kako ProcessGuard treba koristiti u treniranju ansambla?
+
+ProcessGuard se koristi u tri tačke: (1) Pre treniranja — učitava pragove iz trinity_config.json, (2) Posle treniranja — proverava korelaciju između modela (< 0.95) i, opcionalno, hard_halt=True za kritične slučajeve, (3) Posle blendinga — proverava da li je finalni OOF bolji od baseline-a. Svaki incident se beleži u GUARD_LOG.md sa timestampom i nivoom (VETO, WARNING, HALT).
+
+## 36. Koje su ključne lekcije naučene iz S6E2 Heart Disease takmičenja?
+
+1. Jednostavnost pobeđuje složenost na sintetičkim podacima (0.954 vs 0.950).
+2. Visok OOF je signal overfitting-a, ne kvaliteta.
+3. OOF-LB gap manji od 0.003 znači dobru generalizaciju.
+4. Šum plafon za sintetičke Playground podatke je oko 0.954-0.955 Public LB.
+5. Vreme utrošeno na "napredne" tehnike (denoising, pseudo-labeling) je bilo kontraproduktivno.
+6. ProcessGuard je TAČNO identifikovao probleme (korelacija 0.999, regresija metrika).
+
+## 37. Kada agent treba da PRESTANE sa iteracijom i prihvati trenutni skor?
+
+Agent treba da prestane kada: (1) Poslednje 3 submisije ne donose poboljšanje > 0.001, (2) OOF-LB gap počinje da raste (signal overfitting-a), (3) Sve dokazane tehnike su isprobane i validirane, (4) Preostali potencijalni dobitak je manji od šuma u evaluaciji. Na S6E2, optimalna tačka zaustavljanja je bila na Day 2 (0.95387) — sve posle toga je bilo kontraproduktivno.
+
+## 38. Šta nauka kaže o HR_Pct formuli (MaxHR / predviđeni HRmax)?
+
+Tradicionalna Fox formula (220 − Age) nema naučnu osnovu. Meta-analiza 18.712 zdravih osoba (Tanaka, 2001) dokazuje da je Tanaka formula (HRmax = 208 − 0.7 × Age) tačnija, naročito za starije od 40 godina. Sve formule imaju široke limite slaganja (±20–25 bpm, RMSE ~11 bpm). Feature HR_Pct = MaxHR / (208 − 0.7 × Age) je fiziološki ispravniji od HR_Pct = MaxHR / (220 − Age). Hronotropna inkompetencija (<85% predviđenog HRmax) je klinički marker povećanog rizika ishemije. Agent MORA koristiti Tanaka verziju za bolju generalizaciju.
+
+## 39. Kako treba normalizovati Oldpeak (ST depresiju) u ML modelu?
+
+U UCI i sintetičkim podacima Oldpeak je desno-skewed (skew ~1.1–1.34) sa korelacijom sa targetom ρ ≈ 0.40. Preporučene transformacije: (1) Log1p transformacija za linearizaciju, (2) Z-score standardizacija za uklanjanje razlike u skali, (3) Outlier clipping umesto uklanjanja jer su ekstremi patološki relevantni. GBDT modeli tolerišu skewness, ali normalizacija pomaže MLP-u, LogRegression-u i kalibraciji. Za ensemble pristup koristiti obe verzije (raw i normalized) kao feature-e.
+
+## 40. Šta je tačan klinički koncept Ischemic Burden i kako ga implementirati?
+
+Pravi klinički "ischemic burden" = dubina ST depresije × trajanje epizode ili area-under-curve iz Holter monitoringa. Više epizoda (>6/48h) → 32% event rate godišnje vs. 13% za <2. Formula Oldpeak × Exercise_Angina je razumna aproksimacija. Nagib downslopinga je NAJGORI prognostički znak. Interakcije Age × Ischemic_Burden i BP × Age su podržane jer starost menja vaskularnu krutost. Klastering studije pokazuju da u visoko-rizičnim podgrupama (9% pacijenata) chest pain postaje IRELEVANTAN, a age/lipidi dominiraju.
+
+## 41. Kako klastering meta-features poboljšavaju ensemble diversitet?
+
+Unsupervised k-means na EMR podacima (19 feature-a) daje 2–4 klastera sa tačnošću 0.86–0.87 za CVD detekciju — bolje od KNN/LR/SVM. Klaster ID ili distanca do centroida kao feature-i imaju NISKU korelaciju sa GBDT predikcijama, što poboljšava stacking. KRITIČNO: klastering trenirati SAMO na train fold-u i primenjivati transformaciju na validacioni/test set (sprečava leakage). GMM verovatnoće po komponentama daju kontinuirani signal koji hvata interakcije više kliničkih varijabli.
+
+## 42. Šta nauka kaže o korišćenju originalnog UCI dataseta (270 redova)?
+
+UCI skup je mali i stariji, sakupljen po drugim protokolima. NIKADA ne spajati direktno sa sintetičkim podacima zbog distribution shift-a. Pravilna upotreba: (1) Target statistics / prior — iz UCI izračunati empirijske prevalencije bolesti za kombinacije kliničkih kategorija kao slab Bayesian prior, (2) Pseudo-labeling sa niskom težinom — koristiti kao dodatni slab signal, nikad kao primarni. Ovo uvodi blagu regularizaciju ka klinički viđenim obrascima. Radovi potvrđuju da modeli trenirani na obe domene (uz regularizaciju i domain-aware feature engineering) zadržavaju visoku tačnost uz manji rizik od overfitting-a.
+
+## 43. Po čemu ML modeli nadmašuju tradicionalni Framingham Risk Score?
+
+Meta-analiza (Krittanawong 2020): boosting/SVM AUC 0.88–0.93 za CAD vs. Framingham ~0.76–0.78. Noviji review-i (2025): RF/deep learning pooled AUC 0.815–0.865 vs. konvencionalno 0.765. XGBoost na Framingham podacima: AUC 0.83 (bolje za 6.4%). Prednost ML: hvata nelinearne interakcije (Oldpeak × ST_Slope × Age) koje tradicionalni skorovi linerano aproksimiraju. SHAP/LIME grafici moraju pokazati da su top feature-i klinički smisleni (Oldpeak, HR_Pct, ST_Slope, vessels) — to je jak signal da model uči prave obrasce, ne sintetički šum.
+
+## 44. Šta je "Hybrid Correlation Wall" i kako ga izbeći?
+
+Eksperiment "Hybrid Breakthrough" (V5) sa 5 ortogonalnih familija (GBDT trio, Zone-RF, MLP, UCI Stats) pokazao je da na velikim sintetičkim setovima korelacija ostaje ekstremno visoka (>0.99) čak i između različitih arhitektura. Rezultat: LB 0.95282 (pad u odnosu na simple mean 0.95387). **Lekcija**: Diversitet se ne postiže pukim dodavanjem modela na iste feature-e, već upotrebom modela koji vide podatke na fundamentalno drugačiji način (npr. TabNet sa attention-om ili GNN na grafu pacijenata) uz strogu ProcessGuard proveru korelacije pre ensembliranja.
+
+## DEO II: Sistemska Arhitektura (Core Engine)
+
+> [!NOTE]
+> Ovaj deo sadrži univerzalna pravila sistema koja važe bez obzira na domen (ML, Web, Data).
+
+## 45. Razdvajanje Sistemskog Ustava od Domenskih Taktika
+
+Glavni sistemski ustav mora biti UNIVERZALAN. Sva domenska znanja (npr. kardiološke formule iz tačaka 38-43) moraju se smatrati "registrom taktika" (Tactic Registry) i pozivati kao plug-and-play moduli. Ovo sprečava "kognitivno zagušenje" agenta i omogućava brzu adaptaciju na nove domene (npr. e-commerce ili fin-tech) bez menjanja jezgra protokola.
+
+## 46. Prelazak sa Rigidnih Pravila na Dinamička JSON Upozorenja (ProcessGuard Evolution)
+
+Rigidna "Stop" pravila (Halt) oduzimaju agentu mogućnost da nauči kroz empiriju. ProcessGuard mora preći na emitovanje strukturiranih JSON upozorenja (`GUARD_ALERT.json`) koja sadrže:
+
+1. `severity`: (INFO, WARNING, VETO, HALT)
+2. `correlation_score`: (vrednost u realnom vremenu)
+3. `logic_hint`: (predlog za alternativnu putanju)
+Agent koristi ove logove za dinamičku korekciju strategije u sredini taska, umesto potpunog reseta procesa.
+
+## 48. Enkapsulacija Guard Alert-a i Opaque Payload (Blind Core)
+Glavni Process Guard mora ostati "slep" za specifični domenski kontekst. Standardizovana šema `guard_alert.json` mora sadržati polja: `domain_context`, `tactic_id`, `severity` i `correlation_score`. Saveti za inženjera (Hints) prosleđuju se kao neproziran teret (`opaque_payload`) koji jezgro sistema ne interpretira, već samo vizualizuje na Vetoboard-u.
+
+## 49. Sandbox Guardrails i Timeout Recovery
+Runtime sandbox profilisanje nasledjenog koda mora imati fiksne limite: 60 sekundi CPU vremena i 1GB RAM-a. Prekoračenje ovih limita automatski emituje `timeout_alert.json`, prebacuje agenta na poluautomatski režim i zahteva ljudsku potvrdu pre ponovnog pokušaja ili promene strategije.
+
+## 50. Proaktivna Pre-flight Arhitektonska Diversifikacija
+Da bi se izbegao "Correlation Wall", provera diverziteta se pomera iz reaktivne (posle treninga) u proaktivnu fazu (pre treninga). Process Guard proverava metapodatke u `manifest.json` i blokira pokretanje treninga ako su svi odabrani modeli iz iste familije (npr. samo GBDT). Obavezno je prisustvo bar jedne ortogonalne familije (npr. Attention-based + GBDT).
+```
+```diff:judge_guard.py
+"""
+JudgeGuard v2.0 - The 3-Layer Guardian of the Antigravity System.
+Verifies every critical step against the 'Standard of Truth'.
+
+Layer 1: Tool Enforcement (Hard Rules)
+Layer 2: Live Thought Streaming (Visibility)
+Layer 3: Essence Check (Semantic Drift)
+
+Environment Variables:
+    BRAIN_PATH: Path to the brain directory (optional, auto-discovers if not set)
+    WORK_LOG_PATH: Path to the work log file (optional, defaults to ./WORK_LOG.md)
+"""
+
+import os
+import sys
+import glob
+import logging
+import datetime
+from typing import Optional, Any
+from dotenv import load_dotenv
+import requests
+
+# Ensure root is in path for src access
+sys.path.append(os.getcwd())
+
+# Trinity Hardening v2.0 Imports
+try:
+    from scripts.error_handler import TrinityGuard
+except ImportError:
+    from error_handler import TrinityGuard
+
+try:
+    try:
+        from scripts.config_manager import resolve_parameter
+    except ImportError:
+        from config_manager import resolve_parameter
+except ImportError:
+    try:
+        from scripts.trinity import resolve_parameter
+    except ImportError:
+        from trinity import resolve_parameter
+
+
+load_dotenv()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# --- DEPENDENCY INJECTION ---
+try:
+    from src.antigravity_core.judge_flow import BlockJudge
+    from src.antigravity_core.gemini_client import GeminiClient
+    JUDGE_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"⚠️ Judge/Gemini modules not available: {e}")
+    JUDGE_AVAILABLE = False
+
+# ----------------------------
+
+# --- LAYER 3 CONSTANT ---
+PROJECT_ESSENCE = """
+PROJECT ESSENCE (Golden Snapshot):
+The goal is to build an autonomous, self-improving AI agent system (Antigravity).
+Core Values:
+1. User Control: The user is the ultimate authority.
+2. Safety: No destructive actions without verification.
+3. Quality: High standards for code and documentation.
+4. Transparency: Streaming thoughts and actions to the user.
+5. Modularity: A clean, plugin-based architecture for Agents.
+6. Research First: Always validate assumptions with browser research before coding.
+7. CALENDAR TRUTH: The current year is strictly 2026. All operations must honor this timeline.
+8. MODEL PURITY: Only authorized Gemini models from 'available_models.txt' exist. All other definitions are invalid.
+
+SKILL MANIFEST:
+- mobile-vibe-coding: Enforce '.cursorrules' for PWA development (XML Architecture + Vibe Snippets).
+"""
+# ------------------------
+
+class JudgeGuard:
+
+    """
+    The Permanent Guardian of the Antigravity System.
+    Verifies every critical step against the 'Standard of Truth'.
+    """
+    
+    def __init__(self, brain_path: Optional[str] = None, work_log_path: Optional[str] = None):
+        self.brain_path = brain_path or os.getenv("BRAIN_PATH") or self._discover_brain_path()
+        self.work_log_path = work_log_path or os.getenv("WORK_LOG_PATH") or self._find_work_log()
+        self.rules_path = os.path.expanduser("~/.gemini/MASTER_ORCHESTRATION.md")
+        self.immutable_laws = self._load_rules()
+        
+        if JUDGE_AVAILABLE:
+            self.gemini = GeminiClient()
+        
+        logger.info(f"JudgeGuard v2.0 initialized. Brain: {self.brain_path}")
+
+    def _discover_brain_path(self) -> Optional[str]:
+        """Auto-discover the brain path from ~/.gemini/antigravity/brain/"""
+        try:
+            base_path = os.path.expanduser("~/.gemini/antigravity/brain")
+            if not os.path.exists(base_path):
+                return None
+            brain_dirs = glob.glob(os.path.join(base_path, "*-*-*-*-*"))
+            if not brain_dirs:
+                return None
+            return max(brain_dirs, key=os.path.getmtime)
+        except Exception:
+            return None
+
+    def _find_work_log(self) -> str:
+        """Find WORK_LOG.md in current directory or parent directories."""
+        current = os.getcwd()
+        # Simple search up
+        for _ in range(3):
+            path = os.path.join(current, "WORK_LOG.md")
+            if os.path.exists(path):
+                return path
+            current = os.path.dirname(current)
+        return os.path.join(os.getcwd(), "WORK_LOG.md")
+
+    def _load_rules(self) -> str:
+        if not os.path.exists(self.rules_path):
+            return "⚠️ MASTER_ORCHESTRATION.md not found."
+        try:
+            with open(self.rules_path, "r", encoding="utf-8") as f:
+                return f.read()
+        except Exception as e:
+            return f"Error loading rules: {e}"
+
+    def _load_context(self, max_chars: int = 15000) -> str:
+        if self.work_log_path and os.path.exists(self.work_log_path):
+            try:
+                with open(self.work_log_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    return content[-max_chars:]
+            except Exception:
+                pass
+        return "(No work log context)"
+
+    def _detect_phase(self, context: str) -> str:
+        """
+        Heuristic to detect Project Phase from context.
+        Returns '0', '1', '2', etc., or 'unknown'.
+        """
+        # Simple heuristic: scan last 2000 chars for explicit Phase declarations
+        recent = context[-2000:].lower()
+        if "phase 0" in recent or "scoping" in recent:
+            return "0"
+        if "phase 1" in recent or "discovery" in recent:
+            return "1"
+        if "phase 2" in recent or "execution" in recent:
+            return "2"
+        return "unknown"
+
+    def _is_write_operation(self, action: str) -> bool:
+        """Detect if action involves writing/modifying code."""
+        keywords = ["write", "edit", "modify", "create file", "update", "refactor", "delete"]
+        return any(k in action.lower() for k in keywords)
+
+    def _is_research_action(self, action: str) -> bool:
+        """Detect if action is research-related and should sync to Notion."""
+        keywords = ["phase", "research", "discovery", "analysis", "validation", "documentation", "complete"]
+        action_lower = action.lower()
+        return any(k in action_lower for k in keywords)
+    
+    def _sync_to_notion(self, action: str):
+        """Trigger Notion sync via research_pipeline.py."""
+        try:
+            import subprocess
+            print("📝 Syncing to Notion...")
+            result = subprocess.run(
+                ["python3", "research_pipeline.py", "--sync-notion"],
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+            if result.returncode == 0:
+                print("✅ Notion sync completed")
+            else:
+                print(f"⚠️  Notion sync warning: {result.stderr}")
+        except Exception as e:
+            print(f"⚠️  Notion sync failed (non-critical): {e}")
+
+    def _check_work_log(self, action: str) -> bool:
+        """Check if WORK_LOG.md was recently updated (within last 60 seconds)."""
+        if not self.work_log_path or not os.path.exists(self.work_log_path):
+            print("🛑 WORK_LOG.md not found. Update required before action.")
+            return False
+        
+        import time
+        # datetime is now global
+        
+        # Check last modification time
+        mtime = os.path.getmtime(self.work_log_path)
+        now_ts = time.time()
+        age_seconds = now_ts - mtime
+        
+        # Read last few lines to check if action was logged
+        try:
+            with open(self.work_log_path, 'r') as f:
+                lines = f.readlines()
+                last_lines = ''.join(lines[-10:]).lower()
+                
+                # Check if this action or 'starting' is in recent log
+                if '🟡' in last_lines or 'starting' in last_lines:
+                    if age_seconds < 60:  # Updated within last minute
+                        return True
+        except Exception as e:
+            print(f"⚠️  Error reading WORK_LOG.md: {e}")
+            return False
+        
+        print("🛑 WORK_LOG.md not updated. Required format:")
+        print('   echo "🟡 Starting [ACTION]" >> WORK_LOG.md')
+        return False
+
+    def _meta_overseer_check(self, stage: str, context: str):
+        """
+        Executes the 'Meta-LLM' oversight using GEMINI Client.
+        """
+        print(f"\n✨ VETOBOARD (Gemini Override) ACTIVATED: {stage} CHECK")
+        print("...consulting the Gemini High Council...")
+        
+        if not JUDGE_AVAILABLE:
+            print("⚠️ Gemini Client not available. Bypassing check for stability.")
+            return
+
+        now = datetime.datetime.now()
+        
+        # Enforce Year Check via SSOT
+        authorized_year = resolve_parameter("authorized_year", 2026, section="meta")
+        if now.year != authorized_year:
+            print(f"🛑 CALENDAR VIOLATION: Current system year is {now.year}, but the Protocol demands {authorized_year}.")
+            print("Please adjust your system clock or the simulation settings.")
+            sys.exit(1)
+
+
+        work_log_context = self._load_context(max_chars=1000)
+        
+        prompt = f"""
+        Action Context: {context}
+        Work Log History (Last 1000 chars):
+        {work_log_context}
+        
+        Stage: {stage}
+        Current Year: 2026
+        
+        INSTRUCTION: You are the VetoBoard (CEO, CTO, CFO, LEGAL, CRITIC). 
+        1. Review the 'Action Context' against the Constitution.
+        2. Verify if 'Starting [Action]' is present in Work Log.
+        3. Return a table with APPROVED/VETO for each persona and a FINAL VERDICT.
+        4. If it's a verification step (END), ensure the action was actually done.
+        """
+        
+        # USE GEMINI CLIENT instead of Ollama
+        verdict_passed = self.gemini.judge_content(prompt, "You are the VetoBoard. Return APPROVED only if all criteria are met.")
+        
+        if verdict_passed:
+            print("----------------------------------------")
+            print("| Persona    | Status                        |")
+            print("| :--------- | :---------------------------- |")
+            print("| CEO        | ✅ APPROVED                  |")
+            print("| CTO        | ✅ APPROVED                  |")
+            print("| CFO        | ✅ APPROVED                  |")
+            print("| LEGAL      | ✅ APPROVED                  |")
+            print("| CRITIC     | ✅ APPROVED                  |")
+            print("----------------------------------------")
+            print("✨ UNANIMOUS CONSENT GRANTED.")
+        else:
+            print("\n🛑 BLOCKED BY VETOBOARD (GEMINI).")
+            sys.exit(1)
+
+    def verify_action(self, current_action: str) -> bool:
+        """
+        Execute the 3-Layer Verification Model.
+        """
+        if not JUDGE_AVAILABLE:
+            print("🛑 JudgeGuard: Dependencies missing (GeminiClient/JudgeFlow).")
+            return False
+            
+        # --- LAYER 0: Work Log Enforcement (NEW) ---
+        if not self._check_work_log(current_action):
+            return False
+
+        # --- VETOBOARD (Gemini): START CHECK ---
+        self._meta_overseer_check("START", current_action)
+
+        # --- LAYER 2: Live Thought Streaming ---
+
+        context = self._load_context()
+        phase = self._detect_phase(context)
+        
+        # --- LAYER 1: Tool Enforcement ---
+        # Rule: Phase 0/1 (Research) must NOT use run_command for research, must use browser.
+        # We assume 'run_command' is part of the action description if that tool is being used.
+        # Or if the user explicitely typed "run_command" or represents a shell command.
+        is_research_phase = phase in ["0", "1"]
+        is_shell_command = "run_command" in current_action or "shell" in current_action.lower()
+        if is_research_phase and is_shell_command:
+            msg = "Violation: You must use the Browser Agent for research tasks (Phase 0-1)."
+            logger.warning(f"Layer 1 Block: {msg}")
+            print(f"🛑 JudgeGuard: {msg}")
+            return False
+
+        # --- LAYER 3: Essence Check (Semantic Drift) ---
+        if self._is_write_operation(current_action):
+            logger.info("Layer 3: Verifying Semantic Drift...")
+            
+            # Use Gemini to check drift
+            drift_prompt = f"""
+            PROJECT ESSENCE (Golden Snapshot):
+            {PROJECT_ESSENCE}
+            
+            PROPOSED ACTION:
+            "{current_action}"
+            
+            TASK:
+            Does this action deviate significantly (>20%) from the Project Essence definitions?
+            Is it introducing features or changes that contradict the Core Values?
+            
+            reply PASSED if it aligns or is neutral.
+            reply FAILED if it causes significant drift.
+            """
+            
+            is_valid_essence = self.gemini.judge_content(drift_prompt, "The action must not deviate significantly from the Project Essence.")
+            
+            if not is_valid_essence:
+                msg = "Violation: Significant Semantic Drift (>20%) detected against Project Essence."
+                print(f"🛑 JudgeGuard: {msg}")
+                return False
+
+        # --- STANDARD VERIFICATION (Existing Logic) ---
+        # Combine everything for final sanity check
+        criteria = f"""
+        You are the PERMANENT JUDGE GUARD.
+        
+        1. IMMUTABLE LAWS:
+        {self.immutable_laws}
+        
+        2. CONTEXT:
+        {context[-5000:]}
+        
+        3. ACTION:
+        "{current_action}"
+        
+        VERDICT REQUIRED:
+        - Check for any other logic violations.
+        - Ensure strict adherence to Master Orchestration.
+        """
+        
+        judge = BlockJudge(criteria)
+        verdict = judge.evaluate(f"ACTION: {current_action}")
+        
+        if verdict:
+            # --- VETOBOARD (Gemini): END CHECK ---
+            self._meta_overseer_check("END", current_action)
+            
+            print(f"✅ JudgeGuard: Action '{current_action}' APPROVED.")
+            
+            # Auto-sync to Notion if this is a research action
+            if self._is_research_action(current_action):
+                self._sync_to_notion(current_action)
+            
+            return True
+        else:
+            msg = "Blocked by Standard Rules (Master Orchestration Violation)."
+            print(f"🛑 JudgeGuard: {msg}")
+            return False
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 judge_guard.py '<action_description>'")
+        sys.exit(1)
+        
+    action = sys.argv[1]
+    
+    with TrinityGuard(f"JudgeGuard_Verification_{action}"):
+        guard = JudgeGuard()
+        if not guard.verify_action(action):
+            sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+===
+"""
+JudgeGuard v2.0 - The 3-Layer Guardian of the Antigravity System.
+Verifies every critical step against the 'Standard of Truth'.
+
+Layer 1: Tool Enforcement (Hard Rules)
+Layer 2: Live Thought Streaming (Visibility)
+Layer 3: Essence Check (Semantic Drift)
+
+Environment Variables:
+    BRAIN_PATH: Path to the brain directory (optional, auto-discovers if not set)
+    WORK_LOG_PATH: Path to the work log file (optional, defaults to ./WORK_LOG.md)
+"""
+
+import os
+import sys
+import json
+import time
+import glob
+import logging
+import datetime
+from typing import Optional, Any
+from dotenv import load_dotenv
+import requests
+
+# Ensure root is in path for src access
+sys.path.append(os.getcwd())
+
+# Trinity Hardening v2.0 Imports
+try:
+    from scripts.error_handler import TrinityGuard
+except ImportError:
+    from error_handler import TrinityGuard
+
+try:
+    try:
+        from scripts.config_manager import resolve_parameter
+    except ImportError:
+        from config_manager import resolve_parameter
+except ImportError:
+    try:
+        from scripts.trinity import resolve_parameter
+    except ImportError:
+        from trinity import resolve_parameter
+
+
+load_dotenv()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+# --- DEPENDENCY INJECTION ---
+try:
+    from src.antigravity_core.judge_flow import BlockJudge
+    from src.antigravity_core.gemini_client import GeminiClient
+    JUDGE_AVAILABLE = True
+except ImportError as e:
+    logger.warning(f"⚠️ Judge/Gemini modules not available: {e}")
+    JUDGE_AVAILABLE = False
+
+# ----------------------------
+
+# --- LAYER 3 CONSTANT ---
+PROJECT_ESSENCE = """
+PROJECT ESSENCE (Golden Snapshot):
+The goal is to build an autonomous, self-improving AI agent system (Antigravity).
+Core Values:
+1. User Control: The user is the ultimate authority.
+2. Safety: No destructive actions without verification.
+3. Quality: High standards for code and documentation.
+4. Transparency: Streaming thoughts and actions to the user.
+5. Modularity: A clean, plugin-based architecture for Agents.
+6. Research First: Always validate assumptions with browser research before coding.
+7. CALENDAR TRUTH: The current year is strictly 2026. All operations must honor this timeline.
+8. MODEL PURITY: Only authorized Gemini models from 'available_models.txt' exist. All other definitions are invalid.
+
+SKILL MANIFEST:
+- mobile-vibe-coding: Enforce '.cursorrules' for PWA development (XML Architecture + Vibe Snippets).
+"""
+# ------------------------
+
+# ------------------------
+
+class JudgeGuard:
+
+    """
+    The Permanent Guardian of the Antigravity System.
+    Verifies every critical step against the 'Standard of Truth'.
+    """
+    
+    def __init__(self, brain_path: Optional[str] = None, work_log_path: Optional[str] = None):
+        self.brain_path = brain_path or os.getenv("BRAIN_PATH") or self._discover_brain_path()
+        self.work_log_path = work_log_path or os.getenv("WORK_LOG_PATH") or self._find_work_log()
+        self.rules_path = os.path.expanduser("~/.gemini/MASTER_ORCHESTRATION.md")
+        self.immutable_laws = self._load_rules()
+        self.alerts_file = "GUARD_ALERT.json"
+        
+        # Rule 45: Dynamic Tactic Registry
+        self.tactics = self._load_tactics()
+        
+        if JUDGE_AVAILABLE:
+            self.gemini = GeminiClient()
+        
+        logger.info(f"JudgeGuard v3.0 (Protocol Compliant) initialized. Brain: {self.brain_path}")
+
+    def _load_tactics(self) -> dict:
+        """Rule 45: Load domain tactics from registry."""
+        tactic_path = "trinity_tool_registry/heart_disease_tactic.json"
+        if os.path.exists(tactic_path):
+            try:
+                with open(tactic_path, "r") as f:
+                    return json.load(f)
+            except Exception as e:
+                logger.error(f"Error loading tactics: {e}")
+        return {"essence": {"values": [], "skills": []}}
+
+    def _emit_alert(self, severity: str, message: str, opaque_payload: str = "", correlation_score: Optional[float] = None):
+        """Rule 48: Standardized Guard Alert with Opaque Payload."""
+        alert = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "domain_context": self.tactics.get("domain_context", "Universal"),
+            "tactic_id": self.tactics.get("tactic_id", "CORE_CORE"),
+            "severity": severity,
+            "message": message,
+            "correlation_score": correlation_score,
+            "opaque_payload": opaque_payload
+        }
+        
+        # Load existing alerts or create new list
+        alerts = []
+        if os.path.exists(self.alerts_file):
+            try:
+                with open(self.alerts_file, "r") as f:
+                    alerts = json.load(f)
+            except:
+                pass
+        
+        alerts.append(alert)
+        # Keep last 100
+        alerts = alerts[-100:]
+        
+        with open(self.alerts_file, "w") as f:
+            json.dump(alerts, f, indent=2)
+            
+        print(f"\n[GUARD] {severity}: {message}")
+        if opaque_payload:
+            print(f"💡 HINT: {opaque_payload}")
+
+    def _pre_flight_architecture_check(self, action: str) -> bool:
+        """Rule 50: Proactive Architecture Diversity Check."""
+        # Heuristic to find model names in the action string
+        config_path = "trinity_config.json"
+        if not os.path.exists(config_path):
+            return True # Cannot check
+            
+        try:
+            with open(config_path, "r") as f:
+                config = json.load(f)
+            families = config.get("architecture_families", {})
+        except:
+            return True
+
+        # Extract potential models from action string (very simple heuristic)
+        # In a real scenario, this would be more robust
+        found_models = []
+        action_lower = action.lower()
+        for family, models in families.items():
+            for m in models:
+                if m in action_lower:
+                    found_models.append((m, family))
+
+        if not found_models:
+            return True # Not a training action or no models identified
+
+        # Rule 50: Veto if all identified models are from the same family
+        unique_families = set(f for m, f in found_models)
+        if len(unique_families) == 1 and len(found_models) > 1:
+            family_name = list(unique_families)[0]
+            msg = f"PROACTIVE VETO: Lack of Architectural Diversity. All models ({[m for m, f in found_models]}) are {family_name}."
+            hint = "Incorporate at least one orthogonal model family (e.g., Attention-based + Tree-based) to break the Correlation Wall."
+            self._emit_alert("VETO", msg, hint)
+            return False
+            
+        return True
+
+    def _discover_brain_path(self) -> Optional[str]:
+        """Auto-discover the brain path from ~/.gemini/antigravity/brain/"""
+        try:
+            base_path = os.path.expanduser("~/.gemini/antigravity/brain")
+            if not os.path.exists(base_path):
+                return None
+            brain_dirs = glob.glob(os.path.join(base_path, "*-*-*-*-*"))
+            if not brain_dirs:
+                return None
+            return max(brain_dirs, key=os.path.getmtime)
+        except Exception:
+            return None
+
+    def _find_work_log(self) -> str:
+        """Find WORK_LOG.md in current directory or parent directories."""
+        current = os.getcwd()
+        # Simple search up
+        for _ in range(3):
+            path = os.path.join(current, "WORK_LOG.md")
+            if os.path.exists(path):
+                return path
+            current = os.path.dirname(current)
+        return os.path.join(os.getcwd(), "WORK_LOG.md")
+
+    def _load_rules(self) -> str:
+        if not os.path.exists(self.rules_path):
+            return "⚠️ MASTER_ORCHESTRATION.md not found."
+        try:
+            with open(self.rules_path, "r", encoding="utf-8") as f:
+                return f.read()
+        except Exception as e:
+            return f"Error loading rules: {e}"
+
+    def _load_context(self, max_chars: int = 15000) -> str:
+        if self.work_log_path and os.path.exists(self.work_log_path):
+            try:
+                with open(self.work_log_path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    return content[-max_chars:]
+            except Exception:
+                pass
+        return "(No work log context)"
+
+    def _detect_phase(self, context: str) -> str:
+        """
+        Heuristic to detect Project Phase from context.
+        Returns '0', '1', '2', etc., or 'unknown'.
+        """
+        # Simple heuristic: scan last 2000 chars for explicit Phase declarations
+        recent = context[-2000:].lower()
+        if "phase 0" in recent or "scoping" in recent:
+            return "0"
+        if "phase 1" in recent or "discovery" in recent:
+            return "1"
+        if "phase 2" in recent or "execution" in recent:
+            return "2"
+        return "unknown"
+
+    def _is_write_operation(self, action: str) -> bool:
+        """Detect if action involves writing/modifying code."""
+        keywords = ["write", "edit", "modify", "create file", "update", "refactor", "delete"]
+        return any(k in action.lower() for k in keywords)
+
+    def _is_research_action(self, action: str) -> bool:
+        """Detect if action is research-related and should sync to Notion."""
+        keywords = ["phase", "research", "discovery", "analysis", "validation", "documentation", "complete"]
+        action_lower = action.lower()
+        return any(k in action_lower for k in keywords)
+    
+    def _sync_to_notion(self, action: str):
+        """Trigger Notion sync via research_pipeline.py."""
+        try:
+            import subprocess
+            print("📝 Syncing to Notion...")
+            result = subprocess.run(
+                ["python3", "research_pipeline.py", "--sync-notion"],
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+            if result.returncode == 0:
+                print("✅ Notion sync completed")
+            else:
+                print(f"⚠️  Notion sync warning: {result.stderr}")
+        except Exception as e:
+            print(f"⚠️  Notion sync failed (non-critical): {e}")
+
+    def _check_work_log(self, action: str) -> bool:
+        """Check if WORK_LOG.md was recently updated (within last 60 seconds)."""
+        if not self.work_log_path or not os.path.exists(self.work_log_path):
+            return False
+        
+        # Check last modification time
+        mtime = os.path.getmtime(self.work_log_path)
+        now_ts = time.time()
+        age_seconds = now_ts - mtime
+        
+        try:
+            with open(self.work_log_path, 'r') as f:
+                content = f.read().lower()
+                # Check if this action or 'starting' is in recent log
+                if '🟡' in content or 'starting' in content:
+                    if age_seconds < 60:
+                        return True
+        except Exception as e:
+            logger.error(f"Error reading WORK_LOG.md: {e}")
+        return False
+
+    def _meta_overseer_check(self, stage: str, context: str):
+        """
+        Executes the 'Meta-LLM' oversight using GEMINI Client.
+        """
+        print(f"\n✨ VETOBOARD (Gemini Override) ACTIVATED: {stage} CHECK")
+        
+        if not JUDGE_AVAILABLE:
+            print("⚠️ Gemini Client not available. Bypassing check for stability.")
+            return
+
+        now = datetime.datetime.now()
+        authorized_year = resolve_parameter("authorized_year", 2026, section="meta")
+        
+        if now.year != authorized_year:
+            self._emit_alert("HALT", 
+                            f"CALENDAR VIOLATION: System year {now.year} != Authorized {authorized_year}",
+                            "Adjust system clock or trinity_config.json")
+            sys.exit(1)
+
+        work_log_context = self._load_context(max_chars=1000)
+        
+        prompt = f"""
+        Action Context: {context}
+        Work Log History: {work_log_context}
+        Stage: {stage}
+        Tactic Essence: {json.dumps(self.tactics.get('essence', {}))}
+        
+        INSTRUCTION: You are the VetoBoard. 
+        Return a JSON response: {{"approved": bool, "severity": "INFO|WARNING|VETO|HALT", "reason": "...", "hint": "..."}}
+        """
+        
+        # Rule 46: Use structured judge output
+        raw_verdict = self.gemini.generate_content(prompt)
+        try:
+            cleaned = raw_verdict.strip()
+            if "```json" in cleaned:
+                cleaned = cleaned.split("```json")[1].split("```")[0].strip()
+            verdict = json.loads(cleaned)
+        except:
+            # Fallback if text is not JSON
+            verdict = {"approved": "APPROVED" in raw_verdict.upper(), "severity": "VETO", "reason": raw_verdict[:200]}
+
+        if not verdict.get("approved", False):
+            severity = verdict.get("severity", "VETO")
+            self._emit_alert(severity, verdict.get("reason", "Veto Board disagreement"), verdict.get("hint", ""))
+            
+            if severity in ["HALT", "VETO"]:
+                sys.exit(1)
+        else:
+            print("✨ UNANIMOUS CONSENT GRANTED.")
+
+    def verify_action(self, current_action: str) -> bool:
+        """
+        Execute the 3-Layer Verification Model.
+        """
+        if not JUDGE_AVAILABLE:
+            return False
+            
+        # --- LAYER 0: Work Log Enforcement ---
+        if not self._check_work_log(current_action):
+            self._emit_alert("WARNING", "Action not logged in WORK_LOG.md", "Run: echo '🟡 Starting [action]' >> WORK_LOG.md")
+            return False
+
+        # --- VETOBOARD (Gemini): START CHECK ---
+        self._meta_overseer_check("START", current_action)
+
+        # --- RULE 50: Proactive Architecture Check ---
+        if not self._pre_flight_architecture_check(current_action):
+            return False
+
+        # --- LAYER 1: Tool Enforcement ---
+        context = self._load_context()
+        phase = self._detect_phase(context)
+        is_research_phase = phase in ["0", "1"]
+        is_shell_command = "run_command" in current_action or "shell" in current_action.lower()
+        
+        if is_research_phase and is_shell_command:
+            self._emit_alert("VETO", "Research phase 0-1 requires Browser Agent, not run_command.", "Switch to browser tools or advance phase.")
+            return False
+
+        # --- LAYER 3: Essence Check (Semantic Drift) ---
+        if self._is_write_operation(current_action):
+            drift_prompt = f"""
+            TACTIC ESSENCE: {json.dumps(self.tactics.get('essence', {}))}
+            PROPOSED ACTION: "{current_action}"
+            TASK: Does this cause >20% semantic drift? Return JSON verdict.
+            """
+            
+            # Simplified for brevity in this refactor
+            is_valid_essence = self.gemini.judge_content(drift_prompt, "Does this action deviate significantly (>20%) from the Project Essence definitions?")
+            if not is_valid_essence:
+                self._emit_alert("VETO", "Significant Semantic Drift Detected.", "Align with Project Essence values.")
+                return False
+
+        # --- STANDARD VERIFICATION (Existing Logic) ---
+        # Combine everything for final sanity check
+        criteria = f"""
+        You are the PERMANENT JUDGE GUARD.
+        
+        1. IMMUTABLE LAWS:
+        {self.immutable_laws}
+        
+        2. CONTEXT:
+        {context[-5000:]}
+        
+        3. ACTION:
+        "{current_action}"
+        
+        VERDICT REQUIRED:
+        - Check for any other logic violations.
+        - Ensure strict adherence to Master Orchestration.
+        """
+        
+        judge = BlockJudge(criteria)
+        verdict = judge.evaluate(f"ACTION: {current_action}")
+        
+        if verdict:
+            # --- VETOBOARD (Gemini): END CHECK ---
+            self._meta_overseer_check("END", current_action)
+            
+            print(f"✅ JudgeGuard: Action '{current_action}' APPROVED.")
+            
+            # Auto-sync to Notion if this is a research action
+            if self._is_research_action(current_action):
+                self._sync_to_notion(current_action)
+            
+            return True
+        else:
+            msg = "Blocked by Standard Rules (Master Orchestration Violation)."
+            print(f"🛑 JudgeGuard: {msg}")
+            return False
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python3 judge_guard.py '<action_description>'")
+        sys.exit(1)
+        
+    action = sys.argv[1]
+    
+    with TrinityGuard(f"JudgeGuard_Verification_{action}"):
+        guard = JudgeGuard()
+        if not guard.verify_action(action):
+            sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()
+```
+```diff:judge_guard_api.py
+# judge_guard_api.py — V3.14 Production Stable
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from pydantic import BaseModel
+from typing import List, Optional, Dict
+import aiosqlite
+import json
+import os
+import uuid
+from collections import deque
+from src.antigravity_core.judge_guard import JudgeGuard, Rule
+from src.antigravity_core.observability import get_tracer, KIND, INPUT, OUTPUT, OpenInferenceSpanKindValues
+from dotenv import load_dotenv
+import asyncio
+
+load_dotenv()
+tracer = get_tracer("judge_guard_api")
+
+# app = FastAPI() (Removed - defined via lifespan below)
+guard: JudgeGuard = JudgeGuard()
+
+# ============ PYDANTIC MODELS ============
+class VerdictRequest(BaseModel):
+    rule_id: str
+    action_description: str
+    context: Optional[str] = None
+
+class VerdictResponse(BaseModel):
+    rule_id: str
+    approved: bool
+    elo_rating: float
+    reason: str
+
+class DebateMessage(BaseModel):
+    session_id: str
+    role: str
+    content: str
+
+class AIOMOResult(BaseModel):
+    problem_id: int
+    success: bool
+    prediction: Optional[int] = None
+    ground_truth: Optional[int] = None
+    error_log: Optional[str] = None
+
+# ============ GLOBAL STATE ============
+debate_messages: deque = deque(maxlen=500)  # Ring buffer for debate messages
+
+# ============ GUARD HELPER ============
+async def _ensure_guard():
+    """Ensure guard is initialized. Raises HTTPException(503) if impossible."""
+    if not guard.initialized:
+        try:
+            await guard.initialize()
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"JudgeGuard not ready: {e}")
+    if not guard.initialized:
+        raise HTTPException(status_code=503, detail="JudgeGuard failed to initialize")
+
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize guard and ensure database is ready."""
+    try:
+        await guard.initialize()
+        print("✅ JudgeGuard initialized successfully.")
+    except Exception as e:
+        print(f"⚠️ JudgeGuard startup init failed: {e} (will retry on first request)")
+    yield
+    # Cleanup logic here if needed
+    pass
+
+app = FastAPI(lifespan=lifespan)
+
+
+# ============ HEALTH CHECK ============
+@app.get("/api/health")
+async def health():
+    """Health endpoint."""
+    return {"status": "ok", "service": "judge_guard_v3.14", "guard_ready": guard.initialized}
+
+# ============ VERDICT ENDPOINT (CORE) ============
+@app.post("/api/verdict")
+async def report_verdict(req: VerdictRequest) -> VerdictResponse:
+    with tracer.start_as_current_span(
+        "api_report_verdict",
+        attributes={
+            KIND: OpenInferenceSpanKindValues.GUARDRAIL,
+            "rule_id": req.rule_id,
+            INPUT: req.action_description
+        }
+    ) as span:
+        try:
+            await _ensure_guard()
+            
+            # Bridge: construct proper Rule and action dict from VerdictRequest
+            rule = Rule(rule_id=req.rule_id, description=req.action_description, layer=2)
+            action_id = f"api_{uuid.uuid4().hex[:8]}"
+            action_dict = {
+                "type": req.rule_id,
+                "description": req.action_description,
+                "context": req.context or ""
+            }
+            
+            result = await guard.evaluate(action_id, action_dict, rule)
+            span.set_attribute(OUTPUT, json.dumps(result))
+            span.set_attribute("approved", result.get("approved", False))
+            
+            return VerdictResponse(
+                rule_id=req.rule_id,
+                approved=result.get("approved", False),
+                elo_rating=result.get("elo_rating", 1200.0),
+                reason=result.get("reason", "No reason")
+            )
+        except HTTPException as he:
+            span.record_exception(he)
+            raise
+        except Exception as e:
+            span.record_exception(e)
+            raise HTTPException(status_code=500, detail=str(e))
+
+# ============ DEBATE ENDPOINTS (V3.14) ============
+@app.post("/api/debate/message")
+async def post_debate_message(msg: DebateMessage):
+    """Receive a debate message from trinity_ensemble_debate."""
+    entry = {
+        "session_id": msg.session_id,
+        "role": msg.role,
+        "content": msg.content[:2000],  # Truncate for safety
+        "timestamp": __import__('datetime').datetime.now().isoformat()
+    }
+    debate_messages.append(entry)
+    return {"status": "ok", "buffered": len(debate_messages)}
+
+@app.get("/api/debate/latest")
+async def get_debate_latest(limit: int = 50):
+    """Get latest debate messages."""
+    msgs = list(debate_messages)
+    return msgs[-limit:]
+
+# ============ AIMO ENDPOINTS (V3.14) ============
+@app.get("/api/aimo/latest")
+async def get_aimo_latest_list(limit: int = 20):
+    """Get latest AIMO attempts from DB."""
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute('''
+                SELECT id, problem_id, success, provider, timestamp, syntax_ok, security_veto 
+                FROM aimo_history ORDER BY id DESC LIMIT ?
+            ''', (limit,))
+            rows = await cursor.fetchall()
+            return [dict(row) for row in rows]
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/aimo/detail/{attempt_id}")
+async def get_aimo_attempt_detail(attempt_id: int):
+    """Get full details of a specific AIMO attempt."""
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute('SELECT * FROM aimo_history WHERE id = ?', (attempt_id,))
+            row = await cursor.fetchone()
+            if not row:
+                raise HTTPException(status_code=404, detail="Attempt not found")
+            return dict(row)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aimo/stats")
+async def get_aimo_stats():
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            cursor = await db.execute('SELECT COUNT(*), SUM(success), SUM(CASE WHEN syntax_ok=0 THEN 1 ELSE 0 END) FROM aimo_history')
+            total, wins, syntax_fails = await cursor.fetchone()
+            wins = wins or 0
+            return {
+                "total": total,
+                "wins": wins,
+                "success_rate": wins / total if total > 0 else 0,
+                "syntax_fails": syntax_fails or 0
+            }
+    except Exception as e:
+        return {"error": str(e)}
+
+# ============ LOGS ENDPOINT ============
+@app.get("/api/logs")
+async def get_logs(lines: int = 50):
+    try:
+        if os.path.exists('judge_guard.log'):
+            with open('judge_guard.log', 'r') as f:
+                content = f.readlines()
+                return {"logs": content[-lines:]}
+        return {"logs": ["Log file not found."]}
+    except Exception as e:
+        return {"error": str(e)}
+
+# ============ STATIC DASHBOARD ============
+@app.get("/")
+async def serve_dashboard():
+    try:
+        if os.path.exists('dashboard_jg/index.html'):
+            with open('dashboard_jg/index.html', 'r') as f:
+                return HTMLResponse(f.read())
+        return HTMLResponse("<h1>Dashboard Not Found</h1><p>Check dashboard_jg/index.html</p>")
+    except Exception as e:
+        return HTMLResponse(f"<h1>Error</h1><p>{str(e)}</p>")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8081)
+===
+# judge_guard_api.py — V3.14 Production Stable
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse
+from pydantic import BaseModel
+from typing import List, Optional, Dict
+import aiosqlite
+import json
+import os
+import uuid
+from collections import deque
+from src.antigravity_core.judge_guard import JudgeGuard, Rule
+from src.antigravity_core.observability import get_tracer, KIND, INPUT, OUTPUT, OpenInferenceSpanKindValues
+from dotenv import load_dotenv
+import asyncio
+
+load_dotenv()
+tracer = get_tracer("judge_guard_api")
+
+# app = FastAPI() (Removed - defined via lifespan below)
+guard: JudgeGuard = JudgeGuard()
+
+# ============ PYDANTIC MODELS ============
+class VerdictRequest(BaseModel):
+    rule_id: str
+    action_description: str
+    context: Optional[str] = None
+
+class VerdictResponse(BaseModel):
+    rule_id: str
+    approved: bool
+    elo_rating: float
+    reason: str
+
+class DebateMessage(BaseModel):
+    session_id: str
+    role: str
+    content: str
+
+class AIOMOResult(BaseModel):
+    problem_id: int
+    success: bool
+    prediction: Optional[int] = None
+    ground_truth: Optional[int] = None
+    error_log: Optional[str] = None
+
+# ============ GLOBAL STATE ============
+debate_messages: deque = deque(maxlen=500)  # Ring buffer for debate messages
+
+# ============ GUARD HELPER ============
+async def _ensure_guard():
+    """Ensure guard is initialized. Raises HTTPException(503) if impossible."""
+    if not guard.initialized:
+        try:
+            await guard.initialize()
+        except Exception as e:
+            raise HTTPException(status_code=503, detail=f"JudgeGuard not ready: {e}")
+    if not guard.initialized:
+        raise HTTPException(status_code=503, detail="JudgeGuard failed to initialize")
+
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize guard and ensure database is ready."""
+    try:
+        await guard.initialize()
+        print("✅ JudgeGuard initialized successfully.")
+    except Exception as e:
+        print(f"⚠️ JudgeGuard startup init failed: {e} (will retry on first request)")
+    yield
+    # Cleanup logic here if needed
+    pass
+
+app = FastAPI(lifespan=lifespan)
+
+
+# ============ HEALTH CHECK ============
+@app.get("/api/health")
+async def health():
+    """Health endpoint."""
+    return {"status": "ok", "service": "judge_guard_v3.14", "guard_ready": guard.initialized}
+
+# ============ VERDICT ENDPOINT (CORE) ============
+@app.post("/api/verdict")
+async def report_verdict(req: VerdictRequest) -> VerdictResponse:
+    with tracer.start_as_current_span(
+        "api_report_verdict",
+        attributes={
+            KIND: OpenInferenceSpanKindValues.GUARDRAIL,
+            "rule_id": req.rule_id,
+            INPUT: req.action_description
+        }
+    ) as span:
+        try:
+            await _ensure_guard()
+            
+            # Bridge: construct proper Rule and action dict from VerdictRequest
+            rule = Rule(rule_id=req.rule_id, description=req.action_description, layer=2)
+            action_id = f"api_{uuid.uuid4().hex[:8]}"
+            action_dict = {
+                "type": req.rule_id,
+                "description": req.action_description,
+                "context": req.context or ""
+            }
+            
+            result = await guard.evaluate(action_id, action_dict, rule)
+            span.set_attribute(OUTPUT, json.dumps(result))
+            span.set_attribute("approved", result.get("approved", False))
+            
+            return VerdictResponse(
+                rule_id=req.rule_id,
+                approved=result.get("approved", False),
+                elo_rating=result.get("elo_rating", 1200.0),
+                reason=result.get("reason", "No reason")
+            )
+        except HTTPException as he:
+            span.record_exception(he)
+            raise
+        except Exception as e:
+            span.record_exception(e)
+            raise HTTPException(status_code=500, detail=str(e))
+
+# ============ DEBATE ENDPOINTS (V3.14) ============
+@app.post("/api/debate/message")
+async def post_debate_message(msg: DebateMessage):
+    """Receive a debate message from trinity_ensemble_debate."""
+    entry = {
+        "session_id": msg.session_id,
+        "role": msg.role,
+        "content": msg.content[:2000],  # Truncate for safety
+        "timestamp": __import__('datetime').datetime.now().isoformat()
+    }
+    debate_messages.append(entry)
+    return {"status": "ok", "buffered": len(debate_messages)}
+
+@app.get("/api/debate/latest")
+async def get_debate_latest(limit: int = 50):
+    """Get latest debate messages."""
+    msgs = list(debate_messages)
+    return msgs[-limit:]
+
+# ============ AIMO ENDPOINTS (V3.14) ============
+@app.get("/api/aimo/latest")
+async def get_aimo_latest_list(limit: int = 20):
+    """Get latest AIMO attempts from DB."""
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute('''
+                SELECT id, problem_id, success, provider, timestamp, syntax_ok, security_veto 
+                FROM aimo_history ORDER BY id DESC LIMIT ?
+            ''', (limit,))
+            rows = await cursor.fetchall()
+            return [dict(row) for row in rows]
+    except Exception as e:
+        return {"error": str(e)}
+
+@app.get("/api/aimo/detail/{attempt_id}")
+async def get_aimo_attempt_detail(attempt_id: int):
+    """Get full details of a specific AIMO attempt."""
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            db.row_factory = aiosqlite.Row
+            cursor = await db.execute('SELECT * FROM aimo_history WHERE id = ?', (attempt_id,))
+            row = await cursor.fetchone()
+            if not row:
+                raise HTTPException(status_code=404, detail="Attempt not found")
+            return dict(row)
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/aimo/stats")
+async def get_aimo_stats():
+    try:
+        async with aiosqlite.connect('trinity_aimo.db') as db:
+            cursor = await db.execute('SELECT COUNT(*), SUM(success), SUM(CASE WHEN syntax_ok=0 THEN 1 ELSE 0 END) FROM aimo_history')
+            total, wins, syntax_fails = await cursor.fetchone()
+            wins = wins or 0
+            return {
+                "total": total,
+                "wins": wins,
+                "success_rate": wins / total if total > 0 else 0,
+                "syntax_fails": syntax_fails or 0
+            }
+    except Exception as e:
+        return {"error": str(e)}
+
+# ============ LOGS ENDPOINT ============
+@app.get("/api/logs")
+async def get_logs(lines: int = 50):
+    try:
+        if os.path.exists('judge_guard.log'):
+            with open('judge_guard.log', 'r') as f:
+                content = f.readlines()
+                return {"logs": content[-lines:]}
+        return {"logs": ["Log file not found."]}
+    except Exception as e:
+        return {"error": str(e)}
+
+# ============ ALERTS ENDPOINT (RULE 46) ============
+@app.get("/api/alerts/latest")
+async def get_alerts_latest(limit: int = 50):
+    """Serve dynamic Guard Alerts from Rule 46."""
+    try:
+        if os.path.exists('GUARD_ALERT.json'):
+            with open('GUARD_ALERT.json', 'r') as f:
+                alerts = json.load(f)
+                return alerts[-limit:]
+        return []
+    except Exception as e:
+        return {"error": str(e)}
+
+# ============ STATIC DASHBOARD ============
+@app.get("/")
+async def serve_dashboard():
+    try:
+        if os.path.exists('dashboard_jg/index.html'):
+            with open('dashboard_jg/index.html', 'r') as f:
+                return HTMLResponse(f.read())
+        return HTMLResponse("<h1>Dashboard Not Found</h1><p>Check dashboard_jg/index.html</p>")
+    except Exception as e:
+        return HTMLResponse(f"<h1>Error</h1><p>{str(e)}</p>")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8081)
+```
+```diff:index.html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trinity | Grandmaster Boardroom</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #020408;
+        --glass: rgba(10, 15, 25, 0.8);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --critical: #ff2d55;
+        --stable: #00f2ff;
+        --warning: #ffcc00;
+        --accent: #bf5af2;
+        --text-main: #f5f5f7;
+        --text-muted: #86868b;
+        --neon-glow: 0 0 15px rgba(0, 242, 255, 0.3);
+      }
+
+      body {
+        background: radial-gradient(
+          circle at 50% 50%,
+          #0d1117 0%,
+          var(--bg-dark) 100%
+        );
+        color: var(--text-main);
+        font-family: "Outfit", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .app-container {
+        display: grid;
+        grid-template-areas: "header header header" "sidebar main debate";
+        grid-template-columns: 350px 1fr 380px;
+        grid-template-rows: 80px 1fr;
+        height: 100vh;
+      }
+
+      .header {
+        grid-area: header;
+        background: var(--glass);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        z-index: 100;
+      }
+
+      .sidebar {
+        grid-area: sidebar;
+        border-right: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .main-content {
+        grid-area: main;
+        padding: 30px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .debate-panel {
+        grid-area: debate;
+        border-left: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* AIMO Tab List */
+      .aimo-item {
+        padding: 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 4px solid transparent;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-bottom: 10px;
+      }
+
+      .aimo-item:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: scale(1.02);
+      }
+
+      .aimo-success {
+        border-left-color: var(--stable);
+      }
+      .aimo-fail {
+        border-left-color: var(--critical);
+      }
+      .aimo-veto {
+        border-left-color: var(--warning);
+      }
+
+      /* Debate Messages */
+      .debate-msg {
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        margin-bottom: 8px;
+        animation: fadeIn 0.3s ease-in;
+      }
+
+      .debate-msg .role {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+
+      .debate-msg .msg-content {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        opacity: 0.85;
+        max-height: 120px;
+        overflow-y: auto;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Health Stats Grid */
+      .health-stat {
+        text-align: center;
+        padding: 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+      }
+
+      .health-stat .value {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .health-stat .label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 8px;
+      }
+
+      /* Details Modal */
+      #modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal {
+        width: 90%;
+        height: 90%;
+        background: var(--bg-dark);
+        border: 1px solid var(--accent);
+        border-radius: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+      }
+
+      .modal-panel {
+        padding: 40px;
+        overflow-y: auto;
+        border-right: 1px solid var(--glass-border);
+      }
+
+      pre {
+        background: #000;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: #00ff99;
+        white-space: pre-wrap;
+      }
+
+      .badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+
+      .badge-success {
+        background: rgba(0, 242, 255, 0.2);
+        color: var(--stable);
+      }
+      .badge-fail {
+        background: rgba(255, 45, 85, 0.2);
+        color: var(--critical);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+        animation: pulse 2s infinite;
+      }
+
+      .dot-ok {
+        background: var(--stable);
+      }
+      .dot-warn {
+        background: var(--warning);
+      }
+      .dot-fail {
+        background: var(--critical);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <h2 style="letter-spacing: 5px; font-weight: 300">
+          TRINITY
+          <span style="font-weight: 600; color: var(--stable)">V3.14</span>
+        </h2>
+        <div style="display: flex; gap: 16px; align-items: center">
+          <div id="health-dot">
+            <span class="status-dot dot-warn"></span>Checking...
+          </div>
+          <div id="aimo-stats" class="badge badge-success">0/0 SUCCESS</div>
+        </div>
+      </header>
+
+      <aside class="sidebar">
+        <div
+          style="padding: 20px; border-bottom: 1px solid var(--glass-border)"
+        >
+          <div class="card-title">Live AIMO Feed</div>
+        </div>
+        <div
+          id="aimo-list"
+          style="padding: 20px; overflow-y: auto; flex-grow: 1"
+        >
+          <!-- AIMO Attempts populated by JS -->
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="card">
+          <div class="card-title">System Health & Logic Trust</div>
+          <div
+            id="health-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+            "
+          >
+            <!-- Health Stats populated by JS -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Institutional Memory (RAG)</div>
+          <div
+            id="rag-status"
+            style="
+              font-family: &quot;JetBrains Mono&quot;;
+              font-size: 0.8rem;
+              opacity: 0.7;
+            "
+          >
+            Scanning trinity_kb.db...
+          </div>
+        </div>
+      </main>
+
+      <aside class="debate-panel">
+        <div
+          style="padding: 20px; border-bottom: 1px solid var(--glass-border)"
+        >
+          <div class="card-title">
+            Live Debate Transcript
+            <span id="debate-count" style="color: var(--accent)">0</span>
+          </div>
+        </div>
+        <div
+          id="debate-list"
+          style="padding: 16px; overflow-y: auto; flex-grow: 1"
+        >
+          <div
+            style="
+              opacity: 0.4;
+              font-size: 0.8rem;
+              text-align: center;
+              padding-top: 40px;
+            "
+          >
+            Waiting for debate messages...
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="modal-overlay" onclick="closeModal()">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-panel" id="modal-left">
+          <h3>Problem & Raw AI Response</h3>
+          <div id="m-problem" style="margin-bottom: 20px; opacity: 0.8"></div>
+          <pre id="m-raw"></pre>
+        </div>
+        <div class="modal-panel" id="modal-right">
+          <h3>Extracted Code & Execution</h3>
+          <pre id="m-code" style="color: #bf5af2"></pre>
+          <hr style="opacity: 0.1" />
+          <h4>Stdout:</h4>
+          <pre id="m-stdout" style="color: #fff"></pre>
+          <h4>Stderr / Error:</h4>
+          <pre id="m-stderr" style="color: var(--critical)"></pre>
+          <div
+            id="m-veto"
+            style="color: var(--warning); font-weight: bold"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============ AIMO FEED ============
+      async function fetchAIMO() {
+        try {
+          const res = await fetch("/api/aimo/latest");
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            const list = document.getElementById("aimo-list");
+            list.innerHTML = data
+              .map(
+                (a) => `
+              <div class="aimo-item ${a.success ? "aimo-success" : a.security_veto ? "aimo-veto" : "aimo-fail"}" onclick="showDetail(${a.id})">
+                  <div style="font-weight: 600;">#${a.id} | Problem ${a.problem_id}</div>
+                  <div style="font-size: 0.7rem; opacity: 0.6;">${(a.timestamp || "").split("T")[1]?.split(".")[0] || ""} via ${a.provider || "unknown"}</div>
+                  <div style="font-size: 0.75rem; margin-top: 5px;">${a.success ? "✅ PASSED" : a.security_veto ? "⚠️ VETOED" : "❌ FAILED"}</div>
+              </div>
+            `,
+              )
+              .join("");
+          }
+
+          const sRes = await fetch("/api/aimo/stats");
+          const stats = await sRes.json();
+          if (!stats.error) {
+            document.getElementById("aimo-stats").innerText =
+              `${stats.wins}/${stats.total} SUCCESS (${stats.syntax_fails} Syntax Fails)`;
+          }
+        } catch (e) {
+          console.error("AIMO fetch error:", e);
+        }
+      }
+
+      // ============ HEALTH CHECK ============
+      async function fetchHealth() {
+        try {
+          const res = await fetch("/api/health");
+          const h = await res.json();
+          const dot = document.getElementById("health-dot");
+          if (h.guard_ready) {
+            dot.innerHTML = '<span class="status-dot dot-ok"></span>Guard OK';
+          } else {
+            dot.innerHTML =
+              '<span class="status-dot dot-warn"></span>Guard Pending';
+          }
+
+          const grid = document.getElementById("health-grid");
+          grid.innerHTML = `
+            <div class="health-stat">
+              <div class="value" style="color: ${h.guard_ready ? "var(--stable)" : "var(--warning)"}">${h.guard_ready ? "●" : "○"}</div>
+              <div class="label">Guard Status</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" style="color: var(--stable)">${h.service || "N/A"}</div>
+              <div class="label">Service Version</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" id="h-total">-</div>
+              <div class="label">Total AIMO Runs</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" id="h-rate" style="color: var(--accent)">-</div>
+              <div class="label">Success Rate</div>
+            </div>
+          `;
+
+          // Fetch AIMO stats for the grid
+          const sRes = await fetch("/api/aimo/stats");
+          const stats = await sRes.json();
+          if (!stats.error) {
+            document.getElementById("h-total").innerText = stats.total || 0;
+            document.getElementById("h-rate").innerText =
+              ((stats.success_rate || 0) * 100).toFixed(1) + "%";
+          }
+        } catch (e) {
+          const dot = document.getElementById("health-dot");
+          dot.innerHTML = '<span class="status-dot dot-fail"></span>API Down';
+        }
+      }
+
+      // ============ DEBATE TRANSCRIPT ============
+      async function fetchDebate() {
+        try {
+          const res = await fetch("/api/debate/latest?limit=50");
+          const msgs = await res.json();
+          if (Array.isArray(msgs) && msgs.length > 0) {
+            const list = document.getElementById("debate-list");
+            document.getElementById("debate-count").innerText = msgs.length;
+            list.innerHTML = msgs
+              .map(
+                (m) => `
+              <div class="debate-msg">
+                <div class="role">${m.role} <span style="opacity: 0.4; font-size: 0.6rem;">${(m.timestamp || "").split("T")[1]?.split(".")[0] || ""}</span></div>
+                <div class="msg-content">${(m.content || "").substring(0, 500)}</div>
+              </div>
+            `,
+              )
+              .join("");
+            list.scrollTop = list.scrollHeight;
+          }
+        } catch (e) {
+          console.error("Debate fetch error:", e);
+        }
+      }
+
+      // ============ DETAIL MODAL ============
+      async function showDetail(id) {
+        const res = await fetch(`/api/aimo/detail/${id}`);
+        const d = await res.json();
+
+        document.getElementById("m-problem").innerText =
+          d.problem_text || "N/A";
+        document.getElementById("m-raw").innerText = d.raw_response || "N/A";
+        document.getElementById("m-code").innerText =
+          d.code || "No code extracted";
+        document.getElementById("m-stdout").innerText = d.stdout || "No output";
+        document.getElementById("m-stderr").innerText =
+          d.stderr || d.error_log || "No errors";
+        document.getElementById("m-veto").innerText = d.security_veto
+          ? `⚠️ VETO: ${d.security_veto}`
+          : "";
+
+        document.getElementById("modal-overlay").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("modal-overlay").style.display = "none";
+      }
+
+      // ============ POLLING ============
+      setInterval(fetchAIMO, 3000);
+      setInterval(fetchHealth, 5000);
+      setInterval(fetchDebate, 4000);
+      fetchAIMO();
+      fetchHealth();
+      fetchDebate();
+    </script>
+  </body>
+</html>
+===
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Trinity | Grandmaster Boardroom</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-dark: #020408;
+        --glass: rgba(10, 15, 25, 0.8);
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --critical: #ff2d55;
+        --stable: #00f2ff;
+        --warning: #ffcc00;
+        --accent: #bf5af2;
+        --text-main: #f5f5f7;
+        --text-muted: #86868b;
+        --neon-glow: 0 0 15px rgba(0, 242, 255, 0.3);
+      }
+
+      body {
+        background: radial-gradient(
+          circle at 50% 50%,
+          #0d1117 0%,
+          var(--bg-dark) 100%
+        );
+        color: var(--text-main);
+        font-family: "Outfit", sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .app-container {
+        display: grid;
+        grid-template-areas: "header header header" "sidebar main debate";
+        grid-template-columns: 350px 1fr 380px;
+        grid-template-rows: 80px 1fr;
+        height: 100vh;
+      }
+
+      .header {
+        grid-area: header;
+        background: var(--glass);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--glass-border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        z-index: 100;
+      }
+
+      .sidebar {
+        grid-area: sidebar;
+        border-right: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .main-content {
+        grid-area: main;
+        padding: 30px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      .debate-panel {
+        grid-area: debate;
+        border-left: 1px solid var(--glass-border);
+        background: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .card {
+        background: var(--glass);
+        border: 1px solid var(--glass-border);
+        border-radius: 20px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .card-title {
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      /* AIMO Tab List */
+      .aimo-item {
+        padding: 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 4px solid transparent;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-bottom: 10px;
+      }
+
+      .aimo-item:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: scale(1.02);
+      }
+
+      .aimo-success {
+        border-left-color: var(--stable);
+      }
+      .aimo-fail {
+        border-left-color: var(--critical);
+      }
+      .aimo-veto {
+        border-left-color: var(--warning);
+      }
+
+      /* Debate Messages */
+      .debate-msg {
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        margin-bottom: 8px;
+        animation: fadeIn 0.3s ease-in;
+      }
+
+      .debate-msg .role {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 4px;
+      }
+
+      .debate-msg .msg-content {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        opacity: 0.85;
+        max-height: 120px;
+        overflow-y: auto;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Health Stats Grid */
+      .health-stat {
+        text-align: center;
+        padding: 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+      }
+
+      .health-stat .value {
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .health-stat .label {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 8px;
+      }
+
+      /* Details Modal */
+      #modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .modal {
+        width: 90%;
+        height: 90%;
+        background: var(--bg-dark);
+        border: 1px solid var(--accent);
+        border-radius: 24px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        overflow: hidden;
+      }
+
+      .modal-panel {
+        padding: 40px;
+        overflow-y: auto;
+        border-right: 1px solid var(--glass-border);
+      }
+
+      pre {
+        background: #000;
+        padding: 15px;
+        border-radius: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: #00ff99;
+        white-space: pre-wrap;
+      }
+
+      .badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.7rem;
+        font-weight: bold;
+      }
+
+      .badge-success {
+        background: rgba(0, 242, 255, 0.2);
+        color: var(--stable);
+      }
+      .badge-fail {
+        background: rgba(255, 45, 85, 0.2);
+        color: var(--critical);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 6px;
+        animation: pulse 2s infinite;
+      }
+
+      .dot-ok {
+        background: var(--stable);
+      }
+      .dot-warn {
+        background: var(--warning);
+      }
+      .dot-fail {
+        background: var(--critical);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="header">
+        <h2 style="letter-spacing: 5px; font-weight: 300">
+          TRINITY
+          <span style="font-weight: 600; color: var(--stable)">V3.14</span>
+        </h2>
+        <div style="display: flex; gap: 16px; align-items: center">
+          <div id="health-dot">
+            <span class="status-dot dot-warn"></span>Checking...
+          </div>
+          <div id="aimo-stats" class="badge badge-success">0/0 SUCCESS</div>
+        </div>
+      </header>
+
+      <aside class="sidebar">
+        <div
+          style="padding: 20px; border-bottom: 1px solid var(--glass-border)"
+        >
+          <div class="card-title">Live AIMO Feed</div>
+        </div>
+        <div
+          id="aimo-list"
+          style="padding: 20px; overflow-y: auto; flex-grow: 1"
+        >
+          <!-- AIMO Attempts populated by JS -->
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="card">
+          <div class="card-title">System Health & Logic Trust</div>
+          <div
+            id="health-grid"
+            style="
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+            "
+          >
+            <!-- Health Stats populated by JS -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Institutional Memory (RAG)</div>
+          <div
+            id="rag-status"
+            style="
+              font-family: &quot;JetBrains Mono&quot;;
+              font-size: 0.8rem;
+              opacity: 0.7;
+            "
+          >
+            Scanning trinity_kb.db...
+          </div>
+        </div>
+      </main>
+
+      <aside class="debate-panel">
+        <div
+          style="padding: 20px; border-bottom: 1px solid var(--glass-border)"
+        >
+          <div class="card-title">
+            Live Debate Transcript
+            <span id="debate-count" style="color: var(--accent)">0</span>
+          </div>
+        </div>
+        <div
+          id="debate-list"
+          style="padding: 16px; overflow-y: auto; flex-grow: 1"
+        >
+          <div
+            style="
+              opacity: 0.4;
+              font-size: 0.8rem;
+              text-align: center;
+              padding-top: 40px;
+            "
+          >
+            Waiting for debate messages...
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="modal-overlay" onclick="closeModal()">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-panel" id="modal-left">
+          <h3>Problem & Raw AI Response</h3>
+          <div id="m-problem" style="margin-bottom: 20px; opacity: 0.8"></div>
+          <pre id="m-raw"></pre>
+        </div>
+        <div class="modal-panel" id="modal-right">
+          <h3>Extracted Code & Execution</h3>
+          <pre id="m-code" style="color: #bf5af2"></pre>
+          <hr style="opacity: 0.1" />
+          <h4>Stdout:</h4>
+          <pre id="m-stdout" style="color: #fff"></pre>
+          <h4>Stderr / Error:</h4>
+          <pre id="m-stderr" style="color: var(--critical)"></pre>
+          <div
+            id="m-veto"
+            style="color: var(--warning); font-weight: bold"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============ AIMO FEED ============
+      async function fetchAIMO() {
+        try {
+          const res = await fetch("/api/aimo/latest");
+          const data = await res.json();
+          if (Array.isArray(data)) {
+            const list = document.getElementById("aimo-list");
+            list.innerHTML = data
+              .map(
+                (a) => `
+              <div class="aimo-item ${a.success ? "aimo-success" : a.security_veto ? "aimo-veto" : "aimo-fail"}" onclick="showDetail(${a.id})">
+                  <div style="font-weight: 600;">#${a.id} | Problem ${a.problem_id}</div>
+                  <div style="font-size: 0.7rem; opacity: 0.6;">${(a.timestamp || "").split("T")[1]?.split(".")[0] || ""} via ${a.provider || "unknown"}</div>
+                  <div style="font-size: 0.75rem; margin-top: 5px;">${a.success ? "✅ PASSED" : a.security_veto ? "⚠️ VETOED" : "❌ FAILED"}</div>
+              </div>
+            `,
+              )
+              .join("");
+          }
+
+          const sRes = await fetch("/api/aimo/stats");
+          const stats = await sRes.json();
+          if (!stats.error) {
+            document.getElementById("aimo-stats").innerText =
+              `${stats.wins}/${stats.total} SUCCESS (${stats.syntax_fails} Syntax Fails)`;
+          }
+        } catch (e) {
+          console.error("AIMO fetch error:", e);
+        }
+      }
+
+      // ============ HEALTH CHECK ============
+      async function fetchHealth() {
+        try {
+          const res = await fetch("/api/health");
+          const h = await res.json();
+          const dot = document.getElementById("health-dot");
+          if (h.guard_ready) {
+            dot.innerHTML = '<span class="status-dot dot-ok"></span>Guard OK';
+          } else {
+            dot.innerHTML =
+              '<span class="status-dot dot-warn"></span>Guard Pending';
+          }
+
+          const grid = document.getElementById("health-grid");
+          grid.innerHTML = `
+            <div class="health-stat">
+              <div class="value" style="color: ${h.guard_ready ? "var(--stable)" : "var(--warning)"}">${h.guard_ready ? "●" : "○"}</div>
+              <div class="label">Guard Status</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" style="color: var(--stable)">${h.service || "N/A"}</div>
+              <div class="label">Service Version</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" id="h-total">-</div>
+              <div class="label">Total AIMO Runs</div>
+            </div>
+            <div class="health-stat">
+              <div class="value" id="h-rate" style="color: var(--accent)">-</div>
+              <div class="label">Success Rate</div>
+            </div>
+          `;
+
+          // Fetch AIMO stats for the grid
+          const sRes = await fetch("/api/aimo/stats");
+          const stats = await sRes.json();
+          if (!stats.error) {
+            document.getElementById("h-total").innerText = stats.total || 0;
+            document.getElementById("h-rate").innerText =
+              ((stats.success_rate || 0) * 100).toFixed(1) + "%";
+          }
+        } catch (e) {
+          const dot = document.getElementById("health-dot");
+          dot.innerHTML = '<span class="status-dot dot-fail"></span>API Down';
+        }
+      }
+
+      // ============ DEBATE TRANSCRIPT ============
+      async function fetchDebate() {
+        try {
+          const res = await fetch("/api/debate/latest?limit=50");
+          const msgs = await res.json();
+          if (Array.isArray(msgs) && msgs.length > 0) {
+            const list = document.getElementById("debate-list");
+            document.getElementById("debate-count").innerText = msgs.length;
+            list.innerHTML = msgs
+              .map(
+                (m) => `
+              <div class="debate-msg">
+                <div class="role">${m.role} <span style="opacity: 0.4; font-size: 0.6rem;">${(m.timestamp || "").split("T")[1]?.split(".")[0] || ""}</span></div>
+                <div class="msg-content">${(m.content || "").substring(0, 500)}</div>
+              </div>
+            `,
+              )
+              .join("");
+            list.scrollTop = list.scrollHeight;
+          }
+        } catch (e) {
+          console.error("Debate fetch error:", e);
+        }
+      }
+
+      // ============ DETAIL MODAL ============
+      async function showDetail(id) {
+        const res = await fetch(`/api/aimo/detail/${id}`);
+        const d = await res.json();
+
+        document.getElementById("m-problem").innerText =
+          d.problem_text || "N/A";
+        document.getElementById("m-raw").innerText = d.raw_response || "N/A";
+        document.getElementById("m-code").innerText =
+          d.code || "No code extracted";
+        document.getElementById("m-stdout").innerText = d.stdout || "No output";
+        document.getElementById("m-stderr").innerText =
+          d.stderr || d.error_log || "No errors";
+        document.getElementById("m-veto").innerText = d.security_veto
+          ? `⚠️ VETO: ${d.security_veto}`
+          : "";
+
+        document.getElementById("modal-overlay").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("modal-overlay").style.display = "none";
+      }
+
+      // ============ GUARD ALERTS (RULE 46) ============
+      async function fetchAlerts() {
+        try {
+          const res = await fetch("/api/alerts/latest");
+          const alerts = await res.json();
+          if (Array.isArray(alerts)) {
+            // We'll prepend them to the AIMO feed or create a new dedicated space
+            // For now, let's just log them to a dedicated 'VetoBoard' card if we had one
+            // Let's repurpose RAG status or add a new one.
+            const rag = document.getElementById("rag-status");
+            if (alerts.length > 0) {
+              const last = alerts[alerts.length - 1];
+              rag.innerHTML = `
+                <div style="color: ${last.severity === "HALT" ? "var(--critical)" : "var(--warning)"}">
+                  [${last.severity}] ${last.message}<br/>
+                  <small>${last.timestamp}</small><br/>
+                  <span style="color: var(--stable)">HINT: ${last.logic_hint}</span>
+                </div>
+              `;
+            }
+          }
+        } catch (e) {
+          console.error("Alerts fetch error:", e);
+        }
+      }
+
+      // ============ POLLING ============
+      setInterval(fetchAIMO, 3000);
+      setInterval(fetchHealth, 5000);
+      setInterval(fetchDebate, 4000);
+      setInterval(fetchAlerts, 3000);
+      fetchAIMO();
+      fetchHealth();
+      fetchDebate();
+      fetchAlerts();
+    </script>
+  </body>
+</html>
+```
+
+---
+
+## Strategic Verdict
+
+The competition has a **noise ceiling at ~0.954 Public LB** for this synthetic dataset. Every technique beyond simple XGB+LGBM+CAT mean blending has produced WORSE results:
+
+- ❌ Multi-seed averaging: −0.001 (redundant models)
+- ❌ Rank averaging: No benefit over mean blend
+- ❌ Pseudo-labeling: −0.003 to −0.005
+- ❌ Feature subspacing: −0.004
+- ❌ Denoising: Fake OOF gains
+
+**The winning recipe was discovered on Day 2. Everything after was over-engineering.**
+
+### What Would Actually Help
+To break 0.954, the approach needs to be fundamentally different — not incremental improvements to the same 3 GBDT models. Options:
+1. **Neural networks** with different architectures (TabNet, FT-Transformer)
+2. **External data blending** with real UCI heart disease data
+3. **Accepting 0.954** as our ceiling and moving to the next competition

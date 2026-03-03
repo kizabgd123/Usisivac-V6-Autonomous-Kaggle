@@ -1,0 +1,35 @@
+# Fix Gemini Model Typo
+
+The `node` process (PID: 275497) is reporting a capacity error for a non-existent model `gemini-2.5-flash`. Investigation revealed this string is hardcoded in the [GeminiClient](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/gemini_client.py#9-140) initialization.
+
+## Proposed Changes
+
+### [Component Name] Antigravity Core
+
+#### [MODIFY] [gemini_client.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/gemini_client.py)
+
+Update the hardcoded model name from `gemini-2.5-flash` to `gemini-2.0-flash-exp` to match the AIMO Strategy Bible and Google's current experimental offerings.
+
+```diff
+-        self.model_name = "gemini-2.5-flash"
++        self.model_name = "gemini-2.0-flash-exp"
+```
+
+## Verification Plan
+
+### Automated Tests
+Run the [GeminiClient](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/gemini_client.py#9-140) self-test block and the [KeyVault](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/key_vault.py#13-68) self-test to ensure connectivity and valid model registration.
+
+1. **Test KeyVault**:
+   ```bash
+   python3 src/antigravity_core/key_vault.py
+   ```
+2. **Test GeminiClient**:
+   ```bash
+   python3 src/antigravity_core/gemini_client.py
+   ```
+   *Expected Outcome*: The script should print a "Test verdict: PASSED" or "FAILED" instead of an API Capacity/Model error.
+
+### Manual Verification
+1. Check the terminal `node` (PID: 275497) after the fix. If the process is a watcher or a long-running dev tool, it should now successfully call the API (or stop reporting the capacity error).
+2. Verify that `gemini-2.0-flash-exp` is indeed the intended model by checking [AIMO_Strategy_Bible.md](file:///home/kizabgd/Desktop/Istrazivanje/AIMO_Strategy_Bible.md).

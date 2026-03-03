@@ -1,0 +1,7 @@
+# Task: Analiza i usklađivanje sa Calibration skriptom
+
+- [/] Analiza [scripts/spaceship_titanic_calibration.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_calibration.py)
+- [ ] Analiza [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+- [ ] Identifikacija ključnih Trinity v4.0 obrazaca
+- [ ] Kreiranje plana za dalju stabilizaciju ili sintezu
+- [ ] Ažuriranje `manifest.json` i [Makefile](file:///home/kizabgd/Desktop/kaggle-arena/Makefile) ako je potrebno

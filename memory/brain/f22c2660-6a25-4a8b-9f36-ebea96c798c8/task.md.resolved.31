@@ -1,0 +1,20 @@
+# Probijanje 0.95387 LB Barijere
+
+- [x] Faza 1: Post-Hoc Rank Blend — *90/10→0.95386, 85/15→0.95385 (nema napretka)*
+- [/] Faza 2: Replika Best + Hyper-Refinement
+  - [x] Kreirati heart_disease_v6_refined.py (GBDT-only, više stabala/seedova)
+  - [x] ~~Pokrenuti trening~~ — *KILLED po RAG analizi (seed variance = šum)*
+  - [x] Adversarial Validation — *AUC: 0.5017 (Savršen alignment)*
+  - [x] Kreirati heart_disease_v6_1_elite.py (OOF Encodings + Rule 42)
+  - [/] Pokrenuti v6.1 elite (100% CPU) — *Rule 42 aktivan, Seed 42 u toku*
+  - [ ] Submitovati po završetku
+
+- [x] Faza 3: Public Blend Eksploracija (The Ceiling Test)
+  - [x] API 3x Rank Blend (0.95409)
+  - [x] Ultimate 6x Power Rank Blend (0.95409)
+  - [x] Super Anchor Blend (0.95409)
+  - 🛑 *Status*: Udaren tvrdi plafon javnog LB-a. Štedimo sledeće submissione po korisnikovoj direktivi.
+- [ ] Faza 3: RealMLP Hybrid (65% GBDT / 35% RealMLP)
+- [x] Masterclass Notebook kreiran i push-ovan na Kaggle
+  - [x] 29 ćelija (14 MD + 15 Code), 10 poglavlja, matplotlib vizualizacije
+  - [x] URL: https://www.kaggle.com/code/kiza123123/trinity-masterclass-journey

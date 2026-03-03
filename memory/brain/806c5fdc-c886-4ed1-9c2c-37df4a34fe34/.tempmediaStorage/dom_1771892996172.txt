@@ -1,0 +1,280 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Deep Past Challenge - Translate Akkadian to English />
+	[94] (54,554)<a aria-label='Natural Language Processing with Disaster Tweets' class='sc-eXVaYZ cPXxFg' href='/competitions/nlp-getting-started' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Natural Language Processing with Disaster Tweets />
+	[101] (54,584)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Bidding Predictions for Construction />
+	[108] (54,615)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Predicting Heart Disease />
+	[115] (54,645)<a aria-label='Heart Disease S6E2 V10.12 Final' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-12-final' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Heart Disease S6E2 V10.12 Final />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >update />
+			[128] (19,967)<div >2 />
+		[129] (58,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':ra:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Deep Past Challenge - Translate Akkadian to English
+		[137] (768,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[138] (768,62)<span >Submit Prediction />
+		[139] (820,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[140] (307,94)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview' role='tab' />
+			[141] (307,93)<span >Overview />
+		[142] (342,94)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/data' role='tab' />
+			[143] (342,93)<span >Data />
+		[144] (369,94)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/code' role='tab' />
+			[145] (369,93)<span >Code />
+		[146] (402,94)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/models' role='tab' />
+			[147] (402,93)<span >Models />
+		[148] (444,94)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/discussion' role='tab' />
+			[149] (444,93)<span >Discussion />
+		[150] (495,94)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/leaderboard' role='tab' />
+			[151] (495,93)<span >Leaderboard />
+		[152] (537,94)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules' role='tab' />
+			[153] (537,93)<span >Rules />
+		[154] (566,94)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/team' role='tab' />
+			[155] (566,93)<span >Team />
+		[156] (608,94)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/submissions' role='tab' />
+			[157] (608,93)<span >Submissions />
+		The competition data comprises transliterations of over 8,000 Old Assyrian cuneiform texts with a comprehensive set of metadata. We provide aligned English translations for a subset of these. We also provide unprocessed texts from almost 900 scholarly publications containing more translations from which you may attempt to create additional training data.
+		See also the
+		Dataset Instructions
+		for more on the formatting conventions used in these transliterations.
+		Please note that this is a
+		Code Competition
+		. The data in
+		test.csv
+		is only dummy data to help you author your solutions. When your submission is scored, this example test data will be replaced with the full test set.
+		File and Field Information
+		train.csv
+		- About 1500 transliterations of Old Assyrian texts from the original excavated tablets each with a translation into English.
+		oare_id
+		- Identifier in the
+		[158] (466,204)<a aria-label='Old Assyrian Research Environment (OARE) database (opens in a new tab)' href='https://deeppast.org/oare'>Old Assyrian Research Environment (OARE) database />
+		. Uniquely identifies each text.
+		transliteration
+		- An Akkadian transliteration of the original tablet text.
+		translation
+		- A corresponding English translation.
+		test.csv
+		- A small example set representative of the test data. When your submission is scored, this example test data will be replaced with the full test set. There are about 4000 sentences in the test data from about 400 unique documents. Note that while the training data has translations aligned at the
+		document
+		level, the test data has translations aligned at the
+		sentence
+		level.
+		id
+		- A unique identifier for each sentence.
+		text_id
+		- A unique identifier for each document.
+		line_start
+		,
+		line_end
+		- Denotes the boundaries of the sentence within the original tablet. Orders the sentences within the document. Note that this field has
+		str
+		type with values like
+		1
+		,
+		1'
+		, or
+		1''
+		. See the note on line numbers under Modern Scribal Notations in the
+		[159] (334,412)<a aria-label='Dataset Instructions (opens in a new tab)' href='https://www.kaggle.com/competitions/deep-past-initiative-machine-translation/overview/dataset-instructions'>Dataset Instructions />
+		.
+		transliteration
+		- An Akkadian transliteration of the original tablet text. Your goal is to produce the corresponding
+		translation
+		.
+		sample_submission.csv
+		- A sample submission file in the correct format. See the
+		[160] (554,457)<a aria-label='<strong>Evaluation</strong> (opens in a new tab)' href='https://www.kaggle.com/competitions/deep-past-initiative-machine-translation/overview/evaluation' />
+			[161] (554,457)<strong >Evaluation />
+		page for more details.
+		Supplemental Data
+		published_texts.csv
+		- About 8,000 transliterations of Old Assyrian texts together with metadata fields and catalog information from database and museum records as published in the OARE database. You may use these identifiers to retrieve additional information from the linked websites. These transliterations are not provided with translations.
+		oare_id
+		- Identifier in the OARE database, as in
+		train.csv
+		.
+		online transcript
+		- URL of the transliteration transcript hosted on the
+		[162] (544,609)<a aria-label='DPI website (opens in a new tab)' href='https://deeppast.org/oare'>DPI website />
+		.
+		cdli_id
+		- Identifier in the
+		[163] (406,632)<a aria-label='CDLI website (opens in a new tab)' href='https://cdli.earth/'>CDLI website />
+		. Multiple IDs are separated by bar
+		|
+		.
+		aliases
+		- Other published labels for the text (e.g. publication numbers, museum IDs, etc.). Multiple IDs are separated by bar
+		|
+		.
+		label
+		- Primary designation as a label of the text.
+		publication_catalog
+		- Labels of the text found in publications and museum records. Multiple IDs are separated by bar
+		|
+		.
+		description
+		- Basic description of the text.
+		genre_label
+		- Basic genre assigned to the text. Not available for all texts.
+		inventory_position
+		- Label of the text as found in the museum. Multiple IDs are separated by bar
+		|
+		.
+		online_catalog
+		- URL of the Yale collection with CC-0 metadata and images.
+		note
+		- Notes made by specialists for commentary or translations.
+		interlinear_commentary
+		- References to publications which discuss the text at specific lines.
+		online_information
+		- URL of the text in the British Museum (note these images are copyright of the British Museum, not in CC). Not available for all texts.
+		excavation_no
+		- Identifier assigned to the text from the excavation.
+		oatp_key
+		- Identifier assigned by the Old Assyrian Text Project.
+		eBL_id
+		- Identifier in the
+		[164] (401,943)<a aria-label='eBL website (opens in a new tab)' href='https://www.ebl.lmu.de/library/'>eBL website />
+		.
+		AICC_translation
+		- URL of the
+		[165] (439,965)<a aria-label='first published online (opens in a new tab)' href='https://aicuneiform.com/search?q=P361099'>first published online />
+		machine translation. Note that most of these translations are very poor quality.
+		transliteration_orig
+		- Original text transliteration from the OARE database.
+		600.85 MB
+		Type
+		csv
+		License
+		[166] (745,113)<a aria-label='CC BY-SA 4.0 opens in new window' class='sc-kjwdDK jeOjpF sc-fijtjz hivtNw' href='https://creativecommons.org/licenses/by-sa/4.0/'>CC BY-SA 4.0 />
+
+</current_dom>

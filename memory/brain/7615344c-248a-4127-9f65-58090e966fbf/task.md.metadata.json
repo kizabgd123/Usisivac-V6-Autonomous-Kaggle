@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Updated task to reflect the move to Phase 4 (Final Validation) and the specific fix for target leakage. Added a new checkpoint for LB 0.954 target.",
+  "updatedAt": "2026-02-23T23:12:33.322119476Z",
+  "version": "3"
+}

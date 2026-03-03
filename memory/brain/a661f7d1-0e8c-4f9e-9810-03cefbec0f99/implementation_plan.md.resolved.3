@@ -1,0 +1,24 @@
+# Implementation Plan - Kaggle Bidding Synthesis
+
+## Goal
+Maximize LB score for "Bidding Predictions for Construction" within the final 2-hour window.
+
+## Proposed Changes
+
+### Construction Bidding Component
+
+#### [NEW] [bidding_v25_trinity_bible_synthesis.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v25_trinity_bible_synthesis.py)
+- Ultimate 5-Way Hybrid Ensemble: XGB (30%), LGBM (25%), CatBoost (25%), MLP (10%), Ridge (10%).
+- Leak-Free Nested IAME: Multi-stage market estimation to prevent leakage.
+- Group-Stable Cross-Validation: GroupKFold on `job_id` for robust uncertainty quantification.
+- T02/T03 Integration: Bid variance and Job Gravity features for elite scoring potential.
+
+## Verification Plan
+
+### Automated Tests
+- Multi-fold CV reporting RMSE (Log-space) and RMSLE (Exp-space).
+- Leakage check: Ensure OOF RMSLE > 0.30.
+
+### Manual Verification
+- Generate `submission_v24_synthesis.csv`.
+- Verify total bids are within reasonable boundaries (no negative or zero bids).

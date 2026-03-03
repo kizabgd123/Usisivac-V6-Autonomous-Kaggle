@@ -1,0 +1,21 @@
+# Implementation Plan: Update Gemini CLI Security Policies
+
+The goal is to resolve the "Tool execution denied by policy" errors by explicitly allowing the `ReadFile` and `ReadFolder` tools to access paths within the `.gemini/antigravity/brain` directory.
+
+## Proposed Changes
+
+### Gemini CLI Configuration
+#### [MODIFY] [auto-saved.toml](file:///home/kizabgd/.gemini/policies/auto-saved.toml)
+- Add rules for `ReadFile` and `ReadFolder` tools.
+- Set `decision = "allow"`.
+- (Optional) Restrict to specific path patterns if supported, or provide a broad allow for the brain directory.
+
+## Verification Plan
+
+### Manual Verification
+1. Run a Gemini CLI command that attempts to read a file from the brain directory:
+   `gemini "read /home/kizabgd/.gemini/antigravity/brain/34bf72c1-fd6d-4cfe-bb89-09758da12e93/research_report.md"`
+2. Verify that the command succeeds without a policy denial error.
+3. Attempt to list the brain directory using the CLI:
+   `gemini "list /home/kizabgd/.gemini/antigravity/brain/34bf72c1-fd6d-4cfe-bb89-09758da12e93/"`
+4. Use `gemini config list` or `gemini config show` to check if any new workspace settings have taken effect.

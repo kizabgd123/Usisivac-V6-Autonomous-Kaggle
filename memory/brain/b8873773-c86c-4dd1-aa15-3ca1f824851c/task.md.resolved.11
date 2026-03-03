@@ -1,0 +1,20 @@
+# Melting Point Medal Strategy execution
+
+## Phase 1: External SMILES Database Lookup (Gold Path)
+- [x] Download Jean-Claude Bradley Open Melting Point Dataset (DPG, 3041 entries)
+- [x] Canonicalize all SMILES (train, test, external)
+- [x] Match test SMILES → external Tm values (Bradley: 290/666 matches)
+- [x] Build hybrid submission v1 (lookup + Ridge fallback) -> **MAE 20.90**
+- [x] PubChem Batch Lookup (Phase 1b)
+    - [x] Query 376 unmatched SMILES via PUG-REST API
+    - [x] Found 137 additional matches
+    - [x] Merge into v2 submission -> **MAE 17.94** (Public 14.73)
+- [ ] **NEXT:** Maximize external data coverage (try OCHEM/DeepChem?) or move to Phase 2?
+
+## Phase 2: Rich RDKit Descriptors (Silver Insurance)
+- [ ] Generate full RDKit 2D descriptor set
+- [ ] Retrain GBDT ensemble with enriched features
+- [ ] Re-blend and submit
+
+## Phase 3: GNN (Optional Gold Path)
+- [ ] Evaluate feasibility based on Phase 1+2 results

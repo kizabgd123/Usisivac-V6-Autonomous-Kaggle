@@ -1,0 +1,39 @@
+# Implementation Plan: Bidding V7 "Piercer" (Target 1st Place)
+
+Objective: Surpass the current 1st place score of 0.2750 on Public LB by addressing the CV-LB gap and improving job cost estimation.
+
+## User Review Required
+> [!IMPORTANT]
+> We are switching to a **Time-Series validation** (Holdout on 2024) instead of random KFold. This will likely show a higher, more realistic CV RMSE (~0.40) which we will then attempt to drive down below 0.27.
+
+## Proposed Changes
+
+### [1] Validation & Target Engineering
+- **Temporal Holdout**: Use 2018-2023 for training, 2024 for validation.
+- **Ratio Prediction**: Change the target to [log(total_bid / est_amt_sum)](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_4_meta_upgrade.py#223-251). This normalizes the task, focusing the model on identifying contractor bidding strategy rather than job scale.
+
+### [2] Advanced Price Estimation (The "Engine")
+- **Unit Price Model**: Instead of simple medians, train a lightweight **LightGBM unit-price estimator** on `raw_train` (2018-2023).
+  - Features: `pay_item_id`, `category_id`, `quantity`, `unit_english_id`, `primary_location`.
+  - This captures "economy of scale" (units being cheaper in bulk).
+- **Sum aggregation**: Re-estimate `est_amt_sum` for all years using this model.
+
+### [3] Contractor & Strategy Features
+- **Historical Relative Bid**: Mean ratio of `actual_bid / est_amt` for each contractor in the past.
+- **Contractor Familiarity**: Number of times a contractor has bid in a specific `primary_location` or `job_category`.
+- **Bid Velocity**: Number of bids in the last 3/6/12 months.
+
+### [4] Model Stack & Stacking
+- **Ensemble**: XGBoost, LightGBM, CatBoost.
+- **Meta-Learner**: Use a `Ridge` regression model to stack the outputs of the 3 base models on the 2024 validation set.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 bidding_v7_piercer.py`
+- Monitor CV RMSE on 2024 holdout.
+- Adversarial Validation: Check AUC of distinguishing 2024 and 2025. Result should be close to 0.5 for a stable model.
+
+### Manual Verification
+- Verify that `est_amt_sum` has high correlation with `total_bid` (>0.90).
+- Check the 1st place LB again after submission.

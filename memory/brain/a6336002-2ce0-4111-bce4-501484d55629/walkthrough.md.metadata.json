@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough of the skill migration process, detailing the newly populated .agent/skills and .agent/workflows directories in the kaggle-arena workspace.",
+  "updatedAt":  "2026-02-28T17:18:01.990131001Z"
+}

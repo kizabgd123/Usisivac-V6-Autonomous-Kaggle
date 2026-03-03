@@ -1,0 +1,16 @@
+# Competition Tasks
+
+## Stanford RNA 3D Folding 2
+- [x] Analyze competition dataset structure ([train.csv](file:///home/kizabgd/Desktop/Istrazivanje/train.csv), [test.csv](file:///home/kizabgd/Desktop/Istrazivanje/test.csv), MSA files).
+- [x] Understand the evaluation metric.
+- [x] Setup robust local validation scheme.
+- [x] Establish a rudimentary PyTorch baseline.
+- [ ] Research and implement advanced architectures.
+- [ ] Integrate MSA features efficiently.
+- [ ] Train, tune, and submit.
+
+## Heart Disease S6E2 (KillShot v3.2)
+- [/] Run optimized V3.2 (Deduplication, Log1p, ExtraTrees).
+- [/] Monitor Fold-wise performance and completion.
+- [ ] Validate OOF AUC and generate submission.
+- [ ] Create final walkthrough and notify user.

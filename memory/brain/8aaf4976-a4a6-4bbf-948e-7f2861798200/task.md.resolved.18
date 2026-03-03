@@ -1,0 +1,8 @@
+# Task: Recover Environment & Implement End-to-End Trinity V4
+
+- [x] Restore [scripts/process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py) from corruption
+- [x] Plan End-to-End Integration (Rule 10, Rule 27, Atomic Saves)
+- [x] Implement and Run V4 E2E (Demo version)
+- [/] Execute High-Fidelity V4 E2E (10-fold, 2k estimators)
+- [ ] Verify Metric Improvement vs V3 Baseline
+- [ ] Final Mission Archive Complete

@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "version": "4.0.1",
+    "is_single_source_of_truth": true,
+    "priority": "HIGH",
+    "authorized_year": 2026
+  },
+  "domain": "new_challenge",
+  "thresholds": {
+    "correlation_veto": 0.95,
+    "metric_improvement_required": true,
+    "min_improvement": 0.0001,
+    "memory_hashing_mode": "milestone_only",
+    "project_name": "new-challenge-trinity",
+    "version": "1.0.0",
+    "competition": "playground-series-s6e3",
+    "metrics": {
+      "target": "Churn",
+      "metric_name": "ROC AUC",
+      "baseline_oof": 0.916164,
+      "current_best_oof": 0.91663,
+      "synthesis_current_lb": 0.91386
+    }
+  },
+  "models": {
+    "lgbm": {
+      "learning_rate": 0.010506439448541209,
+      "num_leaves": 72,
+      "feature_fraction": 0.584870057763046,
+      "bagging_fraction": 0.7598006947155067,
+      "bagging_freq": 4,
+      "min_child_samples": 31,
+      "reg_alpha": 1.7318504168908339e-6,
+      "reg_lambda": 9.183962122166921,
+      "n_estimators": 1000,
+      "max_bin": 63,
+      "n_jobs": 4
+    },
+    "xgboost": {
+      "learning_rate": 0.05227079200193396,
+      "max_depth": 4,
+      "min_child_weight": 8,
+      "subsample": 0.9378768742638254,
+      "colsample_bytree": 0.7454722623870976,
+      "reg_alpha": 0.26429577502612095,
+      "reg_lambda": 7.42543035297711e-5,
+      "n_estimators": 1000,
+      "n_jobs": 4
+    },
+    "catboost": {
+      "iterations": 1000,
+      "learning_rate": 0.03,
+      "depth": 6,
+      "l2_leaf_reg": 3,
+      "border_count": 128,
+      "used_ram_limit": "1gb",
+      "task_type": "CPU",
+      "verbose": false,
+      "random_seed": 42
+    }
+  },
+  "synthesis": {
+    "default_seed_count": 5,
+    "benchmark_seed_count": 3
+  },
+  "memory_milestones": ["thesis", "antithesis", "synthesis"],
+  "legacy_patterns": {
+    "scripts": "**/*.py",
+    "notebooks": "**/*.ipynb",
+    "entry_keywords": ["train", "main", "orchestrator", "pipeline"],
+    "dynamic_scaling": {
+      "cpu_timeout_s": 300,
+      "ram_limit_gb": 2.0,
+      "auto_scale_enabled": true,
+      "low_memory_mode": true
+    }
+  },
+  "kb_orchestrator": {
+    "notion_sync_enabled": false,
+    "kaggle_sync_enabled": true,
+    "db_path": "chroma_db",
+    "search_patterns": [
+      "/home/kizabgd/Desktop/new-challenge/",
+      "/home/kizabgd/.gemini/antigravity/"
+    ]
+  },
+  "llm_agents": {
+    "vetoboard_enabled": true,
+    "boardroom_enabled": true,
+    "model": "gemini-2.5-flash"
+  }
+}

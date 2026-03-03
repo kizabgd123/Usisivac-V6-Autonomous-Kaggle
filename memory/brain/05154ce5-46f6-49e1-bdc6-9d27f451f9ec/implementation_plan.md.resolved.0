@@ -1,0 +1,28 @@
+# Spaceship Titanic - Grandmaster V20 Implementation Plan
+
+## Goal Description
+The objective is to achieve a public LB score > 0.80851 within 5 submissions. We will build upon the V15.11 and V16 scripts, combining robust cross-validation, RAG-based feature extraction (in-fold to prevent leakage), advanced N-gram target encoding, and pseudo-labeling.
+
+## Proposed Changes
+We will create a new modeling script: `spaceship_v20_grandmaster.py`
+
+### Feature Engineering
+- **Base Features:** TotalSpend, CryoSleep, VIP, GroupId from PassengerId.
+- **Cabin Parsing:** Deck, Num, Side.
+- **N-gram Target Encoding:** 2-gram and 3-gram combinations of categorical features (HomePlanet, Destination, Deck, Side, CryoSleep) target encoded.
+- **RAG Features:** TF-IDF + SVD embeddings of text representations, with FAISS KNN to find the nearest neighbors' mean `Transported` value. Calculated *in-fold* to strictly prevent data leakage.
+- **Pseudo-labeling:** We will take confident predictions from a previous strong model (e.g., V15/V16 predictions) where probability > 0.95 or < 0.05, and add them to the training set with sample weights.
+
+### Modeling Execution
+- **Ensemble:** 3-Seed Averaging across 5 Stratified K-Folds.
+- **Algorithms:** CatBoost, XGBoost, LightGBM using previously HPO-optimized best configurations.
+- **Blending:** Weighted rank average of the 3 algorithms.
+
+## Verification Plan
+### Automated Tests
+- Run `python spaceship_v20_grandmaster.py` locally to verify execution, memory stability (RAG handles OOM gracefully), and OOF (Out-of-Fold) score.
+- The target OOF score should be > 0.810.
+
+### Kaggle Submission
+- Submit `submission_v20_grandmaster.csv` using `kaggle competitions submit -c spaceship-titanic -f submission_v20_grandmaster.csv -m "V20 Grandmaster Phase 1"`.
+- Verify the public LB score via `kaggle competitions submissions -c spaceship-titanic`.

@@ -1,0 +1,37 @@
+# Task: Bidding Predictions for Construction — Target LB < 0.2000 SMAPE/MAE
+
+## Phase 1: Research & Setup
+- [x] Analyze data schema (raw vs summary)
+- [x] Determine competition metric (RMSE on log-target)
+- [x] Verify baseline performance (Initial LB: 0.2984, Recent LB: 0.46)
+
+## Phase 2: Planning
+- [ ] Create implementation_plan_bidding.md
+- [ ] Identify key features (Contractor history, Location clusters, Job descriptions)
+
+## Phase 3: Implementation
+- [x] Implement data loading & merging (raw + summary)
+    - [x] Fix XGBoost 2.0+ `early_stopping_rounds` constructor parameter
+    - [x] Fix `KeyError` on 'amount' in `raw_test` (column absent in test)
+    - [x] Implement Unit Price Reference estimation
+    - [x] Execute [bidding_v6_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v6_elite.py) and monitor logs (OOF RMSE: 0.28443)
+- [x] Feature engineering (Aggregations by contractor/location)
+- [x] Cross-validation setup (Multi-seed KFold)
+- [x] Model training (XGB, LGBM, CatBoost)
+- [x] Probability/Value Calibration (Isotonic Regression)
+- [x] Generation of [submission_v6_elite.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/submission_v6_elite.csv)
+
+## Phase 4: Verification & (Initial) Submission
+- [x] Verify OOF performance and consistency (OOF: 0.2844)
+- [x] Create [walkthrough_bidding.md](file:///home/kizabgd/.gemini/antigravity/brain/7615344c-248a-4127-9f65-58090e966fbf/walkthrough_bidding.md)
+- [x] Push to Kaggle and check LB score (Final LB: 0.3980)
+- [/] Analyze CV-LB Gap (Leakage identified in Random KFold)
+
+## Phase 5: V7 "Piercer" (Targeting 1st Place < 0.275)
+- [ ] Implement Temporal Holdout (2024 Validation)
+- [ ] Develop Advanced Price Estimation (LGBM unit-price model)
+- [ ] Shift to Ratio Target: [log(total_bid / est_amt_sum)](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_4_meta_upgrade.py#223-251)
+- [ ] Add Contractor Strategy features (Relative Bid, Familiarity)
+- [ ] Implement Stacking with Ridge Meta-Learner
+- [ ] Execute V7 and check new LB score
+

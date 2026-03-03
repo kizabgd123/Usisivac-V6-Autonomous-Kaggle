@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Implementation plan for Spaceship Titanic Phase 4: Calibration. Focuses on domain-driven features like Family and Group Survival rates calculated in a fold-safe manner. Transitioning from fixed-weight stacking to a selective voting ensemble. Aiming for LB > 0.80 by reducing noise.",
+  "updatedAt":  "2026-02-28T18:51:02.224321845Z",
+  "version":  "7"
+}

@@ -1,0 +1,39 @@
+# Trinity Workspace Configuration
+- [x] Configure Personas
+- [x] Create Kanban Board / Tasks
+- [x] Set Context Sync rules
+
+# Analiza MCP & Bot Konverzacije
+- [x] Analiza Junie Jetbrains plugin funkcionalnosti.
+- [x] Integracija koncepata u Trinity OS.
+
+# Master Direktiva v5.0 - MCP Serveri
+- [x] Izrada `mcp-config-state` (SSOT za trinity_config.json)
+- [x] Izrada `mcp-guardian` (Autonomna 7-Gate Egzekucija)
+- [x] Izrada `mcp-mistral-vetoboard` (Kognitivni Checkpoint)
+- [x] Izrada `mcp-trinity-kb` (Dinamičko Znanje / Tactic Registry)
+
+# Project Audit & Roadmap (Protocol v4.0)
+- [x] Sveobuhvatni audit workspace-a (scripts, data_hub, .mcp)
+- [x] Identifikacija tehničkog duga i neiskorišćenih legacy skripti
+- [x] Generisanje Grandmaster Roadmap-e v2.0
+
+# Profile Refactoring & Arize Tracing (Zoran's Plan)
+- [x] Kreiranje [zoranstojanovic_refactor.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/zoranstojanovic_refactor.py) agent skripte
+- [x] Implementacija "Crno-Plava" Premium Aesthetic teme (Rule §1)
+- [x] Integracija Arize manualne instrumentacije za HTTP pozive
+- [x] Izvršavanje i validacija (Status 200 log)
+
+# Professional Portfolio Website (zoranstojanovic.link)
+- [x] Istraživanje workspace-a za podatke o korisniku
+- [x] Kreiranje premium portfolio HTML/CSS/JS stranice
+- [x] Generisanje profilne slike
+- [x] Testiranje i validacija
+- [ ] Deploy na zoranstojanovic.link
+
+# S6E2 Post-Mortem Kernel Refactoring
+- [x] Preuzimanje "heart-disease-s6e2-lessons-learned" Kaggel kernel-a
+- [x] Spajanje timeline-a sa tehničkim post-mortem analizama u jedinstven uzročno-posledični narativ
+- [x] Refaktorisanje "Unresolved experiments" sekcije (TabNet/FT Transformer) u "Future Work"
+- [x] Dodavanje vizuelnih dokaza mana sintetičkih podataka (Overlay scatter plots, Covariance matrices)
+- [x] Zadržavanje forme normalnog Kaggel notebook-a

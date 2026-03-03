@@ -1,0 +1,55 @@
+# Kaggle Profile Optimization Plan
+
+## Goal Description
+Elevate the user's Kaggle profile to "Expert" status by publishing two high-quality, "Grandmaster-style" notebooks. These notebooks will feature advanced techniques (Tabular RAG, Trinity Dialectic), professional formatting, and clear methodology.
+
+## User Review Required
+> [!IMPORTANT]
+> The AIMO solver currently uses **Serbian prompts** and **External APIs** (Mistral/Gemini).
+> - **Action**: I will translate the showcase version to **English** for global reach.
+> - **Action**: I will verify if the AIMO competition allows internet. If not, the notebook will be marked as "Post-Competition Analysis / Showcase".
+
+> [!NOTE]
+> `Spaceship Titanic` uses `opentelemetry`. I will make this optional or remove it for the public kernel to ensure it runs out-of-the-box without complex dependency installation.
+
+## Proposed Changes
+
+### 1. Spaceship Titanic: Trinity Killshot [Expert]
+**Source**: [spaceship_titanic/Spaceship_Trinity_Killshot_V15_8.py](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/Spaceship_Trinity_Killshot_V15_8.py)
+**Target**: New Notebook `Spaceship_Titanic_Trinity_Killshot.ipynb`
+
+-   **Structure**:
+    1.  **Title & Banner**: "Spaceship Titanic: Trinity Killshot & Tabular RAG [Expert]"
+    2.  **Introduction**: Explain the "Trinity Protocol" (Thesis-Antithesis-Synthesis) applied to tabular data.
+    3.  **Methodology - Tabular RAG**: Explain how FAISS is used to retrieve similar samples for feature augmentation.
+    4.  **Code**: Refactored classes ([TabularRAG](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/Spaceship_Trinity_Killshot_V15_8.py#59-99), [TrinityCritic](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/Spaceship_Trinity_Killshot_V15_8.py#110-121)) from `V15.8`.
+    5.  **Viz**: Add a diagram (Mermaid) of the pipeline.
+    6.  **Results**: Show the CV score and "Critic" logs.
+
+### 2. AIMO Trinity Solver: Dialectic Math [Expert]
+**Source**: [aimo_trinity_solver_kaggle.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/aimo_trinity_solver_kaggle.ipynb)
+**Target**: Refactor in place or new `AIMO_Trinity_Dialectic.ipynb`
+
+-   **Changes**:
+    -   **Language**: Translate all prompts and markdown to English.
+    -   **Title**: "AIMO Trinity: 3-6-2 Dialectic & 5-Way Voting"
+    -   **Diagram**: Add Mermaid chart showing the debate flow (Strategist -> Critic -> Overseer).
+    -   **Offline Mode**: Add a flag to run on dummy data if APIs are unreachable (so the kernel commits successfully).
+
+### 3. Profile Maintenance
+-   **Rename Kernels**:
+    -   `miljakovac` -> `spaceship-titanic-trinity-killshot`
+    -   `trinity-akkadian-sota` -> `aimo-trinity-dialectic-solver`
+-   **Metadata**: Update [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json) for both to include:
+    -   `keywords`: ["feature engineering", "ensemble", "rag", "agentic"]
+    -   `title`: Professional titles.
+
+## Verification Plan
+
+### Automated Tests
+-   **Syntax Check**: Run `python -m py_compile` on generated naming scripts.
+- [x] **Mock Run**: Execute the notebooks locally (using `nbconvert --execute`) with a subset of data (if available) to ensure no runtime errors.
+
+### Manual Verification
+- [x] **Visual Inspection**: Check the rendered Markdown in VS Code preview to ensure diagrams and tables look complete.
+- [x] **Kaggle Push**: Use `kaggle kernels push` and verify "Success" status.

@@ -1,0 +1,26 @@
+# Trinity Protocol v3.3.1 — UCI Data Integration
+
+Upgrade the heart disease prediction model to incorporate a large UCI dataset and fix encoding issues to allow training on additional samples.
+
+## User Review Required
+
+> [!IMPORTANT]
+> The UCI dataset uses different string labels (e.g., "typical angina" vs "TA"). I am implementing a mapping layer to ensure compatibility with the competition data.
+
+## Proposed Changes
+
+### [heart_top5_v3_2_elite.py](file:///home/kizabgd/heart_top5_v3_2_elite.py)
+
+#### [MODIFY]
+- **UCI Integration**: Add `load_uci_data()` to ingest and map `/content/heart_disease_uci.csv`.
+- **Feature Schema Alignment**: Ensure columns like `Sex`, `ChestPainType`, `RestingECG`, `ExerciseAngina`, and `ST_Slope` are mapped consistently between UCI and S6E2.
+- **Categorical Encoding**: Implement a final `LabelEncoder` pass across all categorical columns to allow `np.float32` conversion required for model input.
+- **Training Expansion**: Append processed UCI data to the competition `train` set.
+
+## Verification Plan
+
+### Automated Tests
+- Run `python3 heart_top5_v3_2_elite.py`.
+- Verify the number of training samples increased by the size of the UCI set.
+- Check OOF AUC stability with the added data.
+- Ensure the 7-Gate Audit passes with the new data distribution.

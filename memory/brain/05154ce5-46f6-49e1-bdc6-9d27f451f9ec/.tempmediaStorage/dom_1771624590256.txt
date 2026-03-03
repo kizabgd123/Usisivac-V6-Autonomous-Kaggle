@@ -1,0 +1,246 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (60,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (60,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (60,185)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,185)<div  />
+			[23] (16,185)<div  />
+				[24] (16,185)<div  />
+					[25] (16,185)<span >table_chart />
+			[26] (45,185)<div  />
+				[27] (45,185)<p >Datasets />
+	[28] (60,218)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,218)<div  />
+			[30] (16,218)<div  />
+				[31] (16,218)<div  />
+					[32] (16,218)<span >tenancy />
+			[33] (42,218)<div  />
+				[34] (42,218)<p >Models />
+	[35] (60,251)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,251)<div  />
+			[37] (16,251)<div  />
+				[38] (16,251)<div  />
+					[39] (16,251)<span >leaderboard />
+			[40] (51,251)<div  />
+				[41] (51,251)<p >Benchmarks />
+	[42] (60,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (60,318)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,318)<div  />
+			[51] (16,318)<div  />
+				[52] (16,318)<div  />
+					[53] (16,318)<span >code />
+			[54] (39,318)<div  />
+				[55] (39,318)<p >Code />
+	[56] (60,351)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,351)<div  />
+			[58] (16,351)<div  />
+				[59] (16,351)<div  />
+					[60] (16,351)<span >comment />
+			[61] (50,351)<div  />
+				[62] (50,351)<p >Discussions />
+	[63] (60,384)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,384)<div  />
+			[65] (16,384)<div  />
+				[66] (16,384)<div  />
+					[67] (16,384)<span >school />
+			[68] (39,384)<div  />
+				[69] (39,384)<p >Learn />
+	[70] (60,418)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,418)<div  />
+			[72] (16,418)<div  />
+				[73] (16,418)<div  />
+					[74] (16,418)<span >expand_more />
+			[75] (39,418)<div  />
+				[76] (39,418)<p >More />
+	[77] (60,464)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,464)<div  />
+			[79] (16,464)<div  />
+				[80] (16,464)<div  />
+					[81] (16,464)<span >note_alt />
+			[82] (48,464)<div  />
+				[83] (48,464)<p >Your Work />
+	[84] (31,495)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,495)<span >arrow_drop_down />
+		[86] (40,495)<span >Viewed />
+	[87] (54,526)<a aria-label='March Machine Learning Mania 2026' class='sc-eXVaYZ cPXxFg' href='/competitions/march-machine-learning-mania-2026' role='link' />
+		[88] (58,526)<div  />
+			[89] (16,526)<div  />
+				[90] (16,526)<div  />
+					[91] (16,526)<img  />
+			[92] (66,526)<div  />
+				[93] (68,526)<p >March Machine Learning Mania 2026 />
+	[94] (54,556)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[95] (58,556)<div  />
+			[96] (16,556)<div  />
+				[97] (16,556)<div  />
+					[98] (16,556)<img  />
+			[99] (66,556)<div  />
+				[100] (68,556)<p >Predicting Heart Disease />
+	[101] (54,586)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[102] (58,586)<div  />
+			[103] (16,586)<div  />
+				[104] (16,586)<div  />
+					[105] (16,586)<img  />
+			[106] (66,586)<div  />
+				[107] (68,586)<p >Deep Past Challenge - Translate Akkadian to English />
+	[108] (54,616)<a aria-label='Fork of Heart Disease S6E2: Top 3% KillShot' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/fork-of-heart-disease-s6e2-top-3-killshot' role='link' />
+		[109] (58,616)<div  />
+			[110] (16,616)<div  />
+				[111] (16,616)<div  />
+					[112] (16,616)<img  />
+			[113] (66,616)<div  />
+				[114] (68,616)<p >Fork of Heart Disease S6E2: Top 3% KillShot />
+	[115] (54,647)<a aria-label='Trinity Akkadian SOTA - Road to Top 50' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/trinity-akkadian-sota-road-to-top-50' role='link' />
+		[116] (58,647)<div  />
+			[117] (16,647)<div  />
+				[118] (16,647)<div  />
+					[119] (16,647)<img  />
+			[120] (66,647)<div  />
+				[121] (68,647)<p >Trinity Akkadian SOTA - Road to Top 50 />
+	[122] (30,683)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,683)<span >arrow_right />
+		[124] (40,683)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >update />
+			[128] (19,967)<div >4 />
+		[129] (59,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r9:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		[137] (293,80)<a aria-label='Kaggle's profile' class='sc-lhsSio kfuoVB' href='/organizations/kaggle' />
+			[138] (293,80)<div  />
+		Kaggle
+		·
+		Featured Prediction Competition
+		·
+		a month to go
+		[139] (769,80)<button class='sc-pYNGo cZrOun' role='button' />
+			[140] (769,80)<span >Submit Prediction />
+		[141] (820,80)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		March Machine Learning Mania 2026
+		Forecast the 2026 NCAA Basketball Tournaments
+		[142] (764,165)<img  />
+		[143] (307,254)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview' role='tab' />
+			[144] (307,254)<span >Overview />
+		[145] (342,254)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/data' role='tab' />
+			[146] (342,254)<span >Data />
+		[147] (369,254)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/code' role='tab' />
+			[148] (369,254)<span >Code />
+		[149] (402,254)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/models' role='tab' />
+			[150] (402,254)<span >Models />
+		[151] (444,254)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/discussion' role='tab' />
+			[152] (444,254)<span >Discussion />
+		[153] (495,254)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/leaderboard' role='tab' />
+			[154] (495,254)<span >Leaderboard />
+		[155] (537,254)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules' role='tab' />
+			[156] (537,254)<span >Rules />
+		[157] (566,254)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/team' role='tab' />
+			[158] (566,254)<span >Team />
+		[159] (608,254)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/submissions' role='tab' />
+			[160] (608,254)<span >Submissions />
+		Overview
+		[161] (488,362)<div >You will be forecasting the outcomes of both the men's and women's 2026 collegiate basketball tournaments, by submitting predictions for every possible tournament matchup. />
+			You will be forecasting the outcomes of both the men's and women's 2026 collegiate basketball tournaments, by submitting predictions for every possible tournament matchup.
+		Start
+		a day ago
+		Close
+		a month to go
+		[162] (488,540)<div  />
+			[163] (478,540)<div  />
+				[164] (478,540)<div  />
+					[165] (311,540)<div  />
+						[166] (311,540)<div  />
+							[167] (311,540)<h3 >Description />
+					[168] (659,540)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[169] (681,540)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[170] (466,874)<div >Another year, another chance to predict the upsets, call the probabilities, and put your bracketology skills to the leaderboard test. In our
+annual March Machine Learning Mania competition, Kagglers will once again join the millions of fans who attempt to predict the outcomes of this year's college basketball tournaments. Unlike most fans, you will pick the winners and losers using a combination of rich historical data and computing power, while the ground truth unfolds on television.
+You are provided data of historical NCAA games to forecast the outcomes of the Division 1 Men's and Women's basketball tournaments. This competition is the official 2026 edition, with points, medals, prizes, and basketball glory at stake.
+We are continuing the format
+where you are making predictions about every possible matchup in the tournament, evaluated using the Brier score. See the
+for full details.
+Prior to the start of the tournaments, the leaderboard of this competition will reflect scores from 2021-2025 only. Kaggle will periodically fill in the outcomes and rescore once the 2026 games begin.
+Good luck and happy forecasting! />
+			Another year, another chance to predict the upsets, call the probabilities, and put your bracketology skills to the leaderboard test. In our
+			twelfth
+			annual March Machine Learning Mania competition, Kagglers will once again join the millions of fans who attempt to predict the outcomes of this year's college basketball tournaments. Unlike most fans, you will pick the winners and losers using a combination of rich historical data and computing power, while the ground truth unfolds on television.
+			You are provided data of historical NCAA games to forecast the outcomes of the Division 1 Men's and Women's basketball tournaments. This competition is the official 2026 edition, with points, medals, prizes, and basketball glory at stake.
+			We are continuing the format
+			[171] (394,739)<a aria-label='from last year (opens in a new tab)' href='https://www.kaggle.com/competitions/march-machine-learning-mania-2025'>from last year />
+			where you are making predictions about every possible matchup in the tournament, evaluated using the Brier score. See the
+			[172] (468,756)<a aria-label='Evaluation Page (opens in a new tab)' href='overview/evaluation'>Evaluation Page />
+			for full details.
+			Prior to the start of the tournaments, the leaderboard of this competition will reflect scores from 2021-2025 only. Kaggle will periodically fill in the outcomes and rescore once the 2026 games begin.
+			Good luck and happy forecasting!
+		Competition Host
+		Kaggle
+		[173] (816,321)<a aria-label='Kaggle's profile' class='sc-lhsSio kfuoVB' href='/organizations/kaggle' />
+			[174] (816,321)<div  />
+		Prizes & Awards
+		$50,000
+		Awards Points & Medals
+		Participation
+		1,227
+		Entrants
+		155
+		Participants
+		147
+		Teams
+		341
+		Submissions
+		Tags
+		[175] (723,561)<a aria-label='Basketball opens in new window' class='sc-enBMOK gmwdaY' href='/competitions?tagIds=2606-Basketball' role='link' />
+			[176] (723,561)<span >Basketball />
+		[177] (764,561)<a aria-label='Sports opens in new window' class='sc-enBMOK gmwdaY' href='/competitions?tagIds=4141-Sports' role='link' />
+			[178] (764,561)<span >Sports />
+		[179] (738,593)<div aria-label='Mean Squared Error opens in new window' class='sc-enBMOK gmwdaY' role='presentation' />
+			[180] (738,593)<span >Mean Squared Error />
+		Table of Contents
+		[181] (820,646)<button aria-label='Collapse all sections' class='sc-koBvLg jxMomE google-symbols notranslate' title='Collapse all sections'>collapse_all />
+		[182] (764,739)<div  />
+			[183] (723,671)<a aria-label='Overview, 1 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/abstract' id='626031' role='tab' />
+				[184] (723,671)<span >Overview />
+			[185] (726,698)<a aria-label='Description, 2 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/description' id='626026' role='tab' />
+				[186] (726,698)<span >Description />
+			[187] (725,725)<a aria-label='Evaluation, 3 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/evaluation' id='626027' role='tab' />
+				[188] (725,725)<span >Evaluation />
+			[189] (722,752)<a aria-label='Timeline, 4 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/timeline' id='626028' role='tab' />
+				[190] (722,752)<span >Timeline />
+			[191] (718,780)<a aria-label='Prizes, 5 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/prizes' id='626030' role='tab' />
+				[192] (718,780)<span >Prizes />
+			[193] (721,807)<a aria-label='Citation, 6 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview/citation' id='99999' role='tab' />
+				[194] (721,807)<span >Citation />
+
+</current_dom>

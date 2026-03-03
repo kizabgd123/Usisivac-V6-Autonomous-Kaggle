@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Summary of the heart disease pipeline refinement, including Alpha factor integration (Ischemic Burden) and stable 0.9553 OOF results. Identifying surgical gaps to reach 0.9575.",
+  "updatedAt": "2026-02-19T10:26:57.515977745Z"
+}

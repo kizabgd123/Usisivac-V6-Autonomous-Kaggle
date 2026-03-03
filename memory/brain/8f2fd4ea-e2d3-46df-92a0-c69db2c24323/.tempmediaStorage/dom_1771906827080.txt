@@ -1,0 +1,238 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div >13 total results />
+	[1] (500,500)<div class='sc-kjCCCG tlImP' scrollable='true' />
+		[2] (15,36)<button aria-label='Go Back' class='sc-koBvLg jtOmTD google-symbols notranslate' title='Go Back'>arrow_back />
+		[3] (472,36)<input aria-label='Search on Kaggle' class='sc-WkfYe igeMVh' />
+		[4] (939,36)<button aria-label='Search on Kaggle' class='sc-koBvLg jtOmTD google-symbols notranslate' title='Search on Kaggle'>search />
+		[5] (969,36)<button aria-label='Exit Search' class='sc-koBvLg jtOmTD google-symbols notranslate' title='Exit Search'>clear />
+		[6] (56,125)<button class='sc-enBMOK dcPGUH' role='checkbox' />
+			[7] (29,125)<span >reply />
+			[8] (64,125)<span >Comments />
+				[9] (87,125)<span >11 />
+		[10] (142,125)<button class='sc-enBMOK dcPGUH' role='checkbox' />
+			[11] (115,125)<span >code />
+			[12] (150,125)<span >Notebooks />
+				[13] (172,125)<span >2 />
+		Filter by
+		date
+		[14] (46,301)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[15] (21,301)<span  />
+				[16] (21,301)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[17] (57,301)<span  />
+				[18] (57,301)<p >Last 90 days />
+		13
+		[19] (41,347)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[20] (21,347)<span  />
+				[21] (21,347)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[22] (52,347)<span  />
+				[23] (52,347)<p >This week />
+		6
+		[24] (33,393)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[25] (21,393)<span  />
+				[26] (21,393)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[27] (45,393)<span  />
+				[28] (45,393)<p >Today />
+		1
+		viewed By You
+		[29] (35,487)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[30] (21,487)<span  />
+				[31] (21,487)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[32] (47,487)<span  />
+				[33] (47,487)<p >Viewed />
+		0
+		[34] (43,532)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[35] (21,532)<span  />
+				[36] (21,532)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[37] (55,532)<span  />
+				[38] (55,532)<p >Not Viewed />
+		13
+		creator
+		[39] (29,626)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[40] (21,626)<span  />
+				[41] (21,626)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[42] (40,626)<span  />
+				[43] (40,626)<p >You />
+		0
+		[44] (34,672)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[45] (21,672)<span  />
+				[46] (21,672)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[47] (46,672)<span  />
+				[48] (46,672)<p >Others />
+		13
+		topic Type
+		[49] (38,766)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[50] (21,766)<span  />
+				[51] (21,766)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[52] (50,766)<span  />
+				[53] (50,766)<p >Writeups />
+		0
+		[54] (66,812)<label class='MuiFormControlLabel-root MuiFormControlLabel-labelPlacementEnd css-a0r9nr' />
+			[55] (21,812)<span  />
+				[56] (21,812)<input class='PrivateSwitchBase-input css-1m9pwf3' />
+			[57] (78,812)<span  />
+				[58] (78,812)<p >All Topics and Writeups />
+		0
+		13 Results
+		[59] (662,217)<div  />
+			[60] (662,217)<div aria-label='Select combobox. Relevance currently selected.' class='MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-136dg50' role='combobox' />
+				[61] (657,217)<div  />
+					[62] (657,217)<div >Relevance />
+		[63] (422,318)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3403204' role='link' />
+			[64] (426,318)<div  />
+				[65] (222,318)<div  />
+					[66] (222,318)<div  />
+						[67] (222,318)<span  />
+							[68] (235,344)<div  />
+								[69] (235,344)<span >reply />
+				[70] (328,318)<div  />
+					[71] (328,296)<div >Comment on: />
+					[72] (328,320)<span >Discussion Comment
+·
+·
+by />
+						[73] (338,319)<span >16d ago />
+						[74] (387,319)<a aria-label='Chris Deotte opens in new window' class='sc-kjwdDK bswIUm' href='/cdeotte'>Chris Deotte />
+					[75] (328,342)<span >In the
+forum />
+						[76] (309,341)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[77] (666,296)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+		[78] (417,423)<a aria-label='The best solo model so far | RealMLP | LB: 0.95397' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397' role='link' />
+			[79] (422,423)<div  />
+				[80] (222,423)<div  />
+					[81] (222,423)<div  />
+						[82] (222,423)<span  />
+							[83] (235,450)<div  />
+								[84] (235,450)<span >code />
+				[85] (359,423)<div  />
+					[86] (359,401)<div >The best solo model so far | RealMLP | LB: 0.95397 />
+					[87] (359,426)<span >Notebook
+·
+·
+by />
+						[88] (299,425)<span >3d ago />
+						[89] (369,425)<a aria-label='OMID BAGHCHEH SARAEI opens in new window' class='sc-kjwdDK bswIUm' href='/omidbaghchehsaraei'>OMID BAGHCHEH SARAEI />
+					[90] (359,447)<span >Data source: />
+						[91] (334,447)<a aria-label='Predicting Heart Disease opens in new window' class='sc-kjwdDK bswIUm' href='/competitions/playground-series-s6e2'>Predicting Heart Disease />
+		[92] (661,401)<div >111 />
+			arrow_drop_up
+			111
+		12 comments
+		[93] (422,529)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3403350' role='link' />
+			[94] (426,529)<div  />
+				[95] (222,529)<div  />
+					[96] (222,529)<div  />
+						[97] (222,529)<span  />
+							[98] (235,555)<div  />
+								[99] (235,555)<span >reply />
+				[100] (337,529)<div  />
+					[101] (337,507)<div >Comment on: />
+					[102] (337,531)<span >Discussion Comment
+·
+·
+by />
+						[103] (338,530)<span >16d ago />
+						[104] (396,531)<a aria-label='Vladimir Demidov opens in new window' class='sc-kjwdDK bswIUm' href='/yekenot'>Vladimir Demidov />
+					[105] (337,553)<span >In the
+forum />
+						[106] (309,553)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[107] (666,507)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+		[108] (422,635)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3408250' role='link' />
+			[109] (426,635)<div  />
+				[110] (222,635)<div  />
+					[111] (222,635)<div  />
+						[112] (222,635)<span  />
+							[113] (235,661)<div  />
+								[114] (235,661)<span >reply />
+				[115] (326,635)<div  />
+					[116] (326,613)<div >Comment on: />
+					[117] (326,637)<span >Discussion Comment
+·
+·
+by />
+						[118] (336,636)<span >4d ago />
+						[119] (383,637)<a aria-label='yunsuxiaozi opens in new window' class='sc-kjwdDK bswIUm' href='/yunsuxiaozi'>yunsuxiaozi />
+					[120] (326,659)<span >In the
+forum />
+						[121] (309,659)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[122] (666,613)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+		[123] (422,741)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3408585' role='link' />
+			[124] (426,741)<div  />
+				[125] (222,741)<div  />
+					[126] (222,741)<div  />
+						[127] (222,741)<span  />
+							[128] (235,767)<div  />
+								[129] (235,767)<span >reply />
+				[130] (349,741)<div  />
+					[131] (349,719)<div >Comment on: />
+					[132] (349,743)<span >Discussion Comment
+·
+·
+by />
+						[133] (336,742)<span >3d ago />
+						[134] (407,743)<a aria-label='OMID BAGHCHEH SARAEI opens in new window' class='sc-kjwdDK bswIUm' href='/omidbaghchehsaraei'>OMID BAGHCHEH SARAEI />
+					[135] (349,765)<span >In the
+forum />
+						[136] (309,764)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[137] (666,719)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+		[138] (422,847)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3403618' role='link' />
+			[139] (426,847)<div  />
+				[140] (222,847)<div  />
+					[141] (222,847)<div  />
+						[142] (222,847)<span  />
+							[143] (235,873)<div  />
+								[144] (235,873)<span >reply />
+				[145] (351,847)<div  />
+					[146] (351,825)<div >Comment on: />
+					[147] (351,849)<span >Discussion Comment
+·
+·
+by />
+						[148] (338,848)<span >15d ago />
+						[149] (409,848)<a aria-label='OMID BAGHCHEH SARAEI opens in new window' class='sc-kjwdDK bswIUm' href='/omidbaghchehsaraei'>OMID BAGHCHEH SARAEI />
+					[150] (351,871)<span >In the
+forum />
+						[151] (309,870)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[152] (666,825)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+		[153] (422,952)<a aria-label='Comment on: ' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments#3403191' role='link' />
+			[154] (426,952)<div  />
+				[155] (222,952)<div  />
+					[156] (222,952)<div  />
+						[157] (222,952)<span  />
+							[158] (235,979)<div  />
+								[159] (235,979)<span >reply />
+				[160] (338,952)<div  />
+					[161] (338,930)<div >Comment on: />
+					[162] (338,955)<span >Discussion Comment
+·
+·
+by />
+						[163] (338,954)<span >16d ago />
+						[164] (396,954)<a aria-label='Thomas Tschinkel opens in new window' class='sc-kjwdDK bswIUm' href='/thomastschinkel'>Thomas Tschinkel />
+					[165] (338,976)<span >In the
+forum />
+						[166] (309,976)<a aria-label='playground-series-s6e2 opens in new window' class='sc-kjwdDK bswIUm' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397/comments'>playground-series-s6e2 />
+		[167] (666,930)<div >0 />
+			arrow_drop_up
+			0
+		0 replies
+	13 total results
+
+</current_dom>

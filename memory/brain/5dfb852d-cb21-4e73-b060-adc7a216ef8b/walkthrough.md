@@ -1,0 +1,46 @@
+# Walkthrough — Trinity Agent Ecosystem & RAG Integration
+
+Projekat je uspešno stabilizovan. Usisivač je transformisan iz pogrešno konfigurisano "security skenera" u moćan **Kaggle RAG Knowledge Base** koji koristi Gemini API za taktičke analize.
+
+## ✅ Šta je urađeno
+
+### 1. Popravka LLM Agent Ekosistema
+- **VetoBoard (`llm_vetoboard_review.py`)**: Popravljen import `genai` drajvera, apsolutne putanje za config i rešen problem sa prevelikim promptovima.
+- **Boardroom (`boardroom_advisor.py`)**: Omogućena nezavisna aktivacija agenta preko `boardroom_enabled` ključa.
+- **JudgeGuard (`judge_guard.py`)**: Kapija 8 (LLM Veto) je sada robusna, koristi JSON parsing i ima timeout od 120s.
+
+### 2. Gemini CLI → SDK Integracija
+- Umesto bagovitog Gemini CLI alata, implementirana je direktna integracija preko `google.generativeai` Python SDK.
+- Automatska detekcija naprednih modela (npr. `gemini-2.5-flash`) u korisničkom okruženju.
+- Sigurna manipulacija API ključevima preko `.env` fajla.
+
+### 3. RAG Optimizacija (Usisivač)
+- **Dense Indexing**: Dokumenti se sada seku pomoću "sliding window" metode (50 linija sa 10 linija preklopa), što sprečava gubitak koda.
+- **Dubina pretrage**: Povećan `n_results` sa 5 na 40, pružajući modelu mnogo širi kontekst iz različitih notebook-ova.
+- **Baza Znanja**: Re-indeksirano 915 visokokvalitetnih chunkova iz `knowledge_base/` direktorijuma.
+
+## 🧪 Verifikacija Rezultata
+
+### Testovi Agenata
+Svi testovi u `tests/test_llm_agents.py` prolaze (11/11):
+- [x] VetoBoard: Key Compatibility Pass
+- [x] Boardroom: Independent Config Pass
+- [x] JudgeGuard: Gate 8 JSON Parsing Pass
+
+### RAG Analysis Demo
+Pokretanje `generate_report.py` sada vraća strukturirane taktičke savete na srpskom jeziku, identifikujući pobedničke strategije kao što su:
+- **Interaction Decomposition**
+- **Lasso-Stabilized Meta-Learners**
+- **Rank-Based Ensembling**
+
+## 🚀 Kako koristiti
+
+Za generisanje novog taktičkog izveštaja na osnovu Kaggle baze znanja, pokrenite:
+```bash
+python Usisivac/src/generate_report.py "Koje su najbolje strategije za s6e3?"
+```
+
+Za pokretanje sigurnosne provere koda (7-Gate Protocol):
+```bash
+python judge_guard.py
+```

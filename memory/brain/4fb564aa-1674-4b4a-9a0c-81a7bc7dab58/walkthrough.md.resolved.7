@@ -1,0 +1,57 @@
+# Walkthrough - Trinity v3.15 Upgrade & Provider### Construction Bidding: v18 Trinity Fusion
+
+Successfully implemented an elite-level ensemble for the construction bidding challenge.
+
+**Key Accomplishments:**
+- **Robust Feature Engineering**: Integrated IAME (Inflation-Adjusted Market Estimate) and Bayesian priors to handle market fluctuations.
+- **Rule 34: Multi-Seed Averaging**: Used 5 seeds per fold (42, 123, 777, 2024, 31337) to reduce model variance.
+- **Rule 41: Clustering**: Added contractor archetypes via K-Means clustering.
+- **Rule 35: ProcessGuard Logic**: Verified that model correlations (XGB, LGBM) are consistently healthy (< 0.98 for this domain).
+
+**Verification Results:**
+- **Final OOF RMSLE**: `0.82502`
+- **Execution Time**: `151.03s`
+- **Artifact**: [submission_v18_fusion.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/submission_v18_fusion.csv)
+
+**ProcessGuard Snapshot:**
+```json
+{
+    "timestamp": "Fri Feb 27 23:58:32 2026",
+    "max_correlation": 0.9581,
+    "status": "PASS",
+    "threshold": 0.98,
+    "action": "Proceeding"
+}
+```
+provajderima za maksimalnu fleksibilnost i moć.
+
+## Promene (Highlights)
+
+### 1. Core Config Upgrade (v3.15)
+- **[trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)**: Implementirano **Rule 49 (Dynamic Scaling)** i **Rule 50 (Phase-Aware Diversity)**.
+- **[manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)**: Verzija podignuta na `3.15.0`.
+
+### 2. LLM Provider Expansion
+- **OpenAI (Elite Layer)**: Dodat `OPENAI_API_KEY` i podešeni limiti.
+- **Groq (Free Hub)**: Kreiran [groq_free_client.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_free_client.py) koji koristi ultra-brzi `llama-3.3-70b-versatile`.
+- **Hugging Face**: Pivotiran na Groq zbog restrikcija besplatnog API-ja, ali port je spreman za buduće izmene.
+
+### 3. Knowledge Injection (Elite Tactics)
+- **[GROQ_AUDIT.md](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/GROQ_AUDIT.md)**: Ubrizgane kliničke i takmičarske taktike (Tanaka formula, Ischemic Burden, Rule 32/33).
+- **[groq_audit_agent.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py)**: Ažuriran sistemski prompt sa **Rule 24 (Meta Command)**.
+
+## Verifikacija
+
+### Groq Connectivity Test
+Model je uspešno odgovorio na upit o Tanaka formuli:
+```text
+Odgovor:
+Tanaka formula za maksimalni radni puls (MaxHR) je:
+MaxHR = 208 - (0,7 x godine)
+...preciznija i bolja jer uzima u obzir linearni pad srčanog učinka sa godinama...
+```
+
+### Constitutional Alignment
+- Svi ključni fajlovi ([trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json), [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env), [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)) su usklađeni sa vrhovnim zakonom [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md).
+
+🛡️ **Sistem je spreman za Grandmaster operacije.**

@@ -1,0 +1,24 @@
+# Stanford RNA 3D Folding 2 Implementation Plan
+
+## Problem Definition
+Predict the 3D atomic coordinates of RNA sequences. This involves mapping 1D sequence data, paired with Multiple Sequence Alignments (MSA) and evolutionary profiles, into a strictly constrained 3D space.
+
+## Proposed Strategy
+
+### 1. Data Processing
+- Load sequence data and structural targets.
+- Parse `.fasta` MSA files efficiently (extracting sequence embeddings, consensus sequences, and positional entropy).
+- Normalize target coordinates (centering, scaling) if required.
+
+### 2. Deep Learning Architecture
+- **Input Representation:** Tokenized nucleotide sequences + MSA-derived features. 
+- **Backbone:** A Transformer-based architecture (e.g., based on BERT/RoBERTa) customized for 1D to 3D mapping. 
+- **Alternatively:** 3D Equivariant Graph Neural Networks (EGNN) if predicting relative pairwise distances or coordinates directly.
+- **Output Layer:** Coordinates (x, y, z) for specific atoms in the RNA backbone.
+
+### 3. Loss Function & Metric
+- Custom Loss prioritizing structurally critical regions. Use coordinate-based losses such as Kabsch RMSD alignment or D-RMSD (Distance Root Mean Square Deviation).
+
+### 4. Verification & Validation
+- Train-test split based on RNA family clustering (to avoid data leakage).
+- Evaluate coordinate predictions visually using PyMOL/Biotite if possible, alongside programmatic validation.

@@ -1,0 +1,32 @@
+# Phase B: Advanced Intelligence Harvesting 🧠
+
+## Goal Description
+We need to fully deploy the "Quad-Core" intelligence harvester and consolidate elite feature engineering tactics into a domain-agnostic tool registry. This ensures parameters are automatically scraped, Bayes-updated via our dynamic scoring ledger, and the "Golden Recipe" features are isolated as reusable components according to Rule 12.
+
+## Proposed Changes
+
+### Strategy Resolver
+#### [NEW] `scripts/strategy_resolver.py`
+A new script that ties [harvester.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py) and [effectiveness_scoring.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py) together. It will:
+- Instantiate [CodeHarvester](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py#12-131) from [harvester.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py) to scrape target Kaggle notebooks or competitor scripts.
+- Instantiate [KnowledgeBase](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py#10-93) from [effectiveness_scoring.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py).
+- Bulk-register fetched parameters into the scoring SQLite DB ([logic_trust_ledger.db](file:///home/kizabgd/Desktop/Istrazivanje/logic_trust_ledger.db) / `knowledge.db`).
+- Expose a `resolve_best_parameters(limit=10)` method to retrieve parameters sorted by effectiveness, effectively enabling Bayesian-like continuous updates based on historic success.
+
+### Trinity Tool Registry
+#### [NEW] `trinity_tool_registry/golden_features.py`
+Extract the "Golden Recipe" tabular techniques from the Heart Disease domain into a domain-agnostic plugin. Specifically:
+- `apply_tanaka_hrmax`: Applies `HRmax = 208 - 0.7 * Age` and calculates the percentage.
+- `apply_ischemic_burden`: Computes interaction proxy `Oldpeak * Exercise_Angina` to create an ischemic burden feature.
+- `normalize_skewed_features`: Applies Log1p + Z-score standard scaler normalization for highly skewed metrics (like Oldpeak).
+This class will accept a standard Pandas DataFrame and column mappings, fulfilling the Rule 12 requirement for domain-agnostic plug-and-play modules (e.g., dynamically accepting 'Age' or 'starost', 'Oldpeak' or 'st_depresija' via kwargs).
+
+## Verification Plan
+
+### Automated Tests
+- Run `python3 scripts/strategy_resolver.py` on a dummy or existing script to ensure parameters are fed to SQLite successfully.
+- Test `golden_features.py` with a dummy dataframe to verify it applies transformations without throwing `KeyError` exceptions when dynamic column mappings are passed.
+
+## User Review Required
+> [!IMPORTANT]
+> Please review the architecture for `strategy_resolver.py` and the Tabular RAG plugin (`golden_features.py`). If you approve of this approach for Phase B, type "odobreno" or "nastavi" to proceed with the implementation.

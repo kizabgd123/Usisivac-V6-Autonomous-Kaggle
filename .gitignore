@@ -1,0 +1,5 @@
+.env
+data/*.csv
+chroma_db/
+__pycache__/
+*.zip

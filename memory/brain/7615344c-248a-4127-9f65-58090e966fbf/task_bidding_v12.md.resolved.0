@@ -1,0 +1,8 @@
+# Bidding V12 Overdrive Implementation
+
+- [x] Analyze V6 vs V10 performance specifics
+- [ ] Implement Full-History Bayesian Unit Price Prior (2018-2024)
+- [ ] Feature Engineering: Contractor Win Rate and Rank
+- [ ] 10-Fold K-Fold Ensemble (Shuffle=True)
+- [ ] Top-Tier Pseudo-Labeling (V6 + V11 blend)
+- [ ] Final Submission and Public LB monitoring

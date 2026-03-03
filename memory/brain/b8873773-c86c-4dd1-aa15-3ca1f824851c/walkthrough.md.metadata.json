@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough documenting the melting point prediction pipeline: 3-model GBDT ensemble (XGBoost + CatBoost + LightGBM) blended via Ridge meta-learner, 4 Kaggle submissions with best private MAE of 28.54.",
+  "updatedAt": "2026-02-17T09:42:39.532704182Z",
+  "version": "1"
+}

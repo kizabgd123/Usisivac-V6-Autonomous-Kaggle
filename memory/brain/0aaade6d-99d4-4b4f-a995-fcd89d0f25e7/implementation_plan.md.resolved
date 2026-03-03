@@ -1,0 +1,40 @@
+# Configure Workspace Dashboard for Kaggle and Local LLMs
+
+The goal is to update the digital workspace automation system ([workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py) and `workspace_engine`) to primarily use Mistral, while utilizing other free APIs from the `.env` file (like Groq or DeepSeek) for secondary tasks, explicitly avoiding Gemini. We also need to optimize it for managing Kaggle competition files to prevent repetitive errors.
+
+## User Review Required
+
+Please review the proposed API model replacements. I plan to use **Mistral** for the primary summarization and **Groq** (using Llama 3) for the ML/Kaggle insights and routing, replacing the paid Grok and OpenRouter endpoints. Let me know if you prefer to use OpenRouter's free Llama 3 endpoint instead of Groq, or if you want to use the local agent pool (DeepSeek/Qwen).
+
+## Proposed Changes
+
+### Configuration
+#### [MODIFY] [configs/workspace_automation.yaml](file:///home/kizabgd/Desktop/Istrazivanje/configs/workspace_automation.yaml)
+- Update the `models` section.
+- Keep [mistral](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#47-78) as the primary model.
+- Replace [grok](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#80-116) with `groq` or a free [openrouter](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#30-35) model for deep insights.
+- Replace the [openrouter](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#30-35) routing model with a free alternative (e.g., a fast Llama 3 model via Groq).
+- Ensure Kaggle folders are well-defined.
+
+### Core Engine
+#### [MODIFY] [workspace_engine/api_clients.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py)
+- Add headers and API call functions for the new selected endpoints (e.g., `_groq_headers`, `call_groq`).
+- Update [call_openrouter_routing](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#118-156) or replace it with `call_groq_routing`.
+- Make sure API keys map correctly to the `.env` file (`GROQ_API_KEY`, `MISTRAL_API_KEY`, etc.).
+- Ensure no Gemini logic is present.
+
+#### [MODIFY] [workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py)
+- Update the [render_status](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#70-159) function to check for the new API keys (e.g., `GROQ_API_KEY` instead of `GROK_API_KEY`).
+- Update the `AGENT_TOOLS` and `SYSTEM_PROMPT` if necessary to reflect the new capabilities and avoid Gemini references. The current system prompt mentions "Prethodnik (Gemini 2.0 Pro) je napravio TEŠKU GREŠKU".
+
+#### [MODIFY] [workspace_engine/file_processor.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/file_processor.py)
+- Update the pipeline to call the new Groq/OpenRouter functions instead of [call_grok](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py#80-116).
+
+## Verification Plan
+
+### Automated Tests
+- Run a dry-run scan using the dashboard command `scan-dry` to verify the API pipeline (Mistral -> Groq/OpenRouter) works without moving files.
+- Test the interactive chat [chat](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#540-581) command to ensure Mistral is responding and tools are working.
+
+### Manual Verification
+- Ask the user to place a dummy file (e.g., a mock Kaggle CSV or python script) in the [Inbox](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/watcher.py#23-49) and observe the watchdog or run a [scan](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#202-209) to confirm it routes correctly to the `Kaggel takmicenj` folder.

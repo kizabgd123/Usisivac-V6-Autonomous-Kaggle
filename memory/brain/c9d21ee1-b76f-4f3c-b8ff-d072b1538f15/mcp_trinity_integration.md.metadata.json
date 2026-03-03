@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "Proširen plan sa integracijom sa specifičnim saznanjima iz .gemini/brain konverzacija (npr. Mistral fine-tuning, Notion Sync) i mapiranjem na Trinity Config i Orchestration Rules.",
+  "updatedAt": "2026-02-28T11:27:28.975808223Z",
+  "version": "1"
+}

@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan to fix the v16 Trinity Fusion regression and create bidding_v17_recovery.py.",
+  "updatedAt": "2026-02-25T17:38:22.808716934Z"
+}

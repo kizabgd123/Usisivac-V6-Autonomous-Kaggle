@@ -1,0 +1,27 @@
+# Task: Integracija ai-doc sa Trinity Protocol Ekosistemom
+
+## Faza 1: Analiza & Planiranje
+- [x] Analizirati strukturu projekta ([manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json), [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json), [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/kaggle-arena/.agent/rules/ORCHESTRATION_RULES.json))
+- [x] Proveriti `ai-doc` CLI dostupnost i verziju (v2.0.6 ✅)
+- [x] Utvrditi da workspace nije inicijalizovan (`Workspace não encontrado`)
+- [x] Kreirati implementation plan
+
+## Faza 2: Inicijalizacija ai-doc Workspace-a
+- [/] Pokrenuti `ai-doc init` u kaggle-arena root-u
+- [ ] Proveriti šta `init` generiše (.ai-doc/ ili slično)
+- [ ] Mapirati generisani kernel sa Trinity persona
+
+## Faza 3: Trinity Persona & Kernel Konfiguracija
+- [ ] Kreirati Trinity persona definiciju za ai-doc kernel
+- [ ] Registrovati aktivna takmičenja kao Tasks u ai-doc sistemu
+- [ ] Kreirati `ai-doc` kompatibilan workflow za Trinity 3-6-2 Dialectic
+
+## Faza 4: Makefile Proširenje
+- [ ] Dodati `ai-doc` komande u Makefile (`ai-kernel`, `ai-status`, `ai-task`)
+- [ ] Integrisati `ai-doc ritual` u deploy/submit flow
+- [ ] Sinhronizovati `ai-doc build` sa Trinity [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json)
+
+## Faza 5: Verifikacija
+- [ ] Pokrenuti `ai-doc status` i proveriti kernel status
+- [ ] Testirati `ai-doc task list` sa Trinity task-ovima
+- [ ] Verifikovati da se `ai-doc prompt` generiše sa Trinity kontekstom

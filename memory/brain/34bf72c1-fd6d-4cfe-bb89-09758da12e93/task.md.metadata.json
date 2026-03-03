@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Task list for the AI-Powered Code Review System implementation. Tracks progress across multiple phases from core architecture to advanced PR integration.",
+  "updatedAt":  "2026-03-02T15:33:55.185485464Z",
+  "version":  "11"
+}

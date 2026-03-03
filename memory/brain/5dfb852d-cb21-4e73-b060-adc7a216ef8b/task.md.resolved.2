@@ -1,0 +1,17 @@
+# Task: Optimize Usisivač Kaggle Knowledge Base
+
+## A. Ecosystem Fixes (Completed)
+- [x] Fix `genai` import and absolute path resolving
+- [x] Integrate Gemini SDK into [generate_report.py](file:///home/kizabgd/Desktop/new-challenge/Usisivac/src/generate_report.py) (replacing failing Groq)
+- [x] Verify JudgeGuard 7-Gate protocol integrity
+- [x] Test Boardroom independent activation
+
+## B. RAG Knowledge Base Optimization
+- [ ] Audit Ingestion: Ensure all notebooks in `knowledge_base/kaggle_solutions` are indexed
+- [ ] Retrieval Tuning: Improve [get_context](file:///home/kizabgd/Desktop/new-challenge/Usisivac/src/generate_report.py#39-49) to handle larger context and better similarity
+- [ ] Content Filtering: Verify that RAG context is correctly stripped of metadata/junk
+- [ ] Evaluation: Successfully generate a report using `s6e3` specific competition notebooks
+
+## C. Finalization
+- [ ] Final Walkthrough update with RAG capabilities
+- [ ] User demo of tactical advice generation

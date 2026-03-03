@@ -1,0 +1,39 @@
+# Spaceship Titanic - Antithesis Phase (Diversity)
+
+Ovaj plan fokusira se na eliminaciju "plafona" GBDT modela kroz napredni inženjering grupa i uvođenje modela sa mehanizmima pažnje.
+
+## Proposed Changes
+
+### [Component: Advanced Feature Engineering]
+
+#### [MODIFY] [spaceship_titanic_baseline.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_baseline.py) -> [NEW] [spaceship_titanic_antithesis.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_antithesis.py)
+Nadogradnja FE logike:
+- **Ticket Group Logic:**
+    - `Ticket_Freq`: Broj putnika na istoj karti.
+    - `IsSolo`: Identifikacija putnika koji putuju sami.
+    - `GroupSurvival`: OOF statistika transporta unutar grupa (bez curenja).
+- **Interactions & Transforms:**
+    - `Age_x_TotalSpent`: Interakcija starosti i potrošnje.
+    - `Deck_x_CryoSleep`: Ekonomska klasa x status sna.
+    - `log1p` transformacija za `Age` i `TotalSpent`.
+    - Kvantilno binovanje za `Age`.
+
+### [Component: Model Diversification]
+
+#### [MODEL] TabNet / Attention-based Neural Network
+- Uvođenje modela koji uči instance-specific maske.
+- Ciljna korelacija sa GBDT ansamblom: < 0.90.
+
+#### [LOGIC] Rank-based Blending
+- Implementacija rangiranja predikcija pre blendiranja radi normalizacije kalibracije.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/judge_guard.py --action "Training Antithesis"`
+- Monitorisanje korelacije predikcija (cilj < 0.95).
+- Provera OOF rezultata (očekivani proboj iznad 0.81).
+
+### Manual Verification
+- SHAP analiza na Vertex AI (predloženo) ili lokalno.
+- Finalni submit na Kaggle.

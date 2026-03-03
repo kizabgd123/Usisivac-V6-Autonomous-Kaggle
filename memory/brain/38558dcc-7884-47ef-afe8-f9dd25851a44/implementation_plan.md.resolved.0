@@ -1,0 +1,49 @@
+# Kaggle Intelligence Harvester Implementation Plan
+
+## Project Overview
+
+The goal is to implement the "Kaggle Intelligence Harvester" architecture (the Trinity Layer defined in `wokretiii111111111111111111`) to continuously hunt for and adopt state-of-the-art (SOTA) hyper-parameters and strategies for the `playground-s6e2-heart-disease` competition.
+
+We already have access to:
+- [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/judge_guard.py) (Shield / Integrity)
+- [board_vote.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/board_vote.py) (Trinity Boardroom / Validation)
+
+We need to implement the Discovery and Orchestration layers and connect them directly to the S6E2 heart disease pipeline.
+
+## User Review Required
+
+> [!WARNING]  
+> Please confirm if this implementation aligns with your expectations for the project improvements. The `intelligence_parser.py` will use static AST parsing to extract dictionaries from [.ipynb](file:///home/kizabgd/Desktop/Sharp_Betting_Llama3_HighClass.ipynb) files without executing arbitrary code, neutralizing security risks.
+
+## Proposed Changes
+
+### Core Discovery & Orchestration
+
+#### [NEW] [intelligence_parser.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/intelligence_parser.py)
+A specialized parser that scans Kaggle notebook files ([.ipynb](file:///home/kizabgd/Desktop/Sharp_Betting_Llama3_HighClass.ipynb)), identifies abstract syntax trees (AST), and extracts parameter dictionaries (e.g., `lgb_params`, `xgb_params`, `features`) securely without zero-code execution.
+
+#### [NEW] [strategy_resolver.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/strategy_resolver.py)
+A module to take the outputs approved by the Trinity Boardroom, resolve conflicts via Bayesian updating logic, and generate a final `trinity_config.json`.
+
+---
+
+### Heart Disease Project Integration
+
+#### [NEW] [run_intelligence_harvester.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/run_intelligence_harvester.py)
+An execution script that serves as the orchestrator. It will read a mock/downloaded Kaggle notebook, pass it through the Harvester Engine (`intelligence_parser`), audit with `judge_guard`, validate with `board_vote`, and synthesize a configuration using `strategy_resolver`.
+
+#### [MODIFY] [s6e2_config.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_config.py)
+Update to automatically ingest external `trinity_config.json` overrides (if the file exists) over the base configuration.
+
+#### [NEW] [s6e2_submission_8_harvested_params.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_submission_8_harvested_params.py)
+A final script built to run the existing pipeline (XGB, LGBM, CAT ensembling) leveraging the dynamically discovered SOTA parameters from the harvester loop.
+
+## Verification Plan
+
+### Automated Tests
+1. Wait for user to approve the PR.
+2. Build a mock [.ipynb](file:///home/kizabgd/Desktop/Sharp_Betting_Llama3_HighClass.ipynb) notebook containing aggressive hyperparameters in `../data/kaggle_pulls/mock_sota_heart.ipynb`.
+3. Execute `python3 run_intelligence_harvester.py` from the `playground-s6e2-heart-disease` directory.
+4. Verify that `trinity_config.json` is generated correctly in the working directory.
+5. Execute `python3 s6e2_submission_8_harvested_params.py`.
+6. Inspect the generated LB metrics and verify that parameters were successfully augmented.

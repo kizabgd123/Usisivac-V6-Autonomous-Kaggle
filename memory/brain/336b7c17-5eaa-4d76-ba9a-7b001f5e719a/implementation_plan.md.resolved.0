@@ -1,0 +1,23 @@
+# Trinity Initialization & Mistral Trigger Plan
+
+This plan outlines the steps to initialize the Trinity workspace and execute the Mistral trigger workflow.
+
+## Proposed Changes
+
+No code changes are proposed. This is an execution-only task.
+
+### Workspace Initialization [trinity_start]
+- Run `make info` to verify workspace status.
+- Check the current operating phase from [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json).
+- Run `make seed_wisdom` to populate the knowledge base.
+
+### Mistral Trigger [mistral_trigger]
+- Run `python3 scripts/mistral_guardian.py "Initialize workspace and trigger guardian"` (using a default query as none was provided).
+- Read [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json).
+- Apply the verdict according to the workflow rules.
+
+## Verification Plan
+
+### Automated Tests
+- Verification will be based on the output of the commands.
+- [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) will be checked for the verdict.

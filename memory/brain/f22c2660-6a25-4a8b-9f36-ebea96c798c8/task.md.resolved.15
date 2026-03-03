@@ -1,0 +1,9 @@
+- [x] Formulate v5 Hardcore implementation plan (0.960+)
+- [x] Implement V5 Hardcore (DL 0.7 / GBDT 0.3) - *Vetoed by Conflict Session*
+- [x] Formulate v5.1 Conflict-Proof implementation plan (0.4/0.6 Blend)
+- [x] Implement V5.1 Conflict-Proof (Isotonic Shield) - *OOF AUC: 0.953952*
+- [x] Implement Cardiac Fatigue & Periodic Embeddings
+- [x] Generate predictions and evaluate internal CV / Adversarial AUC
+- [x] Ensure process complies with 7-Gate Submit Protocol
+- [x] Create Walkthrough Artifact
+- [x] Submit predictions to Kaggle - *Public LB Score: 0.95180*

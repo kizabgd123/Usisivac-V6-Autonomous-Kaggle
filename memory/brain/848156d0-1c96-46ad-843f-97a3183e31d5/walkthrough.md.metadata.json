@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the Heart Disease S6E2 Refinement. Detailed the fix for 'ischemic_burden', the data merging strategy, and the CPU-optimized pipeline deployment to Kaggle.",
+  "updatedAt": "2026-02-20T10:21:14.478956502Z"
+}

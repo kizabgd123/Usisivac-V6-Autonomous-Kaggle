@@ -1,0 +1,14 @@
+# Task: Elite Breach v3.2 Optimization & Execution
+
+- [/] Optimize [heart_top5_v3_2_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py) [/]
+    - [ ] Replace `ExtraTreesRegressor` with `BayesianRidge` in MICE (or move to Native NaN)
+    - [ ] Ensure `chol_zero_flag` and `Age < 40` interaction are preserved
+    - [ ] Verify `Ischemic Burden` feature logic
+    - [ ] Update Model parameters (XGBoost DART, LGBM/CatBoost regularization)
+- [ ] Implement robust execution script
+    - [ ] Use `nohup` for background execution
+    - [ ] Ensure logs are captured correctly
+- [ ] Monitor and Verify
+    - [ ] Check OOF AUC progress
+    - [ ] Verify Adversarial Validation score (< 0.52)
+    - [ ] Generate final submission

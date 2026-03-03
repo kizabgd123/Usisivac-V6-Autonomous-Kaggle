@@ -1,0 +1,64 @@
+# Kaggle Intelligence Harvester: Quad-Core Walkthrough
+
+I have successfully upgraded the Antigravity intelligence gathering system from primitive script harvesting to a "Quad-Core" architectural model.
+
+## 🏗️ Quad-Core Architecture
+
+The harvester now operates across four distinct, decoupled layers:
+
+### 1. Core: Discovery (Intelligence Parser)
+- **Tool**: [intelligence_parser.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/intelligence_parser.py)
+- **Logic**: Uses Python's [ast](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py#65-106) (Abstract Syntax Tree) to extract parameters even from deep function calls or interaction terms.
+- **Safety**: Integrates [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-427) to perform a security sweep before any file is "exposed" to the memory layers.
+
+### 2. Core: Memory (Strategic RDB & Vector RAG)
+- **Tool**: [trinity_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_kb.py)
+- **Evolution**: Upgraded from a simple text table to a relational schema:
+    - `STRATEGIES`: Tracks authors, ranks, and competition IDs.
+    - `PARAMETERS`: Stores specific FE/Model weights with confidence scores.
+    - `BOARD_AUDITS`: Logs consensus verdicts.
+- **RAG**: Integrated [local_rag_builder.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/local_rag_builder.py) to index every harvested strategy into a vector store for semantic retrieval.
+
+### 3. Core: Shield (Boardroom Consensus)
+- **Tool**: [trinity_boardroom.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_boardroom.py)
+- **Consensus**: Implements 3/3 voting logic:
+    - **KIMI**: Validates clinical/domain plausibility (e.g., Tanaka formula).
+    - **QWEN**: Ensures code efficiency.
+    - **MISTRAL**: Audits against GEMINI.md anti-patterns (e.g., Vetoing pseudo-labeling).
+
+### 4. Core: Law (Strategic Resolver)
+- **Tool**: [strategy_resolver.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategy_resolver.py)
+- **Orchestration**: Automatically runs the sequence: **Parse -> Audit -> Commit RDB -> Index RAG**.
+
+## 🚀 Verification Results
+
+- **Boardroom VETO Test**: Passed. The boardroom successfully identified and blocked a strategy containing "pseudo-labeling" as per Rule 31.
+- **AST extraction**: Verified on local scripts, successfully identifying `learning_rate` and `feature_interaction` patterns.
+- **Scalability**: Added lazy-loading for heavy libraries (`transformers`, `sentence-transformers`) to ensure the basic CLI remains responsive.
+
+## 📊 Visual Trinity Dashboard (Phase 3)
+
+The system now includes a web-based **Command Center** for real-time monitoring:
+
+- **Launch Command**: `make dashboard`
+- **Interface**: A modern, glassmorphism UI served on `http://localhost:8050`.
+- **Key Views**:
+    - **Institutional Memory**: Real-time counts of harvested strategies and parameters.
+    - **Boardroom Sessions**: A live feed of 3/3 consensus audits and veto reasons.
+    - **Intelligence Leaderboard**: A ranking of the most effective parameters discovered.
+    - **ProcessGuard Alerts**: Instant visual notification of any VETO or constitutional breach.
+
+---
+**Status**: Hybrid Memory & Autonomous Harvester are ONLINE. Trinity Protocol Phase 5 is COMPLETE.
+
+## Phase 4: Kaggle Autonomous Harvester
+We implemented [kaggle_automated_harvester.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_automated_harvester.py), enabling:
+- **Autonomous Discovery**: Recursive search for SOTA kernels (e.g., "heart disease").
+- **Auth Recovery**: Automatically handles 401 errors by direct `kaggle.json` credential injection.
+- **Protocol Compliance**: Auto-logs all actions to [WORK_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/WORK_LOG.md) to satisfy [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-427).
+- **Domain Shielding**: Vetoed non-kardiology kernels (e.g., pneumonia detection) to maintain focus.
+
+## Phase 5: Hybrid Memory & RAG Optimization
+- **RDB Schema Evolution**: Added `author`, `session_id`, and `model_lineage`.
+- **Strategic Query Engine**: Implemented [strategic_query_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategic_query_engine.py) for hybrid searches (e.g., "Find XGBoost parameters + return code snippets").
+- **Memory Integrity**: Verified duplicate detection and cross-referencing between SQL and Vector stores.

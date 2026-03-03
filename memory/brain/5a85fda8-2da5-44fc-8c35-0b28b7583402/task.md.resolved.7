@@ -1,0 +1,26 @@
+# Refinement Phase: Top 1% Closing
+
+## Experiment 1: Polynomial + Target Encoding
+- [x] Research current data pipeline in [antithesis_boosters.py](file:///home/kizabgd/Desktop/new-challenge/antithesis_boosters.py) or similar
+- [x] Implement `tenure * MonthlyCharges` interactions
+- [x] Implement Target Encoding for `Contract` and `PaymentMethod` (grouped by `tenure`)
+- [x] Run 5-fold Stratified CV (Result: 0.916141 - No improvement)
+- [x] Compare results with baseline (0.916164)
+- [ ] Update [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) with results
+
+## Experiment 2: Ridge Regression Meta-Learner (Conditional)
+- [x] Design multi-model stack (XGB, LGBM, LogReg)
+- [x] Implement OOF stacking
+- [x] Train Ridge meta-learner (Result: 0.916188 - Minimal gain)
+- [x] Validate improvement
+
+## Phase 2: Hyperparameter Tuning (Pivot)
+- [x] Design tuning space for CatBoost/XGBoost
+- [x] Execute grid/random search (or targeted trials)
+- [x] Finalize optimized models (Result: 0.916251 - Minor gain)
+- [x] Final Blend & Submission (Result: 0.91386 LB)
+
+## Experiment 3: Bayesian Weight Search (Conditional)
+- [x] Implement Bayesian Optimization for weights
+- [x] Finalize ensemble
+- [x] Update [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) with final results

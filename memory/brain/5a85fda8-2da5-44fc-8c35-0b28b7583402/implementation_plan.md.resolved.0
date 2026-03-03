@@ -1,0 +1,33 @@
+# Implementation Plan - Experiment 1: Polynomial + Target Encoding
+
+This experiment aims to close the 0.00279 AUC gap to reach the Top 1% on the leaderboard (Target: 0.9165) by introducing non-linear feature interactions and statistically robust encoding.
+
+## Proposed Changes
+
+### [NEW] [experiment_1_poly_target.py](file:///home/kizabgd/Desktop/new-challenge/experiment_1_poly_target.py)
+Create a new script to avoid modifying existing baseline/antithesis scripts until success is confirmed.
+
+#### Features to Implement:
+- **Interaction Terms**:
+    - `tenure_MonthlyCharges`: `tenure * MonthlyCharges`
+    - `tenure2_MonthlyCharges`: `tenure**2 * MonthlyCharges`
+    - `log_MonthlyCharges`: `np.log1p(MonthlyCharges)`
+- **Target Encoding**:
+    - Encode `Contract` and `PaymentMethod` based on the target `Churn`.
+    - Use `StratifiedKFold` to prevent leakage (out-of-fold encoding).
+    - Smoothing parameter: 5 (as per directive).
+
+#### Model:
+- Use **CatBoostClassifier** with parameters consistent with the Thesis baseline to ensure comparability.
+
+## Verification Plan
+
+### Automated Tests
+1. **Sanity Check**: Verify that the new features are generated and have no NaN values.
+2. **CV Evaluation**: Run 5-fold Stratified CV.
+    - **Command**: `python3 experiment_1_poly_target.py`
+    - **Expected Result**: OOF ROC AUC should be >= 0.9172 (Baseline 0.916164 + 0.001 gain requirement).
+3. **Leakage Audit**: Ensure target encoding is strictly out-of-fold. I will reuse [leakage_audit.py](file:///home/kizabgd/Desktop/new-challenge/leakage_audit.py) or a similar logic if possible.
+
+### Manual Verification
+- Review the [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) update after the run to confirm the improvement.

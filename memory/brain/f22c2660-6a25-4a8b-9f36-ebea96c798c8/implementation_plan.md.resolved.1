@@ -1,0 +1,27 @@
+# Goal Description
+
+The objective is to break the 0.95400 Public LB limit on the S6E2 Heart Disease Challenge. According to the tactic registry ([tactic_registries/heart_disease.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/heart_disease.md)), this can be achieved by blending tabular neural networks (RealMLP/TabNet) with our existing GBDT ensemble (Golden Recipe), as GBDTs hit a "Hybrid Correlation Wall".
+
+## Proposed Changes
+
+### 1. Model Diversification (Qwen's Advice)
+We will introduce orthogonal models to break the "Correlation Wall" of GBDTs:
+- **Random Forest Classifier**: `n_estimators=100` (to maintain stability)
+- **Support Vector Classifier (SVC)**: `C=1.0` (standard regularization)
+- **Tabular Neural Network (MLP/TabM proxy)**: A basic architecture to emulate TabM's orthogonal behavior without requiring missing libraries like `pytabkit`.
+
+### 2. Medical Conscience (Kimi's Advice)
+- Add the `Ischemic_Burden` feature (interaction of `Oldpeak` and `Exercise angina`).
+- Utilize the `Tanaka` formula for `MaxHR`.
+- Mix UCI Data as Bayesian Priors: Weight the real-world UCI priors at **0.6** and original synthetic data at **0.4** to ground the model in clinical reality.
+
+### 3. Safety & Generalization (Mistral's Advice & Hardening Parameters)
+- We will integrate the explicit parameters: `rf_n_estimators=100`, `svc_C=1.0`, `use_tabm_ensemble=True`, `uci_prior_weight=0.6`, `feature_ischemic_burden=True`.
+- Strict OOF cutoff: If OOF > 0.960, the model is overfitting. The target optimal zone is ~0.955.
+
+### 4. Implementation: `scripts/heart_disease_v4_breakthrough.py`
+A new script combining the elite baseline with these diversified models and Hardening parameters. We will evaluate performance with a 5-fold cross-validation.
+
+
+### Next Steps
+Once approved, I will install the dependencies, execute the script, and verify the OOF AUC score. If OOF is promising (around 0.954 - 0.955), we will submit it to Kaggle.

@@ -1,0 +1,383 @@
+
+You are about to receive code snippets that demonstrate how to export OpenTelemetry/OpenInference traces either AUTOMATICALLY (framework-specific) or MANUALLY (framework-agnostic).
+
+• Arize ⟶ commercial SaaS built on OpenTelemetry / OpenInference  
+• Phoenix ⟶ open-source sibling; identical ingestion format  
+• Auto-instrumentation = framework-specific, minimal code  
+• Manual instrumentation = framework-agnostic, maximum control
+
+```txt
+=== AUTO INSTRUMENTATION EXAMPLE (openai) ===
+### Install
+
+```bash
+pip install openinference-instrumentation-openai-agents openai-agents arize-otel
+```
+
+### API Key Setup
+
+```bash
+export OPENAI_API_KEY='your_openai_api_key'
+```
+
+### Setup
+
+```python
+# Import open-telemetry dependencies
+from arize.otel import register
+
+# Setup OTel via our convenience function
+tracer_provider = register(
+    space_id = "your-space-id",    # in app space settings page
+    api_key = "your-api-key",      # in app space settings page
+    project_name="agents"          # As used in the example, or your preferred project name
+)
+
+# Import the automatic instrumentor from OpenInference
+from openinference.instrumentation.openai import OpenAIInstrumentor
+
+# Finish automatic instrumentation
+OpenAIInstrumentor().instrument(tracer_provider=tracer_provider)
+```
+
+=== MANUAL INSTRUMENTATION EXAMPLE 1: SEND TRACES ===
+# Manual Instrumentation Example: Sending Traces to Arize
+
+Demonstrates how to manually add OpenTelemetry + OpenInference tracing to a Python app and export spans to **Arize**.
+
+---
+
+## 0. Prerequisites
+
+```bash
+pip install opentelemetry-sdk opentelemetry-exporter-otlp-proto-grpc openinference-semconv openinference-instrumentation
+# Arize credentials (replace with your values):
+export ARIZE_SPACE_KEY="<your-space-key>"
+export ARIZE_API_KEY="<your-api-key>"
+```
+
+---
+
+## 1. Imports
+
+```python
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk import trace as trace_sdk
+from openinference.semconv.trace import SpanAttributes, OpenInferenceSpanKindValues
+from opentelemetry import trace as trace_api
+import json
+from openinference.instrumentation import using_attributes
+from opentelemetry.trace import Status, StatusCode
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
+    OTLPSpanExporter as OTLPSpanExporterGrpc,
+)
+```
+
+---
+
+## 2. TracerProvider Registration (Arize)
+
+```python
+# Set up Arize credentials and endpoint
+ARIZE_SPACE_KEY = "ARIZE_SPACE_KEY"
+ARIZE_API_KEY = "ARIZE_API_KEY"
+ARIZE_MODEL_NAME = "my-manually-instrumented-project"
+ARIZE_ENDPOINT = "otlp.arize.com"
+
+# Create a TracerProvider with Arize model info as resource attributes
+provider = trace_sdk.TracerProvider(
+    resource=Resource(
+        attributes={
+            "model_id": ARIZE_MODEL_NAME,
+            "model_version": "v1",
+        }
+    )
+)
+
+# Configure the OTLP gRPC exporter to send traces to Arize
+exporter = OTLPSpanExporterGrpc(
+    endpoint=ARIZE_ENDPOINT,
+    headers={
+        "space_key": ARIZE_SPACE_KEY,
+        "api_key": ARIZE_API_KEY,
+    },
+)
+
+# Add a simple span processor to the provider
+provider.add_span_processor(SimpleSpanProcessor(exporter))
+
+# Register the provider globally
+trace_api.set_tracer_provider(provider)
+```
+
+---
+
+## 3. Tracer and Span Creation
+
+```python
+# Get a tracer instance for this module
+tracer = trace_api.get_tracer(__name__)
+
+# Use OpenInference's using_attributes context manager to attach session/user info
+with using_attributes(
+    session_id="123456",
+    user_id="31415",
+):
+    # Start a parent span (Agent)
+    with tracer.start_as_current_span(
+        name="Parent span",
+        attributes={
+            SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.AGENT.value,
+            SpanAttributes.INPUT_VALUE: "Foo faa",
+        },
+    ) as agent_span:
+        # Child span 1: Embedding
+        with tracer.start_as_current_span(
+            name="Child span 1",
+            attributes={
+                SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.EMBEDDING.value,
+                SpanAttributes.INPUT_VALUE: "Some embedding input",
+            },
+        ) as child_span:
+            # Simulate work and set output/metadata
+            child_span.set_attribute(
+                SpanAttributes.OUTPUT_VALUE, "Some embedding output"
+            )
+            metadata_json_str = json.dumps({"some_metadata": True})
+            child_span.set_attribute(SpanAttributes.METADATA, metadata_json_str)
+            # Child span 2: LLM
+            with tracer.start_as_current_span(
+                name="Child span 2",
+                attributes={
+                    SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.LLM.value,
+                    SpanAttributes.INPUT_VALUE: "Some LLM input",
+                },
+            ) as child_span:
+                output = "Some LLM output"
+                child_span.set_attribute(SpanAttributes.OUTPUT_VALUE, output)
+            # Child span 3: Tool
+            with tracer.start_as_current_span(
+                name="Child span 3",
+                attributes={
+                    SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.TOOL.value,
+                    SpanAttributes.INPUT_VALUE: "Some tool input",
+                },
+            ) as child_span:
+                output = "Some tool output"
+                child_span.set_attribute(SpanAttributes.OUTPUT_VALUE, output)
+        # Child span 4: Chain
+        with tracer.start_as_current_span(
+            name="Child span 4",
+            attributes={
+                SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.CHAIN.value,
+                SpanAttributes.INPUT_VALUE: "Some chain input",
+            },
+        ) as child_span:
+            try:
+                print("CallingLM")
+                output = "Some LLM output"
+                child_span.set_attribute(SpanAttributes.OUTPUT_VALUE, output)
+            except Exception as error:
+                agent_span.record_exception(error)
+                agent_span.set_status(Status(StatusCode.ERROR))
+            else:
+                agent_span.set_status(Status(StatusCode.OK))
+```
+
+---
+
+# END EXAMPLE 
+
+=== MANUAL INSTRUMENTATION EXAMPLE 2: SEND TRACES FROM AN STREAMLIT APP ===
+# Manual Instrumentation Example with Arize
+
+Demonstrates how to manually add OpenTelemetry + OpenInference tracing to a Streamlit RAG application and export spans to **Arize**.
+
+---
+
+## 0. Prerequisites
+
+```bash
+pip install streamlit langchain langgraph openai openinference-semconv \
+            opentelemetry-sdk opentelemetry-exporter-otlp-proto-grpc \
+            arize-otel python-dotenv
+
+# Arize credentials (replace with your values)
+export ARIZE_SPACE_KEY="<your-space-key>"
+export ARIZE_API_KEY="<your-api-key>"
+```
+
+---
+
+## 1. Imports & environment bootstrap
+
+```python
+from dotenv import load_dotenv
+
+# app dependencies
+import streamlit as st
+from langchain.chat_models import init_chat_model
+from langchain_openai import OpenAIEmbeddings
+from langchain_core.vectorstores import InMemoryVectorStore
+
+from langchain import hub
+from langchain_core.documents import Document
+
+from langgraph.graph import START, StateGraph
+from typing_extensions import List, TypedDict
+
+# instrumanetation 
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace.export import SimpleSpanProcessor
+from opentelemetry.sdk import trace as trace_sdk
+from openinference.semconv.trace import SpanAttributes, OpenInferenceSpanKindValues
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
+    OTLPSpanExporter as OTLPSpanExporterGrpc,
+)
+from opentelemetry import trace as trace_api
+
+load_dotenv()
+```
+
+---
+
+## 2. TracerProvider registration (Arize)
+
+The provider is cached with Streamlit so it is only created **once**, avoiding the "Overriding of current TracerProvider is not allowed" error on every rerun.
+
+```python
+# We wrap tracer-provider initialization in a Streamlit-cached function so it
+# executes only once, preventing the "Overriding of current TracerProvider is
+# not allowed" error when Streamlit re-runs the script.
+@st.cache_resource(show_spinner=False)
+def _init_tracer_provider() -> trace_sdk.TracerProvider:  # type: ignore
+    """Initialize and register the global TracerProvider (runs once)."""
+
+    tracer_provider = register(
+        space_id="ARIZE_SPACE_ID",
+        api_key="ARIZE_API_KEY",
+        project_name="my-manually-instrumented-project",
+    )
+    return tracer_provider.get_tracer(__name__)
+
+# Initialize once at import time
+_TRACER_PROVIDER = _init_tracer_provider()
+```
+
+---
+
+## 3. Model, embeddings & vector store setup
+
+```python
+llm = init_chat_model("claude-3-5-sonnet-latest", model_provider="anthropic")
+
+embeddings = OpenAIEmbeddings(model="text-embedding-3-large")
+vector_store = InMemoryVectorStore(embeddings).load(
+    "vector_store_openai.json", embeddings
+)
+```
+
+---
+
+## 4. Prompt template & application state
+
+```python
+prompt = hub.pull("rlm/rag-prompt")
+
+class State(TypedDict):
+    question: str
+    context: List[Document]
+    answer: str
+```
+
+---
+
+## 5. Instrumented workflow steps
+
+Each step starts its **own span** and records OpenInference semantic attributes so downstream observability tools (Arize, Phoenix, etc.) can reconstruct the RAG pipeline.
+
+```python
+def retrieve(state: State):
+    tracer = trace_api.get_tracer(__name__)
+    with tracer.start_as_current_span(
+        "retrieve",
+        attributes={
+            SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.RETRIEVER.value,
+            SpanAttributes.INPUT_VALUE: state["question"],
+        },
+    ) as span:
+        retrieved_docs = vector_store.similarity_search(state["question"])
+        span.set_attribute(
+            SpanAttributes.RETRIEVAL_DOCUMENTS,
+            [doc.page_content[:200] for doc in retrieved_docs],
+        )
+    return {"context": retrieved_docs}
+
+
+def generate(state: State):
+    tracer = trace_api.get_tracer(__name__)
+    with tracer.start_as_current_span(
+        "generate",
+        attributes={
+            SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.LLM.value,
+            "llm.model": "claude-3-5-sonnet-latest",
+            SpanAttributes.INPUT_VALUE: state["question"],
+            "rag.context_length": len(state["context"]),
+        },
+    ) as span:
+        docs_content = "\n\n".join(doc.page_content for doc in state["context"])
+        messages = prompt.invoke({"question": state["question"], "context": docs_content})
+        response = llm.invoke(messages)
+        span.set_attribute(SpanAttributes.OUTPUT_VALUE, str(response.content))
+    return {"answer": response.content}
+```
+
+---
+
+## 6. LangGraph orchestration
+
+```python
+graph_builder = StateGraph(State)
+graph_builder.add_node(retrieve)
+graph_builder.add_node(generate)
+graph_builder.add_edge(START, "retrieve")
+graph_builder.add_edge("retrieve", "generate")
+
+graph = graph_builder.compile()
+```
+
+---
+
+## 7. Streamlit UI & runtime
+
+```python
+image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/One_Ring_Blender_Render.png/1280px-One_Ring_Blender_Render.png"
+st.image(image_url, width=300)
+st.title("Lord of the Rings RAG App")
+st.write("Ask the model and you shall know.")
+
+query = st.text_input("Enter your question:")
+
+if query:
+    # Start a trace (a root span) when the app is invoked, the Agent span is the parent span and wraps the following spans for each step    
+    tracer = trace_api.get_tracer(__name__)
+    with tracer.start_as_current_span(
+        name="rag_query",
+        attributes={
+            SpanAttributes.OPENINFERENCE_SPAN_KIND: OpenInferenceSpanKindValues.AGENT.value,
+            SpanAttributes.INPUT_VALUE: query,
+        },
+    ) as root_span:
+        result = graph.invoke({"question": query})
+        root_span.set_attribute(SpanAttributes.OUTPUT_VALUE, result["answer"])
+        st.write(result["answer"])
+        with st.expander("Context"):
+            st.write(result["context"])
+```
+
+---
+
+
+
+```

@@ -1,0 +1,29 @@
+# Heart Disease Pipeline Enhancement - Optuna Tracking
+
+Analyze and improve the heart disease prediction pipeline by adding detailed observability for the hyperparameter optimization (HPO) process.
+
+## Goal Description
+The objective is to monitor each Optuna trial in Arize Phoenix. This involves logging:
+1. **Hyperparameters**: Specifically the `learning_rate` for each trial.
+2. **Metrics**: The `ROC-AUC` score achieved in each trial.
+3. **Execution Metadata**: Tracking which model (XGBoost, LightGBM, CatBoost) is being tuned.
+
+## Proposed Changes
+
+### [MODIFY] [heart_disease_top3_colab.py](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py)
+
+#### StackingEnsemble Class
+- Update [optimize_xgboost](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py#381-408), [optimize_lightgbm](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py#409-434), and [optimize_catboost](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py#435-459) methods.
+- Define a specialized wrapper for the [objective](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py#437-454) function that uses a `tracer`.
+- Use `@using_attributes` or manual span creation to log:
+    - Input parameters (from `trial.params`).
+    - Output score (ROC-AUC).
+- Ensure the `tracer_provider` (returned by [setup_arize()](file:///home/kizabgd/Downloads/heart_disease_top3_colab.py#332-347)) is available or correctly utilized.
+
+## Verification Plan
+
+### Manual Verification
+- Run the code in a trial environment.
+- Access the local or hosted Arize Phoenix UI.
+- Filter spans by the project name `heart-disease-trinity`.
+- Inspect individual trials to verify that `learning_rate` and `AUC` attributes are present and accurate.

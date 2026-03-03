@@ -1,0 +1,33 @@
+# Task: Trinity Phase: Thesis (Competition Audit & Baseline)
+
+- [x] Phase 1: Competition Audit (Thesis)
+  - [x] Download/Analyze competition metadata (Leaderboard, Description)
+  - [x] Inspect `train.csv` and `test.csv` distributions
+  - [x] Audit `Usisivac` research for domain quality (Churn mechanics)
+- [x] Phase 2: Guardian Validation & Baseline
+  - [x] Run `make test` for Guardian security/performance check
+  - [x] Initialize [tactic_registries/s6e3_telco_churn.md](file:///home/kizabgd/Desktop/new-challenge/tactic_registries/s6e3_telco_churn.md)
+  - [x] Prepare Thesis model configuration in [trinity_config.json](file:///home/kizabgd/Desktop/new-challenge/trinity_config.json)
+  - [x] Execute initial baseline training (`make train`)
+- [x] Phase 3: Reporting
+  - [x] Summarize findings in Grandmaster format (Pure Serbian)
+
+# Task: Trinity Phase: Antithesis (Diversity & Feature Engineering)
+
+- [ ] Phase 1: Orthogonal Modeling
+  - [ ] Implement XGBoost and LightGBM models
+  - [ ] Perform Feature Interaction audit
+- [x] Phase 2: Leakage & Gap Analysis
+  - [x] Investigate OOF vs LB gap (Corrected to 0.913)
+  - [x] Test cross-validation strategy robustness (Verified: 5-Fold Stratified)
+
+## Task: Trinity Phase: Synthesis (Ensemble & Blending)
+
+- [/] Phase 1: Rank Blending
+  - [/] Implement Spearman Rank Correlation audit
+  - [ ] Execute weighted rank-based average (Cat+XGB+LGBM)
+  - [ ] Implement Multi-Seed Averaging for final boosters
+- [ ] Phase 2: Final Verification
+  - [ ] Apply JudgeGuard & 7-Gate Submit Protocol
+  - [ ] Compare Ensemble OOF vs Ensemble LB
+  - [ ] Generate final manifest.json update

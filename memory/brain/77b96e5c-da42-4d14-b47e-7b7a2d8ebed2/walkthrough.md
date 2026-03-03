@@ -1,0 +1,44 @@
+# Walkthrough: Unified Cloud Logging Integration
+
+Implemented a centralized logging system for all Trinity agents using **JSONBin.io**, enabling remote persistence and cross-agent traceability.
+
+## Changes Made
+
+### Infrastructure & Config
+- **.env**: Added `JSONBIN_MASTER_KEY`, `JSONBIN_ACCESS_KEY`, and `JSONBIN_ACCESS_KEY_ID`.
+- **trinity_config.json**: Added `infrastructure` block with `cloud_log_bin_id` (`69a3bf7243b1c97be9a85a5b`).
+
+### Logic & Modules
+- **[NEW] [cloud_logger.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/utils/cloud_logger.py)**: A robust utility class that handles API authentication, bin initialization, and event logging.
+- **[MODIFY] [trinity_guardian.py](file:///home/kizabgd/Desktop/kaggle-arena/src/trinity_guardian.py)**: Now mirrors every `Guard Alert` to the cloud.
+- **[MODIFY] [boardroom.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/hive/boardroom.py)**: Now sends final debate verdicts and status updates to the cloud.
+- **[MODIFY] [stress_test.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/hive/stress_test.py)**: Now logs 3-6-2 research outcomes and strategic breakthroughs to the cloud.
+
+## Verification Results
+
+### Cloud Sync Test
+Executed `stress_test.py` for a clinical research topic:
+- **Local status:** SUCCESS
+- **Cloud status:** Event captured in bin `69a3bf7243b1c97be9a85a5b`.
+
+**Example Cloud Log Entry:**
+```json
+{
+  "timestamp": "2026-03-01T05:25:08.238393",
+  "agent": "ScientificAnalyst",
+  "action": "3-6-2 Research",
+  "status": "SUCCESS",
+  "details": {
+    "topic": "Impact of CRISPR on hypertrophic cardiomyopathy treatment",
+    "breakthroughs": "1. **Discovery of the Trinity Pathway**..."
+  }
+}
+```
+
+## How to use
+Any new agent can now easily use the cloud logger:
+```python
+from scripts.utils.cloud_logger import CloudLogger
+cl = CloudLogger()
+cl.log_event("MyAgent", "MyAction", "SUCCESS", {"data": "..."})
+```

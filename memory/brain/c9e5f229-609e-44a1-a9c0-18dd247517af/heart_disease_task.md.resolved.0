@@ -1,0 +1,9 @@
+# Task: Heart Disease - Reach 0.9575 LB
+
+- [ ] Analyze Shot 2 failure (CV 0.955 -> LB 0.953)
+- [ ] Implement Shot 3: Geometric Fusion & Multi-Target
+    - [ ] Add Target log-rotation
+    - [ ] Implement Geometric Blending
+    - [ ] Pseudo-labeling with high-confidence test samples
+- [ ] Verify Local CV (Goal: > 0.9565)
+- [ ] Submit to Kaggle

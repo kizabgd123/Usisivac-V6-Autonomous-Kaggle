@@ -1,0 +1,41 @@
+# Task: Workspace Preparation for New Kaggle Challenge
+
+- [x] Research and Identification <!-- id: 0 -->
+    - [x] Identify the target competition <!-- id: 1 -->
+    - [x] Review [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) for pending domains <!-- id: 2 -->
+- [/] Workspace Initialization <!-- id: 3 -->
+    - [ ] Create [package.json](file:///home/kizabgd/Desktop/kaggle-arena/package.json) with workflow dependency <!-- id: 12 -->
+    - [ ] Update [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) (keep domain: pending) <!-- id: 5 -->
+    - [ ] Ensure [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/kaggle-arena/.agent/rules/ORCHESTRATION_RULES.json) is ready <!-- id: 13 -->
+    - [ ] Update [tactic_registries/competition_tracker.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/competition_tracker.md) <!-- id: 6 -->
+- [ ] Trinity Board Implementation <!-- id: 14 -->
+    - [ ] Implement [_meta_overseer_check](file:///home/kizabgd/Desktop/kaggle-arena/scripts/judge_guard.py#172-196) in [judge_guard.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/judge_guard.py) <!-- id: 15 -->
+    - [ ] Create [src/kaggle_intelligence/board_validator.py](file:///home/kizabgd/Desktop/kaggle-arena/src/kaggle_intelligence/board_validator.py) (VetoBoard) <!-- id: 16 -->
+    - [ ] Create [src/antigravity_core/boardroom.py](file:///home/kizabgd/Desktop/kaggle-arena/src/antigravity_core/boardroom.py) (DebateBoard) <!-- id: 17 -->
+    - [ ] Create [src/antigravity_core/judge_flow.py](file:///home/kizabgd/Desktop/kaggle-arena/src/antigravity_core/judge_flow.py) (JudgeFlow) <!-- id: 18 -->
+- [ ] Baseline Setup <!-- id: 7 -->
+    - [ ] Create initial `src/` structure <!-- id: 8 -->
+    - [ ] Generate `manifest.json` <!-- id: 9 -->
+- [x] Verification <!-- id: 10 -->
+    - [x] Validate protocol compliance with `make status` <!-- id: 11 -->
+    - [x] Test VetoBoard quorum & LEGAL veto <!-- id: 19 -->
+- [x] Antithesis Phase (Diversity) <!-- id: 20 -->
+    - [x] Implement Ticket-based Group Logic & FE Interactions <!-- id: 21 -->
+    - [x] Implement TabNet or Attention-based Model <!-- id: 22 -->
+    - [x] Implement Rank-based Blending <!-- id: 23 -->
+    - [x] Verify OOF Improvement & Model Correlation <!-- id: 24 -->
+- [x] Synthesis Phase (Ensemble & Stacking) <!-- id: 25 -->
+    - [x] Implement Group Survival Target Encoding <!-- id: 26 -->
+    - [x] Implement Pseudo-labeling (High-confidence only) <!-- id: 27 -->
+    - [x] Implement Meta-Stacking with Lasso/Ridge <!-- id: 28 -->
+    - [x] Final Verification & Kaggle Killshot <!-- id: 29 -->
+- [x] Stabilization Phase (De-biasing & Diversity) <!-- id: 30 -->
+    - [x] Implement Fold-Safe Group Target Encoding <!-- id: 31 -->
+    - [x] Implement De-biased Pseudo-labeling (Fold-integrated) <!-- id: 32 -->
+    - [x] Add SVM/Neural Network for Ensemble Diversity <!-- id: 33 -->
+    - [x] Optimize Lasso/Ridge weighting on restricted OOF <!-- id: 34 -->
+- [x] Calibration Phase (Selective Integration) <!-- id: 35 -->
+    - [x] Implement Family & Group Survival Rate (Fold-safe) <!-- id: 36 -->
+    - [x] Implement Selective Voting Ensemble (Majority Vote) <!-- id: 37 -->
+    - [x] Optimize Hyperparameters (Individual Model Tuning) <!-- id: 38 -->
+    - [x] Final Audit & Clean Submission <!-- id: 39 -->

@@ -1,0 +1,19 @@
+# 🚀 Trinity Grandmaster Roadmap v2.0
+
+## Faza 1: Sanacija i Observability (Short-term)
+1. **Unifikacija CLI-ja**: Refaktorisanje root `Makefile`-a da prima parametre iz `trinity_config.json` i koristi `scripts/trinity.py` kao proxy.
+2. **Arize MCP Tracing**: Implementacija OpenInference instrumentacije u sva 4 MCP servera. Svaki alat mora slati Span u Arize AX.
+3. **Workspace Cleanup**: Relokacija root skripti u `scripts/archive/` i konsolidacija `DATA_HUB` -> `data_hub`.
+
+## Faza 2: Proširenje Autonomije (Medium-term)
+1. **Dynamic Manifest Gen**: Automatizacija generisanja `manifest.json` samo za aktivne fajlove (smanjenje bloat-a).
+2. **Cognitive VetoBoard Expansion**: Povećanje konsenzusa na 8/10 modela uključujući TabNet i TabM za procenu rizika.
+3. **Rule Engine Integration**: Direktno mapiranje `GEMINI.md` pravila u Python logiku unutar `mcp-guardian`-a.
+
+## Faza 3: Novi Domeni (Long-term)
+1. **Geospatial Skill (gmp-code-assist)**: Razvoj novog MCP servera za Google Maps Platform integraciju. Omogućavanje agentu da gradi prostore svesne lokacije.
+2. **AIMO Solver Integration**: Integracija `aimo_2026` logike u standardni Trinity "Thesis-Antithesis-Synthesis" tok.
+3. **Self-Healing Infrastructure**: Automatska popravka koda koji padne na 7-Gate validaciji koristeći Mistral Oracle.
+
+---
+*Roadmap definisao: Antigravity Architect | Status: Proposed*

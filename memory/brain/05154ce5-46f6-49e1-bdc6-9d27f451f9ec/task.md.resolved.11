@@ -1,0 +1,16 @@
+# March Machine Learning Mania 2026
+
+## Phase 1: Research & Data
+- [x] Download competition data
+- [x] Analyze submission format and evaluation metric
+
+## Phase 2: Strategy
+- [x] Design 3-shot submission strategy
+
+## Phase 3: Submissions
+- [x] Shot 1: Elo + Seed baseline → **0.14770** public LB
+- [x] Killer: 9-model ensemble (3×XGB + 3×LGB + 3×CatBoost) → **0.10343** public LB 🎯
+
+## Phase 4: Results
+- [x] Beat previous agent score of 0.14770 ✅
+- [ ] Check leaderboard position

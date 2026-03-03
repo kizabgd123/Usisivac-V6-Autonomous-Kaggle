@@ -1,0 +1,6 @@
+- [x] Standardize Trinity Protocol in GEMINI.md
+  - [x] Analyze transcript for specific operational rules
+  - [x] Update 'Building and Running' section with CLI/Makefile/manifest.json standards
+  - [x] Update 'Development Conventions' with ProcessGuard and Tool Registry
+  - [x] Finalize 'Operational Structure' section
+  - [x] Peer review internally for hallucination risks

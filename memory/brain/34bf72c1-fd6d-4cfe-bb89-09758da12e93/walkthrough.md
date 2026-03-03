@@ -1,0 +1,41 @@
+# Walkthrough: AI-Powered Code Review System
+
+The **AI-Powered Code Review System** is now fully operational within the `Usisivac` workspace.
+
+## 🏗️ Core Components
+- **`src/review.py`**: The central CLI entry point for all reviews.
+- **`src/review_engine.py`**: The orchestration engine for multi-file analysis.
+- **`review_modules/`**: Contains specialized detection logic:
+    - `security_review.py`: SQLi, XSS, and Secret Leak detection.
+    - `performance_review.py`: N+1 query and loop optimization.
+    - `quality_review.py`: Docstring and code length standards.
+- **`src/review_db.py`**: Persistent JSON storage for review history/trends.
+
+## 🚀 How to Run a Review
+
+### Basic Review
+To review the entire `src` directory with default settings:
+```bash
+python3 Usisivac/src/review.py Usisivac/src --verbose
+```
+
+### Specific Categories
+To focus only on security and performance:
+```bash
+python3 Usisivac/src/review.py Usisivac/src --categories security,performance
+```
+
+### Export Results
+To generate a file-based report:
+```bash
+python3 Usisivac/src/review.py Usisivac/src --output-file review_report.txt
+```
+
+## 📊 Dashboard & Monitoring
+The system is integrated with the **Review Database**. Every run is logged to `review_history.json`, allowing for future trend analysis in your `usisivac_dashboard.ipynb`.
+
+## ✅ Verification Results
+- **Phase 1 (Architecture)**: Verified CLI parsing and engine orchestration.
+- **Phase 2 (Modules)**: Verified pattern-based detection for security, performance, and quality.
+- **Phase 3 (Integration)**: Verified history saving and RAG pattern ingestion.
+- **Security Policy**: All tools executed successfully without "denied by policy" errors.

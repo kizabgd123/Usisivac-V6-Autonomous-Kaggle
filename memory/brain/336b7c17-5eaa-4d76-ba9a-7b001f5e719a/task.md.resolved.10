@@ -1,0 +1,32 @@
+# Task Checklist: Trinity Workspace Initialization & Mistral Trigger
+
+- [x] Execute `trinity_start` workflow
+    - [x] Run `make info`
+    - [x] Check phase in [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json) (Phase not found, last_mode: grandmaster)
+    - [x] Run `make seed_wisdom`
+- [x] Execute `mistral_trigger` workflow
+    - [x] Read [/home/kizabgd/Desktop/Istrazivanje/.agents/workflows/mistral_trigger.md](file:///home/kizabgd/Desktop/Istrazivanje/.agents/workflows/mistral_trigger.md)
+    - [x] Execute workflow steps
+    - [x] Verify Mistral Guardian verdict ([PASS])
+- [x] Implement Kaggle ProcessGuard LLM
+    - [x] Write [scripts/kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py)
+    - [x] Write [KAGGLE_GUARDIAN_DEMO.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/KAGGLE_GUARDIAN_DEMO.ipynb)
+- [x] Create Antigravity Knowledge Base configuration
+    - [x] Write [ANTIGRAVITY_KAGGLE_SETUP.md](file:///home/kizabgd/Desktop/Istrazivanje/ANTIGRAVITY_KAGGLE_SETUP.md)
+- [x] Integrate Local Mistral API Guardian
+    - [x] Update [kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py) to use `MISTRAL_API_KEY`
+    - [x] Remove local `transformers` loading to save memory
+    - [x] Test the VETO logic locally
+- [x] Phase 1: Prepare Kaggle Dataset (Trinity Knowledge Base)
+    - [x] Create export directory `kaggle_dataset_export`
+    - [x] Copy [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md), [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json), `scripts/`, and `.agents/`
+    - [x] Initialize [dataset-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/dataset-metadata.json)
+- [x] Phase 2: Push Dataset to Kaggle
+    - [x] Execute `kaggle datasets create`
+- [x] Phase 3: Prepare Kaggle Kernel (ProcessGuard Demo)
+    - [x] Create export directory `kaggle_kernel_export`
+    - [x] Copy [KAGGLE_GUARDIAN_DEMO.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/KAGGLE_GUARDIAN_DEMO.ipynb)
+    - [x] Initialize [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json) and link the dataset
+- [x] Phase 4: Push Kernel to Kaggle
+    - [x] Execute `kaggle kernels push`
+- [x] Final verification and report

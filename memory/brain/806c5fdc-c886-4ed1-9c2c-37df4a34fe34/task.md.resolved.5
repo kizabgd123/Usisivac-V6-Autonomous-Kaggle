@@ -1,0 +1,29 @@
+# Deep Past Initiative Machine Translation Improvement Plan
+
+## Status Analysis
+- **Competition:** Akkadian (Old Assyrian) to English translation.
+- **Metric:** Geometric Mean of BLEU and chrF++.
+- **Key Challenges:** Low-resource, morphological complexity, diacritics, gap handling, named entities (onomasticon).
+- **Current Standings:** Top scores ~39.5, common plateau ~35.1.
+
+## Proposed Strategy
+1. **Preprocessing & Normalization:**
+   - Handle Unicode/diacritics consistently.
+   - Standardize gap markers (`<gap>`, etc.).
+   - Use the provided Onomasticon for named entity normalization.
+2. **Model Architecture:**
+   - Ensure sub-word tokenization is optimized for Akkadian morphology.
+   - Explore smaller, more robust Transformer variants or adapters for low-resource settings.
+3. **Data Augmentation:**
+   - Leverage [published_texts.csv](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/data/published_texts.csv) (semi-supervised/back-translation).
+   - Use Lexicon for better token-level understanding.
+
+## Task Checklist
+- [x] Review current translation pipeline in `deep_past` directory.
+- [x] Enhance preprocessing and normalization in [scripts/preprocess_data.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/preprocess_data.py).
+- [x] Create [scripts/extract_onomasticon.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/extract_onomasticon.py) for name normalization.
+- [ ] Verify Kaggle offline rules and kernel constraints.
+- [/] Prepare offline submission bundle (models, scripts, data).
+- [ ] Create/Update Kaggle kernel metadata with `internet: false`.
+- [ ] Push kernel to Kaggle and trigger submission.
+- [ ] Monitor submission status and verify score.

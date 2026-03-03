@@ -1,0 +1,264 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Deep Past Challenge - Translate Akkadian to English />
+	[94] (54,554)<a aria-label='Natural Language Processing with Disaster Tweets' class='sc-eXVaYZ cPXxFg' href='/competitions/nlp-getting-started' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Natural Language Processing with Disaster Tweets />
+	[101] (54,584)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Bidding Predictions for Construction />
+	[108] (54,615)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Predicting Heart Disease />
+	[115] (54,645)<a aria-label='Heart Disease S6E2 V10.12 Final' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-12-final' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Heart Disease S6E2 V10.12 Final />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >update />
+			[128] (19,967)<div >2 />
+		[129] (58,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':ra:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Deep Past Challenge - Translate Akkadian to English
+		[137] (768,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[138] (768,62)<span >Submit Prediction />
+		[139] (820,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[140] (307,94)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/overview' role='tab' />
+			[141] (307,93)<span >Overview />
+		[142] (342,94)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/data' role='tab' />
+			[143] (342,93)<span >Data />
+		[144] (369,94)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/code' role='tab' />
+			[145] (369,93)<span >Code />
+		[146] (402,94)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/models' role='tab' />
+			[147] (402,93)<span >Models />
+		[148] (444,94)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/discussion' role='tab' />
+			[149] (444,93)<span >Discussion />
+		[150] (495,94)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/leaderboard' role='tab' />
+			[151] (495,93)<span >Leaderboard />
+		[152] (537,94)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/rules' role='tab' />
+			[153] (537,93)<span >Rules />
+		[154] (566,94)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/team' role='tab' />
+			[155] (566,93)<span >Team />
+		[156] (608,94)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/deep-past-initiative-machine-translation/submissions' role='tab' />
+			[157] (608,93)<span >Submissions />
+		caused by the issues above.
+		If the model is penalized for:
+		orthographic mismatches,
+		bracket artifacts,
+		inconsistent gap handling,
+		or malformed named entities,
+		then reward functions cannot reliably distinguish “closer” from “farther” outputs. Addressing normalization and alignment first makes rewards smoother and learning signals usable.
+		Closing note
+		None of this is meant as criticism of existing approaches; these are difficult problems, and much of the complexity comes from the philological nature of the data itself. The hope in sharing this publicly is to reduce duplicated effort and make preprocessing choices more transparent across submissions.
+		I will continue to share supplemental resources (including the onomasticon) as they are finalized, and I’m happy to discuss normalization or alignment strategies further if helpful to others.
+		[158] (300,386)<button class='sc-enBMOK dcPGUH sc-bQqODg bXKikg' role='checkbox' />
+			[159] (295,386)<span  />
+				[160] (295,386)<img  />
+			[161] (306,386)<span >32 />
+		[162] (328,386)<button class='sc-enBMOK dcPGUH sc-bQqODg bXKikg' role='checkbox' />
+			[163] (325,386)<span  />
+				[164] (325,386)<img  />
+			[165] (334,386)<span >1 />
+		[166] (347,386)<button aria-label='Add Reaction' class='sc-koBvLg jxMomE google-symbols notranslate sc-fNmvep fjAmqa' title='Add Reaction'>add_reaction />
+		comment
+		14 Comments
+		[167] (805,466)<div  />
+			[168] (805,466)<div aria-label='Select combobox. Hotness currently selected.' class='MuiSelect-select MuiSelect-standard MuiInputBase-input MuiInput-input css-136dg50' role='combobox' />
+				[169] (802,466)<div  />
+					[170] (802,466)<div >Hotness />
+		[171] (304,539)<a aria-label='Kizabgd's profile' class='sc-lhsSio kXhNmm' href='/kiza123123' />
+			[172] (304,539)<div  />
+		undo
+		redo
+		[173] (390,538)<button aria-label='Insert Heading' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_size />
+		[174] (408,538)<button aria-label='Bold' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_bold />
+		[175] (426,538)<button aria-label='Italicize' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_italic />
+		[176] (444,538)<button aria-label='Strikethrough' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_strikethrough />
+		[177] (472,538)<button aria-label='Insert Link' class='sc-koBvLg jtOmTD google-symbols notranslate'>insert_link />
+		[178] (490,538)<button aria-label='Insert Quote' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_quote />
+		[179] (508,538)<button aria-label='Insert Code Block' class='sc-koBvLg jtOmTD google-symbols notranslate'>code />
+		[180] (535,538)<button aria-label='Insert Numbered List' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_list_numbered />
+		[181] (553,538)<button aria-label='Insert Bulleted List' class='sc-koBvLg jtOmTD google-symbols notranslate'>format_list_bulleted />
+		[182] (581,538)<button aria-label='Insert Table' class='sc-koBvLg jtOmTD google-symbols notranslate'>table_chart />
+		[183] (599,538)<button aria-label='Insert Image' class='sc-koBvLg jtOmTD google-symbols notranslate'>insert_photo />
+		[184] (618,538)<button aria-label='Embed YouTube Video' class='sc-koBvLg jtOmTD google-symbols notranslate'>smart_display />
+		[185] (636,538)<button aria-label='Insert Emoticon' class='sc-koBvLg jtOmTD google-symbols notranslate'>insert_emoticon />
+		[186] (664,538)<button aria-label='Go to Markdown documentation' class='sc-koBvLg jtOmTD google-symbols notranslate'>help />
+		[187] (574,597)<textarea aria-label='Content' class='sc-eEhoOH__input' placeholder='Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!' />
+		This comment will be made
+  public once posted.
+		[188] (733,663)<button aria-label='Attach a File' class='sc-koBvLg jxMomE google-symbols notranslate'>attach_file />
+		[189] (778,663)<button class='sc-pYNGo cZrOun' role='button' />
+			[190] (778,663)<span >Post Comment />
+		[191] (304,738)<a aria-label='Bilzard's profile' class='sc-lhsSio kXhNmm sc-eDOMzu ezCRcg' href='/tatamikenn' />
+			[192] (304,738)<div  />
+		[193] (334,727)<a class='sc-ldQIZo fiNUUt' href='/tatamikenn' />
+			[194] (334,727)<h3 >Bilzard />
+		Posted
+		19 days ago
+		[195] (777,738)<div  />
+			[196] (763,738)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[197] (764,738)<span >arrow_drop_up />
+			[198] (777,738)<button aria-label='11 votes' class='sc-kZyiuq sc-gnVZno jklvKD cMuwfv'>11 />
+			[199] (790,738)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[200] (790,738)<span >arrow_drop_down />
+		[201] (815,738)<button aria-label='More Options for this Comment' class='sc-koBvLg hnfHyX google-symbols notranslate' title='More Options for this Comment'>more_vert />
+		[202] (536,836)<div >Regarding normalization, could you clarify which of the following is true for the test set?
+If Case 2 is true, the final scores will be highly sensitive to specific preprocessing choices. This could turn the competition into a "preprocessing lottery" and encourage over-fitting to the Public LB rather than improving the actual MT model. />
+			[203] (339,773)<a aria-label='@deeppast (opens in a new tab)' class='user-mention' href='https://www.kaggle.com/deeppast'>@deeppast />
+			Regarding normalization, could you clarify which of the following is true for the test set?
+			Both transliterations and translations are already normalized (i.e., tokens like  and  are already present in both columns).
+			Only the translations are normalized. Participants must implement their own logic to convert
+			x
+			or
+			...
+			into
+			<gap>
+			or
+			<big_gap>
+			for the test transliterations.
+			If Case 2 is true, the final scores will be highly sensitive to specific preprocessing choices. This could turn the competition into a "preprocessing lottery" and encourage over-fitting to the Public LB rather than improving the actual MT model.
+		[204] (343,926)<button class='sc-pYNGo jVXLrJ' role='button' />
+			[205] (332,926)<span >reply />
+			[206] (348,926)<span >Reply />
+		[207] (385,926)<button class='sc-pYNGo jVXLrJ sc-bruwDQ iboRaX' role='button' />
+			[208] (373,926)<span >add_reaction />
+			[209] (390,926)<span >React />
+		[210] (304,992)<a aria-label='Anil Ozturk's profile' class='sc-lhsSio kXhNmm sc-eDOMzu ezCRcg' href='/nlztrk' />
+			[211] (304,992)<div  />
+		[212] (342,981)<a class='sc-ldQIZo fiNUUt' href='/nlztrk' />
+			[213] (342,981)<h3 >Anil Ozturk />
+		Posted
+		2 months ago
+		·
+		712th
+		in this Competition
+		[214] (778,992)<div  />
+			[215] (765,992)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[216] (765,992)<span >arrow_drop_up />
+			[217] (778,992)<button aria-label='8 votes' class='sc-kZyiuq sc-gnVZno jklvKD cMuwfv'>8 />
+			[218] (790,992)<button aria-label='Downvote' class='sc-kZyiuq sc-kJNXNN jklvKD iTIa-dv' />
+				[219] (790,992)<span >arrow_drop_down />
+		[220] (815,992)<button aria-label='More Options for this Comment' class='sc-koBvLg hnfHyX google-symbols notranslate' title='More Options for this Comment'>more_vert />
+
+</current_dom>

@@ -1,0 +1,34 @@
+# Implementation Plan - Elite Breach v3.2 Optimization
+
+This plan addresses the memory crash encountered during the MICE imputation step. We will switch to a more efficient estimator and ensure all "Elite" clinical features are preserved for the Top 3 AUC target.
+
+## Proposed Changes
+
+### [Component] Data Preprocessing & Imputation
+#### [MODIFY] [heart_top5_v3_2_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py)
+- **Optimization of [perform_mice](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py#119-147)**: 
+    - Switch `IterativeImputer` estimator from `ExtraTreesRegressor` (heavy) to `BayesianRidge` (default, lightweight).
+    - Reduce `max_iter` to 5 (from 10) to further speed up the process while maintaining correlation structure.
+    - Ensure `chol_zero_flag` is created *before* imputation to preserve the biological signal of missing values (MNAR).
+- **Clinical Feature Engineering**:
+    - Verify and retain `Ischemic_Burden` calculation: `Oldpeak / (ST_Slope_Ordinal + 0.1)`.
+    - Verify and retain `Young_Signal` interaction: [(Age < 40) & (chol_zero_flag == 1)](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py#51-53).
+- **Model Parameters**:
+    - Confirm XGBoost uses `booster='dart'` with aggressive `rate_drop`.
+    - Ensure LightGBM and CatBoost use heavy regularization as planned.
+
+### [Component] Colab GPU Transition
+#### [NEW] [Heart_Disease_S6E2_Elite_Breach_Colab.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Elite_Breach_Colab.ipynb)
+- **Environment**: Use `google.colab.userdata` for secrets (Kaggle/OpenRouter).
+- **GPU Acceleration**:
+    - **XGBoost**: `device='cuda'`, `tree_method='hist'`.
+    - **LightGBM**: `device='gpu'`.
+    - **CatBoost**: `task_type='GPU'`.
+- **Feature Parity**: Port all Step 3 features (Ischemic Burden, Young_Signal) and Step 2 MICE (BayesianRidge) to the notebook environment.
+
+## Verification Plan
+
+### Automated Verification
+- **Adversarial Validation**: Run the `adv_model` check on Colab to ensure the score is below **0.52**.
+- **Log Monitoring**: Monitor [training_v3_2_elite.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3_2_elite.log) (local) while testing the notebook.
+- **Comparison**: Compare Colab OOF AUC with local OOF AUC to ensure consistent behavior across hardware.

@@ -1,0 +1,23 @@
+# Trinity Protocol Audit Task List
+
+## Initial Assessment
+- [x] Review previous audit results from `ac85bb4a-8599-4811-9bfa-a1664778b569`
+- [/] Verify current environment alignment with previous audit
+    - [ ] Check for `manifest.json`, `Makefile`, and `trinity_config.json`
+    - [ ] Verify existence of core scripts (`process_guard.py`, `tool_registry.py`, etc.)
+- [ ] Identify delta between "Killshot Readiness" and current state
+
+## Protocol Enforcement
+- [ ] Perform constitutional audit against `GEMINI.md`
+- [ ] Verify Rule 27 (Memory Integrity) compliance
+- [ ] Validate 3-6-2 Dialectic Protocol adherence
+
+## Implementation of Elite Strategy v9
+- [ ] Integrate Original UCI Dataset
+- [ ] Implement Periodic Embeddings
+- [ ] Implement OOF Target Encoding
+- [ ] Explore Logistic Regression Stacking
+
+## Final Verification
+- [ ] Generate updated [audit_report_killshot.md](file:///home/kizabgd/.gemini/antigravity/brain/ac85bb4a-8599-4811-9bfa-a1664778b569/audit_report_killshot.md)
+- [ ] Create walkthrough of audit results

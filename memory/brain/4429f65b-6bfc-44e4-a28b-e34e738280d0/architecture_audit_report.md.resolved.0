@@ -1,0 +1,33 @@
+# Architecture Audit Report – Kaggle Intelligence Harvester
+
+**Scope**: Review of the provided system architecture markdown against the corporate **Quad‑Core** pattern and security policies (JudgeGuard, Policy, Audit).
+
+## Findings
+
+1. **Quad‑Core Alignment**
+   - All four cores (Brain, Memory, Shield, Law) are present and correctly linked in the diagram.
+   - The **Orchestrator** is shown driving the loop, which satisfies the *Law* responsibilities.
+2. **JudgeGuard Integration**
+   - The architecture mentions `JudgeGuard` in the Shield core, but the markdown does **not** detail how code‑level security checks are enforced (e.g., static analysis, deny‑list enforcement).
+   - **Recommendation**: Add a brief description of the `intelligence_parser.py` deny‑list and runtime sandboxing.
+3. **Policy & Audit Logging**
+   - `Audit` component is present, yet there is no explicit mention of audit‑log schema or retention policy.
+   - **Recommendation**: Define an `audit_logs` table (e.g., `id, session_id, verdict, veto_reason, timestamp`) and ensure all `JudgeGuard` decisions are persisted.
+4. **Dynamic Effectiveness Scoring**
+   - The `Feedback` loop is included, but the connection to the [effectiveness_scoring.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py) KnowledgeBase is missing.
+   - **Recommendation**: Wire the [KnowledgeBase](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py#6-90) update step into the Orchestrator after each submission.
+5. **Data Flow & Leakage Prevention**
+   - The sequence diagram shows data moving from raw notebooks to the Knowledge Base, but does not illustrate **leakage safeguards** (e.g., nested CV, target‑only feature selection).
+   - **Recommendation**: Insert a “Leakage Guard” step before `Strategy Resolver` that validates no target leakage.
+6. **Compliance Checks**
+   - No explicit reference to HIPAA / GDPR compliance for health data, which is crucial for the Heart Disease use‑case.
+   - **Recommendation**: Add a compliance checklist in the Shield core and reference the `Policy` module.
+
+## Action Items
+
+- **Update documentation** to include the missing security and compliance details (points 2‑6).
+- **Implement audit logging** in `judge_guard.py` (if not already present).
+- **Connect KnowledgeBase** updates to the Orchestrator (already done in [heart_pipeline_v10_15_colab.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_pipeline_v10_15_colab.py)).
+- **Add Leakage Guard** logic (already applied in the new Colab pipeline).
+
+**Overall compliance**: The architecture follows the Quad‑Core pattern, but the missing explicit security, audit, and compliance details constitute moderate compliance gaps that should be addressed before production deployment.

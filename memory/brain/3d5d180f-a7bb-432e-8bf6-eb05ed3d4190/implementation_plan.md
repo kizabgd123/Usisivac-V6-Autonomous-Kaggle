@@ -1,0 +1,21 @@
+# Upgrade Antigravity System
+
+Upgrade the Antigravity system to the latest version using the official repository to enable access to Gemini 3.1 Pro and other new features.
+
+## Proposed Changes
+
+### System Upgrade
+- Add the official Antigravity debian repository to the system.
+- Perform a system-wide update and install the latest `antigravity` package.
+
+### Local Project Updates [Istrazivanje]
+- Update version strings in `src/antigravity_core/__init__.py`.
+- Update `aimo_solver.py` to utilize `gemini-1.5-pro` or the forthcoming `gemini-3.1-pro` model names if applicable.
+- Restore/Update `gemini_client.py` if needed by the new system version.
+
+## Verification Plan
+
+### Automated Tests
+- Run `antigravity --version` to verify the system upgrade.
+- Run `python3 src/antigravity_core/judge_guard.py` smoke test.
+- Verify model availability via a short diagnostic script.

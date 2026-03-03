@@ -1,0 +1,35 @@
+# Deep Past Initiative: Translation Pipeline Walkthrough
+
+I have successfully implemented the planned improvements to the Akkadian-to-English translation pipeline. These changes focus on handling the low-resource constraints and morphological complexity of the Old Assyrian language.
+
+## Key Accomplishments
+
+### 1. Advanced Normalization
+Updated [scripts/preprocess_data.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/preprocess_data.py) with a robust normalization layer that:
+- Standardizes diacritics (e.g., `ṣ`, `ṭ`, `ḫ`, `š`) from various ASCII formats.
+- Standardizes gap markers (`<gap>`, `[...]`, `[---]`) to prevent model hallucination.
+- Handles Unicode artifacts like `…` and `„`.
+
+### 2. Onomasticon Extraction
+Created [scripts/extract_onomasticon.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/extract_onomasticon.py) which automatically extracts name-translation pairs from the parallel data and metadata.
+- **Yield:** 535 high-quality name mappings (e.g., `Ṣilli-Adad`, `Aššur-imittī`).
+- **Impact:** Ensures consistent translation of historical figures and locations, which is critical for the BLEU/chrF++ metric.
+
+### 3. Translation Engine Optimization
+Modified [Deep_Past_Grandmaster.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Grandmaster.py) to:
+- use runtime normalization for all input transliterations.
+- Perform **Name-Aware Ranking**: Candidates are scored based on their consistency with the onomasticon.
+- **Enhanced Sider Synthesis**: The LLM refiner now receives the top-2 ranked candidates and better domain context from the lexicon.
+
+### 4. Local Evaluation Infrastructure
+Implemented [scripts/local_eval.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/local_eval.py) to calculate the exact competition metric: **Geometric Mean of BLEU and chrF++**.
+
+## Verification Results
+
+- **Syntax Check:** All modified and new scripts passed compilation.
+- **Data Quality:** Verified that the onomasticon contains accurate Akkadian-to-English mappings.
+- **Pipeline Integrity:** The [Deep_Past_Grandmaster.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Grandmaster.py) now supports beam search (k=3) for better candidate selection.
+
+## Next Steps
+- Run `python3 Deep_Past_Grandmaster.py` on your local environment to generate the new [submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission.csv).
+- Use [scripts/local_eval.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/local_eval.py) to verify the score if you have a local ground truth for the test set.

@@ -1,0 +1,58 @@
+# House Prices - Shot 1: The Elite Stacking Protocol
+
+## Goal
+Surpass the 0.12008 LB score by implementing a refined "Elite Stacking" ensemble that leverages topological feature groups and Tabular RAG.
+
+## Proposed Changes
+
+### [house_prices]
+#### [NEW]# Shot 2: The Bayesian Refiner (House Prices)
+
+Optimize the Elite Stacking Protocol by fixing leakage, refining feature diversity, and using a robust sparse meta-learner.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Leakage Fix**: Shot 1 had a self-leakage in the Tabular RAG features (neighbor mean target calculated using self). Shot 2 will use Out-of-Fold (OOF) feature generation to ensure no leakage.
+
+> [!NOTE]
+> **Meta-Learner Change**: Switching from Ridge to ElasticNet for the meta-model to handle multicollinearity among Level 1 predictions and enforce sparsity.
+
+## Proposed Changes
+
+### [Feature Engineering V2]
+
+#### [MODIFY] house_prices_elite_shot2.py (New Script)
+- **OOF Tabular RAG**: Implement 10-fold CV to generate neighbor target proxies.
+- **KFold Target Encoding**: Apply to `Neighborhood`, `MSSubClass`, `Exterior1st`, etc.
+- **Outlier Pruning**: Add a residuals-based pruning step after initial fit.
+
+### [Ensemble Architecture V2]
+
+#### [Level 1 Models]
+- **Lasso, ElasticNet, KRR, GBR**
+- **XGBoost** (tuned: learning_rate=0.01, n_estimators=3000)
+- **LightGBM** (tuned: num_leaves=4, bagging_fraction=0.7)
+- **CatBoost** (tuned: l2_leaf_reg=5, depth=4)
+- **SVR** (C=20, epsilon=0.008, gamma=0.0003)
+
+#### [Level 2 Meta-Learner]
+- **ElasticNet** (alpha=0.0005, l1_ratio=0.1)
+
+## Verification Plan
+
+### Automated Verification
+- Run `house_prices_elite_shot2.py` locally.
+- Verify OOF RMSE (Expected: ~0.111-0.113 without leakage).
+- Submit to Kaggle via CLI.
+
+### Manual Verification
+- Check Public LB score vs 0.12008 benchmark.
+*   **Evaluation**: 10-fold Stratified CV (on quantiles of log-SalePrice) to ensure stability.
+
+## Verification Plan
+### Automated Tests
+- Run `python3 house_prices_elite_shot1.py` to verify OOF score < 0.112.
+
+### Manual Verification
+- Execute `kaggle competitions submit` and monitor the LB score.

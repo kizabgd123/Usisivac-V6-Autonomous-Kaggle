@@ -1,0 +1,167 @@
+# Alcohol Withdrawal Triage & Complications Model v2.0
+
+Production-grade multi-class model for TriageGeist hackathon predicting ESI triage acuity (1-5), built on Kiza's v10.14 SOTA stacking architecture.
+
+## Key Discovery: TriageGeist Already Has Data
+
+> [!IMPORTANT]
+> TriageGeist provides **real competition data** (80k train / 20k test). The target is `triage_acuity` (1-5). The competition says "no provided dataset" in NOTE.md but the CSV files are real structured data. Our primary goal is to **maximize competition score** using this data, while incorporating alcohol/withdrawal domain expertise as feature engineering enrichment.
+
+**Data overview:**
+- [train.csv](file:///home/kizabgd/Desktop/Istrazivanje/train.csv) — 80k rows, 40 columns (vitals, demographics, arrival info, `triage_acuity` target)
+- [test.csv](file:///home/kizabgd/Desktop/Istrazivanje/test.csv) — 20k rows (same features, no target)
+- `chief_complaints.csv` — 100k rows (free-text `chief_complaint_raw`, system category)
+- `patient_history.csv` — 100k rows (25 binary history flags: `hx_liver_disease`, `hx_substance_use_disorder`, etc.)
+- [sample_submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/sample_submission.csv) — patient_id + triage_acuity (integer 1-5)
+- **Class distribution:** ESI-1 (3222), ESI-2 (13439), ESI-3 (28921), ESI-4 (23020), ESI-5 (11398)
+
+## User Review Required
+
+> [!WARNING]
+> **Dual model strategy**: The plan builds (A) the **competition pipeline** for TriageGeist leaderboard score, and (B) the **alcohol-specific supplementary model** for withdrawal severity & complications as a showcase. Both share architecture from v10.14.
+
+> [!IMPORTANT]
+> **Text features**: chief_complaints have rich free text. We'll use TF-IDF + truncated SVD for Kaggle compatibility. ClinicalBERT is optional and heavy — recommend skipping for the initial submission.
+
+---
+
+## Proposed Changes
+
+### Project Structure
+
+```
+/home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/
+├── src/
+│   ├── config.py                   # All hyperparams, paths, constants
+│   ├── feature_engineering.py      # Gaussian Periodic Embeddings, interactions, scores
+│   ├── text_features.py            # TF-IDF + SVD from chief_complaint_raw
+│   ├── dataset_generator.py        # Synthetic alcohol-specific dataset (25k+ rows)
+│   └── shap_explainer.py           # SHAP + clinical interpretation
+├── notebooks/
+│   └── main_training.ipynb         # Clean Kaggle notebook (competition submission)
+├── models/                         # Saved .pkl files
+├── data/                           # Symlinks or copies of competition data
+├── submission/                     # Generated submission.csv files
+└── alcohol_triage_pipeline.py      # Main pipeline (standalone .py)
+```
+
+---
+
+### Component 1: Feature Engineering (`src/feature_engineering.py`)
+
+#### [NEW] [feature_engineering.py](file:///home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/src/feature_engineering.py)
+
+- **Gaussian Periodic Embeddings** on: `age`, `heart_rate`, `systolic_bp`, `diastolic_bp`, `respiratory_rate`, `temperature_c`, `spo2` (ported from v10.14's [periodic_embedding()](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py#54-59))
+- **Addiction Crisis Score**: composite of `hx_substance_use_disorder`, `hx_liver_disease`, `hx_depression`, `hx_anxiety`, `mental_status_triage`, arrival mode, transport origin
+- **Family System Risk Score**: composite of `num_comorbidities`, `hx_depression`, `hx_anxiety`, `num_prior_ed_visits_12m`, age interactions
+- **Vital sign interactions**: shock_index × news2, MAP × heart_rate, pulse_pressure ratios
+- **Time-based features**: arrival_hour cyclical encoding, shift × acuity interactions
+- **Binning**: age_group validation, BMI categories, BP categories
+
+---
+
+### Component 2: Text Features (`src/text_features.py`)
+
+#### [NEW] [text_features.py](file:///home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/src/text_features.py)
+
+- TF-IDF (max_features=500) on `chief_complaint_raw`
+- Truncated SVD → 30 components for dimensionality reduction
+- Keyword flags: `is_alcohol_related`, `is_trauma`, `is_chest_pain`, `is_breathing`, `is_mental_health`
+- Complaint length, word count as numeric features
+
+---
+
+### Component 3: Main Pipeline (`alcohol_triage_pipeline.py`)
+
+#### [NEW] [alcohol_triage_pipeline.py](file:///home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/alcohol_triage_pipeline.py)
+
+Expanded v10.14 architecture for **multi-class ordinal** prediction:
+
+| Component | Detail |
+|-----------|--------|
+| **Base models** | XGBoost, LightGBM, CatBoost, HistGradientBoosting, MLP (5 models) |
+| **CV** | 5-fold Stratified × 4 seeds = 20 base model runs per model type |
+| **Objective** | `multi:softprob` (XGB), `multiclass` (LGB), `MultiClass` (CAT) |
+| **Metric** | Macro F1 or QWK (competition metric) |
+| **Meta-stacker** | LogisticRegression (OvR) + rank features on OOF predictions |
+| **Calibration** | Platt scaling per class (isotonic or sigmoid) |
+| **Pseudo-labeling** | Conditional: only if holdout score > threshold, use high-confidence test predictions |
+| **Text fusion** | Late fusion: train text model separately, combine predictions at meta-level |
+| **SHAP** | TreeExplainer for tree models, clinical interpretation strings |
+
+Key pipeline flow:
+```
+1. Load + merge train.csv + chief_complaints.csv + patient_history.csv
+2. Feature engineering (embeddings, scores, interactions)
+3. Text features (TF-IDF + SVD)
+4. Phase 1: Base models (5 types × 4 seeds × 5 folds)
+5. Platt calibration per class
+6. Meta-stacker (LR ensemble on OOF probabilities + ranks)
+7. Phase 2: Conditional pseudo-labeling
+8. Final blend + generate submission.csv
+```
+
+---
+
+### Component 4: Alcohol-Specific Dataset Generator (`src/dataset_generator.py`)
+
+#### [NEW] [dataset_generator.py](file:///home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/src/dataset_generator.py)
+
+Generates 25k+ rows synthetic alcohol withdrawal triage data using  domain knowledge from the scanned textbook:
+
+- **Withdrawal severity** (mild / moderate / severe / delirium_tremens_risk)
+- **ESI mapping** from withdrawal severity
+- **Complications**: liver_damage, electrolyte_imbalance, seizure_risk, wernicke_risk, cardiomyopathy
+- Realistic vitals correlated with severity (HR↑, BP↑, temp↑ in severe)
+- Labs: AST, ALT, GGT, Mg, K, Na, glucose, BAC
+- CIWA-like symptom scores
+- History flags matching TriageGeist schema
+- Chief complaint text generation with withdrawal-specific vocabulary
+
+---
+
+### Component 5: Kaggle Notebook (`notebooks/main_training.ipynb`)
+
+#### [NEW] [main_training.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2/notebooks/main_training.ipynb)
+
+Clean, self-contained notebook version of the pipeline for Kaggle kernel submission. Will be generated from `alcohol_triage_pipeline.py` with proper markdown cells.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+
+1. **OOF Cross-validation score** — run the pipeline and check macro F1 / QWK:
+   ```bash
+   cd /home/kizabgd/Desktop/Istrazivanje/alcohol_triage_v2
+   python alcohol_triage_pipeline.py 2>&1 | tee run.log
+   # Expected: OOF metric printed, holdout metric, submission.csv generated
+   ```
+
+2. **Submission format check**:
+   ```bash
+   python3 -c "
+   import pandas as pd
+   sub = pd.read_csv('submission/submission.csv')
+   assert list(sub.columns) == ['patient_id', 'triage_acuity']
+   assert sub['triage_acuity'].isin([1,2,3,4,5]).all()
+   assert len(sub) == 20000
+   print('✅ Submission format OK')
+   "
+   ```
+
+3. **Dataset generation validation**:
+   ```bash
+   python3 -c "
+   from src.dataset_generator import generate_alcohol_dataset
+   df = generate_alcohol_dataset(n_samples=1000)
+   assert len(df) >= 1000
+   assert 'withdrawal_severity' in df.columns
+   print(f'✅ Generated {len(df)} rows with {len(df.columns)} columns')
+   "
+   ```
+
+### Manual Verification
+- After pipeline runs, submit [submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission.csv) via `kaggle competitions submit -c triagegeist -f submission/submission.csv -m "v2.0 stacking"` and check leaderboard score
+- User reviews SHAP output and clinical interpretation strings for domain correctness

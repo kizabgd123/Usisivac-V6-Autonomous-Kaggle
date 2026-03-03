@@ -1,0 +1,15 @@
+# Bidding Competition Recovery: Debugging v25
+
+## Status: RECOVERY (1h 20m Deadline)
+
+- [x] Phase 1: Post-Mortem & Root Cause Analysis
+    - [x] Analyze Fold 3 outlier in [v25](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v25_trinity_bible_synthesis.py#97-202) (RMSLE 1.75)
+    - [x] Compare [v25](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v25_trinity_bible_synthesis.py#97-202) implementation with `v23` (SOTA 0.3979)
+    - [x] Check for NaN/Inf/Overflow in feature engineering
+- [x] Phase 2: Rapid Fix & Stabilization
+    - [x] Apply robust clipping/capping to targets and features
+    - [x] Re-calculate IAME with better outlier handling
+    - [x] Run 10-Fold Stability Check (v26)
+- [x] Phase 3: Final Re-Submission
+    - [x] Generate `v26_stabilized_synthesis.csv`
+    - [x] Submit and verify score improvement

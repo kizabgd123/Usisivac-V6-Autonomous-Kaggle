@@ -1,0 +1,144 @@
+# Trinity Protocol Constitutional Audit Report
+
+**Date:** 2026-02-26 | **Scope:** [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py), [s6e2_submission_final_exec.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_submission_final_exec.py)
+
+---
+
+## Executive Summary
+
+| Criterion | Status | Details |
+|---|---|---|
+| **F2 (Istina)** τ ≥ 0.99 | ⚠️ **PARTIAL** | No explicit factual accuracy tracking |
+| **F7 (Poniznost)** [0.03, 0.05] | ❌ **NOT IMPLEMENTED** | Outputs are deterministic, no uncertainty bands |
+| **F8 (Genius)** > 0.80 | ⚠️ **PARTIAL** | Correlation pruning exists but not tracked as G-score |
+| **Rule 27** | ❌ **NOT IMPLEMENTED** | No parquet logging, no SHA-256 hashing |
+| **Killshot Ready** | ⚠️ **6/8 criteria met** | ProcessGuard disconnected, SSOT incomplete |
+
+---
+
+## Deviation Analysis
+
+### DEV-1: F2 Threshold — No Factual Accuracy Tracking 🟡
+
+Neither pipeline validates output predictions against known ground truth anchors during runtime. The UCI anchor rows (920 real) are used for training but **never as a verification holdout** to confirm τ ≥ 0.99.
+
+> [!IMPORTANT]
+> **Fix:** Reserve UCI rows as a "golden set" and assert `roc_auc_score(y_golden, preds_golden) >= 0.99` before generating submission.
+
+### DEV-2: F7 Threshold — No Uncertainty Retention ❌
+
+Both pipelines output point predictions. There is **no epistemic uncertainty estimation** — no MC-Dropout, no prediction variance across seeds, no confidence intervals.
+
+**In [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py):** The 3-seed bagging provides implicit variance, but it's never surfaced.
+
+```python
+# MISSING: uncertainty = np.std(tp1, axis=1)  # Already available from 12 models!
+# MISSING: assert 0.03 <= np.mean(uncertainty) <= 0.05
+```
+
+### DEV-3: F8 Genius Score — Not Computed 🟡
+
+[StackingEnsemble](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/killshot_engine.py#75-119) has `correlation_threshold=0.995` which enforces diversity, but the formal Genius Score (`G = A × P × X × E²`) is **never calculated or logged**.
+
+### DEV-4: Rule 27 — Memory Integrity Absent ❌
+
+| Component | Required | Found |
+|---|---|---|
+| [.parquet](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/data/processed/test_mega.parquet) for micro-actions | Yes | ❌ No parquet in heart repos |
+| SHA-256 for milestones | Yes | ❌ No hashlib imports anywhere |
+| Metadata separation | Yes | ❌ All logging is `print()` statements |
+
+**Root [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)** correctly sets `"memory_hashing_mode": "milestone_only"` but **no code reads this value**.
+
+### DEV-5: ProcessGuard Disconnected ❌
+
+[process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py) exists with [validate_correlation()](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#37-51) and [validate_metric_improvement()](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#52-67) but:
+- **Not imported** in either pipeline
+- Has a **bug**: missing `import json` (line 18 calls `json.load`)
+- Logs to Markdown instead of parquet (Rule 27 conflict)
+
+### DEV-6: Manifest Entrypoint Stale 🟡
+
+[manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/manifest.json) points to [s6e2_trinity_pipeline.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_trinity_pipeline.py) which is **not the active script**. Should reference [s6e2_submission_final_exec.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_submission_final_exec.py).
+
+### DEV-7: Makefile Target Drift 🟡
+
+[Makefile](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/Makefile) [train](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py#295-319) target runs [s6e2_trinity_pipeline.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_trinity_pipeline.py), not the actual exec script.
+
+### DEV-8: Phase 2 Signature Mismatch 🔴
+
+[train_bases()](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py#295-319) was refactored to remove `sample_weight` param, but **Phase 2 (line 385) still passes `sample_weight=sw`**:
+
+```diff
+- oof2_r, hp2_r, tp2_r = train_bases(Xa, ya, sample_weight=sw)
++ oof2_r, hp2_r, tp2_r = train_bases(Xa, ya)  # Or re-add sample_weight support
+```
+
+> [!CAUTION]
+> This will cause a **runtime TypeError** if Phase 2 is triggered (holdout AUC < 0.9542).
+
+### DEV-9: ToolRegistry Incomplete 🟡
+
+`tabular_rag` is listed in [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/manifest.json) as `"status": "planned"` — the module file doesn't exist.
+
+---
+
+## SSOT Hierarchy Compliance
+
+```mermaid
+graph TD
+    A["trinity_config.json (Root SSOT)"] --> B["s6e2 trinity_config.json"]
+    A --> C["s6e2_config.py"]
+    B --> D["heart_pipeline_v10_14_sota.py"]
+    C --> E["s6e2_submission_final_exec.py"]
+    A --> F["trinity_tool_registry/manifest.json"]
+    
+    style A fill:#4CAF50,color:white
+    style B fill:#FF9800,color:white
+    style C fill:#FF9800,color:white
+    style D fill:#f44336,color:white
+    style E fill:#FF9800,color:white
+    style F fill:#FF9800,color:white
+```
+
+| Layer | Status | Issue |
+|---|---|---|
+| Root SSOT | ✅ | Has `is_single_source_of_truth: true` |
+| S6E2 Config (JSON) | ⚠️ | Missing F2/F7/F8 thresholds |
+| S6E2 Config (Python) | ⚠️ | Hardcoded hyperparams override SSOT |
+| SOTA Pipeline | ❌ | Does NOT read from [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) |
+| Exec Pipeline | ⚠️ | Reads [s6e2_config.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_config.py) but not JSON SSOT |
+
+---
+
+## Killshot Readiness Scorecard
+
+| # | Criterion | Status | Score |
+|---|---|---|---|
+| 1 | Makefile exists | ✅ | 1/1 |
+| 2 | manifest.json exists | ✅ (stale) | 0.5/1 |
+| 3 | trinity_config.json SSOT | ⚠️ incomplete | 0.5/1 |
+| 4 | ProcessGuard real-time validation | ❌ disconnected | 0/1 |
+| 5 | ToolRegistry modularized | ⚠️ partial (1/2 tools) | 0.5/1 |
+| 6 | Killshot Engine integrated | ✅ | 1/1 |
+| 7 | Correlation diversity enforced | ✅ | 1/1 |
+| 8 | Rule 27 memory integrity | ❌ | 0/1 |
+| | **TOTAL** | | **4.5/8 (56%)** |
+
+> [!WARNING]
+> **Killshot threshold is 75%.** System is at **56%** — NOT Killshot-ready.
+
+---
+
+## Remediation Priority
+
+| Priority | Fix | Impact |
+|---|---|---|
+| 🔴 P0 | Fix Phase 2 `sample_weight` TypeError | Runtime crash |
+| 🔴 P0 | Add `import json` to ProcessGuard | Broken on init |
+| 🟠 P1 | Wire ProcessGuard into both pipelines | +12.5% Killshot |
+| 🟠 P1 | Implement Rule 27 parquet + SHA-256 | +12.5% Killshot |
+| 🟡 P2 | Add F2/F7/F8 thresholds to SSOT JSON | Constitutional compliance |
+| 🟡 P2 | Update manifest.json entrypoint | Agent navigation |
+| 🟢 P3 | Surface uncertainty from seed variance | F7 compliance |
+| 🟢 P3 | Implement tabular_rag module | Registry completeness |

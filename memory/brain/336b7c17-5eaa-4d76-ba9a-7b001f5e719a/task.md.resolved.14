@@ -1,0 +1,67 @@
+# Task Checklist: Trinity Workspace Initialization & Mistral Trigger
+
+- [x] Execute `trinity_start` workflow
+    - [x] Run `make info`
+    - [x] Check phase in [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json) (Phase not found, last_mode: grandmaster)
+    - [x] Run `make seed_wisdom`
+- [x] Execute `mistral_trigger` workflow
+    - [x] Read [/home/kizabgd/Desktop/Istrazivanje/.agents/workflows/mistral_trigger.md](file:///home/kizabgd/Desktop/Istrazivanje/.agents/workflows/mistral_trigger.md)
+    - [x] Execute workflow steps
+    - [x] Verify Mistral Guardian verdict ([PASS])
+- [x] Implement Kaggle ProcessGuard LLM
+    - [x] Write [scripts/kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py)
+    - [x] Write [KAGGLE_GUARDIAN_DEMO.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/KAGGLE_GUARDIAN_DEMO.ipynb)
+- [x] Create Antigravity Knowledge Base configuration
+    - [x] Write [ANTIGRAVITY_KAGGLE_SETUP.md](file:///home/kizabgd/Desktop/Istrazivanje/ANTIGRAVITY_KAGGLE_SETUP.md)
+- [x] Integrate Local Mistral API Guardian
+    - [x] Update [kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py) to use `MISTRAL_API_KEY`
+    - [x] Remove local `transformers` loading to save memory
+    - [x] Test the VETO logic locally
+- [x] Phase 1: Prepare Kaggle Dataset (Trinity Knowledge Base)
+    - [x] Create export directory `kaggle_dataset_export`
+    - [x] Copy [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md), [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json), `scripts/`, and `.agents/`
+    - [x] Initialize [dataset-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/dataset-metadata.json)
+- [x] Phase 2: Push Dataset to Kaggle
+    - [x] Execute `kaggle datasets create`
+- [x] Phase 3: Prepare Kaggle Kernel (ProcessGuard Demo)
+    - [x] Create export directory `kaggle_kernel_export`
+    - [x] Copy [KAGGLE_GUARDIAN_DEMO.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/KAGGLE_GUARDIAN_DEMO.ipynb)
+    - [x] Initialize [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json) and link the dataset
+- [x] Phase 4: Push Kernel to Kaggle
+    - [x] Execute `kaggle kernels push`
+- [x] Final verification and report
+
+# Phase 2: Kaggle Intelligence Harvester (Quad-Core)
+
+- [x] Implementation Planning
+    - [x] Research existing harvester & KB components
+    - [x] Create `Harvester_Implementation_Plan.md`
+- [x] Core 1: Discovery (Intelligence Parser)
+    - [x] Create [scripts/intelligence_parser.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/intelligence_parser.py) with JudgeGuard integration
+    - [x] Implement AST feature engineering extraction
+- [x] Core 2: Memory (Strategic RDB)
+    - [x] Update [scripts/trinity_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_kb.py) with new SQLite schema
+    - [x] Integrate [local_rag_builder.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/local_rag_builder.py) for vector search
+- [x] Core 3: Shield (Boardroom Consensus)
+    - [x] Create `scripts/trinity_boardroom_session.py` (implemented as [trinity_boardroom.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_boardroom.py))
+    - [x] Implement 3/3 consensus logic (KIMI, QWEN, MISTRAL)
+- [x] Core 4: Law (Strategic Resolver)
+    - [x] Update [scripts/strategy_resolver.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategy_resolver.py) to orchestrate Quad-Core flow
+- [x] Verification & Demo
+    - [x] Harvest parameters from a Top-Scoring Kaggle Notebook
+    - [x] Verify Boardroom Veto/Pass logic
+
+# Phase 3: Visual Intelligence Dashboard (Command Center)
+
+- [/] Implementation Planning
+    - [ ] Create `Dashboard_Implementation_Plan.md`
+- [ ] Backend: Dashboard API
+    - [ ] Create `scripts/dashboard_api.py` (FastAPI or simple Flask/SimpleHTTPServer)
+    - [ ] Implement endpoints for KB stats, Boardroom logs, and RAG status
+- [ ] Frontend: Trinity UI
+    - [ ] Create `ui/index.html` (Modern, Glassmorphism design)
+    - [ ] Create `ui/style.css` (Premium aesthetics, dark mode)
+    - [ ] Create `ui/app.js` (Dynamic data fetching)
+- [ ] Integration
+    - [ ] Update [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile) to include `make dashboard`
+    - [ ] Final verification

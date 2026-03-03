@@ -1,0 +1,60 @@
+# Task: Bidding Predictions for Construction — Target LB < 0.2000 SMAPE/MAE
+
+## Phase 1: Research & Setup
+- [x] Analyze data schema (raw vs summary)
+- [x] Determine competition metric (RMSE on log-target)
+- [x] Verify baseline performance (Initial LB: 0.2984, Recent LB: 0.46)
+
+## Phase 2: Planning
+- [ ] Create implementation_plan_bidding.md
+- [ ] Identify key features (Contractor history, Location clusters, Job descriptions)
+
+## Phase 3: Implementation
+- [x] Implement data loading & merging (raw + summary)
+    - [x] Fix XGBoost 2.0+ `early_stopping_rounds` constructor parameter
+    - [x] Fix `KeyError` on 'amount' in `raw_test` (column absent in test)
+    - [x] Implement Unit Price Reference estimation
+    - [x] Execute `bidding_v6_elite.py` and monitor logs (OOF RMSE: 0.28443)
+- [x] Feature engineering (Aggregations by contractor/location)
+- [x] Cross-validation setup (Multi-seed KFold)
+- [x] Model training (XGB, LGBM, CatBoost)
+- [x] Probability/Value Calibration (Isotonic Regression)
+- [x] Generation of `submission_v6_elite.csv`
+
+## Phase 4: Verification & (Initial) Submission
+- [x] Verify OOF performance and consistency (OOF: 0.2844)
+- [x] Create `walkthrough_bidding.md`
+- [x] Push to Kaggle and check LB score (Final LB: 0.3980)
+- [/] Analyze CV-LB Gap (Leakage identified in Random KFold)
+
+## Phase 7: V10 "Zenith" (Targeting 1st Place < 0.275) - [COMPLETED: 0.4172 LB]
+- [x] Implement absolute bid reconstruction
+- [x] Add Contractor DNA features (Success Rate, Volatility, Familiarity)
+- [x] Ridge Stacking (XGB, LGBM, CAT) on 2024 Holdout
+- [x] Submission and LB monitoring (Score: 0.4172)
+- [ ] Debug CV-LB gap vs V6 Elite
+
+## Phase 5: V7 "Piercer" (Targeting 1st Place < 0.275) - [PARTIAL FAILURE]
+- [x] Implement Temporal Holdout (2024 Validation)
+- [x] Develop Advanced Price Estimation (LGBM unit-price model)
+- [x] Shift to Ratio Target: `log(total_bid / est_amt_sum)`
+- [x] Execute V7 and check new LB score (0.6430 - worse than V6)
+
+## Phase 6: V8 "Sovereign" (Robust Multiplier Approach) - [FAILURE]
+- [x] Implement Median-based Job Estimate (Robust Base)
+- [x] Feature: Contractor historical bid ratio (Multiplier DNA)
+- [x] Feature: Competition intensity (number of bidders per job)
+- [x] Execute V8 and check new LB score (0.6823 - worse than V6)
+
+## Phase 7: V9 "Apex" (Absolute Target + Baseline Feature) - [FAILURE]
+- [x] Shift back to Absolute Target: `log1p(total_bid)`
+- [x] Use `log1p(est_amt)` as a core feature
+- [x] Integrate all V8 DNA & Competition features
+- [x] Execute V9 and check LB score (0.6680 - still behind V6)
+
+## Phase 8: V10 "Zenith" (Grandmaster Integration)
+- [ ] Integrate V5/V6 features (Aggregates, Inflation, Lags)
+- [ ] Implement Pseudo-Labeling (Inject high-confidence test samples)
+- [ ] Add Contractor Clustering and Intensity features
+- [ ] Multi-seed Stacking with Isotonic Calibration
+- [ ] Final Submission targeting < 0.30 LB

@@ -1,0 +1,23 @@
+# 🌋 Vesuvius Challenge — Project Archive (Abandoned)
+
+## Project Summary
+- **Objective:** Surface detection and segmentation of papyrus in 3D CT scans.
+- **Timeline:** Analyzed Feb 24, 2026. Deadline was Feb 27, 2026.
+- **Status:** Abandoned at Phase 1 (Baseline Setup).
+
+## What Was Accomplished
+1.  **Deep Research:** Analyzed competition rules, evaluation metrics (TopoScore, SurfaceDice, VOI), and leaderboard status (Top score 0.613).
+2.  **Intel Gathering:** Identified nnUNet baseline (0.562 w/ PP) and TransUNet (0.552) as primary targets for ensembling.
+3.  **Infrastructure Preparation:** Created a comprehensive Colab training script [vesuvius_colab_training.py](file:///home/kizabgd/Desktop/Istrazivanje/vesuvius_challenge/vesuvius_colab_training.py) designed for GPU training on Colab.
+4.  **Strategic Planning:** Developed a 3-day "Trinity" battle plan (Baseline → Features → Killshot).
+
+## Reasons for Abandonment
+User requested to stop, archive, and delete the project on Feb 24, 2026.
+
+## Archive Locations
+- **Implementation Plan & Task Checklist:** [trinity_archive/vesuvius_challenge_archive/](file:///home/kizabgd/Desktop/Istrazivanje/trinity_archive/vesuvius_challenge_archive/)
+- **Codebase:** Deleted.
+- **Data:** Deleted.
+
+---
+**Status:** ❄️ FROZEN / ARCHIVED

@@ -1,0 +1,50 @@
+# Kaggle Intelligence Harvester: Quad-Core Walkthrough
+
+I have successfully upgraded the Antigravity intelligence gathering system from primitive script harvesting to a "Quad-Core" architectural model.
+
+## 🏗️ Quad-Core Architecture
+
+The harvester now operates across four distinct, decoupled layers:
+
+### 1. Core: Discovery (Intelligence Parser)
+- **Tool**: [intelligence_parser.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/intelligence_parser.py)
+- **Logic**: Uses Python's [ast](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py#65-106) (Abstract Syntax Tree) to extract parameters even from deep function calls.
+- **Verification**: [test_discovery.py](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_discovery.py) (Passed).
+
+### 2. Core: Memory (Strategic RDB & Vector RAG)
+- **Tool**: [trinity_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_kb.py)
+- **RDB**: Upgraded to relational schema (Strategies, Parameters, Lineage).
+- **Hybrid Search**: [strategic_query_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategic_query_engine.py) provides unified SQL+Vector access.
+
+### 3. Core: Shield (Boardroom Consensus)
+- **Tool**: [trinity_boardroom.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_boardroom.py)
+- **Consensus**: 3/3 voting (Kimi, Qwen, Mistral) prevents GEMINI.md anti-patterns.
+
+### 4. Core: Law (Strategic Resolver)
+- **Tool**: [strategy_resolver.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategy_resolver.py)
+- **Orchestration**: Direct execution of the full harvesting pipeline with session tracking.
+
+---
+
+## 🚀 Phase Highlights
+
+### Phase 4: Autonomous Harvester
+- Implemented [kaggle_automated_harvester.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_automated_harvester.py) for recursive SOTA discovery.
+- Automated API credential recovery for 401 errors.
+
+### Phase 5: Memory Optimization
+- Added **Model Lineage** tracking to prevent "cloning" of weak strategies.
+- Implemented **Atomic Commit** logic for the SQL Knowledge Base.
+
+### Phase 6: Security & Compliance
+- **KeyVault**: Centralized API key management with rotation support.
+- **AuditLogger**: Detailed logging of all external AI calls for cost and performance tracking.
+- **Rate Limits**: [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-465) now enforces daily budgets to avoid API locks.
+
+### Phase 7: Monitoring & Testing
+- **Dashboard API**: Serves real-time throughput and latency KPIs.
+- **Unit Tests**: Full suite coverage for Discovery and Memory cores.
+
+---
+**PROJECT COMPLETE**: Antigravity is now a hardened, autonomous research agent.
+[task.md](file:///home/kizabgd/.gemini/antigravity/brain/336b7c17-5eaa-4d76-ba9a-7b001f5e719a/task.md)

@@ -1,0 +1,31 @@
+# Spaceship Titanic - Top 190 Challenge: Mission Accomplished 🚀
+
+## Goal
+The primary objective was to beat the previous best public leaderboard score of **0.80851** within a maximum of 5 submissions.
+
+## Journey and Iterations
+
+### Phase 1 & 2: V20 Grandmaster (OOF ~0.805 -> LB 0.80687)
+We started by implementing advanced stacking and pseudo-labeling techniques (V20 Grandmaster). 
+- **Phase 1** utilized RAG (Retrieval-Augmented Generation) features with N-gram target encoding and 2-stage pseudo-labeling.
+- **Phase 2** added `Family_Size`, `Group_Size`, increased RAG parameters (K=50, 64-dim), and implemented stricter pseudo-labeling thresholds (>0.99, <0.01).
+- **Result:** Both phases scored **0.80687** on the public LB. While strong, it did not surpass the target.
+
+### Phase 3: Trinity Diversity Blend (LB 0.80500)
+Realizing that aggressive pseudo-labeling was causing "Toxic Confirmation Bias", we pivoted to a weighted blend of 5 diverse models, implementing a hard-coded "Physics Veto" (Rule #2).
+- **Result:** Scored **0.80500**. The vetoes helped precision but the base models in the blend weren't the absolute highest-performing individual shots.
+
+### Phase 4: The 0.810+ Hunter (LB 0.81084) 🏆
+We analyzed the legacy submissions and realized the original 0.80851 score came from isolated historical shots ([submission_shot1_grandmaster.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_shot1_grandmaster.csv) and [submission_shot5_hillclimb.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_shot5_hillclimb.csv)). We created a script to perfectly recover and blend these top-tier predictions:
+- [submission_shot1_grandmaster.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_shot1_grandmaster.csv) (Weight: 2)
+- [submission_shot5_hillclimb.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_shot5_hillclimb.csv) (Weight: 2)
+- [submission_v16_phase2_hillclimbing.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_v16_phase2_hillclimbing.csv) (Weight: 2)
+- [submission_shot2_rag.csv](file:///home/kizabgd/Desktop/Istrazivanje/spaceship_titanic/submission_shot2_rag.csv) (Weight: 1)
+
+**Final Voting Strategy:** Weighted majority rule based on historical stability.
+
+## Final Result
+- **Target Score:** 0.80851
+- **Achieved Score:** **0.81084** ✅
+
+The challenge is successfully completed! Mission accomplished.

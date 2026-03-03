@@ -1,0 +1,25 @@
+# Goal Description
+
+The objective is to break the 0.95400 Public LB limit on the S6E2 Heart Disease Challenge. According to the tactic registry ([tactic_registries/heart_disease.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/heart_disease.md)), this can be achieved by blending tabular neural networks (RealMLP/TabNet) with our existing GBDT ensemble (Golden Recipe), as GBDTs hit a "Hybrid Correlation Wall".
+
+## Proposed Changes
+
+### 1. Environment Setup
+- Install necessary packages: `pytabkit` (for RealMLP) and `autogluon` (optional, as an alternative/complement).
+
+### 2. Implementation: `scripts/heart_disease_v4_breakthrough.py`
+We will create a new script that builds upon [heart_disease_v3_16_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease_v3_16_elite.py):
+- Keep Data Loading, UCI Prioirs, Tanaka HR formula, and Oldpeak normalization.
+- **Add RealMLP**: Create a 5-fold cross-validation loop for `pytabkit.RealMLP_TD_Classifier`.
+- **Blend weights**: 65% GBDT ensemble mean (XGB, LGBM, CAT) and 35% RealMLP predictions.
+- **Process Guard Validation**: Calculate correlation between GBDT and RealMLP to ensure orthogonal predictions (diversity). Check calibration (OOF < 0.958 approx).
+
+## Verification Plan
+
+### Automated Tests
+- Run `python scripts/heart_disease_v4_breakthrough.py`.
+- Ensure output CSV is generated without NaN values (JudgeGuard logic).
+- Verify the script logs the OOF AUC and prints ProcessGuard correlations.
+
+### Next Steps
+Once approved, I will install the dependencies, execute the script, and verify the OOF AUC score. If OOF is promising (around 0.954 - 0.955), we will submit it to Kaggle.

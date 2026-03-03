@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Fokus na čitanje .env.supabase i kreiranje test skripte za konekciju.",
+  "updatedAt":  "2026-02-28T22:35:34.566437704Z",
+  "version":  "5"
+}

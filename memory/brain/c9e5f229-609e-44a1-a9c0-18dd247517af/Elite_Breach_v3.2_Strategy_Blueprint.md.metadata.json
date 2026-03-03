@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_OTHER",
+  "summary": "A technical blueprint for the 'Elite Breach' v3.2 heart disease strategy. It documents the medical-aware feature engineering, the Trinity ensemble architecture (LGBM, XGB DART, CatBoost), and the Nelder-Mead rank optimization process for future retrieval and reproducibility.",
+  "updatedAt": "2026-02-19T18:45:29.185439297Z"
+}

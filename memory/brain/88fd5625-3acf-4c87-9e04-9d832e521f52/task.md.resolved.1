@@ -1,0 +1,34 @@
+# Alcohol Withdrawal Triage Model v2.0 — TriageGeist Hackathon
+
+## Phase 1: Planning
+- [x] Research existing codebase & SOTA heart pipeline
+- [x] Download & inspect TriageGeist competition data
+- [x] Read scanned alcoholism textbook for domain knowledge
+- [x] Write implementation plan & get user approval
+
+## Phase 2: Project Setup & Dataset Pipeline
+- [x] Create folder structure (`/alcohol_triage_v2/{src,notebooks,models,data,submission}`)
+- [x] Build dataset generation script with clinical knowledge
+- [x] Merge TriageGeist real data with supplementary features
+
+## Phase 3: Feature Engineering
+- [x] Core feature engineering (Gaussian Periodic Embeddings, interactions)
+- [x] Addiction Crisis Score & Family System Risk Score
+- [x] Text features from chief_complaint (TF-IDF + embeddings)
+- [x] Time-based & history-based interactions
+
+## Phase 4: Model Architecture
+- [/] Multi-class base models (XGB, LGBM, CatBoost, HistGBT, MLP)
+- [/] 5-fold CV × 5 seeds stacking
+- [ ] Meta-stacker calibration
+- [ ] Multimodal late fusion (tabular + text)
+- [ ] Conditional pseudo-labeling on test.csv
+
+## Phase 5: Explainability & Submission
+- [ ] SHAP explainability with clinical interpretation
+- [ ] Generate submission.csv for TriageGeist
+- [ ] Create clean Kaggle notebook
+
+## Phase 6: Verification & Deploy
+- [ ] Run full pipeline locally, verify OOF scores
+- [ ] Push to Kaggle as kernel, verify submission

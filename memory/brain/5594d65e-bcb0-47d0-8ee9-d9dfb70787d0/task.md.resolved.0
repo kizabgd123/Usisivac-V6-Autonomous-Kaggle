@@ -1,0 +1,5 @@
+# Premestanje skripte i zamena LLM provajdera
+
+- [ ] Kopirati [organization_setup_guide.md](file:///home/kizabgd/.antigravity/extensions/123/organization_setup_guide.md) u `/home/kizabgd/Desktop/Istrazivanje/`
+- [ ] Zameniti sve reference na Gemini sa Mistral u novom fajlu
+- [ ] Ažurirati instrukcije za API ključeve i limite za Mistral API

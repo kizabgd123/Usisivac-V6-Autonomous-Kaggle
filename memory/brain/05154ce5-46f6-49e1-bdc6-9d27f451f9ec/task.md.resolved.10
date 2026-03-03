@@ -1,0 +1,25 @@
+# March Machine Learning Mania 2026
+
+- [x] **Phase 1: Research & Data Download**
+  - [x] Read competition description, metric (Brier Score), submission format
+  - [x] Download all data files (34.3MB)
+  - [x] Analyze file structure and key datasets
+- [x] **Phase 2: Strategy Planning**
+  - [x] Design 3-shot Trinity strategy (Elo → ML → Grandmaster)
+  - [x] Write implementation_plan.md
+- [/] **Phase 3: Implementation — Shot 1 (Elo Baseline)**
+  - [/] Build Elo rating engine (M + W)
+  - [ ] Compute seed features
+  - [ ] Generate + validate + submit
+- [ ] **Phase 4: Implementation — Shot 2 (ML Ensemble)**
+  - [ ] Compute efficiency metrics (ORtg, DRtg, eFG%, Pace, etc.)
+  - [ ] Integrate Massey ordinals
+  - [ ] XGBoost + LightGBM ensemble with year-gap CV
+  - [ ] Generate + validate + submit
+- [ ] **Phase 5: Implementation — Shot 3 (Grandmaster)**
+  - [ ] KenPom-style SOS, Bayesian Elo, isotonic calibration
+  - [ ] Optuna tuning + stacked ensemble
+  - [ ] Generate + validate + submit
+- [ ] **Phase 6: Verification**
+  - [ ] Check all 3 LB scores
+  - [ ] Select best 2 submissions

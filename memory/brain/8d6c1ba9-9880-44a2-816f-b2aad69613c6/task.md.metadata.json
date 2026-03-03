@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_TASK",
+  "summary":  "Task lista za integraciju ai-doc sistema sa Trinity Protocol kaggle-arena projektom. Uključuje inicijalizaciju workspace-a, kreiranje Trinity persone, mapiranje workflows, i Makefile proširenje.",
+  "updatedAt":  "2026-03-01T05:52:21.642862002Z"
+}

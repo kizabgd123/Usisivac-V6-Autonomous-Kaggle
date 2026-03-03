@@ -1,0 +1,28 @@
+# Deep Past Initiative - Robust Offline Submission Plan
+
+## Goal Description
+The objective is to create a robust, CPU-only Kaggle submission script for the "deep-past-initiative-machine-translation" competition. The previous attempt failed due to a notebook syntax corruption (IndentationError) introduced by an injection script. Additionally, the models needed must be loaded strictly offline (without internet access). We will leverage the SOTA model available at `deep_past_recovery/sota_model/byt5-akkadian-optimized-34x`.
+
+## User Review Required
+None at this stage, the approach will just establish the offline notebook.
+
+## Proposed Changes
+We will create a solid, offline inference script/notebook without relying on risky text-injection scripts.  
+1. **Model Source**: The script will point to `/kaggle/input/final-byt5/byt5-akkadian-optimized-34x` (assuming `assiaben/final-byt5` is the dataset).
+2. **Kaggle Setup**: We will use `deep_past_recovery/Trinity_Akkadian_SOTA_Offline.ipynb` as the base submitting notebook.
+3. **Robustness**: 
+   - No internet checks, assuming pure offline.
+   - Offline loading of `byt5-base` tokenizer and model from the specific dataset directory.
+   - Use the `preprocess_input_text` and `postprocess_translation_output` logic seen in the SOTA notebook.
+
+### Implementation Steps
+1. Verify the exact path in Kaggle to the models by creating a robust `find_path` function fallback.
+2. Directly submit `Trinity_Akkadian_SOTA_Offline.ipynb` to the competition to verify if the model works.
+
+## Verification Plan
+### Automated Tests
+- Run the inference script locally on CPU to verify it successfully loads the local SOTA model and performs inference.
+
+### Kaggle Submission
+- Submit to Kaggle via Kaggle CLI.
+- Monitor the execution logs for `SubmissionStatus.COMPLETE` and verify the LB score.

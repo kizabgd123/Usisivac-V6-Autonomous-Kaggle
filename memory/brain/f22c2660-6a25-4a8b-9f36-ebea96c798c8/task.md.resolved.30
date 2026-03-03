@@ -1,0 +1,17 @@
+# Probijanje 0.95387 LB Barijere
+
+- [x] Faza 1: Post-Hoc Rank Blend — *90/10→0.95386, 85/15→0.95385 (nema napretka)*
+- [/] Faza 2: Replika Best + Hyper-Refinement
+  - [x] Kreirati heart_disease_v6_refined.py (GBDT-only, više stabala/seedova)
+  - [/] Pokrenuti trening — *v6: S2024 F1 (.9546), v6.1: Modeling S42 F0*
+  - [x] Adversarial Validation — *AUC: 0.5017 (Savršen alignment)*
+  - [x] Kreirati heart_disease_v6_1_elite.py (OOF Encodings + Rule 42)
+  - [/] Pokrenuti v6.1 elite paralelno
+  - [ ] Submitovati po završetku
+
+- [x] Faza 3: Public Blend Eksploracija (The Ceiling Test)
+  - [x] API 3x Rank Blend (0.95409)
+  - [x] Ultimate 6x Power Rank Blend (0.95409)
+  - [x] Super Anchor Blend (0.95409)
+  - 🛑 *Status*: Udaren tvrdi plafon javnog LB-a. Štedimo sledeće submissione po korisnikovoj direktivi.
+- [ ] Faza 3: RealMLP Hybrid (65% GBDT / 35% RealMLP)

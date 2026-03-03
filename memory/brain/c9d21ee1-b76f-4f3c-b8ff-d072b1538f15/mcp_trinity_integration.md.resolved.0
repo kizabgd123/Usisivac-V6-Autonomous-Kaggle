@@ -1,0 +1,45 @@
+# Integracija Junie Koncepata i Model Context Protocol (MCP) u Trinity OS
+
+Na osnovu detaljne analize **Junie** (AI coding agenta kreiranog od strane JetBrains-a) i njene **MCP** (Model Context Protocol) arhitekture, izvukli smo ključne koncepte koji mogu transformisati Anti-Gravity Trinity OS u još autonomniji protokol.
+
+## 1. Analiza Junie AI i MCP Standarda
+
+**Šta je Junie?**
+Junie je autonomni agent duboko integrisan u JetBrains IDE-e. Ne služi samo za autocompletion, već analizira greške, menja kod u rasponu više fajlova, debaguje i razume *project index* (gde se šta nalazi u kodu i stablu fajlova). 
+Ključna snaga joj je **"Transparency and Control"**: planira i sprovodi akcije po koracima, i pauzira zahtevajući ljudsku potvrdu na visoko-rizičnim akcijama (npr. interakcije u terminalu).
+
+**Uloga Model Context Protocol (MCP)**
+MCP funkcioniše kao "USB-C za AI". On omogućava JetBrains funkcijama (poput static analysis-a, refactoring tool-ova) da budu predstavljene kao standardizovan API (MCP serveri). Junie klijent, umesto klasičnog čitanja fajla po fajla, prosleđuje komande ovim MCP serverima. Npr. `"Mellum (interni LLM model) - evo ti pristup Refactoring MCP Serer-u"`.
+
+## 2. Povezivanje sa Trinity Protocol v4.0
+
+Trenutno, u Trinity-ju (Ustav iz GEMINI.md) imamo `ProcessGuard`, `JudgeGuard`, `Tactic Registries` (.md fajlove), i 7-Gate Submit protokole. Oni trenutno zavise od "Prompt inženjeringa" i manuelnog parsiranja logičkih saveta (hintova) iz JSON fajlova [.agent/rules/ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/ORCHESTRATION_RULES.json) ili [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json).
+
+**Kako MCP ovo menja?**
+Umesto da Trinity LLM agent samo pasivno čita [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) i markdown registre, te komponente postaju aktivni **MCP Serveri**.
+
+### Ključne Faze Integracije (Roadmap)
+
+#### A. Centralizacija Guardiana kao MCP Alata (Validation-as-a-Service)
+- Trenutno: LLM stvara output, a zatim ProcessGuard kroz alert šalje VETO/HALT nazad na čitanje.
+- **Predlog**: Ekstraktovati ProcessGuard u samostalan lokalni MCP Server.
+- **Prednost**: Agent (npr. `Antithesis_Engineer`) poziva funkciju `call_mcp_validate_diversity([model1, model2])` PRE nego što potroši resurse na trening. Ako server vrati VETO (sa `actionable_fallback` ključem kao "switch to orthogonal model"), agent dobija programabilni izlaz kom direktno prilagođava sledeći korak, bez narušavanja flow-a.
+
+#### B. Transformacija Domenskog Registra (Tactic Registry)
+- Trenutno: [tactic_registries/heart_disease.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/heart_disease.md) je samo tekstualni dokument.
+- **Predlog**: Generisati **Heart Disease Expert MCP Server**.
+- **Prednost**: Ako podaci zahtevaju *Tanaka formulu* (Pravilo 38) ili *Oldpeak normalizaciju* (Pravilo 39), umesto da agent sam piše logiku iz teksta (što je podložno greškama), on putem MCP standarda prosto poziva ugrađenu referencu: `heart_disease_mcp.apply_tanaka(age_col, hr_max_col)`. Server obavlja izračunavanje nad Dataframe-om i vraća mu gotov kod ili čistu kolonu.
+
+#### C. Koncept "Transparency and Control" (Junie-Style VetoBoard)
+- Trenutno: Uvedeni smo u `Mistral Guardian VetoBoard` (`/mistral_trigger`).
+- **Predlog**: Integrisati Junie koncept ljudskog checkpoint-a u 7-Gate Submit protokol. Kada agent uspešno kreira *Kill Shot* rešenje, ne pokušava samostalno izvršenje CLI komande `make submit` odmah. 
+Umesto toga, generiše **Review Prompt** preko MCP-a, prikazuje ga kroz `notify_user` i isključivo čeka approval dugme od "Domara" (Admina).
+
+#### D. Autonomni CLI Unification
+- Poput Junie koja native razume Git i okruženje, Trinity MCP server može umapoptvati Makefile infrastrukturu. 
+- Komanda agentu više nije "potraži kako da treniraš", već `execute_make_target("train")`. MCP server se brine o apstrakciji okruženja.
+
+## Zaključak i Sledeći Koraci
+- Sistemski Ustav iz `.agent/rules` i baza `trinity_config.json` bi trebalo da dobiju mali lokalni MCP server omotač (Node.js ili Python SDK).
+- `Anti-Gravity OS` klijent bi zatim dobio URI/lokalni putanju do tih MCP Servera.
+- Time Agent stiče aktivni i formalizovani API pristup umesto pasivnog čitanja fajlova.

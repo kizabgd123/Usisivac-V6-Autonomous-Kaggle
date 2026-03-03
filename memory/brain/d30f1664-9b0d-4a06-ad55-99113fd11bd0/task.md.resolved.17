@@ -1,0 +1,15 @@
+# Task Checklist: Heart Disease Prediction (Playground S6E2)
+
+- [x] Initial research and reconnaissance <!-- id: 0 -->
+    - [x] Identify data paths and competition structure <!-- id: 1 -->
+    - [x] Review previous best scores (0.9528 LB) <!-- id: 2 -->
+- [ ] Implement and Execute Enhanced V2 Pipeline <!-- id: 3 -->
+    - [x] Draft robust V2 script with medical features and advanced ensembling <!-- id: 4 -->
+    - [x] Add checkpointing mechanism to avoid progress loss on interruption <!-- id: 5 -->
+    - [/] Run 10-fold CV (Nohup active) - LGB Done (OOF 0.9551), XGB In Progress <!-- id: 6 -->
+    - [x] Verify Adversarial Validation AUC (0.5022 ✅) <!-- id: 7 -->
+- [ ] Implement and Execute Fast V3 Pipeline <!-- id: 14 -->
+    - [x] Terminate redundant and slow V2 processes <!-- id: 15 -->
+    - [/] Create and launch [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py) (XGB Done: 0.9551, CAT In Progress) <!-- id: 16 -->
+    - [ ] Verify speed and AUC maintenance in V3 <!-- id: 17 -->
+- [ ] Final Ensembling and Submission <!-- id: 8 -->

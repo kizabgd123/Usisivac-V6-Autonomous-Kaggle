@@ -1,0 +1,44 @@
+# March Machine Learning Mania 2026 — Results Walkthrough
+
+## Objective
+Beat the previous agent's best score of **0.14770** on the March Mania 2026 Kaggle competition (Brier Score, lower is better).
+
+## Result
+
+| Submission | Public LB | CV Brier | Description |
+|---|---|---|---|
+| Shot 1 (baseline) | 0.14770 | 0.1485 | Elo + Seed logistic regression |
+| **Killer** | **0.10343** 🎯 | 0.1386 | 9-model multi-seed ensemble |
+
+> [!IMPORTANT]
+> **0.10343** is a **30% improvement** over the previous best of 0.14770.
+
+## Killer Submission Architecture
+
+### Features (26 total)
+- **Elo** (MOV-adjusted): `elo_diff`, `elo1`, `elo2`
+- **Seeds**: `seed_diff`, `seed1`, `seed2`
+- **Efficiency metrics**: `off_rtg_diff`, `def_rtg_diff`, `net_rtg_diff`, `efg_diff`, `tov_diff`, `oreb_diff`, `ftrate_diff` (late-season 2x weighted)
+- **Team quality**: `win_pct_diff`, `margin_diff`, `net_rtg1`, `net_rtg2`
+- **Massey ordinals**: `massey_diff`, `massey1`, `massey2`
+- **Strength of schedule**: `sos_diff`
+- **Defensive metrics**: `blk_rate_diff`, `stl_rate_diff`, `ast_rate_diff`
+- **Tournament experience**: `tourney_exp_diff`
+- **Gender**: `gender`
+
+### Model Ensemble
+- 3 seeds × 3 model types = **9 models** averaged
+- XGBoost (500 trees, depth 4, lr 0.03)
+- LightGBM (500 trees, depth 4, lr 0.03)
+- CatBoost (500 iters, depth 4, lr 0.03)
+
+### Key Files
+- [march_mania_killer.py](file:///home/kizabgd/Desktop/Istrazivanje/march_mania_2026/march_mania_killer.py) — Main submission script
+- [submission_killer.csv](file:///home/kizabgd/Desktop/Istrazivanje/march_mania_2026/submission_killer.csv) — Winning submission
+
+## Validation
+- **3-seed CV** (leave-one-year-out, 2015-2025):
+  - Seed 42: 0.1386 ± 0.0193
+  - Seed 123: 0.1386 ± 0.0191
+  - Seed 777: 0.1387 ± 0.0189
+- **Total inference**: 519,144 matchups in ~198s (batch mode)

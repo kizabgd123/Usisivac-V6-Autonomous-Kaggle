@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Pregled završenih aktivnosti za Heart Disease Kaggle misiju. Uspostavljen je Baseline model sa AUC 0.9554, osveženi su Kaggle kredencijali i ažurirana je celokupna projektna dokumentacija u skladu sa Trinity Protokolom.",
+  "updatedAt":  "2026-03-01T07:32:45.896605380Z",
+  "version":  "4"
+}

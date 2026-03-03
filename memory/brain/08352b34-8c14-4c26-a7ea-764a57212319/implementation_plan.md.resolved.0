@@ -1,0 +1,31 @@
+# Implementation Plan: S6E2 Elite Strategy (> 0.95400)
+
+## 1. Medical Feature Engineering
+The user suggested several clinically relevant features:
+* **Rate Pressure Product (RPP)**: `Max HR * BP`. This is a critical indicator of myocardial oxygen consumption.
+* **Thallium Traps**: `Thallium * Chest pain type`. A combinatorial risk feature since certain types of pain paired with specific thallium defects drastically increase disease probability.
+* **Pulse Pressure & MAP**: *(Needs Clarification)* The S6E2 dataset only contains `BP` (Resting Blood Pressure, assumed Systolic), and lacks a Diastolic BP column. We will need to skip this or estimate it if possible.
+
+**Files to modify**: 
+* [playground-s6e2-heart-disease/s6e2_features.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_features.py) (Add these to [AdvancedFeatures](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_features.py#91-178) or [TrinityFeatures](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_features.py#183-259) class)
+
+## 2. "Hidden Noise" Denoising (Aleatoric Uncertainty)
+* Implement a robust evaluation and denoising pipeline.
+* **OOF Soft Labels / Cleanlab**: We will train a first-stage model. We'll identify noisy rows (high confidence, wrong prediction) and either down-weight them or use the first-stage OOF predictions as "soft labels" for a second-stage model.
+* **Loss Functions**: For boosting models (XGBoost/LGBM/CatBoost), we can pass custom objective functions or simply use `Label Smoothing` (e.g., target = 0.05 or 0.95) to prevent overconfidence on noisy samples.
+
+## 3. Architecture for > 0.954
+* **UCI Dataset Integration**: Concatenate the original [heart_disease_uci.csv](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease_uci.csv) with the training set. We will map the columns so they match perfectly, providing an "anchor" of reality.
+* **Stratified K-Fold**: Use `n_splits=10` for robust evaluation.
+* **Post-Processing Calibration**: Apply `IsotonicRegression` or Platt Scaling (Logistic Regression) on the OOF predictions to calibrate probabilities before the final thresholding or blending.
+
+**Files to create/modify**:
+* Create a new script `playground-s6e2-heart-disease/s6e2_submission_8_elite_denoise.py` to orchestrate this new pipeline.
+
+## User Review Required
+
+> [!WARNING]
+> Pulse Pressure and MAP require Diastolic Blood Pressure, but the Kaggle S6E2 dataset only provides `BP` (Systolic). How do you want to handle this? Should we skip it or estimate it (e.g., Diastolic ~ BP/1.5)?
+
+> [!NOTE]
+> Are you okay with creating a new script `s6e2_submission_8_elite_denoise.py` inside `playground-s6e2-heart-disease` for this complete pipeline?

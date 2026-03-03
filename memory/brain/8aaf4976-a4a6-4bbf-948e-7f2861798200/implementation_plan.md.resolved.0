@@ -1,0 +1,30 @@
+# Trinity Protocol Alignment & Constitutional Reboot
+
+The project state audit revealed minor deviations from the Trinity Protocol (GEMINI.md). This plan addresses those issues to ensure full system readiness.
+
+## Proposed Changes
+
+### [Subproject Alignment]
+#### [NEW] [s6e1/manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/s6e1/manifest.json)
+- Generate a manifest for the legacy `s6e1` subproject to comply with Rule 16.
+
+#### [NEW] [s6e1/Makefile](file:///home/kizabgd/Desktop/Istrazivanje/s6e1/Makefile)
+- Generate a Makefile for standardized execution in `s6e1`.
+
+---
+
+### [Tool Registry]
+#### [MODIFY] [trinity_tool_registry/manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/manifest.json)
+- Update the path for `killshot_engine` from `trinity_tool_registry/killshot_engine.py` to [src/killshot_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/src/killshot_engine.py) to reflect the actual file location.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- **System Health Check**: Run `python3 scripts/system_health_check.py` to verify environment stability.
+- **Rule 27 Verification**: Run `python3 scripts/verify_rule_27.py` to ensure memory integrity protocols are working.
+- **Subproject Verification**: Check if `s6e1` manifest and Makefile are present and correctly formatted.
+
+### Manual Verification
+- None required; all changes are structural or configuration-based.

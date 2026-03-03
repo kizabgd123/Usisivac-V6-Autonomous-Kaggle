@@ -1,0 +1,34 @@
+# Walkthrough - Trinity v3.15 Upgrade & Provider Integration
+
+Sistem je uspešno nadograđen na **v3.15** (Constitutional Reboot) i obogaćen novim LLM provajderima za maksimalnu fleksibilnost i moć.
+
+## Promene (Highlights)
+
+### 1. Core Config Upgrade (v3.15)
+- **[trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)**: Implementirano **Rule 49 (Dynamic Scaling)** i **Rule 50 (Phase-Aware Diversity)**.
+- **[manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)**: Verzija podignuta na `3.15.0`.
+
+### 2. LLM Provider Expansion
+- **OpenAI (Elite Layer)**: Dodat `OPENAI_API_KEY` i podešeni limiti.
+- **Groq (Free Hub)**: Kreiran [groq_free_client.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_free_client.py) koji koristi ultra-brzi `llama-3.3-70b-versatile`.
+- **Hugging Face**: Pivotiran na Groq zbog restrikcija besplatnog API-ja, ali port je spreman za buduće izmene.
+
+### 3. Knowledge Injection (Elite Tactics)
+- **[GROQ_AUDIT.md](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/GROQ_AUDIT.md)**: Ubrizgane kliničke i takmičarske taktike (Tanaka formula, Ischemic Burden, Rule 32/33).
+- **[groq_audit_agent.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py)**: Ažuriran sistemski prompt sa **Rule 24 (Meta Command)**.
+
+## Verifikacija
+
+### Groq Connectivity Test
+Model je uspešno odgovorio na upit o Tanaka formuli:
+```text
+Odgovor:
+Tanaka formula za maksimalni radni puls (MaxHR) je:
+MaxHR = 208 - (0,7 x godine)
+...preciznija i bolja jer uzima u obzir linearni pad srčanog učinka sa godinama...
+```
+
+### Constitutional Alignment
+- Svi ključni fajlovi ([trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json), [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env), [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)) su usklađeni sa vrhovnim zakonom [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md).
+
+🛡️ **Sistem je spreman za Grandmaster operacije.**

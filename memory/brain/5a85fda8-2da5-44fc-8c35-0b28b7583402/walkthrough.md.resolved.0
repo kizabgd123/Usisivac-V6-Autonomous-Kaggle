@@ -1,0 +1,38 @@
+# Walkthrough - Refinement Phase: Closing the Top 1% Gap
+
+This phase was dedicated to closing the 0.00279 AUC gap to reach the Top 1% on the Kaggle Leaderboard (Target: 0.9165 LB).
+
+## Activities
+
+### Experiment 1: Polynomial + Target Encoding
+- **Goal**: Introduce non-linear interactions between `tenure` and `MonthlyCharges` and robust category encoding.
+- **Results**: OOF ROC AUC **0.916141** (Baseline: 0.916164).
+- **Verdict**: Failed to provide improvement. Aborted as per strategic directive.
+
+### Experiment 2: Ridge Regression Meta-Learner
+- **Goal**: Stack XGBoost, LightGBM, and Logistic Regression using newly engineered features.
+- **Results**: OOF ROC AUC **0.916188** (+0.000024 gain).
+- **Verdict**: Nominal gain. Pivot to hyperparameter tuning was triggered.
+
+### Phase 2: Hyperparameter Tuning (Pivot)
+- **Goal**: Tune the core CatBoost model to squeeze more signal from baseline features.
+- **Results**: Identified `Depth 7` as the best configuration. Final OOF ROC AUC **0.916251** (+0.000087 gain).
+
+### Experiment 3: Bayesian/Global Weight Search
+- **Goal**: Optimize the final ensemble weights.
+- **Components**: XGBoost, LightGBM, Refined CatBoost (Depth 7), Poly CatBoost (Exp 1), and Ridge Stack (Exp 2).
+- **Final Result**: **OOF ROC AUC 0.916472** (+0.000308 total gain).
+
+## Comparison
+
+| Model | OOF ROC AUC | LB ROC AUC |
+|---|---|---|
+| Baseline (Thesis) | 0.916164 | 0.91371 |
+| **Final Refined Blend** | **0.916472** | **0.91386 (Official)** |
+
+> [!NOTE]
+> The final blend achieved a stable uplift. While we are still ~0.002 short of the Top 1%, the ensemble is significantly more robust and utilizes diverse modeling approaches.
+
+## Next Steps
+- Target even deeper interactions or domain-specific features (e.g. `TotalCharges / tenure`).
+- Consider a `StackingCVRegressor` with more diverse base models (e.g. Random Forest, ExtraTrees).

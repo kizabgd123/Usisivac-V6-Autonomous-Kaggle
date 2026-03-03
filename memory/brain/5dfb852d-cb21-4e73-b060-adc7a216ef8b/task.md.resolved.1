@@ -1,0 +1,29 @@
+# Task: Fix LLM Agent Ecosystem (Usisivač + Boardroom + JudgeGuard)
+
+## A. Usisivač — llm_vetoboard_review.py
+- [x] Fix `genai` import guard (crash if package missing but enabled=True)
+- [x] Fix broken `from config import load_json_safe` — use direct JSON load
+- [x] Fix relative path `../../trinity_config.json` → absolute PROJECT_ROOT
+- [x] Fix key mismatch: `file_analysis.get("file_path")` → `"path"`
+- [x] Add content length limit for LLM prompt
+
+## B. Usisivač — review.py
+- [x] Change default categories to exclude `vetoboard` (make opt-in)
+
+## C. JudgeGuard — judge_guard.py
+- [x] Use absolute path for Usisivac subprocess call
+- [x] Parse JSON output instead of fragile stdout string matching
+- [x] Add 120s timeout + TimeoutExpired handling
+
+## D. Boardroom — boardroom_advisor.py
+- [x] Use [boardroom_enabled](file:///home/kizabgd/Desktop/new-challenge/tests/test_llm_agents.py#117-125) config key instead of `vetoboard_enabled`
+
+## E. Configuration — trinity_config.json
+- [x] Add `boardroom_enabled: true` to [llm_agents](file:///home/kizabgd/Desktop/new-challenge/tests/test_llm_agents.py#93-103) block
+
+## F. Verification
+- [x] Syntax check all modified files (5/5 pass)
+- [x] Run existing [tests/test_usisivac_security.py](file:///home/kizabgd/Desktop/new-challenge/tests/test_usisivac_security.py) (PASS)
+- [x] Run Usisivac review on a sample file (PASS)
+- [x] Run `judge_guard.py --no-verify` smoke test (PASS)
+- [x] Create [tests/test_llm_agents.py](file:///home/kizabgd/Desktop/new-challenge/tests/test_llm_agents.py) — 11/11 tests pass

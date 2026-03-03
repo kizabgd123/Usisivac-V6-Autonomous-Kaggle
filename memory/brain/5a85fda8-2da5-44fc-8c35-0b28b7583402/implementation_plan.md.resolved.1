@@ -1,0 +1,36 @@
+# Implementation Plan - Micro-Optimization for AUC Gap Closure
+
+This phase aims to close the final 0.000028 gap to reach the target OOF ROC AUC of 0.916500. We will use post-processing techniques, primarily Power Averaging, as decided in the Trinity Boardroom.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This phase involves micro-optimizations (Power Averaging) which primarily affect the calibration and ranking confidence of predictions. While safer than retraining, it requires strict OOF validation to ensure no overfitting.
+
+## Proposed Changes
+
+### [MODIFY] [experiment_3_bayesian_blend.py](file:///home/kizabgd/Desktop/new-challenge/experiment_3_bayesian_blend.py)
+Update the blending script to save the final OOF predictions for use in micro-optimization.
+
+### [NEW] [micro_opt_power_avg.py](file:///home/kizabgd/Desktop/new-challenge/micro_opt_power_avg.py)
+Create a new script to perform Power Averaging and Sensitivity Analysis.
+
+#### Experiments to Implement:
+1. **Experiment 1: Power Averaging (p=2.0)**:
+   - Apply $y_{new} = y_{old}^p$ to OOF and test predictions.
+   - Verify AUC gain.
+2. **Experiment 2: Sensitivity Analysis**:
+   - Iterate $p \in [1.5, 2.5]$ in steps of 0.1 to find the optimal $p$.
+3. **Experiment 3: Isotonic Regression (Conditional)**:
+   - If Power Averaging results are insufficient, apply Isotonic Regression.
+
+## Verification Plan
+
+### Automated Tests
+1. **OOF Validation**: Ensure that the AUC calculation on OOF predictions reflects a gain of $\geq 2e-5$.
+2. **Submission Generation**: Generate `submission_final_micro_opt.csv`.
+3. **Reproducibility**: Ensure the transformation is deterministic.
+
+### Manual Verification
+- Review the [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) update to confirm the new OOF AUC.
+- Check Kaggle Leaderboard impact if possible.

@@ -1,0 +1,33 @@
+# Academic Search AI - Walkthrough
+
+## Objectives Accomplished
+- ✅ **Unpacked and Cloned**: Successfully duplicated the `ResearchProAI_Template` into a new `ScienceResearchAI` instance.
+- ✅ **Academic Search Integration**: Implemented a restricted internet search using `duckduckgo-search` (DDGS). The search is strictly limited to academic and scientific domains (`.edu`, `.gov`, `arxiv.org`, `nature.com`, `ncbi.nlm.nih.gov`).
+- ✅ **Enhanced RAG Pipeline**: Modified [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py) to combine local knowledge base context with real-time academic web search results.
+- ✅ **Infrastructure Fixes**: Resolved critical `SyntaxError` (unterminated string literals) and `NameError` (undefined variables in list comprehensions) in the original template's [ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/ingest.py) and [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py).
+- ✅ **Verification**: Validated the system with a query on "latest research on CRISPR", which produced a structured scientific report with accurate citations.
+
+## Changes Made
+
+### [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py)
+- Integrated `DDGS` for web search.
+- Added [academic_internet_search](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py#23-38) function with domain constraints.
+- Updated [generate_report](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/generate_report.py#39-58) to merge local and web context.
+- Refined the system prompt for strictly academic analysis.
+
+### [ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/ScienceResearchAI/ResearchProAI_Template/src/ingest.py)
+- Fixed the `text.split("\n\n")` syntax error.
+- Fixed the `ex_dir in f` NameError in the file filtering logic.
+
+---
+
+## Verification Results
+
+### Test Query: "What is the latest research on CRISPR?"
+- **Input**: User query about CRISPR.
+- **Process**:
+  1. Local ingestion of script files.
+  2. Academic web search for CRISPR papers on `arxiv`, `nature`, etc.
+  3. LLM (Llama 3.3-70b) synthesis of results.
+- **Result**: Successfully generated a report referencing Jinek et al. (2012), Doudna (2014), and others, with a clear scientific structure.
+- **Log**: `🔍 Pretražujem internet za akademske izvore... ✅ Ingestija završena! Kolekcija 'knowledge_base' sada sadrži 19 itema.`

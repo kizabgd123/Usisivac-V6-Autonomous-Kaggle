@@ -1,0 +1,49 @@
+# Antigravity OS: Kaggle Guardian Agent Configuration Blueprint
+
+This document outlines the exact architectural setup and configuration required for the Antigravity system to safely operate on Kaggle competitions, ensuring the agent strictly adheres to [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) and does not "mess up" ("brljavi").
+
+## 1. Directory Structure (The "Brain")
+To ensure the Antigravity Agent has all the rules, the workspace must be structured so the agent can RAG (Retrieve and Generate) or inject them directly into the system prompt.
+
+```text
+/home/kizabgd/Desktop/Istrazivanje/
+├── .gemini/                 # Default memory storage for the agent
+├── GEMINI.md                # The Single Source of Truth (The Constitution)
+├── .agents/                 
+│   └── workflows/           # Pre-approved routines (e.g., mistral_trigger.md)
+├── scripts/
+│   └── kaggle_process_guard_llm.py # The script that forces JSON constraints
+└── trinity_config.json      # Dynamic overrides (e.g., CPU limits, OOF thresholds)
+```
+
+## 2. Antigravity Agent System Prompt Injection
+The agent needs to know its boundaries. The Antigravity system config (`.gemini/system_prompt.txt` or similar) must be updated to include the following strict directive:
+
+> [!IMPORTANT]
+> **System Prompt Directive for the Agent:**
+> "You are the Antigravity AI Agent operating under the Trinity Protocol. 
+> 1. Before executing any code, you MUST consult [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md).
+> 2. You MUST adhere to dynamic thresholds defined in [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json).
+> 3. If you plan a risky Kaggle action (e.g., pseudo-labeling on synthetic data), you MUST first run [scripts/kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py) and strictly follow its VETO/WARNING output.
+> 4. You are forbidden from ignoring the Guard's VETO. If a VETO is triggered, immediately halt training, document the failure in [GUARD_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_LOG.md), and switch to the `actionable_fallback` response."
+
+## 3. How the Kaggle Guardian Secures the Agent
+The [kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py) script we created acts as a **hard checkpoint** (Rule 48). 
+- Every time the agent creates a training plan, it formats it as a string and passes it to the [KaggleProcessGuardLLM](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py#15-100).
+- The LLM has the *entire* [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) in its context window.
+- If the agent hallucinates a bad idea (e.g., "I will use Fox formula for MaxHR instead of Tanaka"), the Guardian catches it, returns `{"severity_level": "VETO"}`, and the Python code raises an exception.
+- This exception forces the Antigravity Agent to stop what it's doing and re-evaluate, preventing it from wasting Kaggle GPU hours.
+
+## 4. Packing the Core Knowledge for New Environments
+If you are moving to a new machine or a clean Kaggle instance, the minimal viable core is:
+1. [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md)
+2. [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+3. [scripts/kaggle_process_guard_llm.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kaggle_process_guard_llm.py)
+4. `.agents/workflows/`
+
+The Antigravity system reads `.agents/workflows/` automatically to know which specific commands are pre-approved (like `!Mistral`).
+
+## Implementation Tasks required for this configuration:
+- [ ] Ensure Antigravity core reads `GEMINI.md` on startup.
+- [ ] Inject the System Prompt Directive (Step 2) into the agent's baseline instructions.
+- [ ] Map the `!Mistral` or `/mistral` command to invoke the Guardian script automatically before expensive `model.fit()` calls.

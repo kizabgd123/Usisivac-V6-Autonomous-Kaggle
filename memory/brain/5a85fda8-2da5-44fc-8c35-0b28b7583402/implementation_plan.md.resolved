@@ -1,0 +1,31 @@
+# Implementation Plan - Breakthrough Ratio FE Strategy
+
+This phase aims to break the performance plateau (OOF 0.916473) by introducing high-impact ratio features and tenure binning, as identified in the Trinity Boardroom as a "Grandmaster move".
+
+## Proposed Changes
+
+### [NEW] [ratio_fe_experiment.py](file:///home/kizabgd/Desktop/new-challenge/ratio_fe_experiment.py)
+Create a new comprehensive experiment script that integrates the most successful parameters from previous phases with the new Ratio FE.
+
+#### Features to Implement:
+1. **Ratio Features**:
+    - `MonthlyCharges_per_tenure`: `MonthlyCharges / (tenure + 1e-6)`
+    - `TotalCharges_per_MonthlyCharges`: `TotalCharges / (MonthlyCharges + 1e-6)`
+2. **Tenure Binning**:
+    - `tenure_bin`: `pd.cut` of `tenure` into 4 ordinal categories ([0,12,24,36,72]).
+
+#### Pipeline:
+- **Models**: Full retrain of CatBoost, XGBoost, and LightGBM.
+- **Validation**: 5-fold StratifiedKFold.
+- **Blending**: Score-Weighted Rank Blending.
+
+## Verification Plan
+
+### Automated Tests
+1. **OOF Delta Check**: Calculate ΔOOF relative to 0.916164 (Baseline) and 0.916473 (Current Plateau).
+2. **Submission**: If ΔOOF > 0.0001, generate `submission_ratio_fe.csv`.
+3. **JudgeGuard**: Run [judge_guard.py](file:///home/kizabgd/Desktop/new-challenge/judge_guard.py) on the resulting submission.
+
+### Manual Verification
+- Review the [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) update after the run.
+- If ΔOOF is nominal (< 0.0001), consider the "Mission Peak" declaration.

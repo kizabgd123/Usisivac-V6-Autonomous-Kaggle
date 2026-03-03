@@ -1,0 +1,157 @@
+# 🌋 Vesuvius Challenge — Surface Detection: Trinity Analysis & Battle Plan
+
+> **Competition:** [Vesuvius Challenge - Surface Detection](https://www.kaggle.com/competitions/vesuvius-challenge-surface-detection)
+> **⏰ DEADLINE:** February 27, 2026 — **3 DAYS LEFT**
+> **Your Prior Submissions:** 4 (Notebook "Miljakovac" V3–V6, no public scores visible)
+
+---
+
+## 1. Competition Intel Summary
+
+### Goal
+Segment the **recto surface** (papyrus sheet facing the scroll center) within 3D CT scans of carbonized Herculaneum scrolls.
+
+### Evaluation Metric
+
+```
+Score = 0.30 × TopoScore + 0.35 × SurfaceDice@τ(2.0) + 0.35 × VOI_score
+```
+
+| Metric | Weight | What It Rewards | What It Penalizes |
+|--------|--------|-----------------|-------------------|
+| **SurfaceDice** | 35% | Geometric accuracy within 2.0 tolerance | Misaligned surfaces |
+| **VOI Score** | 35% | Instance consistency | Splits & mergers |
+| **TopoScore** | 30% | Topological correctness | Holes, handles, sheet-switches |
+
+> [!CAUTION]
+> Even a few **holes** in your mask can tank the TopoScore. Topology > voxel accuracy.
+
+### Leaderboard Snapshot (Feb 24, 2026)
+
+| Rank | Team | Public Score |
+|------|------|--------------|
+| 🥇 1 | Vesuvius Team | **0.613** |
+| 🥈 2 | Dieter | 0.608 |
+| 🥉 3 | Starry | 0.602 |
+| 4 | random.shuffle | 0.599 |
+| 5–8 | Multiple teams | 0.595 |
+| ... | Host Baseline (nnUNet+PP) | ~0.562 |
+
+> [!IMPORTANT]
+> Public LB uses only **20% of test data**. Private LB (80%) may differ significantly.
+
+---
+
+## 2. Data Structure
+
+| Item | Path | Format | Details |
+|------|------|--------|---------|
+| Train images | `train_images/*.tif` | 3D TIFF | ~807 volumes, ~30-38MB each |
+| Train labels | `train_labels/*.tif` | 3D TIFF | Binary: 0=bg, 1=surface, 2=unlabeled |
+| Train metadata | [train.csv](file:///home/kizabgd/Desktop/Istrazivanje/train.csv) | CSV | 807 rows: `id`, `scroll_id` (6 unique scrolls) |
+| Test metadata | `test.csv` | CSV | 1 row: `id=1407735` |
+| Deprecated | `deprecated_*` | — | Old data, ignore |
+
+**Scroll Distribution:** 6 unique scrolls (`26002`, `26010`, `34117`, `35360`, `44430`, `53997`). Most volumes belong to scroll `34117`.
+
+---
+
+## 3. Existing Infrastructure Audit (Trinity Protocol)
+
+### ✅ What You Have
+| Asset | Status | Relevance |
+|-------|--------|-----------|
+| Kaggle CLI | ✅ Active | Submit, download, list |
+| Notebook "Miljakovac" | ✅ 4 versions submitted | **Your existing pipeline** |
+| [kaggle_rag_db/](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_rag_db) | ✅ Chroma DB exists | No Vesuvius entries yet |
+| [MASTER_WORKFLOW_PROTOCOL.md](file:///home/kizabgd/Desktop/Istrazivanje/MASTER_WORKFLOW_PROTOCOL.md) | ✅ Trinity 3-6-2 | Framework applies |
+| 7-Gate Submit Protocol | ✅ Hardened | Adapt for .zip TIF submission |
+
+### ❌ What You're Missing (vs. Tabular Competitions)
+| Gap | Impact | Priority |
+|-----|--------|----------|
+| No CV/3D segmentation models | 🔴 Critical | Must build from scratch |
+| No GPU training infrastructure | 🔴 Critical | Must use Kaggle Notebooks (P100/T4) |
+| No topology-aware loss functions | 🔴 Critical | Key differentiator |
+| No TIFF ↔ NPY conversion pipeline | 🟡 Medium | Speed optimization |
+| No post-processing pipeline | 🔴 Critical | Frangi filter + hole filling |
+
+---
+
+## 4. Winning Strategy Intel (from Top Solutions & Discussions)
+
+### Host Baseline Architecture (nnUNet, ~0.562)
+1. Modified nnUNet with **MedialSurfaceRecall** trainer (custom topology loss)
+2. Threshold softmax output at **0.75**
+3. Apply **modified Frangi filter** for surface enhancement
+4. Connected component cleanup
+
+### Key Improvements Over Baseline
+| Technique | Expected Gain | Difficulty |
+|-----------|---------------|------------|
+| **Topology-aware loss** (MedialSurfaceRecall) | +0.02–0.04 | Medium |
+| **Model ensemble** (nnUNet + TransUNet + SegFormer) | +0.02–0.03 | High |
+| **Post-processing: hole filling + Frangi** | +0.01–0.03 | Medium |
+| **Multi-view inference** (3 orientations) | +0.01–0.02 | Medium |
+| **Test-time augmentation (TTA)** | +0.005–0.01 | Low |
+
+---
+
+## 5. Trinity 3-6-2 Adapted Battle Plan
+
+> [!WARNING]
+> **Only 3 days left.** This plan is optimized for speed, not perfection.
+
+### Layer 1: Baseline (Day 1 — Feb 25)
+- [ ] Pull and fork the **host nnUNet baseline** notebook
+- [ ] Verify it runs end-to-end on Kaggle (P100 GPU)
+- [ ] Submit baseline → confirm submission pipeline works
+- [ ] Target: **~0.55 public LB**
+
+### Layer 2: Advanced Features (Day 2 — Feb 26)
+- [ ] Add **post-processing pipeline**: threshold tuning (0.65–0.85 sweep) + Frangi filter + hole filling
+- [ ] Experiment with **test-time augmentation** (flip + rotate)
+- [ ] Try **SegFormer (mit-b4)** as alternative backbone
+- [ ] Submit improved version → Target: **~0.58 public LB**
+
+### Layer 3: Killshot Ensemble (Day 3 — Feb 27, DEADLINE)
+- [ ] **Voting ensemble** of best 2–3 models
+- [ ] Final post-processing sweep
+- [ ] **Final submission before deadline**
+- [ ] Target: **≥0.59 public LB** (Top 20 territory)
+
+### 7-Gate Adapted for Vesuvius
+
+| Gate | Vesuvius Adaptation |
+|------|---------------------|
+| 1. Intent | Binary mask (0/1), not probabilities |
+| 2. Identity | Pipeline version tracking |
+| 3. Format | `.zip` with `.tif` files matching test IDs |
+| 4. Sanity | Mask dimensions = source image dimensions |
+| 5. Dtype | Same dtype as train labels |
+| 6. Value | No NaN, only {0, 1} values |
+| 7. Risk | Check topology locally before submit |
+
+---
+
+## 6. Verification Plan
+
+### Automated
+- Verify mask output shapes match input shapes
+- Count connected components per prediction
+- Local Surface Dice calculation on validation split
+
+### Manual
+- Visual slice-by-slice inspection (matplotlib or napari)
+- Verify `.zip` structure matches submission format
+- Check Kaggle notebook runtime stays under 9 hours
+
+---
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Critical Decisions Needed:**
+> 1. Do you want to fork the nnUNet host baseline or build from your existing "Miljakovac" notebook?
+> 2. Should I pull your "Miljakovac" notebook code so we can analyze what you already have?
+> 3. Given the 3-day deadline, do you prefer a safe baseline approach or an aggressive multi-model strategy?

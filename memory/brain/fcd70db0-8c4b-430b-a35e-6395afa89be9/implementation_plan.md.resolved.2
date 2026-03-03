@@ -1,0 +1,51 @@
+# Implementation Plan — Workspace Preparation for New Challenge
+
+This plan outlines the steps to initialize the workspace for a new Kaggle challenge and implement the required Trinity Protocol components (VetoBoard, DebateBoard, JudgeFlow).
+
+## Proposed Changes
+
+### Configuration & Orchestration
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+- Keep `domain` as `pending`.
+- Initialize generic `thresholds` and placeholders for the upcoming mission.
+
+#### [MODIFY] [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/kaggle-arena/.agent/rules/ORCHESTRATION_RULES.json)
+- Ensure all registries are ready for a new entry without pre-selecting a slug.
+
+#### [NEW] [package.json](file:///home/kizabgd/Desktop/kaggle-arena/package.json)
+- Define `workflow: "^4.0.1-beta.28"` as requested.
+
+### Trinity High Council (VetoBoard)
+#### [MODIFY] [judge_guard.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/judge_guard.py)
+- Implement `_meta_overseer_check` method.
+- Integrate logic to block actions not in [WORK_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/WORK_LOG.md).
+
+#### [NEW] [board_validator.py](file:///home/kizabgd/Desktop/kaggle-arena/src/kaggle_intelligence/board_validator.py)
+- Implement `VetoBoard` with 5 personas (CEO, CTO, CFO, LEGAL, CRITIC).
+- Implement 3/5 quorum and LEGAL immediate veto.
+
+### Trinity Boardroom (DebateBoard)
+#### [NEW] [boardroom.py](file:///home/kizabgd/Desktop/kaggle-arena/src/antigravity_core/boardroom.py)
+- Implement debate logic between Kimi, Qwen, and Mistral.
+
+#### [NEW] [trinity_boardroom.py](file:///home/kizabgd/Desktop/kaggle-arena/src/antigravity_core/trinity_boardroom.py)
+- Bridge implementation for the boardroom.
+
+### Workflow SDK (JudgeFlow)
+#### [NEW] [judge_flow.py](file:///home/kizabgd/Desktop/kaggle-arena/src/antigravity_core/judge_flow.py)
+- Implement `JudgeFlowBlock` with self-correcting retry logic.
+
+### Tactic Registry
+#### [MODIFY] [competition_tracker.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/competition_tracker.md)
+- Update active competition to "March Machine Learning Mania 2026".
+
+## Verification Plan
+
+### Automated Tests
+- Run `make status` to verify `JudgeGuard` status.
+- Integration test for `JudgeFlowBlock` retry logic.
+- Quorum verification for `VetoBoard`.
+
+### Manual Verification
+- Verify data download with `make init`.
+- Review generated logic for compliance with [GEMINI.md](file:///home/kizabgd/Desktop/kaggle-arena/GEMINI.md).

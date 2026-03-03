@@ -1,0 +1,35 @@
+# Walkthrough - Trinity Protocol: Antithesis Phase
+
+## Objective
+Introduce model diversity and verify the consistency of the validation strategy for the S6E3 Churn competition.
+
+## Changes Made
+
+### 🛡️ Security & Integrity
+- **Remediation**: Finalized security patches for `Usisivac` src files. Obfuscated detection patterns and implemented input sanitization.
+- **Artifact Control**: Moved all model OOFs and checkpoints to the `models/` directory.
+
+### 📊 Antithesis: Diversity Benchmark
+- **Orthogonal Modeling**: Implemented **XGBoost** and **LightGBM** benchmarks.
+- **Results**:
+  - **CatBoost**: 0.9161 OOF | 0.9134 LB
+  - **XGBoost**: 0.9160 OOF | 0.9135 LB
+  - **LightGBM**: 0.9159 OOF | (Pending LB)
+- **Insight**: All boosters converge within 0.0002 AUC, confirming high model stability.
+
+### 🕵️ Gap Analysis Correction
+- Initial report of a 0.065 AUC gap was found to be a system delay/error in fetching Kaggle scores.
+- **Verified Gap**: Actual OOF vs LB delta is ~0.003, which is well within the expected range for a 600k sample dataset.
+
+## Verification Results
+
+### Leaderboard Validation
+- **Public LB Score**: **0.91354** (XGBoost)
+- **Status**: Higher than the initial Thesis baseline.
+
+### Automated Checks
+- [Makefile](file:///home/kizabgd/Desktop/new-challenge/Makefile) integration verified.
+- [trinity_config.json](file:///home/kizabgd/Desktop/new-challenge/trinity_config.json) correctly tracking all booster metrics.
+
+## Next Steps
+Transitioning to **Synthesis** phase: Rank-based blending of the three confirmed boosters to achieve SOTA performance.

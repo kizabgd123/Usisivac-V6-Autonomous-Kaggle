@@ -1,0 +1,91 @@
+# Plan za Probijanje 0.95387 Public LB
+
+## Empirijska Osnova
+
+| Submisija | LB | OOF | Korelacija sa Best | Zaključak |
+| :--- | :--- | :--- | :--- | :--- |
+| **submission_0.95574** | **0.95387** | 0.95574 | 1.0 | ✅ Current best — GBDT blend |
+| v7_clean_baseline | 0.95379 | 0.95563 | ~0.999 | Gotovo identičan |
+| v7_final_push | 0.95348 | — | ~0.999 | Marginalno gore |
+| v5.1_conflict (DL 60%) | 0.95180 | 0.95395 | 0.9943 | ❌ DL težina škodila |
+| hybrid_breakthrough | 0.95282 | 0.95473 | ~0.999 | ❌ Stacking škodio |
+| killshot_v4 (subspacing) | 0.95011 | — | — | ❌ Najgori pokušaj |
+
+> [!IMPORTANT]
+> **Dijagnoza**: Svako odstupanje od čistog GBDT blenda je rezultiralo padom. OOF-LB gap je najmanji (0.002) kod najboljeg — dobar signal generalizacije.
+
+---
+
+## Faza 1 — Post-Hoc Rank Blend (0 treniranja, instant)
+
+Koristimo postojeće submission fajlove sa niskom korelacijom.
+
+`submission_v14_golden` ima korelaciju **0.9587** sa best fajlom — jedini fajl ispod 0.97. Ovo je jedini pravi ortogonalni signal koji imamo lokalno.
+
+**Akcija**: Rank-blend `best (0.95387)` sa `v14_golden` koristeći težine 95/5, 90/10, 85/15.
+
+#### [NEW] [rank_blend_submissions.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/rank_blend_submissions.py)
+- Generisati rank-normalizovane verzije oba fajla
+- Blend sa 3 varijante težina → 3 submission fajla
+- Aplikovati JudgeGuard pre svake submisije
+
+---
+
+## Faza 2 — Replika Best + Hyper-Refinement
+
+Per Anti-Regression Manifesto §7.5: "UVEK prvo replicirati dokazani config, PA ONDA iterirati."
+
+Replicirajmo tačnu konfiguraciju koja je dala 0.95387 i dodajmo **samo jednu stvar**:
+
+**Opcija A** — Više stabala: `n_estimators` 300 → 600, `learning_rate` 0.05 → 0.03
+**Opcija B** — Više seedova: 5 → 7 seedova (dodati 2025, 999)
+**Opcija C** — ClinicalMapper features: dodati samo `Cardiac_Fatigue` i `HR_Pct` ali sa GBDT-only blendom (bez DL)
+
+#### [NEW] [heart_disease_v6_refined.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/heart_disease_v6_refined.py)
+**Status:** [/] In Progress (Training Universes)
+
+**Elite Moves (Grandmaster Bible §1/§2):**
+- [ ] **Adversarial Validation**: Implement `scripts/adversarial_validation.py` to check AUC (Threshold 0.70).
+- [ ] **Interaction OOF Encoding**: Concatenate top categories (Sex, Chest Pain, ST Slope) and target encode with OOF protection.
+- [ ] **Target Statistics (Rule 42)**: Extract UCI means for (CP x Thallium) clusters and inject as priors.
+
+---
+
+## Faza 3 — RealMLP Hybrid (Najveći Potencijal)
+
+Tactic registry §9.1 dokumentuje: **RealMLP solo LB = 0.95397** (veći od našeg besta!).
+
+RealMLP koristi moderni MLP sa robusnim skaliranjem i naučenim embeddingom — fundamentalno drugačiji od sklearn MLPClassifier koji smo koristili u v5.1.
+
+**Akcija**: Trenirati RealMLP (5-fold, 5-seed) i blendovati sa GBDT tria po registru: **65% GBDT / 35% RealMLP**.
+
+> [!WARNING]
+> Zahteva instalaciju `realmlp-td` ili `rtdl` (Research on Tabular Deep Learning).
+
+#### [NEW] [heart_disease_v7_realmlp.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/heart_disease_v7_realmlp.py)
+#### [NEW] [adversarial_validation.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/adversarial_validation.py)
+
+---
+
+## Prioritetni Plan Izvršenja
+
+```
+Faza 1 → Instant (5 min)    → Rank Blend submisije
+Faza 2 → Brzo   (30 min)    → Replika + 1 varijant
+Faza 3 → Srednje (1-2h)     → RealMLP instalacija + trening
+```
+
+## Očekivani Dobitak
+
+| Faza | Očekivani LB | Rizik |
+| :--- | :--- | :--- |
+| 1 (Rank Blend) | 0.9539–0.9542 | Nizak |
+| 2 (Hyper-Refinement) | 0.9539–0.9541 | Nizak |
+| 3 (RealMLP) | 0.9540–0.9545 | Srednji |
+
+## Verifikacija
+
+- Svaka submisija prolazi 7-Gate Submit Protocol
+- ProcessGuard korelacija < 0.95 (iz [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json))
+- OOF ≤ 0.960 (rule §2 OOF Calibration Rule)
+- Maksimalno 1 submisija po fazi pre evaluacije

@@ -1,0 +1,240 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,74)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,74)<span >Create />
+	[6] (59,117)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,117)<div  />
+			[8] (16,117)<div  />
+				[9] (16,117)<div  />
+					[10] (16,117)<span >explore />
+			[11] (40,117)<div  />
+				[12] (40,117)<p >Home />
+	[13] (59,150)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,150)<div  />
+			[15] (16,150)<div  />
+				[16] (16,150)<div  />
+					[17] (16,150)<span >emoji_events />
+			[18] (52,150)<div  />
+				[19] (52,150)<p >Competitions />
+				[20] (114,150)<div  />
+	[21] (59,183)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,183)<div  />
+			[23] (16,183)<div  />
+				[24] (16,183)<div  />
+					[25] (16,183)<span >table_chart />
+			[26] (44,183)<div  />
+				[27] (44,183)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,283)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,283)<div  />
+			[44] (16,283)<div  />
+				[45] (16,283)<div  />
+					[46] (16,283)<span >smart_toy />
+			[47] (51,283)<div  />
+				[48] (51,283)<p >Game Arena />
+	[49] (59,316)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,316)<div  />
+			[51] (16,316)<div  />
+				[52] (16,316)<div  />
+					[53] (16,316)<span >code />
+			[54] (39,316)<div  />
+				[55] (39,316)<p >Code />
+	[56] (59,349)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,349)<div  />
+			[58] (16,349)<div  />
+				[59] (16,349)<div  />
+					[60] (16,349)<span >comment />
+			[61] (50,349)<div  />
+				[62] (50,349)<p >Discussions />
+	[63] (59,382)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,382)<div  />
+			[65] (16,382)<div  />
+				[66] (16,382)<div  />
+					[67] (16,382)<span >school />
+			[68] (39,382)<div  />
+				[69] (39,382)<p >Learn />
+	[70] (59,415)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,415)<div  />
+			[72] (16,415)<div  />
+				[73] (16,415)<div  />
+					[74] (16,415)<span >expand_more />
+			[75] (38,415)<div  />
+				[76] (38,415)<p >More />
+	[77] (59,461)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,461)<div  />
+			[79] (16,461)<div  />
+				[80] (16,461)<div  />
+					[81] (16,461)<span >note_alt />
+			[82] (47,461)<div  />
+				[83] (47,461)<p >Your Work />
+	[84] (31,492)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,492)<span >arrow_drop_down />
+		[86] (40,492)<span >Viewed />
+	[87] (54,523)<a aria-label='Triagegeist' class='sc-eXVaYZ cPXxFg' href='/competitions/triagegeist' role='link' />
+		[88] (57,523)<div  />
+			[89] (16,523)<div  />
+				[90] (16,523)<div  />
+					[91] (16,523)<img  />
+			[92] (46,523)<div  />
+				[93] (48,523)<p >Triagegeist />
+	[94] (54,553)<a aria-label='After pseudo-labeling (AUG OOF): ~0.96952 ' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2/discussion/678449' role='link' />
+		[95] (57,553)<div  />
+			[96] (16,553)<div  />
+				[97] (16,553)<div  />
+					[98] (16,553)<img  />
+			[99] (66,553)<div  />
+				[100] (67,553)<p >After pseudo-labeling (AUG OOF): ~0.96952 />
+	[101] (54,583)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[102] (57,583)<div  />
+			[103] (16,583)<div  />
+				[104] (16,583)<div  />
+					[105] (16,583)<img  />
+			[106] (66,583)<div  />
+				[107] (67,583)<p >Predicting Heart Disease />
+	[108] (54,613)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[109] (57,613)<div  />
+			[110] (16,613)<div  />
+				[111] (16,613)<div  />
+					[112] (16,613)<img  />
+			[113] (66,613)<div  />
+				[114] (67,613)<p >Deep Past Challenge - Translate Akkadian to English />
+	[115] (54,643)<a aria-label='Heart Disease S6E2 V10.14 ' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-14' role='link' />
+		[116] (57,643)<div  />
+			[117] (16,643)<div  />
+				[118] (16,643)<div  />
+					[119] (16,643)<img  />
+			[120] (66,643)<div  />
+				[121] (67,643)<p >Heart Disease S6E2 V10.14 />
+	[122] (30,679)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,679)<span >arrow_right />
+		[124] (39,679)<span >Edited />
+	[125] (57,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,977)<span >auto_awesome_motion />
+		[128] (58,979)<p >View Active Events />
+	[129] (555,24)<div  />
+		[130] (555,24)<div  />
+			[131] (302,24)<span >search />
+			[132] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r9:' placeholder='Search' />
+	[133] (985,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[134] (985,24)<div  />
+	[135] (557,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		[136] (293,80)<a aria-label='Olaf Yunus Laitinen Imanov's profile' class='sc-lhsSio kXhNmm' href='/olaflundstrom' />
+			[137] (293,80)<div  />
+		Olaf Yunus Laitinen Imanov
+		·
+		Community Hackathon
+		·
+		2 months to go
+		[138] (771,80)<button class='sc-pYNGo cZrOun' role='button' />
+			[139] (771,80)<span >Join Hackathon />
+		[140] (819,80)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		Triagegeist
+		Predict emergency severity and optimize triage decisions with AI, powered by clinical data from the Laitinen-Fredriksson Foundation.
+		[141] (762,164)<img  />
+		[142] (307,253)<a aria-label='Overview, 1 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/overview' role='tab' />
+			[143] (307,253)<span >Overview />
+		[144] (349,253)<a aria-label='Writeups, 2 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/writeups' role='tab' />
+			[145] (349,253)<span >Writeups />
+		[146] (383,253)<a aria-label='Data, 3 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/data' role='tab' />
+			[147] (383,253)<span >Data />
+		[148] (411,253)<a aria-label='Code, 4 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/code' role='tab' />
+			[149] (411,253)<span >Code />
+		[150] (449,253)<a aria-label='Discussion, 5 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/discussion' role='tab' />
+			[151] (449,253)<span >Discussion />
+		[152] (488,253)<a aria-label='Rules, 6 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/rules' role='tab' />
+			[153] (488,253)<span >Rules />
+		[154] (492,329)<div  />
+			[155] (481,329)<div  />
+				[156] (481,329)<div  />
+					[157] (326,329)<div  />
+						[158] (326,329)<div  />
+							[159] (326,329)<h2 >Competition Rules />
+					[160] (664,329)<div >create />
+						create
+			[161] (686,329)<button aria-label='Collapse undefined' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse undefined'>keyboard_arrow_up />
+		ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES.
+		[162] (339,418)<a aria-label='See Section 3.18 for defined terms (opens in a new tab)' href='rules#18.-terms'>See Section 3.18 for defined terms />
+		The Competition named below is a skills-based competition to promote and further the field of data science. You must register via the Competition Website to enter. To enter the Competition, you must agree to these Official Competition Rules, which incorporate by reference the provisions and content of the Competition Website and any Specific Competition Rules herein (collectively, the "Rules"). Please read these Rules carefully before entry to ensure you understand and agree. You further agree that Submission in the Competition constitutes agreement to these Rules. You may not submit to the Competition and are not eligible to receive the prizes associated with this Competition unless you agree to these Rules. These Rules form a binding legal agreement between you and the Competition Sponsor with respect to the Competition. Your competition Submissions must conform to the requirements stated on the Competition Website. Your Submissions will be scored based on the evaluation metric described on the Competition Website. Subject to compliance with the Competition Rules, Prizes, if any, will be awarded to Participants with the best scores, based on the merits of the data science models submitted. See below for the complete Competition Rules. For Competitions designated as hackathons by the Competition Sponsor ("Hackathons"), your Submissions will be judged by the Competition Sponsor based on the evaluation rubric set forth on the Competition Website ("Evaluation Rubric"). The Prizes, if any, will be awarded to Participants with the highest ranking(s) as determined by the Competition Sponsor based on such rubric.
+		You cannot sign up to Kaggle from multiple accounts and therefore you cannot enter or submit from multiple accounts.
+		1. COMPETITION-SPECIFIC TERMS
+		1. COMPETITION TITLE
+		Triagegeist
+		2. COMPETITION SPONSOR
+		Laitinen-Fredriksson Foundation
+		3. COMPETITION SPONSOR ADDRESS
+		Laitinen-Fredriksson Foundation, Helsinki, Finland
+		4. COMPETITION WEBSITE
+		[163] (360,923)<a aria-label='https://www.kaggle.com/competitions/triagegeist (opens in a new tab)' href='https://www.kaggle.com/competitions/triagegeist'>https://www.kaggle.com/competitions/triagegeist />
+		5. TOTAL PRIZES AVAILABLE: $10,000
+		First Prize: $5,000
+		Second Prize: $3,000
+		Rules
+		[164] (738,339)<a aria-label='Competition Rules, 1 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/rules#competition-rules' role='tab' />
+			[165] (738,339)<span >Competition Rules />
+		[166] (767,366)<a aria-label='ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES., 2 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/rules#entry-in-this-competition-constitutes-your-acceptance-of-these-official-competition-rules.' role='tab' />
+			[167] (767,366)<span >ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES. />
+		[168] (763,393)<a aria-label='1. COMPETITION-SPECIFIC TERMS, 3 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/rules#1.-competition-specific-terms' role='tab' />
+			[169] (763,393)<span >1. COMPETITION-SPECIFIC TERMS />
+		[170] (753,420)<a aria-label='1. COMPETITION TITLE, 4 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#1.-competition-title' role='tab' />
+			[171] (753,420)<span >1. COMPETITION TITLE />
+		[172] (760,447)<a aria-label='2. COMPETITION SPONSOR, 5 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#2.-competition-sponsor' role='tab' />
+			[173] (760,447)<span >2. COMPETITION SPONSOR />
+		[174] (774,474)<a aria-label='3. COMPETITION SPONSOR ADDRESS, 6 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#3.-competition-sponsor-address' role='tab' />
+			[175] (774,474)<span >3. COMPETITION SPONSOR ADDRESS />
+		[176] (758,501)<a aria-label='4. COMPETITION WEBSITE, 7 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#4.-competition-website' role='tab' />
+			[177] (758,501)<span >4. COMPETITION WEBSITE />
+		[178] (774,528)<a aria-label='5. TOTAL PRIZES AVAILABLE: $10,000, 8 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#5.-total-prizes-available-10000' role='tab' />
+			[179] (774,528)<span >5. TOTAL PRIZES AVAILABLE: $10,000 />
+		[180] (757,556)<a aria-label='6. WINNER LICENSE TYPE, 9 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#6.-winner-license-type' role='tab' />
+			[181] (757,556)<span >6. WINNER LICENSE TYPE />
+		[182] (758,583)<a aria-label='7. DATA ACCESS AND USE, 10 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#7.-data-access-and-use' role='tab' />
+			[183] (758,583)<span >7. DATA ACCESS AND USE />
+		[184] (763,610)<a aria-label='2. COMPETITION-SPECIFIC RULES, 11 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/rules#2.-competition-specific-rules' role='tab' />
+			[185] (763,610)<span >2. COMPETITION-SPECIFIC RULES />
+		[186] (741,637)<a aria-label='1. TEAM LIMITS, 12 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#1.-team-limits' role='tab' />
+			[187] (741,637)<span >1. TEAM LIMITS />
+		[188] (753,664)<a aria-label='2. SUBMISSION LIMITS, 13 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#2.-submission-limits' role='tab' />
+			[189] (753,664)<span >2. SUBMISSION LIMITS />
+		[190] (759,691)<a aria-label='3. COMPETITION TIMELINE, 14 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#3.-competition-timeline' role='tab' />
+			[191] (759,691)<span >3. COMPETITION TIMELINE />
+		[192] (753,718)<a aria-label='4. COMPETITION DATA, 15 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#4.-competition-data' role='tab' />
+			[193] (753,718)<span >4. COMPETITION DATA />
+		[194] (748,745)<a aria-label='5. WINNER LICENSE, 16 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#5.-winner-license' role='tab' />
+			[195] (748,745)<span >5. WINNER LICENSE />
+		[196] (766,772)<a aria-label='6. EXTERNAL DATA AND TOOLS, 17 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#6.-external-data-and-tools' role='tab' />
+			[197] (766,772)<span >6. EXTERNAL DATA AND TOOLS />
+		[198] (739,799)<a aria-label='7. ELIGIBILITY, 18 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#7.-eligibility' role='tab' />
+			[199] (739,799)<span >7. ELIGIBILITY />
+		[200] (759,826)<a aria-label='8. WINNER'S OBLIGATIONS, 19 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#8.-winners-obligations' role='tab' />
+			[201] (759,826)<span >8. WINNER'S OBLIGATIONS />
+		[202] (748,853)<a aria-label='9. GOVERNING LAW, 20 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/triagegeist/rules#9.-governing-law' role='tab' />
+			[203] (748,853)<span >9. GOVERNING LAW />
+		[204] (767,880)<a aria-label='Kaggle Competition Foundational Rules, 21 of 21' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/rules#kaggle-foundational-rules' role='tab' />
+			[205] (767,880)<span >Kaggle Competition Foundational Rules />
+		Click "
+		Join Competition
+		" to view and accept the competition’s terms and conditions.
+		[206] (788,974)<button class='sc-pYNGo cZrOun sc-cbELMv iAxwWY' role='button' />
+			[207] (788,974)<span >Join Competition />
+
+</current_dom>

@@ -1,0 +1,61 @@
+# Digital Workspace Automation — Walkthrough
+
+## What Was Built
+
+An event-driven file routing system that watches `~/Kiza/desktop/Inbox/`, classifies files using a **Mistral → Grok → OpenRouter** intelligence chain, moves them to categorized folders, and logs to Notion.
+
+## Files Created/Modified
+
+| Action | File | Purpose |
+|--------|------|---------|
+| **NEW** | [workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_main.py) | CLI entry point (`--setup`, `--scan`, `--dry-run`) |
+| **NEW** | [workspace_engine/__init__.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/__init__.py) | Module exports |
+| **NEW** | [api_clients.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py) | Mistral, Grok, OpenRouter, Notion wrappers |
+| **NEW** | [file_processor.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/file_processor.py) | 5-step intelligence pipeline |
+| **NEW** | [watcher.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/watcher.py) | Watchdog handler + periodic scanner |
+| **NEW** | [folder_manager.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/folder_manager.py) | Config loader + folder creator |
+| **NEW** | [workspace_automation.yaml](file:///home/kizabgd/Desktop/Istrazivanje/configs/workspace_automation.yaml) | YAML config (paths, models, keywords) |
+| **NEW** | [.env.example](file:///home/kizabgd/Desktop/Istrazivanje/.env.example) | API key template |
+| **NEW** | [test_workspace_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_workspace_engine.py) | 15 unit tests |
+| **MOD** | [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) | Added Grok/Notion placeholders |
+| **MOD** | [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt) | Added `watchdog`, `pyyaml` |
+
+## Test Results
+
+```
+15 passed in 1.62s ✅
+```
+
+- Config loading, folder creation, Grok escalation logic, dry-run safety, full mocked pipeline routing
+
+## Folder Structure Created
+
+```
+~/Kiza/desktop/
+├── Inbox/              ← Drop files here
+├── Kaggel takmicenj/
+├── Work i work log/
+├── Learning/
+├── Archive/
+├── Teme diskusije/
+└── razno/
+```
+
+## How to Use
+
+```bash
+# Create folders only
+python workspace_main.py --setup
+
+# Simulate without moving (safe test)
+python workspace_main.py --scan --dry-run
+
+# One-shot scan
+python workspace_main.py --scan
+
+# Start real-time watcher (default)
+python workspace_main.py
+```
+
+> [!IMPORTANT]
+> Before live mode, update [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) with real `GROK_API_KEY`, `NOTION_API_KEY`, and `NOTION_DATABASE_ID`.

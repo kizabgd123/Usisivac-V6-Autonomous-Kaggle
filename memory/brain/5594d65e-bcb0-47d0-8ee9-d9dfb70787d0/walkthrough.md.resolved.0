@@ -1,0 +1,26 @@
+# Walkthrough: Triple-LLM Organization System
+
+Sistem je u potpunosti redizajniran prema tvojim instrukcijama. Gemini je uklonjen, a ubačena je "Trinity" arhitektura (OpenAI + Mistral + Grok) uz Notion integraciju.
+
+## Ključne Promene
+
+### 1. Multi-LLM Integracija
+Sistem sada koristi specifične snage tri različita modela:
+- **Mistral:** Brza kategorizacija.
+- **OpenAI:** Logika rutiranja fajlova.
+- **Grok:** Strateška analiza koda i Kaggle diskusija.
+
+### 2. Notion Database
+Sada se sav log i praćenje fajlova vrši u Notion-u umesto Google Sheets-a, što omogućava lepši pregled i bolju pretragu (`NOTION_API_KEY` uputstva su dodata).
+
+### 3. Novi Schedule i Folderi
+- Skeniranje se vrši **svakih 5 sati**.
+- Agentu se šalje **Announcement** pre početka skena.
+- **Daily Briefing** je zakazan za **12:00h** sa fokusom na Kaggle takmičenja.
+- Implementirana je tvoja struktura foldera: `Kaggel takmicenj`, `Work i work log`, `Teme diskusije`, itd.
+
+## Dokumentacija
+Finalni setup vodič se nalazi ovde:
+[organization_setup_guide.md](file:///home/kizabgd/Desktop/Istrazivanje/organization_setup_guide.md)
+
+Možeš baciti par fajlova u `Inbox` i pokrenuti workflow u n8n-u da testiraš Triple-AI magiju! 🚀

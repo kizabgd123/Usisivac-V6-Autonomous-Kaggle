@@ -1,0 +1,19 @@
+# Session Forensic History: Deep Past & Heart Disease Submission
+
+## Technical Blockers (Archive)
+- **Kaggle CLI Quota**: A persistent "GPU Quota" error blocked all attempts to push kernels via the CLI, even after forcing the script to run exclusively on CPU. This suggests Kaggle's backend checks quota at the kernel metadata level regardless of the execution path.
+- **Environment**: Linux desktop environment (`Istrazivanje`).
+- **Dependencies**: Custom offline handling for ByT5 and Mistral fallback was required for the Deep Past competition.
+
+## User Feedback & Context
+- The user expressed severe frustration with the Kaggle platform's limitations and the agent's initial attempts to work around them via CLI. 
+- **Critical Note for Future Agents**: The user values immediate, pragmatic workarounds (like manual copy-pasting) when system-level tools (CLI, GPU) fail. Do not get stuck in "retry loops" with the Kaggle CLI if the quota is reached.
+- The user specifically requested that their emotional reaction and the intensity of the struggle be recorded for continuity.
+
+## Implemented Solutions
+1. **CPU Forcing**: All model loading and training (XGBoost, CatBoost, ByT5) is now hardcoded to CPU.
+2. **Offline Data**: Onomasticon (500+ records) is embedded directly in [Deep_Past_Kaggle_Submission.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py).
+3. **Bug Fix**: [heart_pipeline_v10_12_final_kaggle.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_12_final_kaggle.py) was fixed for a `pd.concatenate` error.
+
+## Final Instructions for Handoff
+If the CLI push fails again, the user must manually copy the script into a CPU-only kernel on Kaggle. This is the only verified way to bypass the current quota blocker.

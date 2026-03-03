@@ -1,0 +1,37 @@
+# Mission Control: Bidding Construction vs Heart Disease
+
+## 🏁 Heart Disease Final (S6E2)
+- [x] Finalni Notebook kreiran (URL u prethodnom tasku)
+- [x] Postignut Public Ceiling: **0.95409**
+- [ ] **Private LB Selection Recommendation**:
+  - [final_blend_2_rank.csv](file:///home/kizabgd/Desktop/Istrazivanje/final_blend_2_rank.csv) (Rank-based stability)
+  - [submission_0.95574.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission_0.95574.csv) (Internal GBDT Anchor)
+
+## 🏗️ Bidding Construction Resurrection
+- [ ] Context Verification & Mission Control Setup
+- [ ] Infrastructure Check (correlation_veto: 0.95, rmsle_leakage_veto: 0.25)
+- [x] **Phase 1: Baseline (bidding_resurrection_v1.py)**
+  - [x] Bayesian Market Estimates (GroupKFold aligned)
+  - [x] OOF RMSLE Monitoring (Target < 0.50) -> 🛑 **HALTED (0.509)**
+- [x] **Phase 2: Antithesis (bidding_resurrection_v1_2.py)**
+  - [x] Top-5 Isolation Logic (ITEM_000561, etc.)
+  - [x] Log1p Preprocessing (Aggregated Market Est & Qty)
+  - [x] Diversity Ensemble (0.7 LGBM / 0.3 RF)
+  - [x] OOF RMSLE Verification (**0.432**)
+- [x] **Phase 3: Synthesis (bidding_resurrection_v1_3.py)**
+  - [x] Contractor Win-Rate (Bayesian Smoothing)
+  - [x] County-Price-Index (Location-based unit prices)
+  - [x] 10-Fold GroupKFold Stability Run
+  - [x] Auto-Submission (Target v1.3 complete)
+- [x] **Phase 4: Forensic Audit (Folds 5 & 8)**
+  - [x] Isolate job_ids and category cross-audit
+  - [x] Variance driver identification (Hidden expensive items)
+  - [x] Documentation in [ERROR_ANALYSIS_V1.3.md](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/agent_reports/ERROR_ANALYSIS_V1.3.md)
+- [ ] **Phase 5: Resilience (bidding_resurrection_v1_4.py)**
+  - [ ] Top-10 Isolation Mechanism
+  - [ ] Huber Loss / Robust Regression integration
+  - [ ] Cold-Start Contractor handling
+- [x] Documentation & Transparency
+  - [x] Update `params.json`
+  - [x] Update `logic_trust_ledger.db`
+- [x] 7-Gate Submit Protocol Execution

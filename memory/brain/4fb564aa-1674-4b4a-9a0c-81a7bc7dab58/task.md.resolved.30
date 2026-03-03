@@ -1,0 +1,9 @@
+# Task: Integrate Heart Disease Research & Strategy
+
+- [ ] Initialize task and research integration plan
+- [ ] Update [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) (Deo III) with new Heart Disease tactics [/]
+- [ ] Create specialized research artifact `S6E2_BREAKTHROUGH_GUIDE.md` [ ]
+- [ ] Verify [groq_guardian.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/groq_guardian.py) alignment with new rules [ ]
+- [ ] Update [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) (if switching back to Heart Disease domain) [ ]
+- [ ] Propose implementation of "Quick-Start" (RealMLP + UCI Stats) [ ]
+- [ ] Finalize walkthrough and notify user [ ]

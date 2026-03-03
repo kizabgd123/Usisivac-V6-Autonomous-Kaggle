@@ -1,0 +1,57 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (20,35)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (61,48)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (61,37)<img  />
+	[4] (982,35)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[5] (982,35)<div  />
+	[6] (500,535)<div class='sc-mqDxO ieluI legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		#3 solution | Many individual models and many ensembles
+		—
+		Binary Classification of Insurance Cross Selling
+		CatBoost worked best by far individually, but oddly enough not that well when ensembling models. For that purpose I used blending by numerical optimization (not really feasible with models > 10), Keras, LAMA NNs and LightGBM. The last two worked the best for ensembling.
+		If you look at my bio you will see that I am not a programmer. During each competition I create hundreds of scripts and run them locally, and none of them are integrated into a big pipeline. I like to divide everything into chunks and run things separately, which is why it is impossible to replicate my whole process here without a major effort. I will try to link the relevant notebooks already on Kaggle, and if I get a breather over the weekend I will try to publish at least one neural network. I will explain what I did, but you have a fair warning to stop reading here if you are interested only in code.
+		Here are my best 5 types of individual models based on CV scores:
+		Model
+		CV
+		Public LB
+		Private LB
+		CatBoost Optuna
+		0.896733
+		0.89728
+		0.89699
+		Keras FM
+		0.894276
+		0.89527
+		0.89498
+		Keras embedding
+		0.894192
+		0.89469
+		0.89445
+		xLearn FFM
+		0.893223
+		0.89447
+		0.89414
+		LAMA ResNet
+		0.893647
+		0.89378
+		0.89359
+		Of course I had many CatBoost models that were better than some models here, but this is shown only for variety. I also had 3 other types of LAMA NNs that I didn't use, also an xLearn FM model which I will explain below. Didn't try XGBoost at all. LightGBM was too slow with categorical variables and wasn't producing good models in my hands, but worked like a champion during the ensembling.
+		Others have already talked about CatBoost and LAMA, so I will focus on the middle 3 models. Keras FM refers to a neural network implementation of factorization machines. Rather than creating features by multiplying, dividing or somehow else combining features, we let  the NN do that for us. It is easy to Google factorization machines, so here is the gist. Those models convert all the features, numerical or otherwise, into factors/categories and explicitly model their interactions. They work really well for large datasets, especially in recommender systems, because of their speed. Since I converted all my features into categories, it was custom made for this type of analysis. Here is how the NN model looks like:
+		Author
+		[7] (703,162)<a aria-label='Tilii's profile' class='sc-lhsSio kXhNmm' href='/tilii7' />
+			[8] (703,162)<div  />
+		[9] (733,151)<a class='sc-kjwdDK jjGhTw sc-dLConP kMEczD' href='/tilii7'>Tilii />
+		tilii7
+		[10] (711,262)<div  />
+			[11] (700,262)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jwoWWy lmDgvg' />
+				[12] (700,262)<span >arrow_drop_up />
+			[13] (721,262)<button aria-label='30 votes' class='sc-kZyiuq sc-gnVZno jwoWWy jzHOEz'>30 />
+		[14] (771,262)<button class='sc-pYNGo cZrOun' role='button' />
+			[15] (771,262)<span >Share />
+		[16] (816,262)<button aria-label='Writeup actions' class='sc-koBvLg jxMomE google-symbols notranslate' title='Writeup actions'>more_horiz />
+
+</current_dom>

@@ -1,0 +1,16 @@
+# Task Checklist
+
+- [/] Plan feature selection strategy
+  - [x] Create task and implementation plan
+  - [ ] Get user approval
+- [ ] Implement robust feature selection
+  - [ ] Load and preprocess datasets (train & test)
+  - [ ] Perform Variance Thresholding (Noise & Variance Detection)
+  - [ ] Calculate Mutual Information Scores
+  - [ ] Perform Permutation Importance Analysis
+  - [ ] Extract "Golden Features" based on tests
+- [ ] Validate and Visualize Impact
+  - [ ] Train baseline model on all features
+  - [ ] Train model on Golden Features
+  - [ ] Plot ROC-AUC comparing baseline vs selected features
+  - [ ] Save visual comparisons and processed datasets

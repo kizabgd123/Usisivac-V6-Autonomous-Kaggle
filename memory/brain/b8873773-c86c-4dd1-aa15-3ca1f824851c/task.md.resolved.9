@@ -1,0 +1,16 @@
+# Melting Point Prediction — End-to-End Pipeline
+
+## Pipeline
+- [x] Audit project structure and existing outputs
+- [x] Verify train (2,662 rows), test (666 rows), 3 model OOFs
+- [x] Create [run_end_to_end.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/run_end_to_end.py) master pipeline script
+- [x] Compute Ridge meta-learner (OOF MAE 31.68, alpha=100)
+- [x] Generate `submission_final_v2.csv` (666 rows)
+- [x] Submit to Kaggle — Public: 26.25, Private: 28.54
+- [x] Document in walkthrough
+
+## Submissions
+- [x] killshot_v1 (NNLS) — Public 26.53, Private 28.99
+- [x] l2_stack_leaked — Public 26.42, Private 30.89
+- [x] refined_r3_interp — Public 25.89, Private 28.55
+- [x] **final_v2 (Ridge)** — Public 26.25, **Private 28.54** ← best

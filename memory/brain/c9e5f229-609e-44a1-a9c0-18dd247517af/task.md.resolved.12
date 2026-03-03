@@ -1,0 +1,19 @@
+# Task: House Prices - Beat 0.12008 Target
+
+- [ ] Forensic Analysis of Previous Attempts
+    - [ ] Research conversation `1a5bf334-b8c1-41a6-b218-043da0205fdb` or similar
+    - [ ] Identify features and models that reached 0.12008
+- [ ] Initialize Environment
+    - [ ] Setup `/home/kizabgd/.gemini/antigravity/scratch/house_prices`
+    - [ ] Download data via Kaggle CLI
+- [ ] Shot 1: The "Elite Refinement"
+    - [ ] Enhanced Feature Engineering (Topological features, SaleType groups)
+    - [ ] Implement Optimized Stacking Ensemble (XGB, LGBM, CatBoost, Ridge, ElasticNet)
+    - [ ] Cross-Validation (10-fold) and OOF score verification
+- [ ] Shot 2: Target Transformation & Outlier Pruning
+    - [ ] Detailed outlier analysis (GrLivArea vs SalePrice)
+    - [ ] Quantile Regression or Log-Target tuning
+- [ ] Submission & Tracking
+    - [ ] Submit via Kaggle CLI
+    - [ ] Record LB Score
+    - [ ] Iterate until < 0.115

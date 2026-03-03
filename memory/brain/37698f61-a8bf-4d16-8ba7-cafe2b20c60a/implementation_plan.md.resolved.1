@@ -1,0 +1,39 @@
+# Antithesis Phase: Diversity & Gap Analysis
+
+Objective: Resolve the OOF/LB discrepancy (~0.065) and introduce model diversity as per the 3-6-2 Dialectic framework.
+
+## User Review Required
+
+> [!IMPORTANT]
+> The current OOF score (0.916) is highly likely overfit or suffering from leakage. We MUST stabilize the validation strategy before trusting the Synthesis (Ensemble) results.
+
+## Proposed Changes
+
+### [Gap Analysis & Leakage Audit]
+
+#### [MODIFY] [generate_final_notebook.py](file:///home/kizabgd/Desktop/new-challenge/generate_final_notebook.py)
+- Implement a more rigorous validation check.
+- Add Duplicate Row detection.
+- Audit `Ratio_Charges` for potential division-by-zero or infinite values.
+- Compare Feature Importance across folds to detect "Leakage Proxies".
+
+### [Orthogonal Modeling]
+
+#### [NEW] [antithesis_boosters.py](file:///home/kizabgd/Desktop/new-challenge/antithesis_boosters.py)
+- Implement **XGBoost** with `tree_method='hist'` for speed.
+- Implement **LightGBM** with `dart` or `gbdt`.
+- Ensure consistent preprocessing with the Thesis baseline.
+
+#### [NEW] [gap_analysis_audit.ipynb](file:///home/kizabgd/Desktop/new-challenge/gap_analysis_audit.ipynb)
+- Compare Train/Test distributions (KDE plots).
+- Analyze target distribution across `Contract` types.
+
+## Verification Plan
+
+### Automated Tests
+- `make train` (Updated to run all boosters).
+- `make test` (Security & Performance Check).
+
+### Manual Verification
+- Review [WORK_LOG.md](file:///home/kizabgd/Desktop/new-challenge/WORK_LOG.md) for OOF stabilization.
+- Compare Public LB scores for new models.

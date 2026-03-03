@@ -1,0 +1,51 @@
+# 🚀 Hybrid Breakthrough — Implementation Plan
+
+## Goal
+Break the **0.954 Public LB** ceiling by combining 4 orthogonal model families that attack redundancy (correlation 0.999) from different angles.
+
+## Architecture
+
+```mermaid
+graph TD
+    A[630k Train Data] --> B[Feature Engineering]
+    B --> C1[GBDT Trio: XGB+LGBM+CAT]
+    B --> C2[Zone-RF: 4-Zone Regime]
+    B --> C3[MLP Neural Network]
+    B --> C4[UCI Stats Enrichment]
+    C1 --> D[OOF Stacking]
+    C2 --> D
+    C3 --> D
+    C4 --> D
+    D --> E[LR Meta-Learner]
+    E --> F[Final Submission]
+```
+
+## Components
+
+### 1. Zone-RF (Regime Decomposition)
+- Split patients into 4 zones: `vessels_fluro` × `thallium`
+- Train separate RF per zone with tailored depth
+- Expected correlation with GBDT: **~0.85** (LOW!)
+
+### 2. UCI Target Statistics
+- Extract `mean(target)` per [(cp, sex, thal)](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py#62-80) from original 270 UCI rows
+- Inject as 3 new features into synthetic data
+- Provides real-world signal missing from synthetic generation
+
+### 3. MLP Neural Network
+- `sklearn.neural_network.MLPClassifier(256, 128)`
+- Learns non-axis-aligned interactions
+- Expected correlation with GBDT: **~0.88** (LOW!)
+
+### 4. GBDT Trio (Baseline)
+- XGB + LGBM + CAT, all features, 5-fold CV
+- Our proven 0.95387 anchor
+
+### 5. LR Meta-Learner (Stacking)
+- `LogisticRegression` on 5 OOF vectors (XGB, LGBM, CAT, Zone-RF, MLP)
+- Final calibrated prediction
+
+## Verification
+- OOF must be in 0.955–0.960 range (NOT above 0.960)
+- Submit to Kaggle, target LB > 0.954
+- ProcessGuard checks all cross-correlations < 0.95

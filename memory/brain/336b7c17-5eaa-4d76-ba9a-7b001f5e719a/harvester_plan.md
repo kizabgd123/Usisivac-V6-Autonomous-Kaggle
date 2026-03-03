@@ -1,0 +1,43 @@
+# Kaggle Intelligence Harvester: Quad-Core Implementation Plan
+
+Upgrade the current primitive harvesting scripts into a robust, constitutional intelligence engine capable of discovering and validating Grandmaster-level strategies.
+
+## Goal
+Implement a Quad-Core architecture for autonomous intelligence gathering from Kaggle notebooks, incorporating multi-agent consensus and constitutional verification.
+
+## Proposed Changes
+
+### Core 1: Discovery (Intelligence Parser)
+#### [NEW] [intelligence_parser.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/intelligence_parser.py)
+- **Static Analysis**: Upgrade `harvester.py` to use AST for complex extraction (feature crossing, interaction terms).
+- **Security Veto**: Integrate `JudgeGuard` to scan for malicious code (Rule 3) before parsing.
+- **Payload Extraction**: Generate "Opaque Payloads" for strategies to ensure zero-execution discovery.
+
+### Core 2: Memory (Strategic RDB)
+#### [MODIFY] [trinity_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_kb.py)
+- **New Schema**: Implement `STRATEGIES`, `PARAMETERS`, and `BOARD_AUDITS` tables.
+- **RAG Integration**: Link `local_rag_builder.py` to provide vector search over natural language summaries in the RDB.
+- **Bayesian Scoring**: Implement Rule 32/34 weighting in the DB layer.
+
+### Core 3: Shield (Boardroom Consensus)
+#### [NEW] [trinity_boardroom.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity_boardroom.py)
+- **Multi-Agent Protocol**: Implement the 3/3 consensus logic.
+- **KIMI**: Validates domain/kardiology formulas (Tanaka, Ischemic Burden).
+- **QWEN**: Checks code efficiency/memory leaks.
+- **MISTRAL**: Strategic audit against GEMINI.md.
+
+### Core 4: Law (Strategic Resolver)
+#### [MODIFY] [strategy_resolver.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/strategy_resolver.py)
+- **Orchestration**: Orchestrate the flow: Parse -> Audit -> Boardroom -> Commit to KB.
+- **Conflict Resolution**: Logic to handle competing parameters from different sources.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/intelligence_parser.py tests/mock_notebook.ipynb`: Verify parameter extraction.
+- `python3 scripts/trinity_boardroom.py --test`: Verify consensus logic and VETO triggers.
+- `python3 scripts/strategy_resolver.py --harvest path/to/notebook`: Run the full pipeline.
+
+### Manual Verification
+- Verify `trinity_kb.db` schema using `sqlite3`.
+- Inspect `GUARD_ALERT.json` for Boardroom audit logs.

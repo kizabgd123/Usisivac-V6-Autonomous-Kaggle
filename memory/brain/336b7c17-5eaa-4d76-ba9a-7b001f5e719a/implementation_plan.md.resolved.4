@@ -1,0 +1,53 @@
+# Phase 6: Security & Compliance (Vertex AI & IAM)
+
+This phase focuses on hardening the Antigravity ecosystem by centralizing secret management, implementing comprehensive auditing of all external AI calls, and enforcing rate limits to prevent cost overruns.
+
+## Proposed Changes
+
+### [Component] Security & Vault
+We will introduce a centralized `KeyVault` to replace scattered `os.getenv` calls and provide a foundation for future IAM/Context-aware security.
+
+#### [NEW] [key_vault.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/key_vault.py)
+A central utility to:
+- Load secrets from [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) or structured configuration.
+- Categorize keys by service (Gemini, Mistral, Kaggle, Vertex).
+- Provide unified access with optional "Context" checks.
+
+#### [MODIFY] [gemini_client.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/gemini_client.py)
+- Refactor [__init__](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py#17-26) to use `KeyVault.get_gemini_keys()`.
+
+#### [MODIFY] [mistral_client.py](file:///home/kizabgd/Desktop/Istrazivanje/src/antigravity_core/mistral_client.py)
+- Refactor [__init__](file:///home/kizabgd/Desktop/Istrazivanje/scripts/harvester.py#17-26) to use `KeyVault.get_mistral_key()`.
+
+---
+
+### [Component] Observability & Audit
+We will implement detailed tracking for every external API interaction.
+
+#### [NEW] [audit_logger.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/audit_logger.py)
+A specialized logger that writes to `audit_logs.jsonl`:
+- Record: `timestamp`, `service`, `payload_size`, `session_id`, `outcome`.
+- Integrated with [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-427) for real-time compliance monitoring.
+
+#### [MODIFY] [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py)
+- Update `audit_log` method to use the new `AuditLogger`.
+- Implement rate-limiting logic: block calls if daily usage exceeds [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) thresholds.
+
+---
+
+### [Component] Rate Limiting
+Thresholds will be moved to [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json).
+
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+- Add `limits` section for GPT/Gemini/Mistral call budgets.
+
+## Verification Plan
+
+### Automated Tests
+- `pytest tests/test_security.py`: Verify that `KeyVault` returns correct keys and respects context.
+- `python3 scripts/audit_logger.py --test`: Verify that entries are correctly written to `audit_logs.jsonl`.
+- Simulate rate-limit breach: Temporarily set threshold to 0 in [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) and verify that [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py#82-427) blocks the call.
+
+### Manual Verification
+- Check [GUARD_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_LOG.md) for new audit entries.
+- Verify dashboard updates (if applicable) showing daily usage vs. budget.

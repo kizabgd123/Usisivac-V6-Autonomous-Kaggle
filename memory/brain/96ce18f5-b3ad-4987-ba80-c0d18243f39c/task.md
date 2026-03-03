@@ -1,0 +1,21 @@
+# Competition & Code Analysis
+
+## TriageGeist Competition
+- [x] Analyze competition rules and overview via Browser/CLI
+- [x] Inspect available files and data structure
+- [x] Determine the goal of the competition and evaluation metric
+- [x] Create comprehensive permanent AGENT_KNOWLEDGE_BASE.md
+
+
+
+## Heart Disease (S6E2) - Elite Strategy
+- [x] Pull and inspect kernel `kiza123123/heart-disease-s6e2-v10-14`
+- [x] Analyze Pseudo-labeling script (v6) and v10-14 SOTA kernel
+- [x] Create AGENT_KNOWLEDGE_BASE.md with full v10.14 breakdown
+
+## OCR Tool for Scanned PDF
+- [x] Install Tesseract and dependencies (OCR engine)
+- [x] Install Python libraries (pytesseract, pdf2image)
+- [x] Create Python script for multi-page OCR
+- [x] Run OCR on `scan_20260224_175019.pdf`
+- [x] Verify output text quality

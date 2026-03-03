@@ -1,0 +1,14 @@
+# Trinity Workspace Configuration
+- [x] Configure Personas
+- [x] Create Kanban Board / Tasks
+- [x] Set Context Sync rules
+
+# Analiza MCP & Bot Konverzacije
+- [x] Analiza Junie Jetbrains plugin funkcionalnosti.
+- [x] Integracija koncepata u Trinity OS.
+
+# Master Direktiva v5.0 - MCP Serveri
+- [x] Izrada `mcp-config-state` (SSOT za trinity_config.json)
+- [x] Izrada `mcp-guardian` (Autonomna 7-Gate Egzekucija)
+- [x] Izrada `mcp-mistral-vetoboard` (Kognitivni Checkpoint)
+- [x] Izrada `mcp-trinity-kb` (Dinamičko Znanje / Tactic Registry)

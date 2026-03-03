@@ -1,0 +1,26 @@
+# Phase 7: Production Guard & Final Submission
+
+Ova faza predstavlja finalni korak u Trinity protokolu (Synthesis -> Deployment). Cilj je validacija generisanog `bidding_resurrection_v1_5_killshot.csv` fajla kroz JudgeGuard i zvanično podnošenje na Kaggle.
+
+## Proposed Changes
+
+### [JudgeGuard]
+- **Script**: [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py)
+- **Action**: Pokretanje finalne validacije nad submission fajlom.
+- **Checks**: 
+  - Provera NaN vrednosti.
+  - Provera opsega predikcija (bidding range).
+  - Provera broja redova (1,012).
+
+### [Submission]
+- **Action**: Zvanični `kaggle competitions submit`.
+- **Gate**: 7-Gate Submit Protocol (Manual/Auto).
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/judge_guard.py --file construction_bidding/bidding_resurrection_v1_5_killshot.csv`
+- Provera izlaznog koda (Exit 0).
+
+### Manual Verification
+- Finalni audit OOF-LB konzistentnosti.

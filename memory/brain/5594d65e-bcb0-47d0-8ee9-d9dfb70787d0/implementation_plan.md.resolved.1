@@ -1,0 +1,23 @@
+# Plan: Multi-LLM AI Organizacija (No-Gemini)
+
+Sistem se nadograđuje na "Triple-Threat" AI arhitekturu koristeći Grok (X.ai), OpenAI i Mistral, uz Notion kao centralnu bazu podataka.
+
+## Proposed Changes
+
+### Dokumentacija
+#### [MODIFY] organization_setup_guide.md(file:///home/kizabgd/Desktop/Istrazivanje/organization_setup_guide.md)
+- **AI Stack:** Potpuna zamena Gemini API-ja sa:
+    - **OpenAI:** Primarna logika i struktura.
+    - **Mistral:** Kategorizacija i tagovanje (efikasnost).
+    - **Grok:** Duboka analiza diskusija i strateški saveti (Kaggle).
+- **Database:** Prelazak sa Google Sheets na **Notion**.
+    - Potrebni bazični podaci: `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
+- **Schedules:**
+    - Scan interval: **5 sati** (uz n8n 'Announcement' node ka agentu).
+    - Briefing: **12:00h** fokusiran na Kaggle.
+- **Folders:** Implementacija user-defined strukture:
+    - `Inbox`, `Kaggel takmicenj`, `Work i work log`, `Learning`, `Archive`, `Teme diskusije`, `razno`.
+
+## User Review Required
+> [!IMPORTANT]
+> Da li želiš da n8n workflow koji generišem u uputstvu koristi specifičan redosled (npr. prvo Grok za analizu, pa Mistral za sortiranje) ili da budu opcije koje možeš da biraš u node-ovima? Postaviću instrukcije za sve tri platforme.

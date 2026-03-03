@@ -1,0 +1,36 @@
+# TRINITY_BIDDING_RESURRECTION_FINAL_KILLSHOT (v1.5)
+
+Povratak u Top 20 uz pomoć hibridnog GBDT/DL ansambla i Isotonic kalibracije.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Dominacija GBDT**: 70% ansambla ostaje verno proverenim LightGBM i RF modelima, dok DL (TabNet) unosi 30% diversiteta.
+> **Isotonic Shield**: Kalibracija se primenjuje samo na TabNet komponentu kako bi se sveli na minimum nelinearni driftovi pre blendinga.
+> **Feature Mapping**: Medical/Clinical termini iz Trinity protokola su mapirani na Bidding domen (npr. Tanaka HR -> Volatility Index).
+
+## Proposed Changes
+
+### [Bidding Construction Engine]
+
+#### [NEW] [bidding_resurrection_v1_5.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_resurrection_v1_5.py)
+*   **Ensemble Strategy**: 0.7 * GBDT (0.6 LGBM + 0.4 RF) + 0.3 * Isotonic(TabNet).
+*   **Advanced Features**:
+    *   **Clinical Anchors**: Unit-Price Bayesian Priors.
+    *   **Tanaka HR**: Price Volatility Index (deviation per job).
+    *   **Ischemic Burden**: High-Risk Category Load (Amount * Category Risk).
+    *   **Cardiac Fatigue**: Contractor Workload (Project count history).
+    *   **County-Price Index**: Location smoothing.
+    *   **Contractor Win-Rate**: Bayesian Win-Rate.
+*   **Validation**: 10-Fold StratifiedGroupKFold (price-binned groups).
+*   **Calibration**: `sklearn.isotonic.IsotonicRegression` na OOF predikcijama DL komponente.
+
+## Verification Plan
+
+### Automated Tests
+*   `make test`
+*   OOF Target: **< 0.435** (Auto-submit trigger).
+*   Standard Deviation Check: Veto ako std > 0.05.
+
+### 7-Gate Submit Protocol
+*   Validacija svih 7 kapija pre finalnog push-a.

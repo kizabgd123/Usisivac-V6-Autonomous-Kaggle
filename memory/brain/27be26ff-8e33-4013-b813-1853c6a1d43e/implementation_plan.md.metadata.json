@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary": "Implementation plan for multi-page scanner setup on Canon TS5350i. Focuses on automation via Python and `scanimage`.",
+  "updatedAt": "2026-02-24T16:47:38.788678833Z",
+  "version": "2"
+}

@@ -1,0 +1,38 @@
+# Implementacioni Plan: Local Trinity AI Organizer
+
+Ovaj plan detaljno opisuje prelazak sa n8n sistema na lokalnu Python skriptu koja koristi `watchdog` za praćenje foldera i eksterne API-je za inteligentnu organizaciju.
+
+## Tehnološki Stack
+- **Jezik:** Python 3.x
+- **Biblioteke:** `watchdog` (praćenje fajlova), `requests` (API komunikacija), `python-dotenv` (upravljanje ključevima).
+- **AI Ruting:**
+  1. **Mistral API:** Prva instanca za metapodatke.
+  2. **X.ai (Grok) API:** Specijalizovana analiza za Kaggle/Code.
+  3. **OpenRouter (Llama 3 Free):** Finalni arbitar za destinaciju fajla.
+- **Logovanje:** Notion API.
+
+## Proposed Changes
+
+### [NEW] trinity_organizer/
+#### [NEW] main.py
+- Sadrži `Observer` iz `watchdog` biblioteke.
+- Implementira `on_created` event handler.
+- Sadrži logiku za sekvencijalno pozivanje API-ja.
+#### [NEW] .env.example
+- Šablon za API ključeve: `MISTRAL_API_KEY`, `GROK_API_KEY`, `OPENROUTER_API_KEY`, `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
+#### [NEW] requirements.txt
+- Potrebne zavisnosti: `watchdog`, `requests`, `python-dotenv`.
+
+## Folder Struktura (Lokalno)
+- `Inbox/`
+- `Kaggel_takmicenj/`
+- `Work_i_work_log/`
+- `Learning/`
+- `Archive/`
+- `Teme_diskusije/`
+- `razno/`
+
+## Verification Plan
+1. Provera sintakse koda.
+2. Provera kreiranja foldera.
+3. Objašnjenje korisniku kako da instalira zavisnosti i pokrene skriptu u pozadini.

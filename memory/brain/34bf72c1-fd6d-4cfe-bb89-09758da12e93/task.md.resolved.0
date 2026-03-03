@@ -1,0 +1,17 @@
+# Task: Kaggle Playground S6E3 Workspace Setup & Research
+
+- [/] Initial Workspace Setup & Environment Check
+    - [x] Verify access to Kaggle API and Gemini CLI
+    - [ ] Load and verify [.env](file:///home/kizabgd/Desktop/new-challenge/.env) credentials
+- [ ] Competition Rules & Data Investigation
+    - [ ] Download and review competition rules
+    - [ ] Download and inspect CSV structures
+    - [ ] Identify key challenge requirements
+- [ ] "Usisivac" Academic & ML Research
+    - [ ] Perform scholarly investigation into relevant science
+    - [ ] Research state-of-the-art ML approaches for this specific challenge
+- [ ] Gemini CLI Integration & Logging Setup
+    - [ ] Configure Gemini CLI for project access
+    - [ ] Set up real-time logging for the agent's actions
+- [ ] Final Handover & Verification
+    - [ ] Create walkthrough of the setup

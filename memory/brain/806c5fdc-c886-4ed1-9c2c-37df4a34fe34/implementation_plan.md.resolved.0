@@ -1,0 +1,31 @@
+# Deep Past Initiative: Akkadian Translation Improvement Plan
+
+This plan aims to improve the BLEU+chrF++ score for the Akkadian-to-English translation task by focusing on data quality, named entity normalization, and refined model ensembling.
+
+## User Review Required
+> [!IMPORTANT]
+> The plan involves extracting names from the provided CSV files and using them for normalization. This might change the output format for some specific historical names if the extracted mapping is slightly different from the "expected" one.
+
+## Proposed Changes
+
+### 1. Data Processing and Normalization (Preprocessing Layer)
+- **Enhanced Normalization:** Update [scripts/preprocess_data.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/scripts/preprocess_data.py) to handle diacritics (e.g., transforming ASCII substitutes like `s,`, `t,`, `h,` to `ṣ`, `ṭ`, `ḫ`) and standardize gap markers (`<gap>`, `[...]`, etc.).
+- **Onomasticon Extraction:** Create a script `scripts/extract_onomasticon.py` to extract name-translation pairs from [data/Sentences_Oare_FirstWord_LinNum.csv](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/data/Sentences_Oare_FirstWord_LinNum.csv) and [data/train.csv](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/data/train.csv).
+
+### 2. Model Pipeline (Deep Past Layer)
+- **Name-Aware Translation:** Update [Deep_Past_Grandmaster.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Grandmaster.py) to use the extracted onomasticon for post-processing alignment or as a dictionary for the LLM refiner.
+- **SOTA Refinement:** Optimize the [SiderMT](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py#515-578) prompt in [Deep_Past_Grandmaster.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Grandmaster.py) to provide better context from the lexicon and handle the morphological complexity of Akkadian.
+
+### 3. Evaluation and Verification
+- **Local Scoring:** Implement a local evaluation script `scripts/local_eval.py` using `sacrebleu` to calculate the Geometric Mean of BLEU and chrF++.
+
+## Verification Plan
+
+### Automated Tests
+- Run `python scripts/preprocess_data.py` and verify diacrtics are normalized in [data/processed/final_parallel_dataset.csv](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/data/processed/final_parallel_dataset.csv).
+- Run `python scripts/extract_onomasticon.py` and check the generated `data/onomasticon.json`.
+- Run a subset of the translation pipeline and verify local BLEU/chrF++ scores.
+
+### Manual Verification
+- Inspect the translations in [submission.csv](file:///home/kizabgd/Desktop/Istrazivanje/submission.csv) for correct handling of names like "Aššur-imittī" and "Imdī-ilum".
+- Verify that gap markers are not being hallucinated or mangled by the model.

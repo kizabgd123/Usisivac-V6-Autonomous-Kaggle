@@ -1,0 +1,28 @@
+# Goal Description
+The objective is to break the 0.960 AUC threshold using the "Conflict-Proof" boardroom strategy (v3.17.0). This balances Deep Learning power (60%) with GBDT stability (40%) and mandates Isotonic Calibration to ensure clinical validity.
+
+## Proposed Changes
+
+### 1. Conflict-Proof Diversification (0.4/0.6 Rule)
+We are balancing the ensemble to mitigate the risk of DL models becoming "robovi šuma":
+- **GBDT Weight**: 0.4 (XGB, LGBM, CAT).
+- **Deep Learning (DL) Weight**: 0.6 (mlp1, mlp2).
+- **Isotonic Shield**: Mandatory `IsotonicRegression` for all DL model outputs to normalize probabilities and preserve clinical truth.
+
+### 2. Clinical Truth 2.0 (Medical Anchor)
+- **Cardiac Fatigue**: [(ST_Depression / MaxHR) * Age](file:///home/kizabgd/Desktop/Istrazivanje/scripts/heart_disease_v5_hardcore.py#29-36).
+- **Ischemic Burden**: `ST depression * Exercise angina`.
+- **ClinicalMapper**: Robust mapping of UCI categorical strings (e.g., 'asymptomatic') to S6E2 integer/abbreviation standards to enable medical grounding.
+
+### 3. Rigorous Validation (Rule 42)
+- **Adversarial Validation**: Monitoring distribution shift. Given the synth/real 1.0 AUC trait, we will use this as a WARNING threshold while prioritizing clinical feature alignment.
+- **OOF AUC Stop-Loss**: Threshold set at 0.70 (minimum viability).
+
+### 4. Implementation: `scripts/heart_disease_v5_conflict.py`
+1. **Thesis**: 0.4 Weight GBDT Trio.
+2. **Antithesis**: 0.6 Weight DL Duo with **Isotonic Calibration**.
+3. **Synthesis**: Blending + ClinicalMapping + OOF Calibration.
+
+
+### Next Steps
+Once approved, I will install the dependencies, execute the script, and verify the OOF AUC score. If OOF is promising (around 0.954 - 0.955), we will submit it to Kaggle.

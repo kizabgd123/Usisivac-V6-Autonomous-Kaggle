@@ -1,0 +1,37 @@
+# Implementation Plan: Constitutional Hardening v2.0
+
+Establish internal consistency and feedback-driven reliability as per the updated Trinity Protocol Constitution.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Meta Command Implementation**: All python scripts will be updated to prioritize [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) values over any internal defaults or textual descriptions. 
+
+> [!NOTE]
+> **Error Reporting**: Failures will no longer be silent `1` exit codes. They will generate a `error_report.json` containing the traceback, state, and context to allow the agent (Antigravity) to learn and adapt.
+
+## Proposed Changes
+
+### Configuration Supremacy
+#### [MODIFY] [trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity.py)
+- Update CLI to always load and expose [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) as the primary parameter source.
+- Implement a global "Parameter Resolver" that enforces the Meta Command priority.
+
+### Error Feedback Layer
+#### [NEW] [error_handler.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/error_handler.py)
+- Create a context manager `TrinityGuard` that captures exceptions and writes them to a structured JSON format.
+
+### Memory Optimization (Rule 27)
+#### [MODIFY] [memory_integrity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/memory_integrity.py)
+- **Separation**: Split `TRINITY_MEMORY.json` into metadata (hashing, timestamps) and raw logs.
+- **Streaming**: Implement streaming hash calculation for large files.
+- **Parquet Integration**: Use `fastparquet` or `pandas` to store raw microaction logs in Parquet format.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/error_handler.py --test`: Verify that intentional crashes produce correct JSON reports.
+- `python3 scripts/memory_integrity.py --benchmark`: Compare memory usage between JSON and Parquet logging for 100k actions.
+
+### Manual Verification
+- Verify that changing a value in [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) correctly overrides behavior in the training pipeline without code edits.

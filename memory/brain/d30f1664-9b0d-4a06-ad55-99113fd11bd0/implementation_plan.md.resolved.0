@@ -1,0 +1,38 @@
+# Heart Disease Prediction Strategy — Playgorund S6E2
+
+This plan outlines the implementation of a high-performance ensemble pipeline for the Heart Disease prediction competition. The goal is to achieve a Top-5 level AUC (~0.94+) by leveraging a blend of medical domain knowledge, robust ensembling, and careful data handling.
+
+## Proposed Changes
+
+### [Component Name] Heart Disease Ensemble Pipeline
+
+The main entry point will be [heart_top5_v2.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v2.py), which implements a multi-model stacking architecture.
+
+#### [MODIFY] [heart_top5_v2.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v2.py)
+
+We will modify the existing script to include **checkpointing**. This ensures that if the script is interrupted (as happened previously), we can load the existing OOF (Out-Of-Fold) predictions for models that have already finished training.
+
+Key features to implement:
+- **Medical Feature Engineering**: Pulse Pressure, Metabolic Syndrome Proxy, Ischemic Burden, and Framingham Risk Score.
+- **Handling Data Artefacts**: `chol_zero_flag` and group-median imputation for Cholesterol and BP.
+- **Robust Model Stack**:
+  - **LightGBM**: 10-fold Stratified CV with L1/L2 regularization.
+  - **XGBoost (DART)**: Robust to noise, handling dropped trees during training.
+  - **XGBoost (gbtree)**: Standard gradient boosting for diversity.
+  - **CatBoost**: Optimized for categorical interactions.
+- **Meta-Ensembling**: Stacking with Logistic Regression and an AUC-weighted blend fallback.
+- **Checkpointing**: Every model will save its OOF and test predictions to `outputs/checkpoints/` after completion. The script will check for these files before starting a model's training.
+
+## Verification Plan
+
+### Automated Tests
+1. **Adversarial Validation**: Run a dedicated validation step to ensure the training and test sets are not significantly shifted (AUC should be ~0.50). 
+   - *How to run*: `python3 heart_top5_v2.py` (Adversarial check is the first step after data loading).
+2. **OOF AUC Monitoring**: Monitor 10-fold CV scores for each individual model.
+   - *How to run*: Output will be printed in the console for each fold and average OOF.
+3. **Pipeline Completion**: Ensure the script finishes all steps and generates `submission_heart_top5_v2.csv`.
+   - *How to run*: Verify existence of the submission file using `ls`.
+
+### Manual Verification
+1. **Submission Check**: Inspect the final submission file for valid ID ranges and probability scores [0, 1].
+2. **Kaggle Push**: (Optionally) the user can push the generated submission to the leaderboard to verify the LB score.

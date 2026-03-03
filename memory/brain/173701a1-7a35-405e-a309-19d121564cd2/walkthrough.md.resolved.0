@@ -1,0 +1,46 @@
+# GEMINI.md Konsolidacija — Walkthrough
+
+## Šta je Urađeno
+
+**5 fajlova** (369+ linija) konsolidovano u **1 fajl** (148 linija) + 2 domenska registra.
+
+### Novi Fajlovi
+
+| Fajl | Opis |
+| --- | --- |
+| [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) | Unified Constitution v4.0 — 7 sekcija, imperativni format |
+| [heart_disease.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/heart_disease.md) | Domenski registar — Golden Recipe, Tanaka, anti-patterni, breakthrough strategije |
+| [competition_tracker.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/competition_tracker.md) | Registar takmičenja — aktivna/završena, best scores |
+
+### Arhivirani Fajlovi (→ `.legacy/`)
+
+- [GOVERNANCE.md](file:///home/kizabgd/Desktop/Istrazivanje/GOVERNANCE.md) → `archived_governance.md`
+- [MASTER_WORKFLOW_PROTOCOL.md](file:///home/kizabgd/Desktop/Istrazivanje/MASTER_WORKFLOW_PROTOCOL.md) → `archived_master_workflow.md`
+- [MASTER_ORCHESTRATION.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/MASTER_ORCHESTRATION.md) → `archived_master_orchestration.md`
+- [product_constitution.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/product_constitution.md) → `archived_product_constitution.md`
+
+### Obrisani
+
+- Root [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/Istrazivanje/ORCHESTRATION_RULES.json) (zastarela kopija)
+- `.agents/` direktorijum (6 workflow-a premšteno u `.agent/workflows/`)
+
+### Fixevi
+
+- `scripts/judge_guard.py` linija 91: referenca ažurirana sa `~/.gemini/MASTER_ORCHESTRATION.md` → `GEMINI.md`
+
+## Verifikacija
+
+- ✅ Cross-reference check: nijedan skript ne referencira arhivirane fajlove
+- ✅ Content audit: svih 50 pravila pokriveno (§1-§7 + tactic_registries)
+- ✅ `trinity_config.json` i `.agent/rules/ORCHESTRATION_RULES.json` ostali netaknuti
+
+## Pre / Posle
+
+| Metrika | Pre | Posle |
+| --- | --- | --- |
+| Broj konfig fajlova | 7+ | 3 (GEMINI + config + ORCH_RULES) |
+| Linije u GEMINI.md | 232 (Q&A) | 148 (imperativ) |
+| 3-6-2 duplikacije | 4x | 1x |
+| Guard duplikacije | 5x | 1x |
+| Heart Disease u jezgru | Da | Ne (tactic_registries/) |
+| .agents/ vs .agent/ | 2 direktorijuma | 1 direktorijum |

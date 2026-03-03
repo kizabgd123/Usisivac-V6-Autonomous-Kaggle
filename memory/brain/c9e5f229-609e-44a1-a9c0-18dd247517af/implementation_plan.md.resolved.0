@@ -1,0 +1,32 @@
+# Implementation Plan - Elite Breach v3.2 Optimization
+
+This plan addresses the memory crash encountered during the MICE imputation step. We will switch to a more efficient estimator and ensure all "Elite" clinical features are preserved for the Top 3 AUC target.
+
+## Proposed Changes
+
+### [Component] Data Preprocessing & Imputation
+#### [MODIFY] [heart_top5_v3_2_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py)
+- **Optimization of [perform_mice](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py#119-147)**: 
+    - Switch `IterativeImputer` estimator from `ExtraTreesRegressor` (heavy) to `BayesianRidge` (default, lightweight).
+    - Reduce `max_iter` to 5 (from 10) to further speed up the process while maintaining correlation structure.
+    - Ensure `chol_zero_flag` is created *before* imputation to preserve the biological signal of missing values (MNAR).
+- **Clinical Feature Engineering**:
+    - Verify and retain `Ischemic_Burden` calculation: `Oldpeak / (ST_Slope_Ordinal + 0.1)`.
+    - Verify and retain `Young_Signal` interaction: [(Age < 40) & (chol_zero_flag == 1)](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py#47-51).
+- **Model Parameters**:
+    - Confirm XGBoost uses `booster='dart'` with aggressive `rate_drop`.
+    - Ensure LightGBM and CatBoost use heavy regularization as planned.
+
+## Verification Plan
+
+### Automated Verification
+- **Adversarial Validation**: Run the `adv_model` check to ensure the score is below **0.52**.
+- **Log Monitoring**: Monitor [training_v3_2_elite.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3_2_elite.log) to ensure the script passes Step 2 (Imputation) and proceeds to Step 4 (Model Training).
+- **Execution Command**:
+  ```bash
+  nohup python3 heart_top5_v3_2_elite.py > training_v3_stdout.log 2>&1 &
+  ```
+
+### Manual Verification
+- Check if `submission_heart_v3_2_elite.csv` is generated with valid probabilities [0, 1].
+- Review OOF AUC scores in logs to confirm they exceed the 0.9570 threshold.

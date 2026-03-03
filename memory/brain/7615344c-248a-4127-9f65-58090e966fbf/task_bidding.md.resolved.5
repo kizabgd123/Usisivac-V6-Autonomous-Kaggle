@@ -1,0 +1,28 @@
+# Task: Bidding Predictions for Construction — Target LB < 0.2000 SMAPE/MAE
+
+## Phase 1: Research & Setup
+- [/] Analyze data schema (raw vs summary)
+- [ ] Determine competition metric (MAE or SMAPE)
+- [ ] Verify baseline performance (Current LB: 0.2984)
+
+## Phase 2: Planning
+- [ ] Create implementation_plan_bidding.md
+- [ ] Identify key features (Contractor history, Location clusters, Job descriptions)
+
+## Phase 3: Implementation
+- [x] Implement data loading & merging (raw + summary)
+    - [x] Fix XGBoost 2.0+ `early_stopping_rounds` constructor parameter
+    - [x] Fix `KeyError` on 'amount' in `raw_test` (column absent in test)
+    - [x] Implement Unit Price Reference estimation
+    - [x] Execute [bidding_v6_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v6_elite.py) and monitor logs (OOF RMSE: 0.28443)
+- [x] Feature engineering (Aggregations by contractor/location)
+- [x] Cross-validation setup (Multi-seed KFold)
+- [x] Model training (XGB, LGBM, CatBoost)
+- [x] Probability/Value Calibration (Isotonic Regression)
+- [x] Generation of `submission_v6_elite.csv`
+
+## Phase 4: Verification & Submission
+- [/] Verify OOF performance and consistency
+- [ ] Create `walkthrough_bidding.md`
+- [ ] Push to Kaggle and check LB score
+- [ ] Iterate based on LB feedback

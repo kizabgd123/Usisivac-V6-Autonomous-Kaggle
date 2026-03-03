@@ -1,0 +1,39 @@
+# Trinity Protocol Proactive Hardening (v3.15)
+
+This plan implements the architectural improvements requested in the 10-point upgrade plan, focusing on domain encapsulation, sandbox safety, and proactive training checks.
+
+## Proposed Changes
+
+### Core Engine
+#### [MODIFY] [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py)
+- Update `_emit_alert` to follow the standardized Rule 48 schema:
+  - `domain_context`
+  - `tactic_id`
+  - `severity`
+  - `correlation_score`
+  - `opaque_payload` (repurposed from `logic_hint`)
+- Implement `pre_flight_check(models_list)`:
+  - Loads `architecture_families` from `trinity_config.json`.
+  - Blocks sets of models that belong to the same family (e.g., [XGB, LGBM, CAT]).
+  - Requires at least one orthogonal model family.
+- Add Sandbox Timeout logic (Stub):
+  - Check for `timeout_alert.json` presence.
+  - Implement a `run_with_sandbox_guard(command)` helper.
+
+### Configuration & Registry
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+- [x] Defined `sandbox_guardrails` (60s, 1GB).
+- [x] Defined `architecture_families`.
+
+#### [MODIFY] [heart_disease_tactic.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/heart_disease_tactic.json)
+- Update to include its own `tactic_id` and `domain_context` metadata for inclusion in alerts.
+
+## Verification Plan
+
+### Automated Tests
+- Run `judge_guard.py` with a "homogenous" model list (e.g., `["xgboost", "lightgbm"]`) to trigger the Pre-flight VETO.
+- Verify that `GUARD_ALERT.json` follows the new schema.
+- Simulate a timeout to verify `timeout_alert.json` emission.
+
+### Manual Verification
+- Review the Vetoboard UI to ensure `opaque_payload` hints are still readable.

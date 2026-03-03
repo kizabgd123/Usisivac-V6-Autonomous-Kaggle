@@ -1,0 +1,13 @@
+# Task: Kaggle Competition Research and Setup
+
+- [/] Research Competition Playground Series S6E3
+    - [ ] Analyze competition goals and data
+    - [ ] Check "Usisivac" (Vacuum) project findings
+- [ ] Workspace Verification and Compliance
+    - [ ] Verify Gemini CLI configuration (rules enforcement)
+    - [ ] Ensure `user_rules` are active
+- [ ] Prepare Kaggle Notebook
+    - [ ] Create/Update local representation of Kaggle Notebook
+    - [ ] Document all findings and setup steps
+- [ ] Finalize Preparation
+    - [ ] Summarize everything for the user

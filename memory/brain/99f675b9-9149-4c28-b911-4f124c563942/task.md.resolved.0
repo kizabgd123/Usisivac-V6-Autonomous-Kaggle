@@ -1,0 +1,14 @@
+# AI Agent Context Sync Configuration
+
+- [ ] Define AI Personae
+  - [ ] `Thesis_Builder`
+  - [ ] `Antithesis_Engineer`
+  - [ ] `Synthesis_Ensembler`
+  - [ ] `Kaggle_Analyst`
+  - [ ] `Strateg_AIMO`
+  - [ ] `Kritičar_AIMO`
+  - [ ] `Nadzornik_AIMO`
+- [ ] Create Task Structure
+  - [ ] Kaggle Competition (e.g., Spaceship Titanic)
+  - [ ] AIMO Problem 123
+- [ ] Configure Context Synchronization

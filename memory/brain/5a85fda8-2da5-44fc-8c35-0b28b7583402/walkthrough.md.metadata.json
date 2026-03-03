@@ -1,0 +1,5 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary":  "Walkthrough of the Refinement Phase: Experiment 1 (Polynomial + Target Encoding), Experiment 2 (Ridge Meta-Learner), and Phase 2 (Hyperparameter Tuning). Final ensemble achieved 0.916472 OOF ROC AUC.",
+  "updatedAt":  "2026-03-02T23:11:58.199378484Z"
+}

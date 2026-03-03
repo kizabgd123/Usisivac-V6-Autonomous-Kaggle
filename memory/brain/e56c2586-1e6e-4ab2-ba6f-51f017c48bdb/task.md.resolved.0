@@ -1,0 +1,15 @@
+# Audit Remediation Tasks
+
+## P0: Critical Fixes
+- [ ] Fix `GEMINI.md` by clearing the stale report.
+- [ ] Extract `mentorstvo/analysis` skill from [.agent/rules/aasd.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/aasd.md) and move it to `.agent/skills/_system/mentorstvo/skill.md`.
+- [ ] Remove or fix missing slash command workflow registrations.
+
+## P1: Cleanup
+- [ ] Delete root directory junk (debug logs, progress JSON files, PID files, DB backups).
+- [ ] Delete forensic report duplicates (`forensic_report.md`, `forensic_report_extracted.md`, `FORENSIC_ANALYSIS_REPORT.md` if identical).
+- [ ] Address stub workflows.
+
+## P2: Organization
+- [ ] Clean up `.legacy/` directory.
+- [ ] Clean up `.qodo/` directory.

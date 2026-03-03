@@ -1,0 +1,6 @@
+{
+  "artifactType":  "ARTIFACT_TYPE_IMPLEMENTATION_PLAN",
+  "summary":  "Plan za kreiranje novog čistog workspace-a '/home/kizabgd/Desktop/kaggle-arena' sa prenesenim API ključevima, GEMINI.md ustavom, očišćenim ORCHESTRATION_RULES.json i trinity_config.json, i samo univerzalnim workflow-ima. Stari workspace ostaje netaknut kao arhiva.",
+  "updatedAt":  "2026-02-28T16:10:09.306404882Z",
+  "version":  "3"
+}

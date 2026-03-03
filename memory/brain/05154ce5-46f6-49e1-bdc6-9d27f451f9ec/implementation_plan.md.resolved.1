@@ -1,0 +1,26 @@
+# Spaceship Titanic - Grandmaster V20 Phase 2 Implementation Plan
+
+## Goal Description
+The first submission using V20 Phase 1 yielded an LB score of `0.80687`. Our target is `0.80851`.
+For Phase 2, we will focus on maximizing feature quality by extracting Family and Group relationships, expanding the RAG resolution, and refining the noise profile of our pseudo-labels.
+
+## Proposed Changes
+We will create `spaceship_v20_grandmaster_phase2.py`:
+
+### Feature Engineering Enhancements
+- **GroupSize & IsAlone:** Calculate the size of the group the passenger is traveling with (`PassengerId` prefix `GroupId`). Add an `IsAlone` binary flag.
+- **FamilySize:** Extract the `LastName` from the `Name` field (if available) and count the family size.
+- **RAG Adjustments:**
+  - Increase `k` from `10` to `50` for wider nearest-neighbor context.
+  - Increase `n_components` from `32` to `64` for a richer latent space embedding.
+- **Pseudo-labeling Refinement:** Instead of loose bounds (0.95 / 0.05), we will shift to highly precise thresholds (`> 0.99` / `< 0.01`) to eliminate noise added to the training set during Stage 2 retraining.
+
+### Modeling Execution
+- Keep the robust 3-Seed 5-Fold Ensembling logic using CatBoost, XGBoost, and LightGBM.
+- Retain Phase 1's rank transformation across probabilities to reduce variance.
+
+## Verification Plan
+### Automated Tests
+- Validate local OOF score (target ~0.810 - 0.812).
+### Kaggle Submission
+- Submit `submission_v20_grandmaster_phase2.csv` and cross reference the public leaderboard to verify we beat `0.80851`.

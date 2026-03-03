@@ -1,0 +1,49 @@
+
+# 🕵️ Trinity: Project Master Plan (Melting Point Prediction)
+
+**Date:** 2026-02-17
+**Status:** 🟡 PRE-MEDAL (MAE 14.05 vs Target 6.7)
+**Strategy:** "Big Data" Scale-Up & GNN Integration
+
+---
+
+## 1. Executive Summary
+The project has successfully reached a baseline performance of **MAE 14.05** (Public LB) using a hybrid approach (External Lookup + RDKit Features + Stacking Ensemble). However, to reach the Medal Zone (~6.7 MAE), the current approach of training on small data (~3k rows) is insufficient. The discovery of **275k+ verified melting points** (OCHEM + full Bradley) mandates a strategic pivot to "Big Data" training, enabling Deep Learning approaches (GNNs) that were previously unviable.
+
+## 2. The "Working" Layer (Current Capabilities)
+- **External Lookup Engine**: [scripts/external_lookup.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/external_lookup.py) (Verified, high precision).
+- **PubChem Integration**: [scripts/pubchem_lookup.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/pubchem_lookup.py) (Verified, adds ~136 matches).
+- **Feature Engineering**: [scripts/engineer_rdkit_descriptors.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/engineer_rdkit_descriptors.py) (Verified, generates 200+ RDKit descriptors).
+- **GBDT Ensemble**: [scripts/train_phase2_rich.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/train_phase2_rich.py) (Verified, stacks LGBM/XGB/CatBoost).
+- **Submission Generator**: [scripts/merge_phase2.py](file:///home/kizabgd/Desktop/Istrazivanje/melting_point_prediction/scripts/merge_phase2.py) (Verified, robust merging).
+
+## 3. Gap Analysis & Blockers
+- **Data Starvation**: Attempting to generalize from ~2.5k training points to the 666 test points is limiting.
+- **Untapped Resources**: 
+    - `BradleyMeltingPointDataset.xlsx` (28k rows) - Downloaded but not integrated.
+    - `smiles_melting_point.csv` (275k rows) - Downloaded but not integrated.
+- **Model Limitation**: LightGBM/XGBoost plateau with limited data. GNNs require the scale we now have accessing.
+
+## 4. End-to-End Roadmap (The "Killshot")
+
+### Phase 3: The Big Data Foundation (Immediate)
+- **Objective**: Create a unified, massive training dataset (User Train + Bradley + OCHEM).
+- **Actions**:
+    1.  Filter `BradleyMeltingPointDataset.xlsx` (remove `donotuse`).
+    2.  Process `smiles_melting_point.csv` (Convert K to C, clean SMILES).
+    3.  deduplicate and merge all sources into `data/gold/combined_training_set.csv`.
+- **Target**: >200,000 clean training examples.
+
+### Phase 4: SOTA Graph Neural Networks (The Scalable Solution)
+- **Objective**: Train a Message Passing Neural Network (MPNN) or Attentive FP on the massive dataset.
+- **Actions**:
+    1.  Implement `scripts/train_gnn_bigdata.py` using PyTorch Geometric or DeepChem.
+    2.  Train on the 200k+ global dataset.
+    3.  Fine-tune on the specific competition training set (Transfer Learning).
+
+### Phase 5: The "Trinity" Ensemble
+- **Objective**: Combine the precision of Lookups, the robustness of GBDTs, and the generalization of GNNs.
+- **Strategy**: Weighted Average or Stacking of:
+    1.  Direct Lookup (Trust: High)
+    2.  Phase 2 GBDT (Trust: Medium-High for similar structures)
+    3.  Phase 4 GNN (Trust: High for generalization)

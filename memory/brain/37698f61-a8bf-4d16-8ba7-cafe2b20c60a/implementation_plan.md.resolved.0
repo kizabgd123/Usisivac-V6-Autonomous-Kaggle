@@ -1,0 +1,30 @@
+# Kaggle S6E3: Telco Churn Prediction Implementation Plan
+
+This plan outlines the steps to create a competitive Kaggle Notebook for the Playground Series S6E3, focusing on ROC AUC optimization and rule compliance.
+
+## Proposed Changes
+
+### [Kaggle Notebook]
+
+#### [NEW] [telco_churn_baseline.ipynb](file:///home/kizabgd/Desktop/new-challenge/telco_churn_baseline.ipynb)
+A comprehensive notebook including:
+- **Data Ingestion:** Automated loading of `train.csv` and `test.csv`.
+- **EDA:** Focused on feature distributions and target imbalance.
+- **Preprocessing:** Numeric conversion for `TotalCharges`, tenure binning.
+- **Model Baseline:** 3-way blend of CatBoost, XGBoost, and LightGBM.
+- **Verification:** ROC AUC score tracking and SHAP interpretability.
+
+### [Workspace Compliance]
+
+#### [MODIFY] [.bashrc](file:///home/kizabgd/.bashrc) (Verified in WORK_LOG)
+- Ensuring `gemini` alias and rules enforcement are active via environment variables.
+
+## Verification Plan
+
+### Automated Tests
+- `kaggle kernels push`: To verify the notebook is valid and can be submitted.
+- `python Usisivac/src/dashboard.py`: To verify the knowledge base is updated with new insights.
+
+### Manual Verification
+- Reviewing the ROC AUC score in the notebook output.
+- Checking the SHAP plots for feature logical consistency.

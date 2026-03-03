@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Phase 1 (External Lookup) complete with 17.94 MAE. Next: Phase 2 (Rich RDKit Features) or more data.",
+  "updatedAt": "2026-02-17T10:08:16.950135540Z",
+  "version": "11"
+}

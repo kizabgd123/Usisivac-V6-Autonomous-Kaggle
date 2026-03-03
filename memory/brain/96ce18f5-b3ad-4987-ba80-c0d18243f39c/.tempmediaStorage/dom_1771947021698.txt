@@ -1,0 +1,213 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,74)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,74)<span >Create />
+	[6] (59,117)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,117)<div  />
+			[8] (16,117)<div  />
+				[9] (16,117)<div  />
+					[10] (16,117)<span >explore />
+			[11] (40,117)<div  />
+				[12] (40,117)<p >Home />
+	[13] (59,150)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,150)<div  />
+			[15] (16,150)<div  />
+				[16] (16,150)<div  />
+					[17] (16,150)<span >emoji_events />
+			[18] (52,150)<div  />
+				[19] (52,150)<p >Competitions />
+				[20] (114,150)<div  />
+	[21] (59,183)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,183)<div  />
+			[23] (16,183)<div  />
+				[24] (16,183)<div  />
+					[25] (16,183)<span >table_chart />
+			[26] (44,183)<div  />
+				[27] (44,183)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,283)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,283)<div  />
+			[44] (16,283)<div  />
+				[45] (16,283)<div  />
+					[46] (16,283)<span >smart_toy />
+			[47] (51,283)<div  />
+				[48] (51,283)<p >Game Arena />
+	[49] (59,316)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,316)<div  />
+			[51] (16,316)<div  />
+				[52] (16,316)<div  />
+					[53] (16,316)<span >code />
+			[54] (39,316)<div  />
+				[55] (39,316)<p >Code />
+	[56] (59,349)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,349)<div  />
+			[58] (16,349)<div  />
+				[59] (16,349)<div  />
+					[60] (16,349)<span >comment />
+			[61] (50,349)<div  />
+				[62] (50,349)<p >Discussions />
+	[63] (59,382)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,382)<div  />
+			[65] (16,382)<div  />
+				[66] (16,382)<div  />
+					[67] (16,382)<span >school />
+			[68] (39,382)<div  />
+				[69] (39,382)<p >Learn />
+	[70] (59,415)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,415)<div  />
+			[72] (16,415)<div  />
+				[73] (16,415)<div  />
+					[74] (16,415)<span >expand_more />
+			[75] (38,415)<div  />
+				[76] (38,415)<p >More />
+	[77] (59,461)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,461)<div  />
+			[79] (16,461)<div  />
+				[80] (16,461)<div  />
+					[81] (16,461)<span >note_alt />
+			[82] (47,461)<div  />
+				[83] (47,461)<p >Your Work />
+	[84] (31,492)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,492)<span >arrow_drop_down />
+		[86] (40,492)<span >Viewed />
+	[87] (54,523)<a aria-label='Triagegeist' class='sc-eXVaYZ cPXxFg' href='/competitions/triagegeist' role='link' />
+		[88] (57,523)<div  />
+			[89] (16,523)<div  />
+				[90] (16,523)<div  />
+					[91] (16,523)<img  />
+			[92] (46,523)<div  />
+				[93] (48,523)<p >Triagegeist />
+	[94] (54,553)<a aria-label='After pseudo-labeling (AUG OOF): ~0.96952 ' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2/discussion/678449' role='link' />
+		[95] (57,553)<div  />
+			[96] (16,553)<div  />
+				[97] (16,553)<div  />
+					[98] (16,553)<img  />
+			[99] (66,553)<div  />
+				[100] (67,553)<p >After pseudo-labeling (AUG OOF): ~0.96952 />
+	[101] (54,583)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[102] (57,583)<div  />
+			[103] (16,583)<div  />
+				[104] (16,583)<div  />
+					[105] (16,583)<img  />
+			[106] (66,583)<div  />
+				[107] (67,583)<p >Predicting Heart Disease />
+	[108] (54,613)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[109] (57,613)<div  />
+			[110] (16,613)<div  />
+				[111] (16,613)<div  />
+					[112] (16,613)<img  />
+			[113] (66,613)<div  />
+				[114] (67,613)<p >Deep Past Challenge - Translate Akkadian to English />
+	[115] (54,643)<a aria-label='Heart Disease S6E2 V10.14 ' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-14' role='link' />
+		[116] (57,643)<div  />
+			[117] (16,643)<div  />
+				[118] (16,643)<div  />
+					[119] (16,643)<img  />
+			[120] (66,643)<div  />
+				[121] (67,643)<p >Heart Disease S6E2 V10.14 />
+	[122] (30,679)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,679)<span >arrow_right />
+		[124] (39,679)<span >Edited />
+	[125] (57,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,977)<span >auto_awesome_motion />
+		[128] (58,979)<p >View Active Events />
+	[129] (555,24)<div  />
+		[130] (555,24)<div  />
+			[131] (302,24)<span >search />
+			[132] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r9:' placeholder='Search' />
+	[133] (985,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[134] (985,24)<div  />
+	[135] (557,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Triagegeist
+		[136] (771,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[137] (771,62)<span >Join Hackathon />
+		[138] (819,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[139] (307,93)<a aria-label='Overview, 1 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/overview' role='tab' />
+			[140] (307,93)<span >Overview />
+		[141] (349,93)<a aria-label='Writeups, 2 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/writeups' role='tab' />
+			[142] (349,93)<span >Writeups />
+		[143] (383,93)<a aria-label='Data, 3 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/data' role='tab' />
+			[144] (383,93)<span >Data />
+		[145] (411,93)<a aria-label='Code, 4 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/code' role='tab' />
+			[146] (411,93)<span >Code />
+		[147] (449,93)<a aria-label='Discussion, 5 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/discussion' role='tab' />
+			[148] (449,93)<span >Discussion />
+		[149] (488,93)<a aria-label='Rules, 6 of 6' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/triagegeist/rules' role='tab' />
+			[150] (488,93)<span >Rules />
+		Third Place
+		Awarded to the third highest scoring submission as evaluated by the Laitinen-Fredriksson Foundation judging panel.
+		$2,000
+		[151] (488,155)<div  />
+			[152] (478,155)<div  />
+				[153] (478,155)<div  />
+					[154] (309,155)<div  />
+						[155] (309,155)<div  />
+							[156] (309,155)<h3 >Evaluation />
+					[157] (658,155)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[158] (680,155)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		Judging Panel
+		All submissions will be evaluated by a panel of at least three judges with combined expertise in emergency medicine, clinical AI, and data science. Judges are designated by the Laitinen-Fredriksson Foundation.
+		Submission Requirements
+		The following are required for a submission to be considered eligible. Submissions missing any required element will not be scored.
+		Requirement
+		Details
+		Kaggle Notebook
+		Must run end-to-end without errors. Must be set to public before the submission deadline.
+		Project Writeup
+		Submitted via the Kaggle Writeup tab. Must include all sections of the Writeup Template.
+		Clinical Problem Statement
+		The writeup must clearly define the specific triage problem being addressed.
+		Data Disclosure
+		All datasets used (public or provided) must be cited and described in the notebook.
+		Scoring Rubric (100 points total)
+		1. Clinical Relevance (25 points)
+		Does the submission address a real and meaningful problem in emergency triage? Is the problem statement grounded in clinical reality? Would a practicing emergency physician find this work credible and useful?
+		Score
+		Description
+		21-25
+		Problem is sharply defined, clinically motivated, and directly relevant to triage workflows. The clinical context is explained with accuracy and depth.
+		14-20
+		Problem is relevant but motivation is partially developed or clinical grounding is surface-level.
+		7-13
+		Problem relates broadly to emergency medicine but triage relevance is unclear or weakly argued.
+		0-6
+		Problem has negligible clinical relevance or clinical context is absent.
+		Table of Contents
+		[159] (819,134)<button aria-label='Collapse all sections' class='sc-koBvLg jxMomE google-symbols notranslate' title='Collapse all sections'>collapse_all />
+		[160] (763,239)<div  />
+			[161] (722,158)<a aria-label='Overview, 1 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/abstract' id='633107' role='tab' />
+				[162] (722,158)<span >Overview />
+			[163] (725,185)<a aria-label='Description, 2 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/description' id='633104' role='tab' />
+				[164] (725,185)<span >Description />
+			[165] (741,212)<a aria-label='Submission Requirements, 3 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/submission-requirements' id='633109' role='tab' />
+				[166] (741,212)<span >Submission Requirements />
+			[167] (737,239)<a aria-label='Tracks and Awards, 4 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/tracks-and-awards' id='633102' role='tab' />
+				[168] (737,239)<span >Tracks and Awards />
+			[169] (724,266)<a aria-label='Evaluation, 5 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/evaluation' id='633105' role='tab' />
+				[170] (724,266)<span >Evaluation />
+			[171] (719,293)<a aria-label='Judges, 6 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/judges' id='633101' role='tab' />
+				[172] (719,293)<span >Judges />
+			[173] (720,320)<a aria-label='Citation, 7 of 7' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/triagegeist/overview/citation' id='99999' role='tab' />
+				[174] (720,320)<span >Citation />
+
+</current_dom>

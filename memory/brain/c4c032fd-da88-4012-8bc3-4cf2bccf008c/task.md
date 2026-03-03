@@ -1,0 +1,21 @@
+# Task Checklist - Kaggle Bidding Predictions for Construction (S6E2)
+
+## Phase 0: Reset & Realignment [DONE]
+- [x] Priznanje greške i arhiviranje "mentol" koda
+- [x] Lociranje JudgeGuard infrastrukture (`trinity_guardian.py`)
+- [x] Preuzimanje STVARNIH S6E2 podataka (Bidding)
+- [x] Dokumentovanje pravila i targeta u `WORKING_FALL.md`
+
+## Phase 1: Bidding Baseline (Thesis) [IN PROGRESS]
+- [x] Inicijalna EDA i provera leaka
+- [/] Thesis v1: Baseline GBDT model
+- [/] JudgeGuard aktivacija (Value & Dtype Gates)
+
+## Phase 2: Antithesis (Complexity)
+- [ ] Feature Engineering (Project Value, Sector, Bidders)
+- [ ] Model Diversity (XGB, LGBM, Cat)
+
+## Phase 3: Synthesis (Submission)
+- [ ] Final Ensemble
+- [ ] 7-Gate Guardian Approval
+- [ ] Push to Kaggle

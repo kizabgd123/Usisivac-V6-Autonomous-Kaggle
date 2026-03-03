@@ -1,0 +1,27 @@
+# Deep Past - Akkadian Translation Audit
+
+- [x] Fix Gemma CSV parsing corruption (V17)
+- [x] Analyze submission failures (COMPLETE but no score)
+- [x] Pull verified working kernel `00ecb6`
+- [x] Upgrade working kernel with Beam Search (beams=5)
+- [x] Upgrade working kernel with Lexicon post-processing
+- [x] Push V2.0 SOTA upgrade to Kaggle
+
+# Heart Disease - Tactics Research
+
+- [/] Implement V10.14 SOTA Upgrade
+    - [/] Add `scrub_flipped_labels` logic
+    - [/] Implement Gaussian Periodic Embeddings
+    - [/] Update interactions (remove rank mults)
+    - [ ] Run 10-fold CV & Validate OOF
+- [ ] Push V10.14 to Kaggle
+
+# Reviewing Heart Pipeline V10.13 Fixes
+
+
+
+- [x] Check Bug #1 fix: CatBoost using fold-specific `X_ho` and `X_te` with TE columns
+- [x] Check Bug #2 fix: Pseudo-Label logic preferring higher holdout AUC over raw count
+- [x] Check Bug #3 fix: Mutual Information threshold changed (e.g., from 0.001 to 0.005+)
+- [x] Check Bug #4 fix: Logistic Regression meta-learner includes C=0.1
+- [x] Check Bug #5 fix: Blend weights are dynamically optimized or improved

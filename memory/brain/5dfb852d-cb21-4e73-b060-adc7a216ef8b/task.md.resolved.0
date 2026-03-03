@@ -1,0 +1,28 @@
+# Task: Fix LLM Agent Ecosystem (Usisivač + Boardroom + JudgeGuard)
+
+## A. Usisivač — llm_vetoboard_review.py
+- [ ] Fix `genai` import guard (crash if package missing but enabled=True)
+- [ ] Fix broken `from config import load_json_safe` — use direct JSON load
+- [ ] Fix relative path `../../trinity_config.json` → absolute PROJECT_ROOT
+- [ ] Fix key mismatch: `file_analysis.get("file_path")` → `"path"`
+- [ ] Add content length limit for LLM prompt
+
+## B. Usisivač — review.py
+- [ ] Change default categories to exclude `vetoboard` (make opt-in)
+
+## C. JudgeGuard — judge_guard.py
+- [ ] Use absolute path for Usisivac subprocess call
+- [ ] Parse JSON output instead of fragile stdout string matching
+
+## D. Boardroom — boardroom_advisor.py
+- [ ] Use `boardroom_enabled` config key instead of `vetoboard_enabled`
+
+## E. Configuration — trinity_config.json
+- [ ] Add `boardroom_enabled: true` to `llm_agents` block
+
+## F. Verification
+- [ ] Syntax check all modified files
+- [ ] Run existing [tests/test_usisivac_security.py](file:///home/kizabgd/Desktop/new-challenge/tests/test_usisivac_security.py)
+- [ ] Run Usisivac review on a sample file (non-vetoboard categories)
+- [ ] Run `judge_guard.py --no-verify` smoke test
+- [ ] Create `tests/test_llm_agents.py` integration test

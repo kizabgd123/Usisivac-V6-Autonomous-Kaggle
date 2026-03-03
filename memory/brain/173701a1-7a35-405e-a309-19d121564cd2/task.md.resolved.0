@@ -1,0 +1,25 @@
+# GEMINI.md Consolidation
+
+## Phase 1: Domain Registries
+- [ ] Create `tactic_registries/` directory
+- [ ] Create `tactic_registries/heart_disease.md` (rules 30-44 + breakthroughs)
+- [ ] Create `tactic_registries/competition_tracker.md`
+
+## Phase 2: Write GEMINI.md v4.0
+- [ ] Write new unified GEMINI.md (~150 lines, imperative format)
+
+## Phase 3: Archive Absorbed Files
+- [ ] Archive [GOVERNANCE.md](file:///home/kizabgd/Desktop/Istrazivanje/GOVERNANCE.md) → `.legacy/`
+- [ ] Archive [MASTER_WORKFLOW_PROTOCOL.md](file:///home/kizabgd/Desktop/Istrazivanje/MASTER_WORKFLOW_PROTOCOL.md) → `.legacy/`
+- [ ] Archive [.agent/rules/MASTER_ORCHESTRATION.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/MASTER_ORCHESTRATION.md) → `.legacy/`
+- [ ] Archive [.agent/rules/product_constitution.md](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/product_constitution.md) → `.legacy/`
+- [ ] Delete root [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/Istrazivanje/ORCHESTRATION_RULES.json) (stale duplicate)
+
+## Phase 4: Unify .agent/ and .agents/
+- [ ] Migrate unique workflows from `.agents/` → `.agent/`
+- [ ] Clean `.agents/` directory
+
+## Phase 5: Verification
+- [ ] Cross-reference check (no scripts reference archived files)
+- [ ] Content audit (all 50 rules accounted for)
+- [ ] Notify user

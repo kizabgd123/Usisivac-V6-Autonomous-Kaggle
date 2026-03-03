@@ -1,0 +1,31 @@
+# Implementation Plan: Heart Disease Kaggle CPU Pipeline (v3.3 Elite Recovery)
+
+The goal is to refine the last Heart Disease attempt by incorporating the "proven" advantages of the `Recovery` notebook (original data merge, golden features) while fixing flaws in the `Elite Breach` notebook (ST_Slope direction) and adapting everything for CPU-only execution on Kaggle.
+
+## Proposed Changes
+
+### [Component] Data Pipeline
+
+#### [MODIFY] [heart_disease/kaggle_push_cpu/heart-disease-s6e2-elite-breach-v32-cpu.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/kaggle_push_cpu/heart-disease-s6e2-elite-breach-v32-cpu.ipynb)
+
+- **Original Data Merging**: Integrate [Heart_disease_statlog.csv](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/original_data/Heart_disease_statlog.csv) into the training set (ensuring correct column mapping).
+- **Corrected Features**:
+    - **Fixed Ischemic Burden**: Ensure `ST_Slope` interaction accounts for clinical risk (Slope 1=Up, 2=Flat, 3=Down).
+    - **Golden Features**: Include `Age * MaxHR`, `BP * Age`, and `ST * Age`.
+    - **MICE Imputation**: Retain medical-aware imputation for missing cholesterol (0 values).
+- **CPU Model Optimization**:
+    - Set `XGBoost` `tree_method='hist'` and `device='cpu'`.
+    - Set `LightGBM` `device='cpu'`.
+    - Set `CatBoost` `task_type='CPU'`.
+    - Increase Diversity: Keep XGB + LGBM + CatBoost, but maybe add a CPU-friendly `HistGradientBoostingClassifier`.
+- **Ensemble Strategy**: Use Rank Blending with Power Calibration (proven to be more stable than weights for this competition).
+
+## Verification Plan
+
+### Automated Tests
+- **Pre-flight Check**: Run the first 2 folds locally to ensure no OOM or device errors.
+- **Validation Score**: Verify that the local OOF AUC is > 0.9535.
+- **Kaggle Metadata**: Verify [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/kernel-metadata.json) is correctly set to `enable_gpu: false`.
+
+### Manual Verification
+- **Kaggle Push**: Run `kaggle kernels push -p heart_disease/kaggle_push_cpu` and monitor the Kaggle website for successful completion.

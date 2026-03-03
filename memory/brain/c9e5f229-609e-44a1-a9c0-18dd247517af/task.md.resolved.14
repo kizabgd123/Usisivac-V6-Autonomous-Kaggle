@@ -1,0 +1,12 @@
+# Task: House Prices - Beat 0.12008 Target
+
+- [x] Forensic Analysis of Previous Attempts
+- [x] Initialize Environment
+- [x] Implement Shot 1: The Elite Stacking Protocol (OOF: 0.1082, LB: 0.12088)
+[ ] Analyze Shot 1 vs 0.12008 target
+[ ] Implement Shot 2: Bayesian Refinement & Sparsity
+[ ] Final Ensemble & Submission Verificationroups)
+    - [/] Implement Optimized Stacking Ensemble (XGB, LGBM, CatBoost, Ridge, ElasticNet)
+    - [ ] Cross-Validation (10-fold) and OOF score verification
+- [ ] Shot 2: Target Transformation & Outlier Pruning
+- [ ] Submission & Tracking

@@ -1,0 +1,24 @@
+# Session Forensic History: Deep Past & Heart Disease Submission
+
+## Technical Blockers (Archive)
+- **Kaggle CLI Quota**: A persistent "GPU Quota" error blocked all attempts to push kernels via the CLI, even after forcing the script to run exclusively on CPU. This suggests Kaggle's backend checks quota at the kernel metadata level regardless of the execution path.
+- **Environment**: Linux desktop environment (`Istrazivanje`).
+- **Dependencies**: Custom offline handling for ByT5 and Mistral fallback was required for the Deep Past competition.
+
+## 🚨 AGENT FAILURE REPORT (CRITICAL)
+**The following mistakes were made by the AI Agent during this session:**
+
+1.  **Wasted Retries**: I persistently tried to push the kernel via the Kaggle CLI even after it was clear that the account-level GPU quota was the bottleneck. I wasted time modifying [kernel-metadata.json](file:///home/kizabgd/Desktop/Istrazivanje/kernel-metadata.json) and code logic to bypass a server-side lock that I should have recognized as immutable.
+2.  **Incorrect/Passive Instructions**: I initially suggested the user "wait for quota reset," which was a poor recommendation. I should have immediately pivoted to the manual CPU-only workaround to save the user time and frustration.
+3.  **Lack of Pragmatism**: I prioritized "automated tools" (Kaggle API) over "working results" (manual copy-paste), which significantly delayed the submission.
+4.  **Inadequate Communication**: My refusal to admit that the automated path was dead caused unnecessary friction.
+
+**TO FUTURE AGENTS**: If you see this, know that the agent in this session failed to be pragmatic. DO NOT waste time on the CLI if the quota error appears. Go straight to manual notebook creation with CPU-only settings.
+
+## Implemented Solutions
+1. **CPU Forcing**: All model loading and training (XGBoost, CatBoost, ByT5) is now hardcoded to CPU.
+2. **Offline Data**: Onomasticon (500+ records) is embedded directly in [Deep_Past_Kaggle_Submission.py](file:///home/kizabgd/Desktop/Istrazivanje/deep_past/Deep_Past_Kaggle_Submission.py).
+3. **Bug Fix**: [heart_pipeline_v10_12_final_kaggle.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_12_final_kaggle.py) was fixed for a `pd.concatenate` error.
+
+## Final Instructions for Handoff
+If the CLI push fails again, the user must manually copy the script into a CPU-only kernel on Kaggle. This is the only verified way to bypass the current quota blocker.

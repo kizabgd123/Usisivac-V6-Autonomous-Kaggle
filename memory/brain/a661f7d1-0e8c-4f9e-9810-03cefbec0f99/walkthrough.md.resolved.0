@@ -1,0 +1,34 @@
+# Bidding Predictions for Construction - Mission Walkthrough
+
+## 📊 Summary of Results
+- **Target Metric**: RMSLE
+- **Baseline (v12 Overdrive)**: 0.3981
+- **v22 Sovereign (Breakdown)**: 1.2235 (Failed due to inflation-adjustment misalignment)
+- **v23 Omega (Final)**: **0.2591 (Fold 1)** -> Estimated Final OOF ~0.26x
+- **Time Elapsed**: 1h 35m (25m remaining)
+
+## 🛠️ Key Technical Interventions
+
+### 1. The Scaling Pivot (v22 -> v23)
+The v22 implementation attempted to adjust all historical bids to 2018 prices using an inflation map. However, the `total_bid` target in [train_summary.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/train_summary.csv) represents actual historical currency units. This discrepancy caused the model to lose the connection between feature scales and the target. Reverting to raw item medians in `v23 Omega` restored the predictive power.
+
+### 2. Seasonal and Domain Features
+Added seasonal categorical features:
+- `is_winter`: Construction costs and bidding behavior shift significantly during inactive months.
+- `quarter`: Captures fiscal year dynamics.
+- [market_est](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/v23_omega.py#37-61): A leak-free aggregation of item-level medians (K-Fold prior).
+
+### 3. Label Encoder Fix
+Resolved `ValueError: y contains previously unseen labels` by:
+- Handling NaNs in `contractor_id` and other categorical columns as 'MISSING'.
+- Fitting once on the union of train/val/test pools per fold.
+
+## 🧪 Validation and Verification
+- **10-Fold GroupKFold**: Ensures the model generalizes to unseen construction jobs.
+- **Isotonic Calibration**: Calibrates the log-transformed predictions back to the original bid scale.
+- **JudgeGuard Audit**: Verified the final submission file for bounds and format.
+
+## 🚀 Final Submission
+The final model is a 10-fold ensemble of XGBoost and LightGBM models, with OOF calibration.
+
+![CV Progress](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/v23_run.log)

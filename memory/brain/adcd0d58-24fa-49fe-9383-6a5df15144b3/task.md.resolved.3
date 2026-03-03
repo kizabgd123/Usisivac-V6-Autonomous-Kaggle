@@ -1,0 +1,36 @@
+# Digital Workspace Automation — Task Checklist
+
+## Planning
+- [x] Explore existing project structure and dependencies
+- [x] Review [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env), [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py), [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt), `configs/`, `tests/`
+- [x] Write implementation plan and get user approval
+
+## Implementation
+- [x] Create [.env.example](file:///home/kizabgd/Desktop/Istrazivanje/.env.example) with all required keys
+- [x] Create [configs/workspace_automation.yaml](file:///home/kizabgd/Desktop/Istrazivanje/configs/workspace_automation.yaml) (folder paths, API config)
+- [x] Create `workspace_engine/` module
+  - [x] [workspace_engine/__init__.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/__init__.py)
+  - [x] [workspace_engine/api_clients.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/api_clients.py) — Mistral, Grok, OpenRouter, Notion API wrappers
+  - [x] [workspace_engine/file_processor.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/file_processor.py) — Core intelligence routing logic
+  - [x] [workspace_engine/watcher.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/watcher.py) — Watchdog event handler + periodic scan
+  - [x] [workspace_engine/folder_manager.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/folder_manager.py) — Folder setup and file mover
+- [x] Create [workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_main.py) — Entry point (separate from existing [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py))
+- [x] Update [requirements.txt](file:///home/kizabgd/Desktop/Istrazivanje/requirements.txt) with `watchdog` and `pyyaml`
+- [x] Update [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) with Grok/Notion DB placeholders
+
+## Verification
+- [x] Create [tests/test_workspace_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_workspace_engine.py) — Unit tests (offline, no API calls)
+- [x] Run pytest suite
+- [x] Dry-run smoke test with `--dry-run` flag
+- [x] Verify folder structure creation
+
+## Phase 2: Bidding Challenge Recovery [/]
+- [x] Audit `v12`, `v13`, [v14](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v14_trinity_fix.py#108-191) performance and logs
+- [ ] Identify leakage or errors in `v12` (0.39 RMSLE)
+- [ ] Fix [v14](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v14_trinity_fix.py#108-191) to match or beat `v12` performance (Currently 0.92)
+- [ ] Verify `v14_fix` on local CV (10-fold)
+- [ ] Generate submission for Bidding Challenge
+
+## [ABORTED] Titanic Intel Integration
+- [ ] Research existing Titanic & Spaceship Titanic assets (Code + Data)
+- [ ] Implement [titanic](file:///home/kizabgd/Desktop/Istrazivanje/titanic) command in [workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py)

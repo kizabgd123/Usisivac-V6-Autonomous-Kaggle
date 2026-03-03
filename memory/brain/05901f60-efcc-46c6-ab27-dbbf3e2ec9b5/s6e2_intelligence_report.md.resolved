@@ -1,0 +1,153 @@
+# 🏆 S6E2 Intelligence Report — Kaggle API Analysis
+> Generated: 2026-02-26 | Deadline: **2026-02-28 23:59 UTC** (2 days left)
+
+---
+
+## 1. Leaderboard Reality Check
+
+| Rank | Team | LB Score |
+|------|------|----------|
+| 🥇 1 | Pirhosseinlou | **0.95419** |
+| 🥈 2 | Tshithihi | 0.95410 |
+| 🥉 3 | Chris Deotte | 0.95410 |
+| 4 | Ready to Slide | 0.95410 |
+| ~20 | (cluster of 0.95408) | 0.95408 |
+
+> [!IMPORTANT]
+> The true ceiling of this competition is **0.95419** — not 0.964. The "0.964 AUC" from discussions is a **CV AUC on clean data**, which inflates vs. LB due to the Flipped Label Trap (see below). No public submission has ever scored 0.964 on LB.
+
+---
+
+## 2. Your Submission History (Best → Worst)
+
+| Submission | LB Score | Notes |
+|---|---|---|
+| `submission_v7_clean_baseline_0.95563.csv` | **0.95379** ← best | OOF 0.95563, clean no pseudo-label |
+| `submission_improved_0.95574.csv` | 0.95387 | |
+| `submission_colab_0.95573.csv` | 0.95387 | |
+| `submission_v4_medical_0.95574.csv` | 0.95386 | |
+| `submission_v5_calibrated_0.95579.csv` | 0.95385 | |
+| `submission_v6_pseudo_optimized_0.96964.csv` | ❌ 0.95218 | **Pseudo-label leakage** killed LB |
+| `submission_v6_pseudo_0.96953.csv` | ❌ 0.95027 | Same trap |
+
+> [!CAUTION]
+> **Pseudo-labeling = death.** Every pseudo-label attempt dropped your LB. **Never use it on this competition.**
+
+### Gap Analysis
+- Your best LB: `0.95387`
+- Gap to #1: `0.00032` (3.2 basis points)
+- Gap to Top 1%: approximately `0.00020`
+
+---
+
+## 3. ☠️ The Flipped Label Trap (Critical)
+
+The core mechanic of this competition — backed by community research:
+
+| Dataset | Flipped Labels |
+|---|---|
+| Original UCI (303 rows) | **17.41%** |
+| Synthetic train (630,000 rows) | **11.09%** |
+| Test set | ~11% (assumed same) |
+
+**What happens:**
+- Standard models learn the clean clinical logic → CV ≈ 0.953
+- Cleanlab removes flipped samples → CV inflates to 0.96+ but **LB collapses**
+- Test set still HAS flipped samples → your cleaned model is never right on them
+- **The "noise" IS the signal.** Models that adapt to the noise distribution win.
+
+**Correct use of Cleanlab:** Use it to *identify* noisy samples, then **down-weight** them (e.g., `sample_weight=0.3`) instead of dropping. Train on all data.
+
+---
+
+## 4. Top Community Techniques (From Public Notebooks)
+
+### Most-Voted Notebooks & Key Findings
+
+| Notebook | Author | Votes | Key Insight | CV AUC |
+|---|---|---|---|---|
+| Heart\|XGB/LGBM/CatB\|Baseline\|K-Fold | Ákos Pintér | 123 | Baseline ensemble | ~0.953 |
+| Best solo model — RealMLP | OMID | 121 | **RealMLP > tree models solo** | 0.95397 LB |
+| Blend the Blender | DataRegressor | 90 | Blend 5+ diverse OOF subs | 0.95408+ |
+| Trust Your CV: Robust Ensemble | Masaya Kawamata | 66 | Base XGB CV=0.95542, TE=+0.001 | 0.95545 |
+
+### Key Technical Findings from Notebook Code
+
+**From "Trust Your CV" (Masaya Kawamata, 66 votes):**
+```python
+# XGB baseline (numeric features only): CV AUC = 0.95542
+# XGB + treat ALL features as categorical: CV AUC = 0.95545
+# XGB + target encoding on categoricals: CV AUC = 0.95555  ← +0.001 gain
+xgb_params = {
+    'n_estimators': 10000, 'learning_rate': 0.05, 'max_depth': 4,
+    'subsample': 0.8, 'colsample_bytree': 0.8, 'device': 'cuda',
+    'early_stopping_rounds': 100, 'enable_categorical': True
+}
+```
+
+**From "Blend the Blender" (DataRegressor, 90 votes, #4 LB):**
+- Blends 5+ community OOF submissions (not just XGB/LGBM)
+- Sources include RealMLP, CatBoost-only, Logistic Regression, custom MLP
+- Key insight: **diversity of model classes >> hyperparameter tuning**
+
+**From DeepLearnerrr's 0.964 Guide (actually CV, not LB):**
+- Used 25 features selected from 97 engineered features
+- Train set: 17,303 samples (synthetic + UCI original)
+- Techniques: target encoding + clustering patient archetypes + RFECV feature selection
+- **Note:** Their 0.964 is CV AUC on cleaned data. LB score unknown.
+
+---
+
+## 5. What The Top 1% Is Actually Doing
+
+Based on leaderboard clustering (0.9540-0.9542), the winning formula is:
+
+1. **Model diversity** — XGBoost + LGBM + CatBoost + RealMLP (at minimum 3 different model families)
+2. **Target Encoding** — on ALL categorical features, leak-free with CV folds
+3. **UCI Anchor** — append original 303 real samples (you already do this ✅)
+4. **Keep flipped labels** — or down-weight, never drop
+5. **OOF blending** — blend 3+ OOF predictions, possibly from community notebooks
+
+---
+
+## 6. JudgeGuard Log Analysis
+
+Your Kaggle kernel (Tesla P100, 17.1 GB VRAM, PyTorch 2.8+CUDA) ran JudgeGuard v2.0 with:
+- **Model used:** `distilgpt2` (fallback, Gemma-2B not found in `/kaggle/input`)
+- **Accuracy:** 3/4 scenarios (75%) — Feature Engineering was incorrectly BLOCKED by distilgpt2 VetoBoard
+- **Known bug:** `distilgpt2` is too small for nuanced code safety decisions. Real deployment needs Gemma-2B or larger.
+- **Latency:** avg 1.51s/call — acceptable for guard usage
+- **JudgeGuardLite:** Detected 3 errors in demo CSV (missing [id](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_utils.py#169-203), `target`, 1 NaN)
+
+> [!NOTE]
+> The VetoBoard false-positive on Feature Engineering is a known issue with small LLMs. The `distilgpt2` VetoBoard needs a stronger model (Gemma-7B+) or rule-based fallback for code-safety decisions.
+
+---
+
+## 7. Prioritized Action Plan (2 Days Left)
+
+### 🔥 Highest Impact (Do First)
+1. **Add CatBoost** to the ensemble — it handles categoricals natively differently from XGB/LGBM
+2. **Add Target Encoding** — use `sklearn.preprocessing.TargetEncoder` with CV folding
+3. **Down-weight, don't drop** Cleanlab-detected samples (`sample_weight=0.3` for flagged rows)
+
+### 📈 Medium Impact
+4. **Blend community OOF submissions** — try blending your best submission with top public notebooks (RealMLP: 0.95397, CatBoost-only: 0.95390)
+5. **Run with `device='cuda'`** on Kaggle GPU kernel — faster = more n_estimators
+
+### ⚠️ Don't Bother
+- Pseudo-labeling (proven to collapse LB)
+- Adding more medical features beyond RPP + Thal_Pain (adversarial AUC = 0.50 → features are already perfect)
+- Complex stacking with 10+ folds on local machine (too slow without GPU)
+
+---
+
+## 8. Realistic Score Targets
+
+| Strategy | Expected LB Gain | Expected LB Score |
+|---|---|---|
+| Current best | — | 0.95387 |
+| + CatBoost + TE | +0.001 | ~0.9549 |
+| + Down-weight flipped | +0.0002 | ~0.9551 |
+| + Community OOF blend | +0.0001 | ~0.9552 |
+| **Realistic ceiling** | | **~0.9542** (Top 1-5%) |

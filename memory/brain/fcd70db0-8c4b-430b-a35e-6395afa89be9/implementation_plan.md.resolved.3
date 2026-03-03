@@ -1,0 +1,41 @@
+# Spaceship Titanic Baseline (Thesis Phase)
+
+Implementacija robustnog baseline modela za Spaceship Titanic takmičenje, prateći Trinity Protocol v4.0 i smernice iz [PROJEKAT](file:///home/kizabgd/Desktop/kaggle-arena/PROJEKAT) fajle.
+
+## Glavni Ciljevi
+- Postavljanje 3-6-2 Dialectic Thesis (Baseline).
+- Implementacija naprednog inženjeringa karakteristika (FE).
+- Trening GBDT ansambla (XGBoost, LightGBM, CatBoost).
+- Generisanje prve submisije.
+
+## Proposed Changes
+
+### [Component: Data Processing & Feature Engineering]
+
+#### [NEW] [spaceship_titanic_baseline.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_baseline.py)
+Glavni skript za trening i predikciju:
+- **Učitavanje podataka:** Iz [data/train.csv](file:///home/kizabgd/Desktop/kaggle-arena/data/train.csv) i [data/test.csv](file:///home/kizabgd/Desktop/kaggle-arena/data/test.csv).
+- **Pre-processing:**
+    - `Cabin` dekompozicija: `Deck`, `CabinNum`, `Side`.
+    - `Name` dekompozicija: Ekstrakcija prezimena za `FamilySize` i grupisanje.
+    - `TotalSpent`: Sumiranje svih troškova (`RoomService`, `FoodCourt`, `ShoppingMall`, `Spa`, `VRDeck`).
+- **Imputacija:** Logička dedukcija za `HomePlanet`, `CryoSleep`, `Destination`.
+- **Enkodiranje:** Label encoding za kategorijalne varijable.
+
+### [Component: Modeling & Evaluation]
+
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) (Done)
+- Postavljena `target` na `spaceship-titanic`.
+
+#### [MODEL] Ensemble GBDT
+- **XGBoost, LightGBM, CatBoost:** Ansambl tri modela.
+- **Validation:** Stratified 5-Fold Cross-Validation.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/judge_guard.py --action "Training Baseline"`
+- Provera OOF rezultata (očekivano > 0.78).
+
+### Manual Verification
+- Provera submisije na Kaggle-u (`kaggle competitions submit`).

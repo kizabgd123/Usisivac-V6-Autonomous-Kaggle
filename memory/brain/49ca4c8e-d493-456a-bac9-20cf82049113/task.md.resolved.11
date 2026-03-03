@@ -1,0 +1,6 @@
+# Task: Master Orchestration - Phase C (Proactive Defense)
+
+- [x] Phase C: Proactive Defense <!-- id: 0 -->
+    - [x] Analyze [scripts/process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py) structure <!-- id: 1 -->
+    - [x] Implement `pre_flight_check` architecture parsing models <!-- id: 2 -->
+    - [x] Apply Phase-Aware VETO logic (Rule 50) and JSON alerts (Rule 48) <!-- id: 3 -->

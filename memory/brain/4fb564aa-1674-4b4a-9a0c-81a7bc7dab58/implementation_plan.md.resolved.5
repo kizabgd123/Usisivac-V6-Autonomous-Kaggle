@@ -1,0 +1,41 @@
+# Implementation Plan - Trinity v3.15 "Constitutional Reboot"
+
+## Overview
+Perform a full system upgrade to Trinity v3.15 as requested. This involves aligning the `Antigravity Agent` terminal context with the [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) constitution, upgrading core config schemas, and enhancing the [GroqAuditAgent](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py#22-113) (Oracle) with distilled elite tactics.
+
+## Proposed Changes
+
+### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+- Upgrade `version` to `3.15.0`.
+- **Rule 49 Integration**: Move resource limits to `dynamic_scaling` section.
+- **Rule 50 Integration**: Add `phase_aware_diversity` flag and thresholds.
+
+### [MODIFY] [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)
+- Upgrade `version` to `3.15.0`.
+- Update `last_mode` to `trinity_synthesis`.
+
+### [MODIFY] [GROQ_AUDIT.md](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/GROQ_AUDIT.md)
+- Distill and inject elite tactics from [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) (e.g., Tanaka formula, OOF Calibration Rule 32, Ischemic Burden).
+- Acknowledge Rule 45: Separation of Constitution and Tactic Registry.
+
+### [MODIFY] [groq_audit_agent.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py)
+- Update system prompt to prioritize [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) as the supreme law (Meta Command).
+- Add a "Constitutional Mode" toggle or implicit check.
+
+### OpenAI RAG Hub (Elite Research)
+#### [NEW] [openai_file_search_poc.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/openai_file_search_poc.py)
+A module to manage OpenAI Vector Stores.
+
+### Hugging Face Free Hub (Cost-Effective Logic)
+#### [NEW] [hf_free_client.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/hf_free_client.py)
+A client focused on using free Hugging Face Inference API models (Mistral-7B, Zephyr, Falcon) as per the instruction PDF.
+
+## Verification Plan
+
+### Automated Tests
+- `python trinity_tool_registry/openai_file_search_poc.py --test` to verify API connectivity and Vector Store creation.
+- Check [GUARD_LOG.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_LOG.json) for interaction tracking.
+- Test Groq agent for retrieval of Tanaka formula vs Fox formula to verify "Gemini Knowledge".
+
+### Manual Verification
+- Confirm with user that the terminal `275588` now operates with "Grandmaster" logic.

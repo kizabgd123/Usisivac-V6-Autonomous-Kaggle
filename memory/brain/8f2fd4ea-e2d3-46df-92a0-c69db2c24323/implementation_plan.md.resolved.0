@@ -1,0 +1,38 @@
+# Heart Disease S6E2 — V10.14 Implementation Plan
+
+**Objective**: Upgrade the current pipeline to incorporate SOTA tactics identified from top-voted Kaggle discussions, specifically targeting stable 0.954+ AUC and the "Flipped Label" trap.
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Flipped Label Cleaning**: This version will drop or flip specific rows in the training data that are physiologically impossible. This usually improves CV, but may cause slight shifts on the Private Leaderboard.
+> **MLP complexity**: Adding Periodic Embeddings increases memory usage slightly, but is optimized for Colab CPU/GPU.
+
+## Proposed Changes
+
+### Preprocessing & Data Cleaning
+- **[MODIFY] [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py)**
+    - Implement `scrub_flipped_labels`: Remove/Fix rows where `Presence` is marked but `Cholesterol < 120` and `Oldpeak == 0`.
+    - Fix [feats](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_13_grandmaster.py#54-80) function: Remove arbitrary rank multiplications (`PainVes`, `AngHR`).
+    - Change interaction features to categorical groupings where possible.
+
+### Model Architecture (MLP Upgrade)
+- **[MODIFY] [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py)**
+    - Implement a **Gaussian Periodic Embedding** wrapper for numeric features before the MLP layer.
+    - Architecture: `Periodic -> Linear -> ReLU -> Dropout -> Linear`.
+
+### Ensemble & Training Logic
+- **[MODIFY] [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py)**
+    - Increase `N_FOLDS` to 10 for better stability.
+    - Update stacking meta-learner to handle the more complex MLP output.
+    - Optimize blend weights using the new 10-fold OOF predictions.
+
+## Verification Plan
+
+### Automated Tests
+- Run `heart_pipeline_v10_14_sota.py` locally or in Colab.
+- Verify that `submission.csv` contains no `NaNs` and is properly formatted.
+- Compare OOF AUC vs V10.13 (Target: >0.95400).
+
+### Manual Verification
+- Check the number of rows scrubbed by the `flipped_label` logic to ensure we aren't losing significant data signal.

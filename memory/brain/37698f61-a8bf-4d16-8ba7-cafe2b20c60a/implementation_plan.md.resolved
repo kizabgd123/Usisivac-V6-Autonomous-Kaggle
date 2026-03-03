@@ -1,0 +1,39 @@
+# Synthesis Phase: Ensemble & Final Validation
+
+Objective: Combine the three validated boosters using Rank-Based Blending and Multi-Seed Averaging to achieve maximum ROC AUC stability.
+
+## User Review Required
+
+> [!NOTE]
+> Rank Blending is chosen over Stacking because the boosters have highly similar performance on OOF/LB, making them ideal for rank-based consensus.
+
+## Proposed Changes
+
+### [Ensemble & Blending]
+
+#### [NEW] [synthesis_blender.py](file:///home/kizabgd/Desktop/new-challenge/synthesis_blender.py)
+- Load OOF predictions for CatBoost, XGBoost, and LightGBM.
+- Calculate Spearman Rank Correlation to verify diversity.
+- Implement Weighted Rank-Based Averaging.
+- Generate `submission_synthesis_v1.csv`.
+
+#### [NEW] [multi_seed_refiner.py](file:///home/kizabgd/Desktop/new-challenge/multi_seed_refiner.py)
+- Refine the best performing booster (XGB or Cat) with 3 different seeds.
+- Average seeds to reduce variance before final blend.
+
+### [Guardrails & Submission]
+
+#### [NEW] [judge_guard.py](file:///home/kizabgd/Desktop/new-challenge/judge_guard.py)
+- Implement 7-Gate Submit Protocol:
+  1. Intent, 2. Identity, 3. Format, 4. Sanity, 5. Dtype, 6. Value, 7. Risk Gates.
+- Final validation against [trinity_config.json](file:///home/kizabgd/Desktop/new-challenge/trinity_config.json) thresholds.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 synthesis_blender.py --audit` (Correlation check).
+- `python3 judge_guard.py submission_synthesis_v1.csv` (7-Gate check).
+
+### Manual Verification
+- Review Rank Correlation matrix in logs.
+- Final LB submission and OOF vs LB gap check.

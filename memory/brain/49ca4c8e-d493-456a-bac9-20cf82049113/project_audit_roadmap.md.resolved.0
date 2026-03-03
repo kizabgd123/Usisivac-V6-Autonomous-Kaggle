@@ -1,0 +1,28 @@
+# 🛡️ Project Audit & Grandmaster Roadmap
+
+**Date**: 2026-02-27
+**Protocol**: `PROJECT_AUDIT_PROTOCOL`
+
+## 1. Current Workspace & Deliverables
+- **Kaggle S6E2 (Heart Disease)**: Final pipeline secured an Elite score (0.95347). 7-Gate Submit protocol is active and enforced via [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py).
+- **System Hardening**: [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) Constitution is frozen. [kb_orchestrator.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kb_orchestrator.py) and [judge_guard_api.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard_api.py) are active and stable.
+- **Workflow Engines**: `DYNAMIC_EFFECTIVENESS_SCORING` implemented via [scripts/effectiveness_scoring.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/effectiveness_scoring.py) and [workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/workspace_main.py) manages inbox routing.
+
+## 2. Architectural & Technical Debt
+- **Namespace Fragility**: [scripts/ask.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/ask.py) and other utilities fail with `ModuleNotFoundError` unless run with explicit `PYTHONPATH` or `sys.path` injection.
+- **Trigger Disconnect**: The `TRINITY_TRIGGER` protocol specifies running [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) to route the `Inbox`. However, root [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) is a placeholder loop ([run_engine](file:///home/kizabgd/Desktop/Istrazivanje/main.py#4-13)), while the true logic resides in [scripts/workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/workspace_main.py).
+- **Redundant Orchestrators**: Overlap exists between [ask.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/ask.py) and [kb_orchestrator.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kb_orchestrator.py) regarding Notion sync and local KB building.
+
+## 3. Grandmaster-Level Roadmap 🗺️
+
+### Phase A: Ecosystem Consolidation (Next 48 Hours)
+- [ ] **Fix Entrypoints**: Refactor [main.py](file:///home/kizabgd/Desktop/Istrazivanje/main.py) to correctly map to [scripts/workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/workspace_main.py) so that `/TRINITY_TRIGGER` works seamlessly.
+- [ ] **Unify CLI**: Combine [trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity.py) CLI logic with [ask.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/ask.py) and [kb_orchestrator.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/kb_orchestrator.py) to have a single, universal `make` command suite without module errors.
+- [ ] **Hardlink Workflows**: Update `/agents/workflows/TRINITY_TRIGGER.md` to reflect accurate folder paths (e.g., `/home/kizabgd/Desktop/Inbox` vs `~/Kiza/desktop/Inbox`).
+
+### Phase B: Advanced Intelligence Harvesting (Week 1)
+- [ ] **Activate Kaggle Harvester**: Fully deploy the "Quad-Core" `wokretiii-` protocol. Implement the `strategy_resolver.py` to fetch competing parameters and Bayesian update them via `DYNAMIC_EFFECTIVENESS_SCORING`.
+- [ ] **Tool Registry Extraction**: Extract "Golden Recipe" features (Tanaka HRmax, Ischemic Burden) into `trinity_tool_registry/` as pure, domain-agnostic classes (Rule 12).
+
+### Phase C: Proactive Defense (Week 2)
+- [ ] **Pre-flight Diversification**: Enforce Rule 50. `ProcessGuard` must block execution natively if [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json) indicates an ensemble with correlation > 0.95 before training begins.

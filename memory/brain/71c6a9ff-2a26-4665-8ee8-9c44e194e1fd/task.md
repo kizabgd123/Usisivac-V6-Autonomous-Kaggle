@@ -1,0 +1,25 @@
+# Heart Disease Elite Breach v3.2 — Task Tracker
+
+**Goal:** Push AUC from 0.95339 → 0.9575+ (Top 3 target)
+
+## Planning
+- [x] Create implementation plan for Elite Breach v3.2
+- [x] Get user approval for the plan
+
+## Implementation
+- [/] Create `heart_top5_v3_2_elite.py` with all improvements
+  - [/] MICE imputation for zero-cholesterol records
+  - [ ] ST_Slope ordinal encoding + ischemic_burden fix
+  - [ ] Age < 40 cohort surgical treatment
+  - [ ] XGBoost DART booster implementation
+  - [ ] LightGBM tuning (fewer leaves, more regularization)
+  - [ ] CatBoost with l2_leaf_reg and optimized depth
+  - [ ] Multi-seed averaging (3 seeds)
+  - [ ] Rank-based ensemble + Nelder-Mead weight optimization
+  - [ ] Feature cleanup (remove redundancy)
+
+## Verification
+- [ ] Run script and check OOF AUC (target: > 0.9555)
+- [ ] Verify adversarial validation < 0.52
+- [ ] Generate submission file
+- [ ] Final walkthrough and report

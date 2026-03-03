@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the Alcohol Withdrawal Triage Model v2.0 development. Verified synthetic dataset generation (30k rows), feature engineering (Periodic Embeddings + ACS/FSRS scores), text processing (LSA), and the main stacking pipeline. Includes performance metrics from smoke tests and proof of artifact generation.",
+  "updatedAt": "2026-02-24T18:04:05.797041398Z"
+}

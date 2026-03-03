@@ -1,0 +1,29 @@
+# GEMINI.md Standardization Implementation Plan
+
+## Project Overview
+The goal is to update the [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) protocol to transition from a descriptive architecture to a strict operational structure. This will prevent agent hallucinations and ensure consistent execution across the Trinity Ecosystem.
+
+## User Review Required
+> [!IMPORTANT]
+> The protocol will now mandate a `manifest.json` for every project and a centralized CLI/Makefile interface. This is a significant shift towards declarative automation.
+
+## Proposed Changes
+
+### [MODIFY] [GEMINI.md](file:///home/kizabgd/Desktop/PPPPPPPPPPPPPPPPPPPPP/GEMINI.md)
+
+1. **Building and Running**:
+   - Standardize all project execution under a `Makefile` or `Trinity CLI`.
+   - Introduce `manifest.json` for declarative execution order (e.g., `eda.py` -> `train.py`).
+2. **Autonomous Governance**:
+   - Upgrade `JudgeGuard` to `ProcessGuard`.
+   - Implement continuous validation of agent logic (e.g., checking model correlation before ensembling).
+3. **Tool Registry & Modularization**:
+   - Decouple advanced techniques (Tabular RAG, FICE) from specific domains.
+   - Establish a `Tool Registry` for plug-and-play modules.
+4. **Operational Rigidity**:
+   - Explicitly define the transition from "descriptive" to "operational" to eliminate ambiguity for AI agents.
+
+## Verification Plan
+### Manual Verification
+- Review the updated [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) to ensure accurately reflects the transcript's requirements.
+- Verify that the operational requirements (Makefile, manifest.json) are clearly explained.

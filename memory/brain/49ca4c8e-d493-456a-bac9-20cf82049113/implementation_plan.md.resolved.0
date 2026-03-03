@@ -1,0 +1,54 @@
+# Workspace Analysis: Trinity Protocol & Heart Disease S6E2
+
+This document provides a detailed analysis of the recent changes in the `judge-guard-core` workspace, with a focus on [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) and the methodology for running the "investigator" protocol.
+
+## Recent Changes Summary
+
+### 1. ⚛️ Trinity Protocol & GEMINI.md
+- **Status**: Stable / Frozen (`kaggle-s6e2-final-0.95347`).
+- **Protocols**: 
+    - **3-6-2 Dialectic**: 3 Layers, 6 Steps (Research -> Hardening), 2 Outcomes.
+    - **7-Gate Submit**: Mandatory validation before Kaggle submission (Implemented in [scripts/judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/judge_guard.py)).
+    - **Rule 27 & 48**: Memory integrity (Parquet + hashing) and alert standardization.
+
+### 2. 🧪 Heart Disease Core (S6E2)
+- **Top Score**: **0.95347** on Public LB.
+- **Key File**: [Heart_Disease_S6E2_Top3_KillShot.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Top3_KillShot.py).
+- **Techniques**: Tanaka HRmax formula, Rank-Averaging, interaction engineering (Oldpeak x Exercise_Angina).
+
+### 3. 🛡️ System Infrastructure
+- **JudgeGuard API**: Refactored to FastAPI `lifespan` for robust initialization (scripts/judge_guard_api.py).
+- **KB Orchestrator**: Automated syncing of Notion KB, Kaggle artifacts, and local [task.md](file:///home/kizabgd/.gemini/antigravity/brain/49ca4c8e-d493-456a-bac9-20cf82049113/task.md) files into [trinity_kb.db](file:///home/kizabgd/Desktop/Istrazivanje/trinity_kb.db).
+
+---
+
+## Codebase Investigator: Execution Guide
+
+The "Codebase Investigator" persona or agent corresponds to the **Full Workspace Audit and Orchestration Flow**.
+
+### How to Run:
+To initiate a full investigation and audit of the current project state (as per the protocol), you should use the following commands:
+
+1.  **Full Logic Audit (JudgeGuard)**:
+    ```bash
+    python3 scripts/judge_guard.py
+    ```
+    *Checks for policy violations, performance regressions, and structural debt.*
+
+2.  **Knowledge Base Re-Indexing**:
+    ```bash
+    python3 scripts/kb_orchestrator.py
+    ```
+    *Syncs local development logs and Notion insights into institutional memory.*
+
+3.  **Project Health Check**:
+    ```bash
+    python3 scripts/trinity.py info
+    ```
+    *Displays manifest status and system integrity metrics.*
+
+---
+
+## Recommendations
+- **Avoid Overfitting**: GEMINI.md Line 139 (OOF Calibration Rule) warns against OOF > 0.960.
+- **AIMO Optimization**: Ensure [trinity_aimo.db](file:///home/kizabgd/Desktop/Istrazivanje/trinity_aimo.db) follows the hardened schema defined in [scripts/restart_aimo.sh](file:///home/kizabgd/Desktop/Istrazivanje/scripts/restart_aimo.sh).

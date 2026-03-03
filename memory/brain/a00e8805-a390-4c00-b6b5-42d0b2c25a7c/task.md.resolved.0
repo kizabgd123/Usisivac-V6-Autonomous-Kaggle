@@ -1,0 +1,7 @@
+# Task: Fix Gemini CLI Startup
+
+- [ ] Investigate cause of missing `.gemini` directory [/]
+- [ ] Check [GEMINI.md](file:///home/kizabgd/Desktop/new-challenge/GEMINI.md) for setup instructions [ ]
+- [ ] Verify `gemini` command source (binary/alias) [ ]
+- [ ] Restore/Create necessary directory structure [ ]
+- [ ] Verify CLI startup [ ]

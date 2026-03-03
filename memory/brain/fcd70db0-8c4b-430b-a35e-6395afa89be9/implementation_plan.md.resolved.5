@@ -1,0 +1,37 @@
+# Spaceship Titanic - Synthesis Phase (Ensemble & Stacking)
+
+Ovaj plan ima za cilj probijanje "plafona" kroz stabilizaciju ansambla, grupnu inteligenciju i pseudo-labeling.
+
+## Proposed Changes
+
+### [Component: Advanced Group Intelligence]
+
+#### [NEW] [spaceship_titanic_synthesis.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/spaceship_titanic_synthesis.py)
+Implementacija finalnog cevovoda:
+- **Group Survival Rate (Target Encoding):**
+    - Izračunavanje stope preživljavanja unutar `GroupId` (OOF pristup).
+    - Mapiranje "zlatnog signala" preživljavanja grupe na test set.
+- **Refined Binning:**
+    - Binovanje `Age` u kvantile.
+    - `log1p` transformacija za sve troškove.
+
+### [Component: Model Synthesis & Pseudo-labeling]
+
+#### [STRATEGY] Pseudo-labeling
+- Korišćenje trenutnog najboljeg ansambla za predikciju testa.
+- Inkorporacija samo "high-confidence" primera (prob > 0.98 ili < 0.02) u trening set.
+
+#### [MODEL] Meta-Stacking
+- Korišćenje **Lasso Regresije** kao meta-modela nad OOF predikcijama osnovnih modela (XGB, LGBM, CAT, TabNet).
+- Lasso će automatski penalizovati (nulisati) modele koji unose šum.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 scripts/judge_guard.py --action "Training Synthesis"`
+- Validacija: OOF vs LB stabilnost (< 0.005 razlika).
+- Ciljna metrika: **Accuracy > 0.81**.
+
+### Manual Verification
+- Review SHAP analiza za nove grupne karakteristike.
+- Finalna submisija (`trinity_killshot`).

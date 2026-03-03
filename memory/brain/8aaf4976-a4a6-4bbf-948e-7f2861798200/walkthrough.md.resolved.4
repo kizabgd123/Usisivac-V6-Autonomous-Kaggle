@@ -1,0 +1,131 @@
+# 🔬 Deep Retrospective: S6E2 Heart Disease — Full Analysis
+
+> **Period**: Feb 21–27, 2026 | **Submissions**: 40+ | **Best Public LB**: 0.95387
+
+---
+
+## Submission Scoreboard (Top 10 All-Time)
+
+| # | Submission | LB Score | OOF Score | Gap | Verdict |
+|---|-----------|----------|-----------|-----|---------|
+| 🥇 | `colab_0.95573` (Feb 24) | **0.95387** | 0.95573 | 0.002 | ✅ BEST |
+| 🥇 | `colab_0.95574` (Feb 24) | **0.95387** | 0.95574 | 0.002 | ✅ TIED |
+| 🥇 | `submission_0.95574` (Feb 24) | **0.95387** | 0.95574 | 0.002 | ✅ TIED |
+| 🥇 | `colab_0.95573 (1)` (Feb 25) | **0.95387** | 0.95573 | 0.002 | ✅ TIED |
+| 5 | `improved_0.95574` (Feb 25) | 0.95386 | 0.95574 | 0.002 | ✅ Solid |
+| 6 | `v5_calibrated_0.95579` (Feb 26) | 0.95385 | 0.95579 | 0.002 | ✅ Solid |
+| 7 | `clean_baseline_v7` (Feb 26) | 0.95379 | 0.95563 | 0.002 | ✅ Solid |
+| 8 | `v3_3_trinity` (Feb 26) | 0.95373 | 0.95563 | 0.002 | ✅ OK |
+| 9 | `killshot_v3` (Feb 27) | 0.95316 | **0.97734** | **0.024** | ⚠️ Overfitting |
+| 10 | `killshot_v4_e2e` (Feb 27) | **0.95011** | 0.95223 | 0.002 | ❌ Underfitting |
+
+---
+
+## OOF vs LB Gap Analysis
+
+> [!CAUTION]
+> **Higher OOF does NOT mean higher LB.** Our data proves the opposite.
+
+```mermaid
+quadrantChart
+    title OOF Score vs LB Score
+    x-axis "Low OOF" --> "High OOF"
+    y-axis "Low LB" --> "High LB"
+    quadrant-1 "🎯 Sweet Spot"
+    quadrant-2 "❌ Underfitting"
+    quadrant-3 "💀 Bad"
+    quadrant-4 "⚠️ Overfitting"
+    "Simple Colab": [0.45, 0.95]
+    "Killshot v3": [0.90, 0.55]
+    "Killshot v4": [0.35, 0.10]
+    "Pseudo v6": [0.75, 0.30]
+```
+
+| Scenario | OOF | LB | Gap | Diagnosis |
+|----------|-----|-----|-----|-----------|
+| Simple ensemble | 0.956 | **0.954** | 0.002 | ✅ Optimal generalization |
+| Killshot v3 (denoising) | **0.977** | 0.953 | 0.024 | ⚠️ Massive overfitting |
+| v10.5 (pseudo) | 0.969 | 0.953 | 0.017 | ⚠️ Overfitting |
+| Killshot v4 (subspacing) | 0.952 | 0.950 | 0.002 | ❌ Low ceiling |
+
+---
+
+## Technique Autopsy
+
+### ✅ What WORKS
+
+| Technique | Evidence | Impact |
+|-----------|----------|--------|
+| XGB + LGBM + CAT ensemble | All top 4 scores use it | Core recipe |
+| Simple mean/rank averaging | 0.95387 multiple times | Reliable |
+| 5-fold Stratified CV | Consistent gap ~0.002 | Standard |
+| Basic feature ratios | RPP, Chol/Age | +0.001 |
+| All features → all models | Best approach | Critical |
+
+### ❌ What HURTS
+
+| Technique | Evidence | Impact |
+|-----------|----------|--------|
+| **Pseudo-labeling** | 0.949–0.952 (3 attempts) | **−0.003 to −0.005** |
+| **Feature subspacing** | V4 scored 0.950 | **−0.004** |
+| **Cleanlab denoising** | OOF 0.977 but LB 0.953 | **Fake improvement** |
+| **Differential Evolution weights** | Overfits to OOF | **−0.001** |
+| **Complex stacking** | GPU_E_stacking: 0.95320 | **−0.001** |
+
+---
+
+## Protocol Compliance Report
+
+### ProcessGuard Log Summary
+- **3 VETO events**: Model correlation 0.999 detected (V3 ensemble) — all models were near-identical
+- **3 WARNING events**: V4 metric regression detected correctly (OOF 0.952 < baseline 0.977)
+
+> [!IMPORTANT]
+> ProcessGuard is working PERFECTLY. It correctly identified that V3's "high OOF" was from redundant (corr=0.999) models, and that V4 regressed vs baseline. The protocol is sound — we just need to listen to it.
+
+### MemoryIntegrity (Rule 27)
+- ✅ Thesis/Synthesis milestones committed with SHA-256 hashes
+- ✅ Meta-learner coefficients archived: Clinical (4.94), Stress (4.16), Bio (1.84)
+- ✅ Atomic saves verified for all outputs
+
+---
+
+## Honest Verdict
+
+> [!WARNING]
+> **We have been going BACKWARDS.** Our most complex, time-intensive approaches (Killshot v3, v4) scored LOWER than our simplest submission from Day 2.
+
+### Score Timeline
+```
+Day 1 (Feb 21-23): 0.953 → Baseline established
+Day 2 (Feb 24):    0.954 → 🏆 PEAK (simple ensemble)
+Day 3 (Feb 25):    0.949-0.954 → Pseudo-labeling experiments (mostly worse)
+Day 4 (Feb 26-27): 0.950-0.953 → Trinity hardening (no improvement)
+```
+
+### Root Cause
+This is a **Playground Series synthetic dataset**. The noise ceiling is around **0.954 Public LB**. No amount of advanced feature engineering, denoising, or stacking will break through it because:
+1. The data is generated, not real — advanced domain features have limited value
+2. The signal-to-noise ratio has a hard cap
+3. Complex models overfit to synthetic artifacts
+
+---
+
+## Strategic Recommendations
+
+### 🔴 STOP Immediately
+1. ~~Pseudo-labeling~~ — Proven harmful (3 failed attempts)
+2. ~~Feature subspacing~~ — Reduces model capacity
+3. ~~Cleanlab denoising~~ — Creates fake OOF gains
+4. ~~Chasing OOF > 0.960~~ — It's overfitting, not improvement
+
+### 🟢 DO Next
+1. **Multi-seed averaging**: Blend 5-10 seeds of the best simple ensemble
+2. **Rank averaging**: Convert predictions to ranks before blending
+3. **Target encoding with OOF scheme**: Careful leave-one-out encoding
+4. **Submit the 0.95387 recipe again** as the "anchor" baseline
+
+### 🟡 Consider
+1. Accept that 0.954 may be near the ceiling for this competition
+2. Focus protocol energy on the NEXT competition instead
+3. Use this as a case study for "when to stop iterating"

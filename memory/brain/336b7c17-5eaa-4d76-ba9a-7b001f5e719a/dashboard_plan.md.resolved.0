@@ -1,0 +1,46 @@
+# Visual Trinity Dashboard (Phase 3): Implementation Plan
+
+Construct a centralized visual command center to monitor the Trinity Protocol's health, strategy intelligence, and constitutional compliance.
+
+## Goal
+Implement a web-based dashboard that provides real-time insights into the Quad-Core Harvester's discoveries, Boardroom session verdicts, and ProcessGuard alerts.
+
+## Proposed Changes
+
+### Backend: Command Center API
+#### [NEW] [dashboard_api.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/dashboard_api.py)
+- **Data Provider**: Implement a simple Python server (using `http.server` or `Flask` if available) to expose:
+    - `/api/stats`: Knowledge Base counts and RAG status.
+    - `/api/leaderboard`: Top 10 parameters by effectiveness score.
+    - `/api/boardroom`: Recent session history and VETO reasons.
+    - `/api/alerts`: Latest [GUARD_ALERT.json](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_ALERT.json) logs.
+
+### Frontend: Trinity UI
+#### [NEW] [index.html](file:///home/kizabgd/Desktop/Istrazivanje/ui/index.html)
+- **Design Strategy**: Glassmorphism aesthetic, dark mode, high-contrast indicators.
+- **Components**:
+    - **Header**: System status and current Protocol Phase.
+    - **Stats Grid**: RDB vs RAG sync status.
+    - **Boardroom Feed**: Real-time log of consensus audits.
+    - **Leaderboard**: Visual ranking of harvested parameters.
+
+#### [NEW] [style.css](file:///home/kizabgd/Desktop/Istrazivanje/ui/style.css)
+- Implement CSS variables for premium color palettes (Cobalt, Neon Green, Veto Red).
+- Responsive layout using Grid/Flexbox.
+
+#### [NEW] [app.js](file:///home/kizabgd/Desktop/Istrazivanje/ui/app.js)
+- Dynamic fetching and DOM injection.
+- "Refresh" mechanism to keep metrics current.
+
+## Integration Plan
+- Update the root [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile) to include a `make dashboard` command.
+- Ensure the dashboard runs on a non-conflicting port (e.g., 8050).
+
+## Verification Plan
+### Automated Tests
+- Test API endpoints using `curl` or `requests`.
+- Verify UI rendering in a headless or manual browser check.
+
+### Manual Verification
+- Launch the dashboard and verify that recent harvesting results are visible.
+- Simulate a VETO event and check if the Boardroom feed updates.

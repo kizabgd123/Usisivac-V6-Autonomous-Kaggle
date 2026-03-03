@@ -1,0 +1,43 @@
+# 🏗️ Implementation Plan: Bidding Resurrection (Quad-Core)
+
+Recover from the v16 regression by establishing a robust agentic infrastructure and a verified forensic analysis.
+
+## Proposed Changes
+
+### ⚖️ Core 4: The Law (Orchestration)
+#### [NEW] .agent/ (directory)
+Instantiate the project-level orchestration structure:
+- `.agent/rules/`
+- `.agent/workflows/`
+- `.agent/skills/`
+
+#### [NEW] WORK_LOG.md
+Continuous activity tracking following the `MASTER_ORCHESTRATION.md` template.
+
+---
+
+### 🧠 Core 1: The Brain (Agentic Dashboard)
+#### [MODIFY] [workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py)
+Transform into **Dashboard 3.0 (Agentic Mode)**:
+- **Tool Definition:** JSON schema for `bash`, `read_file`, `write_file`, `list_dir`.
+- **Tool Loop:** Middleware to detect Mistral tool calls, ask for confirmation, execute, and return results to the AI.
+
+---
+
+### 🛡️ Core 3: The Shield (Integrity)
+#### [NEW] [judge_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/judge_guard.py)
+Project-local instantiation of the Shield.
+- Pre-action checks for dataset row counts (10,621).
+- Veto logic for regression signatures.
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- `pytest tests/test_dashboard_tools.py` — Verify tool-loop parsing and safety.
+- `python3 construction_bidding/judge_guard.py --status` — Verify Shield status.
+
+### Manual Verification
+- Test `chat` mode in dashboard by asking "Šta piše u BUG_LOG.md — pročitaj fajl direktno".
+- Verify that Mistral can now "see" file contents via tools.

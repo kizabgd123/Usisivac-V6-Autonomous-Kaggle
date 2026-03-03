@@ -1,0 +1,77 @@
+# 🔬 Final Analysis: Golden Recipe Results
+
+> **Mission**: Multi-Seed Rank Averaging | **OOF**: 0.95506 | **Public LB**: 0.95305
+
+---
+
+## Results Summary
+
+| Metric | Golden Recipe | Best All-Time | Delta |
+|--------|--------------|---------------|-------|
+| **Public LB** | 0.95305 | **0.95387** | −0.00082 |
+| OOF AUC | 0.95506 | 0.95574 | −0.00068 |
+| OOF-LB Gap | 0.002 | 0.002 | Same |
+| Models Trained | 75 | 15 | +60 wasted |
+
+> [!CAUTION]
+> **75 models produced a WORSE score than 15 models.** Multi-seed averaging did NOT help.
+
+---
+
+## Why It Failed: Redundancy Ceiling
+
+ProcessGuard detected the root cause:
+```
+VETO: Correlation between XGB and LGBM = 0.9997
+VETO: Correlation between XGB and CAT = 0.9991
+VETO: Correlation between LGBM and CAT = 0.9991
+```
+
+**All 3 models are making nearly identical predictions.** Multi-seed averaging only reduces variance *between* meaningfully different models. When correlation is 0.999, different seeds produce essentially the same model — averaging adds noise, not signal.
+
+---
+
+## Individual Model Audit (15 vectors)
+
+| Seed | XGB | LGBM | CAT |
+|------|-----|------|-----|
+| 42 | 0.95507 | 0.95500 | 0.95478 |
+| 123 | 0.95507 | 0.95499 | 0.95480 |
+| 777 | 0.95505 | 0.95495 | 0.95478 |
+| 2024 | 0.95508 | 0.95500 | 0.95478 |
+| 31337 | 0.95509 | 0.95499 | 0.95479 |
+
+**Variance across seeds**: ~0.00004. This is pure noise — seeds make no meaningful difference.
+
+---
+
+## Definitive Top-5 All-Time Scoreboard
+
+| # | Submission | LB Score | Method |
+|---|-----------|----------|--------|
+| 🥇 | `submission_0.95574` | **0.95387** | Simple XGB+LGBM+CAT mean |
+| 🥈 | `v5_calibrated_0.95579` | 0.95385 | Basic calibrated blend |
+| 🥉 | `clean_baseline_v7` | 0.95379 | Clean ensemble, no tricks |
+| 4 | `restored_best` | 0.95354 | Restored v3 blend |
+| 5 | `killshot_v3` | 0.95316 | Denoising + Triple Blend |
+| ❌ | **Golden Recipe** | **0.95305** | Multi-seed rank averaging |
+
+---
+
+## Strategic Verdict
+
+The competition has a **noise ceiling at ~0.954 Public LB** for this synthetic dataset. Every technique beyond simple XGB+LGBM+CAT mean blending has produced WORSE results:
+
+- ❌ Multi-seed averaging: −0.001 (redundant models)
+- ❌ Rank averaging: No benefit over mean blend
+- ❌ Pseudo-labeling: −0.003 to −0.005
+- ❌ Feature subspacing: −0.004
+- ❌ Denoising: Fake OOF gains
+
+**The winning recipe was discovered on Day 2. Everything after was over-engineering.**
+
+### What Would Actually Help
+To break 0.954, the approach needs to be fundamentally different — not incremental improvements to the same 3 GBDT models. Options:
+1. **Neural networks** with different architectures (TabNet, FT-Transformer)
+2. **External data blending** with real UCI heart disease data
+3. **Accepting 0.954** as our ceiling and moving to the next competition

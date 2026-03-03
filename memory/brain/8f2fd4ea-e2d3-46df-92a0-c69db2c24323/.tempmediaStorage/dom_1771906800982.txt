@@ -1,0 +1,408 @@
+[0] (500,500)<div  />
+	[1] (20,35)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (61,48)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (61,37)<img  />
+	[4] (41,108)<button class='sc-eHqVIu fXRbiY' />
+		[5] (51,108)<span >Create />
+	[6] (72,547)<div class='sc-bjzMPS fqvrks' scrollable='true' />
+		[7] (72,170)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+			[8] (77,170)<div  />
+				[9] (20,170)<div  />
+					[10] (20,170)<div  />
+						[11] (20,170)<span >explore />
+				[12] (50,170)<div  />
+					[13] (50,170)<p >Home />
+		[14] (72,218)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+			[15] (77,218)<div  />
+				[16] (20,218)<div  />
+					[17] (20,218)<div  />
+						[18] (20,218)<span >emoji_events />
+				[19] (65,218)<div  />
+					[20] (65,218)<p >Competitions />
+					[21] (139,218)<div  />
+		[22] (72,266)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+			[23] (77,266)<div  />
+				[24] (20,266)<div  />
+					[25] (20,266)<div  />
+						[26] (20,266)<span >table_chart />
+				[27] (56,266)<div  />
+					[28] (56,266)<p >Datasets />
+		[29] (72,314)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+			[30] (77,314)<div  />
+				[31] (20,314)<div  />
+					[32] (20,314)<div  />
+						[33] (20,314)<span >tenancy />
+				[34] (53,314)<div  />
+					[35] (53,314)<p >Models />
+		[36] (72,362)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+			[37] (77,362)<div  />
+				[38] (20,362)<div  />
+					[39] (20,362)<div  />
+						[40] (20,362)<span >leaderboard />
+				[41] (64,362)<div  />
+					[42] (64,362)<p >Benchmarks />
+		[43] (72,410)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+			[44] (77,410)<div  />
+				[45] (20,410)<div  />
+					[46] (20,410)<div  />
+						[47] (20,410)<span >smart_toy />
+				[48] (63,410)<div  />
+					[49] (63,410)<p >Game Arena />
+		[50] (72,458)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+			[51] (77,458)<div  />
+				[52] (20,458)<div  />
+					[53] (20,458)<div  />
+						[54] (20,458)<span >code />
+				[55] (49,458)<div  />
+					[56] (49,458)<p >Code />
+		[57] (72,507)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+			[58] (77,507)<div  />
+				[59] (20,507)<div  />
+					[60] (20,507)<div  />
+						[61] (20,507)<span >comment />
+				[62] (63,507)<div  />
+					[63] (63,507)<p >Discussions />
+		[64] (72,555)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+			[65] (77,555)<div  />
+				[66] (20,555)<div  />
+					[67] (20,555)<div  />
+						[68] (20,555)<span >school />
+				[69] (49,555)<div  />
+					[70] (49,555)<p >Learn />
+		[71] (72,603)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+			[72] (77,603)<div  />
+				[73] (20,603)<div  />
+					[74] (20,603)<div  />
+						[75] (20,603)<span >expand_more />
+				[76] (48,603)<div  />
+					[77] (48,603)<p >More />
+		[78] (72,669)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+			[79] (77,669)<div  />
+				[80] (20,669)<div  />
+					[81] (20,669)<div  />
+						[82] (20,669)<span >note_alt />
+				[83] (59,669)<div  />
+					[84] (59,669)<p >Your Work />
+		[85] (39,715)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+			[86] (20,715)<span >arrow_drop_down />
+			[87] (51,715)<span >Viewed />
+		[88] (66,759)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+			[89] (70,759)<div  />
+				[90] (20,759)<div  />
+					[91] (20,759)<div  />
+						[92] (20,759)<img  />
+				[93] (80,759)<div  />
+					[94] (82,759)<p >Predicting Heart Disease />
+		[95] (66,802)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+			[96] (70,802)<div  />
+				[97] (20,802)<div  />
+					[98] (20,802)<div  />
+						[99] (20,802)<img  />
+				[100] (80,802)<div  />
+					[101] (82,802)<p >Deep Past Challenge - Translate Akkadian to English />
+		[102] (66,846)<a aria-label='Fork of Fork of Trinity Akkadian SOTA - Off 00ecb6' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/fork-of-fork-of-trinity-akkadian-sota-off-00ecb6' role='link' />
+			[103] (70,846)<div  />
+				[104] (20,846)<div  />
+					[105] (20,846)<div  />
+						[106] (20,846)<img  />
+				[107] (80,846)<div  />
+					[108] (82,846)<p >Fork of Fork of Trinity Akkadian SOTA - Off 00ecb6 />
+		[109] (66,890)<a aria-label='Trinity Akkadian SOTA V2.0 — Beam Search Upgrade' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/trinity-akkadian-sota-v2-0-beam-search-upgrade' role='link' />
+			[110] (70,890)<div  />
+				[111] (20,890)<div  />
+					[112] (20,890)<div  />
+						[113] (20,890)<img  />
+				[114] (80,890)<div  />
+					[115] (82,890)<p >Trinity Akkadian SOTA V2.0 — Beam Search Upgrade />
+		[116] (66,933)<a aria-label='ByT5-Base Akkadian Translator' class='sc-eXVaYZ cPXxFg' href='/datasets/assiaben/byt5-base-akkadian-translator' role='link' />
+			[117] (70,933)<div  />
+				[118] (20,933)<div  />
+					[119] (20,933)<div  />
+						[120] (20,933)<img  />
+				[121] (80,933)<div  />
+					[122] (82,933)<p >ByT5-Base Akkadian Translator />
+		arrow_right
+		Edited
+	[123] (72,965)<button class='sc-iUBWhR dRWpnJ' />
+		[124] (20,970)<div  />
+			[125] (20,968)<span >auto_awesome_motion />
+			[126] (24,952)<div >2 />
+		[127] (73,970)<p >View Active Events />
+	[128] (570,35)<div  />
+		[129] (570,35)<div  />
+			[130] (252,35)<span >search />
+			[131] (584,35)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r8:' placeholder='Search' />
+	[132] (982,35)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[133] (982,35)<div  />
+	[134] (572,535)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Predicting Heart Disease
+		[135] (836,90)<button class='sc-pYNGo cZrOun' role='button' />
+			[136] (836,90)<span >Submit Prediction />
+		[137] (900,90)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[138] (258,135)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/overview' role='tab' />
+			[139] (258,135)<span >Overview />
+		[140] (302,135)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/data' role='tab' />
+			[141] (302,135)<span >Data />
+		[142] (337,135)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/code' role='tab' />
+			[143] (337,135)<span >Code />
+		[144] (377,135)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/models' role='tab' />
+			[145] (377,135)<span >Models />
+		[146] (429,135)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/discussion' role='tab' />
+			[147] (429,135)<span >Discussion />
+		[148] (493,135)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/leaderboard' role='tab' />
+			[149] (493,135)<span >Leaderboard />
+		[150] (546,135)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/rules' role='tab' />
+			[151] (546,135)<span >Rules />
+		[152] (583,135)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/team' role='tab' />
+			[153] (583,135)<span >Team />
+		[154] (635,135)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/submissions' role='tab' />
+			[155] (635,135)<span >Submissions />
+		Logistic Regression | PS: S6E2
+		Notebook copied with edits from
+		a private notebook
+		·
+		Updated
+		7d ago
+		Score: 0.95371
+		·
+		20 comments
+		·
+		Predicting Heart Disease
+		arrow_drop_up
+		86
+		Silver
+		more_horiz
+		0226 blend the blender (do it the hard way)
+		Updated
+		12h ago
+		Score: 0.95406
+		·
+		0 comments
+		·
+		Predicting Heart Disease
+		+
+		4
+		arrow_drop_up
+		82
+		Silver
+		more_horiz
+		[156] (540,243)<a aria-label='Predicting the odds of heart disease' class='sc-eXVaYZ cPXxFg' role='link' />
+			[157] (545,243)<div  />
+				[158] (259,243)<div  />
+					[159] (259,243)<div  />
+						[160] (259,243)<div  />
+							[161] (259,243)<a aria-label='Muhammad Ibrahim Qasmi's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/ibrahimqasimi' />
+								[162] (259,243)<div  />
+				[163] (384,243)<div  />
+					[164] (384,221)<div >Predicting the odds of heart disease />
+					[165] (384,245)<span  />
+						[166] (314,244)<span >Updated />
+							[167] (329,244)<span >18d ago />
+					[168] (384,267)<span  />
+						[169] (384,266)<span >·
+· />
+							[170] (311,266)<span >Score: 0.95354 />
+							[171] (363,266)<a class='sc-kjwdDK idbUxX' href='/code/ibrahimqasimi/predicting-the-odds-of-heart-disease/comments'>3 comments />
+							[172] (435,266)<span  />
+								[173] (431,266)<span >Predicting Heart Disease />
+								[174] (476,266)<span  />
+									[175] (476,266)<span  />
+										[176] (476,266)<span >+
+1 />
+		[177] (879,221)<div >80 />
+			[178] (868,221)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[179] (869,221)<span >arrow_drop_up />
+			80
+		Gold
+		[180] (889,262)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[181] (540,349)<a aria-label='❤️ CB&XGB|Residual Random Forest|Feature Growth' class='sc-eXVaYZ cPXxFg' role='link' />
+			[182] (545,349)<div  />
+				[183] (259,349)<div  />
+					[184] (259,349)<div  />
+						[185] (259,349)<div  />
+							[186] (259,349)<a aria-label='divye.mahajan's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/dmahajanbe23' />
+								[187] (259,349)<div  />
+				[188] (401,349)<div  />
+					[189] (401,327)<div >❤️ CB&XGB|Residual Random Forest|Feature Growth />
+					[190] (401,351)<span  />
+						[191] (313,350)<span >Updated />
+							[192] (328,350)<span >9d ago />
+					[193] (401,373)<span  />
+						[194] (386,372)<span >·
+· />
+							[195] (311,372)<span >Score: 0.95395 />
+							[196] (365,372)<a class='sc-kjwdDK idbUxX' href='/code/dmahajanbe23/cb-xgb-residual-random-forest-feature-growth/comments'>14 comments />
+							[197] (439,372)<span  />
+								[198] (433,372)<span >Predicting Heart Disease />
+								[199] (480,372)<span  />
+									[200] (480,372)<span  />
+										[201] (480,372)<span >+
+3 />
+		[202] (880,327)<div >75 />
+			[203] (869,327)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[204] (870,327)<span >arrow_drop_up />
+			75
+		Silver
+		[205] (889,368)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[206] (540,454)<a aria-label='S6E2 | Detailed EDA + Insights | W- blend' class='sc-eXVaYZ cPXxFg' role='link' />
+			[207] (545,454)<div  />
+				[208] (259,454)<div  />
+					[209] (259,454)<div  />
+						[210] (259,454)<div  />
+							[211] (259,454)<a aria-label='Sagar Nagpure's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/datasciencegrad' />
+								[212] (259,454)<div  />
+				[213] (384,454)<div  />
+					[214] (384,433)<div >S6E2 | Detailed EDA + Insights | W- blend />
+					[215] (384,457)<span  />
+						[216] (315,456)<span >Updated />
+							[217] (330,456)<span >20d ago />
+					[218] (384,478)<span  />
+						[219] (384,478)<span >·
+· />
+							[220] (311,478)<span >Score: 0.95387 />
+							[221] (363,478)<a class='sc-kjwdDK idbUxX' href='/code/datasciencegrad/s6e2-detailed-eda-insights-w-blend/comments'>5 comments />
+							[222] (435,478)<span  />
+								[223] (430,478)<span >Predicting Heart Disease />
+								[224] (476,478)<span  />
+									[225] (476,478)<span  />
+										[226] (476,478)<span >+
+6 />
+		[227] (880,433)<div >73 />
+			[228] (869,433)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[229] (870,433)<span >arrow_drop_up />
+			73
+		Silver
+		[230] (889,474)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[231] (540,560)<a aria-label='Heart Disease – Robust Solution' class='sc-eXVaYZ cPXxFg' role='link' />
+			[232] (545,560)<div  />
+				[233] (259,560)<div  />
+					[234] (259,560)<div  />
+						[235] (259,560)<div  />
+							[236] (259,560)<a aria-label='Kamran Ahmed's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/kami1976' />
+								[237] (259,560)<div  />
+				[238] (379,560)<div  />
+					[239] (379,538)<div >Heart Disease – Robust Solution />
+					[240] (379,562)<span  />
+						[241] (313,562)<span >Updated />
+							[242] (328,562)<span >6d ago />
+					[243] (379,584)<span  />
+						[244] (379,584)<span >·
+· />
+							[245] (307,583)<span >Score: 0.954 />
+							[246] (355,584)<a class='sc-kjwdDK idbUxX' href='/code/kami1976/heart-disease-robust-solution/comments'>5 comments />
+							[247] (427,583)<span  />
+								[248] (422,583)<span >Predicting Heart Disease />
+								[249] (468,583)<span  />
+									[250] (468,583)<span  />
+										[251] (468,583)<span >+
+1 />
+		[252] (879,538)<div >65 />
+			[253] (868,538)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[254] (869,538)<span >arrow_drop_up />
+			65
+		Silver
+		[255] (889,580)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[256] (540,666)<a aria-label='S6E2 | CatB Only | K-fold | CV - 0.9555+' class='sc-eXVaYZ cPXxFg' role='link' />
+			[257] (545,666)<div  />
+				[258] (259,666)<div  />
+					[259] (259,666)<div  />
+						[260] (259,666)<div  />
+							[261] (259,666)<a aria-label='Sagar Nagpure's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/datasciencegrad' />
+								[262] (259,666)<div  />
+				[263] (383,666)<div  />
+					[264] (383,644)<div >S6E2 | CatB Only | K-fold | CV - 0.9555+ />
+					[265] (383,668)<span  />
+						[266] (314,667)<span >Updated />
+							[267] (329,667)<span >18d ago />
+					[268] (383,690)<span  />
+						[269] (383,690)<span >·
+· />
+							[270] (311,689)<span >Score: 0.95388 />
+							[271] (363,690)<a class='sc-kjwdDK idbUxX' href='/code/datasciencegrad/s6e2-catb-only-k-fold-cv-0-9555/comments'>7 comments />
+							[272] (435,689)<span  />
+								[273] (430,689)<span >Predicting Heart Disease />
+								[274] (476,689)<span  />
+									[275] (476,689)<span  />
+										[276] (476,689)<span >+
+1 />
+		[277] (879,644)<div >65 />
+			[278] (868,644)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[279] (869,644)<span >arrow_drop_up />
+			65
+		Silver
+		[280] (889,686)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[281] (540,772)<a aria-label='S6E2-Competitive Ensemble Strategy(Fast & Stable)' class='sc-eXVaYZ cPXxFg' role='link' />
+			[282] (545,772)<div  />
+				[283] (259,772)<div  />
+					[284] (259,772)<div  />
+						[285] (259,772)<div  />
+							[286] (259,772)<a aria-label='Muhammad Shahzad's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/algozee' />
+								[287] (259,772)<div  />
+				[288] (400,772)<div  />
+					[289] (400,750)<div >S6E2-Competitive Ensemble Strategy(Fast & Stable) />
+					[290] (400,774)<span  />
+						[291] (313,773)<span >Updated />
+							[292] (328,773)<span >3d ago />
+					[293] (400,796)<span  />
+						[294] (379,795)<span >·
+· />
+							[295] (311,795)<span >Score: 0.95338 />
+							[296] (363,795)<a class='sc-kjwdDK idbUxX' href='/code/algozee/s6e2-competitive-ensemble-strategy-fast-stable/comments'>6 comments />
+							[297] (431,795)<span  />
+								[298] (431,795)<span >Predicting Heart Disease />
+		[299] (879,750)<div >63 />
+			[300] (868,750)<button aria-label='Undo upvote' class='sc-kZyiuq sc-efUxvT egJpJn gBAjaA' />
+				[301] (869,750)<span >arrow_drop_up />
+			63
+		Silver
+		[302] (889,791)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[303] (540,878)<a aria-label='Basic EDA - Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' role='link' />
+			[304] (545,878)<div  />
+				[305] (259,878)<div  />
+					[306] (259,878)<div  />
+						[307] (259,878)<div  />
+							[308] (259,878)<a aria-label='Chris Deotte's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/cdeotte' />
+								[309] (259,878)<div  />
+				[310] (393,878)<div  />
+					[311] (393,856)<div >Basic EDA - Predicting Heart Disease />
+					[312] (393,880)<span >· />
+						[313] (362,879)<span >Notebook copied with edits from />
+							[314] (416,879)<a class='sc-kjwdDK idbUxX' href='/code/cdeotte/basic-eda-lots-of-linear-relationships'>Chris Deotte />
+						[315] (472,879)<span >Updated />
+							[316] (487,879)<span >22d ago />
+					[317] (393,902)<span  />
+						[318] (350,901)<span >· />
+							[319] (306,901)<a class='sc-kjwdDK idbUxX' href='/code/cdeotte/basic-eda-predicting-heart-disease/comments'>2 comments />
+							[320] (374,901)<span  />
+								[321] (374,901)<span >Predicting Heart Disease />
+		[322] (879,856)<div >63 />
+			[323] (868,856)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[324] (869,856)<span >arrow_drop_up />
+			63
+		Silver
+		[325] (889,897)<button aria-label='More options for this notebook' class='sc-koBvLg jxMomE google-symbols notranslate sc-jRLKYd hUFTrI' title='More options for this notebook'>more_horiz />
+		[326] (540,983)<a aria-label='S6E21: CatBoost | K-fold | 0.95390' class='sc-eXVaYZ cPXxFg' role='link' />
+			[327] (545,983)<div  />
+				[328] (259,983)<div  />
+					[329] (259,983)<div  />
+						[330] (259,983)<div  />
+							[331] (259,983)<a aria-label='Manasi Pandit's profile (opens in a new tab)' class='sc-lhsSio kXhNmm' href='/manasi197' />
+								[332] (259,983)<div  />
+				[333] (381,983)<div  />
+					[334] (381,962)<div >S6E21: CatBoost | K-fold | 0.95390 />
+					[335] (381,986)<span  />
+						[336] (312,985)<span >Updated />
+							[337] (328,985)<span >5d ago />
+					Score: 0.9539
+					·
+					7 comments
+					·
+					Predicting Heart Disease
+					+
+					1
+		[338] (880,962)<div >61 />
+			[339] (870,962)<button aria-label='Upvote' class='sc-kZyiuq sc-efUxvT jklvKD gBAjaA' />
+				[340] (871,962)<span >arrow_drop_up />
+			61
+		Silver
+		more_horiz

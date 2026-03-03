@@ -1,0 +1,32 @@
+# Walkthrough: Heart Disease Elite Breach v3.2
+
+## 🚀 Accomplishments
+
+### 🛠️ Local Training Restored
+The local script [heart_top5_v3_2_elite.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_2_elite.py) was failing during the MICE imputation step due to the computational overhead of `ExtraTreesRegressor` on 900k rows. 
+- **Fixed**: Successfully transited to `BayesianRidge` for imputation, which is significantly faster and more stable for this scale.
+- **Status**: The script is currently running in the background (`nohup`) and has successfully passed Step 2 (Imputation).
+- **Monitoring**: Logs are being written to [training_v3_2_elite.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3_2_elite.log).
+
+### ⚡ GPU Acceleration (Google Colab)
+Created a high-performance notebook [Heart_Disease_S6E2_Elite_Breach_Colab.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Elite_Breach_Colab.ipynb) to leverage T4 GPUs.
+- **XGBoost**: Configured with `booster='dart'` and `device='cuda'` for maximum accuracy.
+- **LightGBM/CatBoost**: Tuned with heavy regularization and GPU task types.
+- **Feature Parity**: Includes `Ischemic Burden` and `Young Signal` interaction logic.
+
+## 📊 Evaluation & Verification
+
+### Training Progress (Local)
+```bash
+# Check current progress
+grep "STEP" training_v3_2_elite.log
+```
+The script has cleared the bottleneck and is now in the model training phase.
+
+### Adversarial Validation Plan
+The Colab notebook is pre-configured to run adversarial validation to ensure the medical features don't introduce synthetic leakage (Target: AUC < 0.52).
+
+## 🏁 Next Steps
+1. **Colab Execution**: Open the generated [.ipynb](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_V2_Top3.ipynb) in Google Colab, add your Kaggle Secrets, and run for faster results.
+2. **Monitor Local**: The local run will take several hours but serves as a robust baseline.
+3. **Submit**: Once OOF AUC confirms `>0.9570`, generate and submit the final CSV to reach the Top 3.

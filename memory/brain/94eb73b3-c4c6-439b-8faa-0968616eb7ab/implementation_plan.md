@@ -1,0 +1,38 @@
+# Implementation Plan - Trinity v4.0 Alignment (Spaceship Titanic)
+
+Analiza skripte `scripts/spaceship_titanic_calibration.py` pokazuje da je projekat dostigao zrelu fazu "Kalibracije" u okviru 3-6-2 Dialectic framework-a. Ovaj plan predviđa formalizaciju tih rezultata kroz Trinity infrastrukturu.
+
+## Proposed Changes
+
+### Infrastructure
+
+#### [NEW] [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json)
+- Definisanje metapodataka projekta, ulaznih tačaka i zavisnosti prema §3 `GEMINI.md`.
+
+#### [MODIFY] [Makefile](file:///home/kizabgd/Desktop/kaggle-arena/Makefile)
+- Dodavanje specifičnih komandi za faze: `make baseline`, `make antithesis`, `make synthesis`, `make calibration`.
+- Unifikacija CLI komandi.
+
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+- Postavljanje `current_baseline` na OOF rezultat iz kalibracije (nakon verifikacije).
+- Popunjavanje `structured_params` parametrima modela iz `calibration.py`.
+
+### Knowledge Base
+
+#### [NEW] [spaceship_titanic.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/spaceship_titanic.md)
+- Dokumentovanje "Fold-Safe Survival Rate" taktike.
+- Beleženje optimalne arhitekture ansambla (XGB+LGB+Cat+SVM+MLP).
+- Antipatterni (npr. curenje podataka kod pseudo-labelinga).
+
+## Verification Plan
+
+### Automated Tests
+1. **Makefile Validation**:
+   - `make help` (ako ga dodam) ili provera postojanja novih targeta.
+2. **Config Validation**:
+   - Provera JSON sintakse u `trinity_config.json` i `manifest.json`.
+
+### Manual Verification
+1. **Analiza rezultata**:
+   - Pokretanje `scripts/spaceship_titanic_calibration.py` radi potvrde OOF rezultata (opciono, ako zahteva trening).
+   - Korisnički pregled Tactic Registry-ja.

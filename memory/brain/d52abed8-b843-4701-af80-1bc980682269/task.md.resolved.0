@@ -1,0 +1,7 @@
+# Task: Audit ResearchPro AI Sistema
+
+- [/] Analiza izvornog koda ([ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/ingest.py), [audit_ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/audit_ingest.py), [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/generate_report.py))
+- [ ] Provera `.env` konfiguracije (Groq API, Kaggle API)
+- [ ] Testno pokretanje [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/generate_report.py) (Safe run)
+- [ ] Verifikacija Kaggle Notebook-a
+- [ ] Finalni izveštaj o funkcionalnosti

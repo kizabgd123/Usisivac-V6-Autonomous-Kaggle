@@ -1,0 +1,30 @@
+# Goal Description
+The objective is to break the 0.960 AUC threshold using the "Hardcore" boardroom strategy. This involves a radical tilt towards Deep Learning (70%) vs GBDT (30%) and the introduction of "Clinical Truth" features.
+
+## Proposed Changes
+
+### 1. Hardcore Diversification (Mistral's 0.3/0.7 Rule)
+We are shifting the ensemble weight to favor Deep Learning architectures to capture non-linear signals missed by trees:
+- **GBDT Weight**: 0.3 (XGB, LGBM, CAT).
+- **Deep Learning (DL) Weight**: 0.7 (TabM, RealMLP).
+- **TabM Proxy**: 5-layer deep MLP with 256 units (`relu` activation, `adam` optimizer).
+- **RealMLP Proxy**: MLP with **Periodic Embeddings** for numerical features (sin/cos transformations) to enhance architectural diversity.
+
+### 2. Clinical Truth 2.0 (Medical Anchor)
+- **New Feature: Cardiac Fatigue**: [(ST_Depression / MaxHR) * Age](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease_v3_16_elite.py#22-24). This models physiological cardiac stress.
+- **Ischemic Burden**: Maintained from v4.
+- **Tanaka Formula**: Maintained for `MaxHR`.
+
+### 3. Rigorous Validation (Adversarial Veto)
+- **Adversarial Validation**: Check distribution shift between Train and UCI data. If AUC > 0.80, halt and adjust.
+- **OOF Calibration**: Hard Veto at 0.960 AUC to prevent overfitting to synthetic noise.
+
+### 4. Implementation: `scripts/heart_disease_v5_hardcore.py`
+A monolithic script implementing the v5 Hardcore Protocol:
+1. **Thesis**: 0.3 Weight GBDT Trio.
+2. **Antithesis**: 0.7 Weight DL Duo (TabM + RealMLP w/ Periodic Embeddings).
+3. **Synthesis**: Blending + Adversarial Veto + OOF Calibration.
+
+
+### Next Steps
+Once approved, I will install the dependencies, execute the script, and verify the OOF AUC score. If OOF is promising (around 0.954 - 0.955), we will submit it to Kaggle.

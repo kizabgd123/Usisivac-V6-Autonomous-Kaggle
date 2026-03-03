@@ -1,0 +1,118 @@
+# Integracija ai-doc Sistema sa Trinity Protocol Ekosistemom
+
+## Sažetak Situacije
+
+**Projekat**: `kaggle-arena` — Trinity Protocol v4.0 Kaggle kompetitivni ML ekosistem.
+
+**ai-doc CLI**: v2.0.6 instaliran i funkcionalan, ali **workspace nije inicijalizovan** (`Workspace não encontrado`). Sistem čeka `ai-doc init` da mapira git repozitorijum i kreira kernel.
+
+**Šta ai-doc donosi**:
+- 🎯 **Kernel** — centralni kontekst za AI agente (persona, projekat, tasks)
+- 📋 **Tasks** — Kanban/Pomodoro sistem za praćenje takmičenja
+- 🤖 **Prompt generator** — strukturirani kontekst za AI pozive
+- 🔄 **Workflows** — automatizovani workflowi za deploy/ritual/evolve
+- 🏗️ **Docs** — generisanje dokumentacije po receptu (backend/frontend/fullstack)
+
+---
+
+## Predložene Promene
+
+### Komponenta 1: Inicijalizacija Workspace-a
+
+#### [MODIFY] Inicijalizacija ai-doc kernel-a
+Pokrenuti `ai-doc init` u kaggle-arena root-u. Ovo kreira `.ai-doc/` ili ekvivalentni direktorijum sa kernel konfiguracijom.
+
+**Ključna akcija**: Analizirati šta `init` generiše i mapirati na Trinity persona.
+
+---
+
+### Komponenta 2: Trinity Persona Konfiguracija
+
+#### [NEW] `.ai-doc/persona.trinity.json` (ili ekvivalent)
+Kreirati Trinity persona za ai-doc kernel:
+```json
+{
+  "name": "Trinity Protocol Agent",
+  "role": "Kaggle Grand Master ML Engineer",
+  "context": "Trinity Protocol v4.0 - Competition ML Ecosystem",
+  "active_competitions": ["spaceship-titanic", "wids-2026", "aimo-2026"],
+  "framework": "3-6-2 Dialectic (Thesis → Antithesis → Synthesis)",
+  "guardrails": ["JudgeGuard v2.1", "ProcessGuard", "7-Gate Submit Protocol"],
+  "best_scores": {
+    "heart-disease": "AUC 0.9535",
+    "titanic": "Accuracy 0.79186",
+    "s6e1": "RMSE 8.71241"
+  }
+}
+```
+
+---
+
+### Komponenta 3: Registracija Trinity Tasks-a u ai-doc
+
+Registrovati aktivna takmičenja kao ai-doc tasks:
+- `ai-doc task start "Spaceship Titanic - Calibration Phase"`
+- `ai-doc task start "WiDS 2026 - Survival Analysis"`  
+- `ai-doc task start "AIMO 2026 - Math Olympiad Solver"`
+
+---
+
+### Komponenta 4: Makefile Proširenje
+
+#### [MODIFY] [Makefile](file:///home/kizabgd/Desktop/kaggle-arena/Makefile)
+
+Dodati ai-doc komande:
+```makefile
+# === AI-DOC INTEGRATION ===
+ai-kernel:
+    @ai-doc kernel
+
+ai-status:
+    @ai-doc status
+
+ai-task:
+    @ai-doc task list
+
+ai-ritual:
+    @ai-doc ritual
+
+ai-sync:
+    @ai-doc build && ai-doc evolve
+
+# Proširiti submit da uključuje ai-doc post-actions
+submit-full: submit
+    @ai-doc task complete "$(TASK)" || true
+    @ai-doc evolve || true
+```
+
+---
+
+### Komponenta 5: Trinity Workflow za ai-doc
+
+#### [NEW] `.agent/workflows/aidoc_sync.md`
+Workflow koji opisuje kako pokrenuti `ai-doc ritual` kao deo Trinity deploy procesa — nakon JudgeGuard prolaza i pre kaggle submit.
+
+---
+
+## Verifikacioni Plan
+
+### Automatski testovi
+```bash
+# 1. Proveriti kernel status
+ai-doc status
+
+# 2. Proveriti task listu
+ai-doc task list
+
+# 3. Testirati prompt generisanje sa Trinity kontekstom
+ai-doc prompt "Analyze heart disease competition results"
+
+# 4. Proveriti Makefile integraciju
+make ai-status
+make ai-task
+```
+
+### Manualna Verifikacija
+1. Nakon `ai-doc init`, proveriti koji fajlovi su kreirani
+2. Proveriti da `ai-doc status` prikazuje Trinity projekat (ne `Workspace não encontrado`)
+3. Proveriti da `ai-doc task list` sadrži Spaceship Titanic i WiDS 2026 taskove

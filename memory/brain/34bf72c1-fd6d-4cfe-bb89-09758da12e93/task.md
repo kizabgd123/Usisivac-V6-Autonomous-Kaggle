@@ -1,0 +1,25 @@
+# Task List: AI-Powered Code Review System
+
+## Phase 1: Core System Architecture [x]
+- [x] Create main CLI entry point (`src/review.py`)
+- [x] Build review engine (`src/review_engine.py`)
+- [x] Implement file analysis and chunking logic
+- [x] Recover missing utils.py and base_module.py
+
+## Phase 2: Specialized Review Modules [x]
+- [x] Implement security review module (`src/security_review.py`)
+- [x] Implement performance review module (`src/performance_review.py`)
+- [x] Implement code quality review module (`src/quality_review.py`)
+
+## Phase 3: Integration & Enhancement [x]
+- [x] Enhance existing RAG system (`src/ingest.py`)
+- [x] Update dashboard for review metrics
+- [x] Create review database (history tracking)
+
+## Phase 4: Advanced Features [ ]
+- [ ] Implement PR integration (GitHub API)
+- [ ] Create web dashboard (`src/web_dashboard.py`)
+
+## Phase 5: Testing & Documentation [ ]
+- [ ] Comprehensive unit and integration testing
+- [ ] Usage guides and documentation

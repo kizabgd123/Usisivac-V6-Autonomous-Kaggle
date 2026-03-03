@@ -1,0 +1,7 @@
+# Task: S6E2 Battle Tactics & GEMINI Knowledge Update
+
+- [x] Deep analysis of 40+ submissions (walkthrough.md)
+- [x] Design tactical doctrine (implementation_plan.md)
+- [/] Update GEMINI.md with entries 30–37 (battle intelligence)
+- [/] Create golden recipe script (s6e2_golden_recipe.py)
+- [ ] Execute golden recipe and verify LB ≥ 0.95387

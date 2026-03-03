@@ -1,0 +1,249 @@
+# Multi-Agent Trinity Architecture — Implementacioni Plan v1.0
+
+## Cilj
+
+Transformisati trenutni monolitni pristup (jedan veliki model radi sve) u **multi-agent MCP ekosistem** gde specijalizovani mali agenti obrađuju zasebne domene i moraju se međusobno konsultovati pre donošenja odluka. Sve mora biti **100% besplatno**.
+
+---
+
+## Analiza Postojećeg Stanja
+
+### Dva GEMINI.md fajla
+
+| Fajl | Format | Linije | Namena |
+|------|--------|--------|--------|
+| [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) | Strukturiran ustav (§1-§7) | 159 | Operativna pravila za agente — **koristiti za system prompt** |
+| [kaggle_export/GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/GEMINI.md) | Q&A format (50+ tačaka) | ~400 | Detaljno znanje — **idealan za fine-tuning dataset** |
+
+> [!IMPORTANT]
+> v4.0 je koncizan i ne sadrži domenska znanja (Hearts, Tanaka itd.) — to živi u `tactic_registries/`. Q&A verzija sadrži SVE uključujući domenska, pa je idealna kao training data.
+
+### 5 Postojećih MCP Servera
+
+| Server | Status | Alati | Uloga u novom sistemu |
+|--------|--------|-------|----------------------|
+| `mcp-config-state` | ✅ Aktivan | [get_full_configuration](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-config-state/src/mcp_config_state/server.py#24-32), [get_threshold](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-config-state/src/mcp_config_state/server.py#33-44), [check_architecture_family](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-config-state/src/mcp_config_state/server.py#54-66) itd. | **ZADRŽAVA SE** — SSOT interfejs |
+| `mcp-guardian` | ✅ Postoji | [validate_submission](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-guardian/src/mcp_guardian/server.py#53-83), [verify_action_compliance](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-guardian/src/mcp_guardian/server.py#84-101) | **PROŠIRITI** — postaje deo Tactics agenta |
+| `mcp-mistral-vetoboard` | ✅ Postoji | [evaluate_action](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-mistral-vetoboard/src/mcp_mistral_vetoboard/server.py#22-99) (Groq + Mistral konsenzus) | **REFAKTORISATI** — integrišemo u Orchestrator |
+| `mcp-trinity-kb` | ✅ Postoji | [search_institutional_memory](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-trinity-kb/src/mcp_trinity_kb/server.py#17-50), [get_strategy_parameters](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-trinity-kb/src/mcp_trinity_kb/server.py#51-85) | **ZADRŽAVA SE** — koristi ga Research agent |
+| `mcp-vetoboard` | ⚠️ Prazan | — | **ZAMENITI** sa novim Orchestratorom |
+
+---
+
+## Predložena Arhitektura
+
+### Dijagram toka odluka
+
+```mermaid
+graph TB
+    User["👤 Korisnik"] --> Orch["🎯 MCP-ORCHESTRATOR<br/>(Supervisor Agent)"]
+    
+    Orch --> CS["⚙️ mcp-config-state<br/>(SSOT)"]
+    Orch --> RA["🔬 mcp-research<br/>(Akademski Agent)"]
+    Orch --> ML["🤖 mcp-ml-engine<br/>(ML Agent)"]
+    Orch --> KM["🏆 mcp-kaggle-master<br/>(Community Agent)"]
+    Orch --> TG["🛡️ mcp-guardian<br/>(Tactics/Guard Agent)"]
+    
+    RA --> KB["📚 mcp-trinity-kb<br/>(Baza Znanja)"]
+    ML --> CS
+    KM --> CS
+    TG --> CS
+    
+    Orch --> Decision["📋 Consensus Decision"]
+    Decision --> User
+    
+    style Orch fill:#ff6b6b,color:#fff
+    style CS fill:#4ecdc4,color:#fff
+    style RA fill:#45b7d1,color:#fff
+    style ML fill:#96ceb4,color:#fff
+    style KM fill:#ffeaa7,color:#333
+    style TG fill:#dfe6e9,color:#333
+```
+
+### 4 Nova MCP Servera + Refaktoring
+
+---
+
+### Komponenta 1: `mcp-research` (Akademski Istraživački Agent)
+
+#### [NEW] [server.py](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-research/src/mcp_research/server.py)
+
+**Odgovornost**: Akademsko istraživanje van Kaggle-a — naučni radovi, PubMed, arxiv.
+
+**Alati:**
+- `search_papers(query, domain)` — pretražuje arxiv/scholar besplatne API-je
+- `get_domain_knowledge(topic)` — čita iz `tactic_registries/` + KB
+- `summarize_findings(paper_urls)` — sumarizuje nalaze
+
+**Model**: Groq Llama 3.3 70B (besplatan, 1000 req/day, brz)
+
+**Ugrađeno znanje**: §5 Memory Integrity, §7 Anti-Regression iz GEMINI.md v4.0
+
+---
+
+### Komponenta 2: `mcp-ml-engine` (ML Agent)
+
+#### [NEW] [server.py](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-ml-engine/src/mcp_ml_engine/server.py)
+
+**Odgovornost**: Feature engineering, model selekcija, hiperparametar tuning, ensemble strategija.
+
+**Alati:**
+- `suggest_features(dataset_profile)` — predlaže feature-e na osnovu profila podataka
+- `evaluate_model_choice(models, phase)` — provera diversiteta po §3 3-6-2
+- `propose_ensemble(model_predictions)` — predlog za blending/stacking
+- `check_correlation(pred_a, pred_b)` — korelacija između modela
+
+**Model**: Groq Llama 3.3 70B (primarni) → Google AI Studio Flash (backup)
+
+**Ugrađeno znanje**: §3 Execution Framework, §4 Guardrails, Golden Recipe (Tačka 33)
+
+---
+
+### Komponenta 3: `mcp-kaggle-master` (Kaggle Community Agent)
+
+#### [NEW] [server.py](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-kaggle-master/src/mcp_kaggle_master/server.py)
+
+**Odgovornost**: Praćenje Kaggle diskusija, komentara, leaderboard-a, notebook-ova.
+
+**Alati:**
+- `get_competition_status(competition_id)` — status takmičenja, deadline, metrika
+- `search_discussions(competition_id, query)` — pretražuje diskusije za insajte
+- `track_leaderboard(competition_id)` — prati top skorove i trendove
+- `analyze_top_notebooks(competition_id)` — analizira javne notebook-ove
+
+**Model**: OpenRouter Free (Llama 4 Maverick) → Groq Llama 3.3 (backup)
+
+**Ugrađeno znanje**: §6 Tactic Registry, [competition_tracker.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/competition_tracker.md), Anti-patterns (Tačka 31)
+
+---
+
+### Komponenta 4: `mcp-orchestrator` (Supervisor Agent)
+
+#### [NEW] [server.py](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-orchestrator/src/mcp_orchestrator/server.py)
+
+**Odgovornost**: Centralni supervisor — prima zahtev, konsultuje agente, donosi odluku.
+
+**Alati:**
+- `process_request(user_request)` — analizira zahtev i identifikuje relevantne agente
+- `consult_agents(agents, question)` — šalje pitanje relevantnim agentima
+- `reach_consensus(responses)` — analiza odgovora, konsenzus po §4 Security Invariants
+- `get_current_phase()` — vraća fazu (thesis/antithesis/synthesis) iz config-a
+
+**Model**: Google AI Studio Gemini Flash (250 req/day primarni) → Groq (backup)
+
+**Ključna logika — Mandatory Consultation Protocol:**
+```
+1. Primi zahtev korisnika
+2. Klasifikuj: [RESEARCH | ML | KAGGLE | TACTICS | MIXED]
+3. Ako MIXED → konsultuj SVE relevantne agente
+4. Ako specifičan → konsultuj odgovarajućeg agenta + OBAVEZNO mcp-guardian
+5. Sakupi odgovore → primeni consensus (VETO > WARN > PASS)
+6. Loguj odluku u GUARD_LOG.md
+7. Vrati odgovor korisniku
+```
+
+---
+
+### Komponenta 5: Refaktoring postojećih servera
+
+#### [MODIFY] [mcp-guardian/server.py](file:///home/kizabgd/Desktop/Istrazivanje/.mcp/mcp-guardian/src/mcp_guardian/server.py)
+
+Dodati novi alat:
+- `get_phase_rules(phase)` — vraća pravila specifična za trenutnu fazu (thesis/antithesis/synthesis)
+- `validate_diversity(model_list)` — provera diversiteta na osnovu `architecture_families` iz config-a
+
+#### [DELETE] `mcp-vetoboard/` — zamenjuje ga `mcp-orchestrator`
+
+---
+
+## Besplatni API Servisi — Mapa
+
+| Servis | Besplatan Limit | Modeli | Koristi ga |
+|--------|----------------|--------|-----------|
+| **Groq** | 30 RPM, ~1000-14400 req/day | Llama 3.3 70B, Llama 3.1 8B, Mixtral | Research, ML, Guardian |
+| **OpenRouter** | 50 req/day (bez kupovine) | 24 besplatna modela (Llama 4, Mistral Small) | Kaggle Master |
+| **Google AI Studio** | 250-1000 req/day | Gemini Flash, Gemini Pro | Orchestrator |
+| **HuggingFace** | 300 req/hr, $0.10 krediti | Mistral-7B, Zephyr, Falcon | Fallback za sve |
+| **Colab** | T4 GPU besplatno | — | Fine-tuning (QLoRA) |
+| **Kaggle GPU** | 30h/nedelja | P100/T4 | Fine-tuning + trening ML modela |
+
+---
+
+## Fine-Tuning Pipeline (Besplatno)
+
+### Cilj
+Napraviti specijalizovani model koji **poznaje Trinity protokol** bez slanja celog GEMINI.md u svaki prompt.
+
+### Koraci
+
+1. **Priprema dataseta** iz [kaggle_dataset_export/GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/kaggle_dataset_export/GEMINI.md):
+   - Konvertovati Q&A format u JSONL (`instruction/input/output`)
+   - Dodati sintetičke primere (PASS/VETO/WARN scenariji)
+   - ~200-500 primera
+
+2. **Fine-tuning na Colab** (besplatan T4 GPU):
+   - Baza: `unsloth/Mistral-7B-Instruct-v0.3` (QLoRA, 4-bit)
+   - Trening: ~30-60 minuta na T4
+   - Sačuvati samo LoRA adapter (~50-100MB)
+
+3. **Deploy na HuggingFace Hub** (besplatno):
+   - Push adapter → `kizabgd/trinity-oracle-v1`
+   - Koristiti kroz HuggingFace Inference API ili lokalno
+
+4. **Integracija**: svaki MCP server učitava adapter ako je dostupan, inače fallback na Groq/OpenRouter
+
+---
+
+## User Review Required
+
+> [!WARNING]
+> **Pitanja pre implementacije:**
+
+1. **Prioritet space-ova**: Da li da prvo implementiram sve 4 agenta paralelno, ili jedan po jedan (npr. prvo Guardian + Orchestrator)?
+
+2. **Kaggle API**: Da li imaš Kaggle API token podešen (`~/.kaggle/kaggle.json`)? To je potrebno za `mcp-kaggle-master`.
+
+3. **API ključevi**: Vidim da imaš `GROQ_API_KEY` i `OPENROUTER_API_KEY` u env-u (iz `mcp-mistral-vetoboard`). Da li imaš i `GOOGLE_API_KEY` za AI Studio?
+
+4. **Fine-tuning prioritet**: Da li želiš da fine-tuning bude deo prvog sprint-a, ili da prvo napravimo funkcionalne agente sa Groq/OpenRouter pa onda optimizujemo?
+
+5. **HuggingFace nalog**: Da li imaš HF nalog za push modela? Trebamo `HF_TOKEN`.
+
+---
+
+## Verifikacioni Plan
+
+### Automatski testovi
+
+Za svaki novi MCP server kreiraćemo `test_server.py`:
+
+```bash
+# Test za svaki server pojedinačno (unit test)
+cd .mcp/mcp-research && python -m pytest tests/test_server.py -v
+cd .mcp/mcp-ml-engine && python -m pytest tests/test_server.py -v
+cd .mcp/mcp-kaggle-master && python -m pytest tests/test_server.py -v
+cd .mcp/mcp-orchestrator && python -m pytest tests/test_server.py -v
+```
+
+Svaki test proverava:
+- Da li se server pokreće bez greške
+- Da li svaki tool vraća validan JSON/string
+- Da li fallback mehanizam radi kad API nije dostupan
+
+### End-to-End Test
+
+```bash
+# Pokretanje svih servera + orchestratora
+make start-agents
+
+# Slanje test zahteva orchestratoru
+python scripts/test_e2e.py --request "Predloži feature engineering za heart disease" \
+    --expected-agents "mcp-ml-engine,mcp-research,mcp-guardian"
+```
+
+### Manuelna Verifikacija
+
+1. Pokrenuti svaki MCP server zasebno i pozvati svaki tool ručno
+2. Proveriti da Orchestrator konsultuje **bar 2 agenta** pre odgovora
+3. Poslati zahtev koji krši §7 Anti-Regression i proveriti da Guardian daje VETO
+4. Proveriti da besplatni API-ji rade u okviru limita (ne generišu 429 greške)

@@ -1,0 +1,27 @@
+# Plan Evolucije: ResearchPro AI & Elite Strategy v9
+
+Ovaj plan podrazumeva aktivaciju ResearchPro AI infrastrukture za duboku analizu postignutih rezultata na Heart Disease (S6E2) takmičenju i identifikaciju prostora za "Elite" unapređenja.
+
+## Proposed Changes
+
+### [ResearchPro AI Core]
+#### [EXECUTE] [ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/ingest.py)
+Osvežavanje vektorske baze znanja (ChromaDB) sa najnovijim kodom i konfiguracijama.
+#### [EXECUTE] [audit_ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/audit_ingest.py)
+Ingestija najnovijih [WORK_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/WORK_LOG.md) i [GUARD_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/GUARD_LOG.md) informacija.
+#### [EXECUTE] [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/generate_report.py)
+Pokretanje Llama-3.3 audit-a sa upitom: "Uporedi moju trenutnu Trinity v4.0 konfiguraciju sa najboljim rešenjima i predloži Elite v9 korake."
+
+---
+
+## Verification Plan
+
+### Automated Tests
+1. **RAG Validation**: Provera da li `chroma_db` sadrži fragmente nakon ingestije.
+   - Komanda: `ls -R chroma_db/`
+2. **LLM Connectivity**: Testiranje Groq API veze.
+   - Komanda: `python3 .agent/skills/project/proposal-generator/src/generate_report.py "Test"`
+
+### Manual Verification
+1. **Strateški Audit**: Pregled generisanog izveštaja od strane ResearchPro AI agenta.
+2. **LB Alignment**: Potvrda da predloženi koraci adresiraju razliku između Public i Private LB.

@@ -1,0 +1,15 @@
+# Premestanje organizacione skripte na Mistral
+
+Korisnik želi da se vodič za n8n AI organizaciju ([organization_setup_guide.md](file:///home/kizabgd/.antigravity/extensions/123/organization_setup_guide.md)) prebaci u folder `Istrazivanje` i da se umesto Gemini modela koristi Mistral za kategorizaciju fajlova.
+
+## Proposed Changes
+
+### Dokumentacija
+#### [NEW] organization_setup_guide.md(file:///home/kizabgd/Desktop/Istrazivanje/organization_setup_guide.md)
+- Biće iskopiran sa originalne lokacije.
+- Svi spomeni `Google Gemini API` biće zamenjeni sa `Mistral API`.
+- Promenljiva okruženja u uputstvu će sada eksplicitno tražiti `MISTRAL_API_KEY` umesto `GOOGLE_API_KEY` za AI analizu (dok će Google pristup ostati za Drive i Sheets preko OAuth-a).
+- Informacije o ceni i limitima biće ažurirane da odražavaju Mistral API.
+
+## User Review Required
+S obzirom na to da n8n zahteva Google API za Sheets i Drive pristup (čitanje/pisanje fajlova), ostaviću zadržano uputstvo za povezivanje Google Drive/Sheets konekcija preko OAuth2. Samo će se AI provajder (API Key instrukcija) prebaciti na Mistral. Da li si saglasan sa ovim pristupom?

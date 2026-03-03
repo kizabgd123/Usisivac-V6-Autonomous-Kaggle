@@ -1,0 +1,69 @@
+# Trinity Master Engine: Neural Refinery & ResearchPro Integration
+
+Ovaj plan unificira lokalne ResearchPro AI alate za istraživanje sa cloud-baziranim Neural Refinery sistemom na Kaggle-u, koristeći **Trinity 3-6-2 Dialectic** protokol.
+
+## User Review Required
+> [!IMPORTANT]
+> **SSOT UNIFIKACIJA**: Svi lokalni skriptovi ([ingest.py](file:///tmp/ResearchProAI-Template/src/ingest.py), [audit_ingest.py](file:///tmp/ResearchProAI-Template/src/audit_ingest.py), [generate_report.py](file:///tmp/ResearchProAI-Template/src/generate_report.py), [dashboard.py](file:///tmp/ResearchProAI-Template/src/dashboard.py)) biće refaktorisani da koriste [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) kao jedini izvor istine za putanje i imena kolekcija.
+
+## Arhitektura: Trinity Master Engine
+
+### 1. Unified RAG Layer (Local)
+- **Ingestion Engine**: Unificirana baza znanja `trinity_knowledge` (kod/dokumenti) i `trinity_audit` (logovi agenata).
+- **Audit Layer**: Automatsko skeniranje [WORK_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/WORK_LOG.md) i [GUARD_LOG.md](file:///home/kizabgd/Desktop/kaggle-arena/GUARD_LOG.md) tvojih agenata za rekonstrukciju odluka.
+
+### 2. Neural Refinery Layer (Cloud/Kaggle)
+- **Kaggle Sync**: Automatizovani proces zipping-a lokalne baze i slanja direktno kao Kaggle Dataset.
+- **5-Stage Pipeline**: Implementacija (Sieve -> Architect -> Validator -> Assembly -> Merge) na Kaggle cloud resursima.
+
+### 3. Synthesis & Reporting
+- **Trinity Reports**: Generisanje strateških izveštaja (čitanje KB + Audit istovremeno).
+- **Mission Control**: Konsolidovani [refinery_dashboard.py](file:///home/kizabgd/Desktop/kaggle-arena/refinery_dashboard.py) koji prati lokalne baze i status Kaggle kernela.
+
+### 4. 🏛️ Anti-Regression & Forensics (New)
+- **De-zombifikacija**: Čišćenje root-a od legacy skripti (`scripts/`, `docs/`, `notebooks/`).
+- **Manifest Optimization**: Redukcija [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json) sa 3700+ na neophodni minimum.
+- **7-Gate Submit Protocol**: Autonomna validacija pre svakog slanja (Value, Format, Sanity, Identity, Intent, Dtype, Risk).
+- **Arize Instrumentation**: Puni OTel tracing za sve agent akcije.
+
+## Proposed Changes
+
+### [Component: Configuration]
+
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+
+Dodavanje kanonskih putanja i imena kolekcija za unifikaciju.
+
+### [Component: Local Tools]
+
+#### [MODIFY] [ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/ingest.py)
+
+Prebacivanje na [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json) za parametre putanja.
+
+#### [MODIFY] [refinery_dashboard.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/refinery_dashboard.py)
+Ažuriranje imena kolekcija i Kaggle linkova.
+
+### [Component: Orchestration & Cleanup]
+
+#### [MOVE] [scripts/](file:///home/kizabgd/Desktop/kaggle-arena/scripts/)
+Sve [.py](file:///tmp/migrate_collections.py) skripte iz root-a idu ovde (osim core configa).
+
+#### [NEW] [notebooks/](file:///home/kizabgd/Desktop/kaggle-arena/notebooks/)
+Svi [.ipynb](file:///home/kizabgd/Desktop/kaggle-arena/trinity_debate_v1.ipynb) fajlovi.
+
+#### [MODIFY] [manifest.json](file:///home/kizabgd/Desktop/kaggle-arena/manifest.json)
+Uklanjanje legacy putanja.
+
+#### [NEW] [src/trinity_guardian.py](file:///home/kizabgd/Desktop/kaggle-arena/src/trinity_guardian.py)
+Implementacija 7-Gate Submit logike kao standalone modula.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 ingest.py` - Provera kontrole broja fragmenata u unificiranoj bazi.
+- `python3 generate_report.py` - Provera ispravnosti Llama-3.3-70b integracije.
+- `python3 src/trinity_guardian.py --test` - Provera 7-Gate logike na dummy predikcijama.
+
+### Manual Verification
+- Provera da li Kaggle Notebook ispravno učitava novu strukturu dataseta.
+- Vizuelna verifikacija Arize dashboard-a za novi tracing.

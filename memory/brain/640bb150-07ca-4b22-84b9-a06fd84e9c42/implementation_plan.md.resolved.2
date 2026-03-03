@@ -1,0 +1,78 @@
+# Implementation Plan: Workspace Stabilization & Protocol Sync
+
+This plan addresses the technical debt identified in the Project Audit, focusing on workspace organization and protocol alignment.
+
+## Proposed Changes
+
+### [Workspace Organization]
+Cleanup of the root directory to reduce cognitive load and version fragmentation.
+
+#### [MOVE] [heart_pipeline_v10_*.py](file:///home/kizabgd/Desktop/Istrazivanje/)
+- Move all `heart_pipeline_v10_[1-13]*.py` files to `.legacy/heart_versions/`.
+- Keep [heart_pipeline_v10_14_sota.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_pipeline_v10_14_sota.py) in the root (current entrypoint).
+
+#### [MOVE] [.csv & .log files](file:///home/kizabgd/Desktop/Istrazivanje/)
+- Move loose CSV files (e.g., `submission_*.csv`, [reference.csv](file:///home/kizabgd/Desktop/Istrazivanje/reference.csv)) to `data_hub/archive/`.
+- Move loose log files (e.g., `api_prod_test.log`, `dashboard.log`) to `logs/archive/`.
+
+---
+
+### [Protocol Management]
+Synchronizing the project metadata with the current state of the ecosystem.
+
+#### [MODIFY] [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)
+- Upgrade `version` to `3.0.0`.
+- Update `dependencies.entrypoint` to `heart_pipeline_v10_14_sota.py`.
+
+#### [MODIFY] [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile)
+- Update the `train` target to point to `heart_pipeline_v10_14_sota.py` for the current Heart Disease competition context.
+- Add a `make audit` target that runs a protocol validation script.
+
+## Verification Plan
+
+### Automated Tests
+- **Makefile Smoke Test**:
+    ```bash
+    make help
+    ```
+- **Manifest Validation**:
+    - Verify `manifest.json` matches `trinity_config.json` version logic.
+- **Protocol Smoke Test**:
+    - Run the existing `tests/test_judge_guard_smoke.py` to ensure core protocol logic is intact.
+    ```bash
+    python3 tests/test_judge_guard_smoke.py
+    ```
+
+### Manual Verification
+- Verify that the root directory is significantly less cluttered.
+---
+
+## Phase 2: Anti-Overfit Diagnostic (Post-Mortem)
+
+Verify the suspected overfitting (CV 0.987 vs LB ~0.954) using forensic ML techniques.
+
+### Procedural Changes
+- **Holdout Validation**: Implement an 80/20 stratified split to bypass CV-optimism.
+- **Gap Analysis**: Compare `Train AUC` vs `CV/OOF AUC`.
+- **CV Pressure Test**: Compare 5-fold vs 10-fold performance to measure inflation.
+
+### Verification Plan
+- Run `scripts/overfit_diagnostic.py` and analyze the findings.
+---
+
+## Phase 3: Killshot Protocol (Submission Strategy)
+
+Execute the final mission to achieve LB 0.954+ by leveraging robust features and diversified ensembling.
+
+### Procedural Changes
+- **Feature Engineering**: 
+    - Create `Thallium_ChestPain` interaction.
+    - Create `Angina_Vessels` (Exercise Angina * Number of Vessels).
+- **Relaxed Denoising**: Limit Cleanlab removal to **15,000 rows** to retain "hard" examples.
+- **Ensemble Diversification**: Include **CatBoost** alongside XGBoost and LightGBM.
+- **Raw Probability Blend**: Disable Isotonic Calibration; use Simplex weighted rank-averaging.
+
+### Verification Plan
+- Run `make killshot` (to be defined in Makefile).
+- Confirm OOF AUC is in the healthy **0.955 - 0.956** range.
+- Adversarial Validation check: Ensure AUC stays around **0.50**.

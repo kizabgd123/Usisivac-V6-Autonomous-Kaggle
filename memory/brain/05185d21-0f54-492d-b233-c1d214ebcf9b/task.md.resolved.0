@@ -1,0 +1,6 @@
+# Mistral Guardian Workflow Execution
+
+- [ ] Run sequential-thinking to decide how to process the Mistral Trigger request
+- [ ] Execute [scripts/mistral_guardian.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/mistral_guardian.py) with the appropriate query
+- [ ] Read `GUARD_ALERT.json` and optionally `GUARD_LOG.md`
+- [ ] Apply the verdict to the current process

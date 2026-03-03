@@ -1,0 +1,3 @@
+- [x] Provera statusa pozadinskih procesa
+- [x] Analiza rada prethodnog agenta (Project State Audit, Heart Disease Leakage)
+- [ ] Izveštavanje korisnika

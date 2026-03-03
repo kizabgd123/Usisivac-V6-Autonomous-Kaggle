@@ -1,0 +1,31 @@
+# Implementation Plan — Workspace Preparation for New Challenge
+
+This plan outlines the steps to initialize the workspace for a new Kaggle challenge, following the Trinity Protocol (GEMINI.md).
+
+## Proposed Changes
+
+### Configuration & Orchestration
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+- Set `domain` to the identified competition once confirmed.
+- Prepare `thresholds` for the new mission.
+
+#### [MODIFY] [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/kaggle-arena/.agent/rules/ORCHESTRATION_RULES.json)
+- Move the target competition from `completed` (if re-entering) or add to `active`.
+
+### Tactic Registry
+#### [MODIFY] [competition_tracker.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/competition_tracker.md)
+- Add the new competition to "Aktivna Takmičenja".
+
+### Workspace Initialization
+#### [EXECUTE] `make init COMP=competition-slug`
+- Download data and set up directory structure.
+
+## Verification Plan
+
+### Automated Tests
+- Run `make status` to verify `JudgeGuard` reflects the new active domain.
+- Run `ls -R data/` to verify datasets are downloaded.
+
+### Manual Verification
+- Verify `manifest.json` is generated for the new competition (if not already present).
+- Confirm with user if the selected competition is the correct target.

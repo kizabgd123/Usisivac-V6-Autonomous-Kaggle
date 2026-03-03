@@ -1,0 +1,29 @@
+1. Koji je cilj takmičenja u oblasti nauke o podacima o kome se govori u tekstu?
+   Cilj je kreirati najprecizniji mogući model za predviđenje srčanih oboljenja i plasirati se među prva tri na listi.
+
+2. Koji problem je Kimi identifikovao u podacima?
+   Kimi je identifikovao da vrednosti holesterola koje su jednake nuli nisu greška u kucanju, već predstavljaju sintetički šum koji imitira nesaradnju pri skriningu, odnosno signal da se neko nije testirao.
+
+3. Kako Kimi predlaže da se postupi sa nultim vrednostima holesterola?
+   Kimi predlaže strategiju dvostrukog indikatora: prvo ne popunjavati vrednost odmah, već napraviti novu kolonu 'Holisterov flag' koja označava da je podatak nedostajao, a zatim zameniti nulu sa oznakom 'none' i koristiti model LightGBM koji može inteligentno da rukuje takvim vrednostima.
+
+4. Šta je stacking ensemble model koji predlaže Kven?
+   Stacking ensemble model je pristup gde se kombinuju predlozi više različitih moćnih algoritama (kao što su XGBoost, LightGBM i CatBoost) preko jednog jednostavnijeg modela koji funkcioniše kao menadžer i donosi konačnu precizniju odluku.
+
+5. Koji je Mistralov pristup u rešavanju problema sa podacima?
+   Mistral ima strateški nadzor i predlaže korišćenje naprednih tehnika poput adverzijske validacije, dodavanje klinički relevantnih metrika kao što je Framingham Risk Score, i korišćenje sofisticiranijih metoda imputacije kao što su MICE ili KNN.
+
+6. Šta je MICE metoda i kako funkcioniše?
+   MICE (Multiple Imputation by Chained Equations) je metoda koja za popunjavanje nedostajućih vrednosti kreira privremene modele za svaku osobu sa nedostajućom vrednošću, koristi ostale podatke da proceni najbolju vrednost, ponavlja proces više puta sa dozom slučajnosti i na kraju usrednjava rezultate da dobije preciznu procenu sa merom nesigurnosti.
+
+7. Koje su dve fundamentalno različite filozofije u pristupu rešavanju problema nultih vrednosti holesterola?
+   Kimijev pristup koristi grešku kao signal i pokušava da izvuče maksimum informacija iz nesavršenosti podataka, dok Kvenov pristup teži statističkoj čistoti i integritetu podataka, prvo popravljajući nesavršenosti pre nego što model uči.
+
+8. Zašto je važno ne brisati redove sa nedostajućim podacima, prema Mistralu?
+   Brisanje redova sa nedostajućim podacima znači gubitak dragocenih informacija iz ostalih kolona za tog pacijenta, što može oslabiti model i smanjiti njegovu preciznost.
+
+9. Kako se u tekstu opisuje saradnja između tri AI modela?
+   Tri AI modela, Kimi, Kven i Mistral, ne rade izolovano već aktivno sarađuju, konstruktivno kritikuju i nadograđuju ideje jedna drugoj, formirajući kolektivnu inteligenciju usmerenu na rešavanje problema.
+
+10. Koja je ključna poruka o pobedi u takmičenju iz nauke o podacima?
+   Pobeda ne leži u sirovoj snazi modela ili najjačem računaru, već u dubokom, intuitivnom razumevanju podataka, kreativnosti i sposobnosti da se inteligentno rešavaju nesavršenosti podataka.

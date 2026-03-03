@@ -1,0 +1,414 @@
+{
+  "version": "2.0",
+  "generated": "2026-01-05T01:29:11.153375",
+  "federation": {
+    "global_path": "/home/kizabgd/.gemini/antigravity/SKILL_MANIFEST.json",
+    "local_path": ".agent/SKILL_MANIFEST.json"
+  },
+  "total_skills": 20,
+  "skills": [
+    {
+      "id": "generate-backups",
+      "name": "generate_backups",
+      "path": ".agent/skills/generate_backups/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from generate_backups.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "build-squad",
+      "name": "build_squad",
+      "path": ".agent/skills/build_squad/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from build_squad.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "extract-emails",
+      "name": "extract_emails",
+      "path": ".agent/skills/extract_emails/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from extract_emails.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "pain-signal-scraper",
+      "name": "pain-signal-scraper",
+      "path": ".agent/skills/pain-signal-scraper/skill.md",
+      "source": "local",
+      "summary": "Scrapes pain signals from Reddit, LinkedIn, and forums for the e-otpremnice pipeline.",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "v1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "web-scraper",
+      "name": "web-scraper",
+      "path": ".agent/skills/web-scraper/skill.md",
+      "source": "local",
+      "summary": "Extracts structured data from web pages for market intelligence and lead generation.",
+      "tags": [
+        "scraping",
+        "data-extraction",
+        "python",
+        "beautifulsoup"
+      ],
+      "status": "active",
+      "priority": "high",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "read_url_content",
+          "use_for": "Static scraping"
+        },
+        {
+          "tool": "browser_subagent",
+          "use_for": "Dynamic scraping"
+        },
+        {
+          "tool": "run_command",
+          "use_for": "Execute Python scripts"
+        }
+      ]
+    },
+    {
+      "id": "mailer",
+      "name": "mailer",
+      "path": ".agent/skills/mailer/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from mailer.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "followup-sender",
+      "name": "followup_sender",
+      "path": ".agent/skills/followup_sender/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from followup_sender.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "enrich-leads",
+      "name": "enrich_leads",
+      "path": ".agent/skills/enrich_leads/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from scripts/enrich_leads.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "run-agent",
+      "name": "run_agent",
+      "path": ".agent/skills/run_agent/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from run_agent.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "run-veto",
+      "name": "run_veto",
+      "path": ".agent/skills/run_veto/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from src/cli/run_veto.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "ai-educational-guide-launch",
+      "name": "AI Educational Guide Launch",
+      "path": ".agent/skills/ai-educational-guide/skill.md",
+      "source": "local",
+      "summary": "Formalizirati i lansirati \"AI Educational Guide\" (prona\u0111en u `antigravity/scratch/ai-educational-gui...",
+      "tags": [],
+      "status": "active",
+      "priority": "high",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "generate-report",
+      "name": "generate_report",
+      "path": ".agent/skills/generate_report/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from generate_report.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "research",
+      "name": "research",
+      "path": ".agent/skills/research/skill.md",
+      "source": "local",
+      "summary": "A centralized hub for research activities, aggregating tools and providing structured planning templates.",
+      "tags": [
+        "research",
+        "planning",
+        "analysis",
+        "tools"
+      ],
+      "status": "active",
+      "priority": "high",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "agent-os-launch",
+      "name": "Agent OS Launch",
+      "path": ".agent/skills/agent-os-launch/skill.md",
+      "source": "local",
+      "summary": "Pripremiti i objaviti \"Agent OS\" kao open-source projekt na GitHubu (Sprint 1).",
+      "tags": [],
+      "status": "active",
+      "priority": "high",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "cloud-credits-audit",
+      "name": "cloud-credits-audit",
+      "path": ".agent/skills/cloud-credits-audit/skill.md",
+      "source": "local",
+      "summary": "Audit cloud credits and usage for Google Cloud, Supabase, and other services.",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "send-test-email",
+      "name": "send_test_email",
+      "path": ".agent/skills/send_test_email/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from send_test_email.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "mission-control",
+      "name": "mission_control",
+      "path": ".agent/skills/mission_control/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from src/cli/mission_control.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "harvested-skills",
+      "name": "harvested_skills",
+      "path": ".agent/skills/harvested_skills.md",
+      "source": "local",
+      "summary": "**Pattern:** Intentionally delaying a fast operation to give the user a sense of \"processing\" and \"v...",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "e-otpremnice-validator-mvp",
+      "name": "e-Otpremnice Validator MVP",
+      "path": ".agent/skills/e-otpremnice/skill.md",
+      "source": "local",
+      "summary": "Lansirati \"Honey Pot\" lead magnet - besplatni online XML validator za e-otpremnice.",
+      "tags": [
+        "deployment",
+        "frontend",
+        "backend",
+        "mvp"
+      ],
+      "status": "active",
+      "priority": "high",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    },
+    {
+      "id": "bulk-email-sender",
+      "name": "bulk_email_sender",
+      "path": ".agent/skills/bulk_email_sender/skill.md",
+      "source": "local",
+      "summary": "Auto-packaged skill from bulk_email_sender.py",
+      "tags": [],
+      "status": "active",
+      "priority": "medium",
+      "tools_required": [],
+      "trigger": null,
+      "version": "1.0.0",
+      "recommended_mcp_tools": [
+        {
+          "tool": "run_command",
+          "use_for": "Execute skill script"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+# Task Checklist - Trinity v3.15 Upgrade
+
+- [x] Perform Constitutional Reboot (v3.15 Upgrade)
+- [x] Align [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json) with Rule 49 & 50
+- [/] Inject [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) knowledge into [GROQ_AUDIT.md](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/GROQ_AUDIT.md) (Elite Tactics)
+- [ ] Update [groq_audit_agent.py](file:///home/kizabgd/Desktop/Istrazivanje/trinity_tool_registry/groq_audit_agent.py) system context (Meta Command)
+- [ ] Final Verification & Walkthrough Update

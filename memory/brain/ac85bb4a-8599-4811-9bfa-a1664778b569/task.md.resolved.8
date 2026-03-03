@@ -1,0 +1,36 @@
+# Trinity Protocol Evolution Task List
+
+## Documentation & Protocol Stabilization
+- [x] Initialize [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) with Project Constitution (Trinity Protocol Q&A)
+- [x] Align system behavior with `/PRODUCT_GUARDIAN_PROTOCOL`
+
+## Unification of Launch Mechanism
+- [x] Research existing entry points and script sprawl
+- [x] Create universal [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile) for standard commands
+- [x] Implement `trinity` CLI tool (Phase 1: Entry Point Abstraction)
+- [x] Design and implement [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json) schema for declarative execution
+- [x] Implement `Legacy Integration Protocol` (Auto-generation of manifests/makefiles)
+
+## Process Hardening (ProcessGuard)
+- [x] Design [ProcessGuard](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py#8-67) as an evolution of [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/judge_guard.py#56-344)
+- [x] Implement correlation checking and performance monitoring
+- [x] Move hardcoded thresholds to domain-specific config files
+- [x] Integrate ProcessGuard into more pipeline stages
+
+## Memory & Reliability
+- [x] Optimize memory hashing strategy (Implemented milestone-based hashing)
+- [x] Implement [ToolRegistry](file:///home/kizabgd/Desktop/Istrazivanje/scripts/tool_registry.py#5-30) for modular feature engineering (Completed scaffold and registry)
+- [x] Add metric-based "Fail-Gate" for low-performance/highly-correlated models
+- [x] Add metric-based "Fail-Gate" for low-performance/highly-correlated models
+
+## [ACTIVE] Debugging & Revenue-Driven Optimization
+- [x] Fix syntax errors in [instrumented_pipeline.py](file:///home/kizabgd/Desktop/Istrazivanje/instrumented_pipeline.py)
+- [x] Resolve [JudgeGuard](file:///home/kizabgd/Desktop/Istrazivanje/judge_guard.py#56-344) log requirements
+- [/] Optimize training pipeline for ROI (Training in progress)
+- [ ] Verify end-to-end execution via [trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity.py)
+
+
+## Modularization of Elitist Techniques
+- [x] Scaffold Feature Engineering Tool Registry
+- [x] Migrate Tabular RAG to independent plug-and-play module
+- [x] standardize data interface for registry tools

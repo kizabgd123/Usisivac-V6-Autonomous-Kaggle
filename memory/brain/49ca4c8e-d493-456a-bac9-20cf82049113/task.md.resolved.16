@@ -1,0 +1,8 @@
+# Mistral VetoBoard Integration
+
+- [ ] Check [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) for existing `MISTRAL_API_KEY`
+- [ ] Create `scripts/mistral_veto.py` — Mistral validator with output limits
+- [ ] Connect to GEMINI.md rules — feed constitution as system prompt
+- [ ] Add rate limiting and token caps for free tier safety
+- [ ] Add `veto` target to Makefile
+- [ ] Test end-to-end: agent output → Mistral validation → PASS/FAIL

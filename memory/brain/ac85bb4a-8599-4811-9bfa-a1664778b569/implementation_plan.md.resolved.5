@@ -1,0 +1,31 @@
+# Implementation Plan: Overfit Recovery & Leakage Elimination
+
+The current pipeline is suffering from a "Pseudo-Labeling Leakage Loop," where validation sets in the augmented training phase are contaminated with labels derived from the test set. This led to a deceptive 0.96964 OOF AUC while scoring only 0.95218 on the Kaggle Leaderboard.
+
+## User Review Required
+
+> [!WARNING]
+> **Removing Pseudo-Labeling**: I am completely disabling the pseudo-labeling stage. While it can theoretically improve scores, our current implementation is causing more harm than good due to validation set contamination.
+
+> [!IMPORTANT]
+> **Conservative Training**: We will revert to training on the [train.csv](file:///home/kizabgd/Desktop/Istrazivanje/train.csv) + `heart_disease_uci.csv` datasets only, ensuring the test set is strictly used for inference only.
+
+## Proposed Changes
+
+### Pipeline Refactoring
+#### [MODIFY] [instrumented_pipeline.py](file:///home/kizabgd/Desktop/Istrazivanje/instrumented_pipeline.py)
+- **Delete**: Remove the pseudo-labeling block (Lines 401-411).
+- **Modify**: Update the final retraining phase to use only the clean augmented training set (original train + UCI).
+- **Optimization**: Re-tune the ensemble blend weights (`alpha`) on the *clean* OOF predictions.
+- **Complexity Reduction**: Clamp `iterations` to a more conservative range (e.g., max 3000) to prevent overfitting to UCI-specific noise.
+
+## Verification Plan
+
+### Automated Tests
+- `python3 instrumented_pipeline.py`: Run the cleaned pipeline.
+- Verify that the OOF AUC is lower but more honest (expected ~0.955-0.958).
+- Verify the gap between training Logloss and validation Logloss is minimal (<0.01).
+
+### Manual Verification
+- Submit the resulting `submission_v7_clean_baseline.csv` to Kaggle.
+- Expect LB score to align within 0.005 of the OOF score.

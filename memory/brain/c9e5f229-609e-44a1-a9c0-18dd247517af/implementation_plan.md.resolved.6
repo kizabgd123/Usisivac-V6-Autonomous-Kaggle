@@ -1,0 +1,29 @@
+# Shot 3: The Ultimate Breach (No Leakage)
+
+Final attack on the 0.9575+ barrier. This version removes the Lookahead Bias from imputation and adds advanced fusion strategies.
+
+## User Review Required
+
+> [!CAUTION]
+> **Data Integrity Fix:** The 0.955 CV was inflated due to MICE fitting on `train + test`. Shot 3 fits on [train](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/Heart_Disease_S6E2_Top3_KillShot.py#202-244) only. Real OOF score will be slightly lower but LB will be higher.
+
+## Proposed Changes
+
+### [Component] Heart Disease Pipeline (Shot 3)
+
+#### [NEW] [heart_disease_shot3.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_disease_shot3.py)
+
+- **Imputation Fix**: `mice.fit(train)` -> `transform(train/test)`.
+- **Golden Features**:
+  - `Ischemic_Burden_v2`: `Oldpeak * MaxHR / Age`.
+  - `Metabolic_Product`: `RestingBP * MaxHR`.
+- **Model Diversity**:
+  - LGBM with GOSS.
+  - XGB with DART.
+  - CatBoost with MVS.
+- **Ensemble**:
+  - Geometric Rank Blending (Seed-Averaged).
+
+## Verification Plan
+1. Run OOF validation (10-fold).
+2. Verify LB with submission.

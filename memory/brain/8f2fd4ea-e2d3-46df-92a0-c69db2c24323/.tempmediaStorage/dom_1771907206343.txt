@@ -1,0 +1,174 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div >Failed to load the discussion topic />
+	[1] (20,35)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (61,48)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (61,37)<img  />
+	[4] (41,108)<button class='sc-eHqVIu fXRbiY' />
+		[5] (51,108)<span >Create />
+	[6] (72,547)<div class='sc-bjzMPS fqvrks' scrollable='true' />
+		[7] (72,170)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+			[8] (77,170)<div  />
+				[9] (20,170)<div  />
+					[10] (20,170)<div  />
+						[11] (20,170)<span >explore />
+				[12] (50,170)<div  />
+					[13] (50,170)<p >Home />
+		[14] (72,218)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+			[15] (77,218)<div  />
+				[16] (20,218)<div  />
+					[17] (20,218)<div  />
+						[18] (20,218)<span >emoji_events />
+				[19] (65,218)<div  />
+					[20] (65,218)<p >Competitions />
+					[21] (139,218)<div  />
+		[22] (72,266)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+			[23] (77,266)<div  />
+				[24] (20,266)<div  />
+					[25] (20,266)<div  />
+						[26] (20,266)<span >table_chart />
+				[27] (56,266)<div  />
+					[28] (56,266)<p >Datasets />
+		[29] (72,314)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+			[30] (77,314)<div  />
+				[31] (20,314)<div  />
+					[32] (20,314)<div  />
+						[33] (20,314)<span >tenancy />
+				[34] (53,314)<div  />
+					[35] (53,314)<p >Models />
+		[36] (72,362)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+			[37] (77,362)<div  />
+				[38] (20,362)<div  />
+					[39] (20,362)<div  />
+						[40] (20,362)<span >leaderboard />
+				[41] (64,362)<div  />
+					[42] (64,362)<p >Benchmarks />
+		[43] (72,410)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+			[44] (77,410)<div  />
+				[45] (20,410)<div  />
+					[46] (20,410)<div  />
+						[47] (20,410)<span >smart_toy />
+				[48] (63,410)<div  />
+					[49] (63,410)<p >Game Arena />
+		[50] (72,458)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+			[51] (77,458)<div  />
+				[52] (20,458)<div  />
+					[53] (20,458)<div  />
+						[54] (20,458)<span >code />
+				[55] (49,458)<div  />
+					[56] (49,458)<p >Code />
+		[57] (72,507)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+			[58] (77,507)<div  />
+				[59] (20,507)<div  />
+					[60] (20,507)<div  />
+						[61] (20,507)<span >comment />
+				[62] (63,507)<div  />
+					[63] (63,507)<p >Discussions />
+		[64] (72,555)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+			[65] (77,555)<div  />
+				[66] (20,555)<div  />
+					[67] (20,555)<div  />
+						[68] (20,555)<span >school />
+				[69] (49,555)<div  />
+					[70] (49,555)<p >Learn />
+		[71] (72,603)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+			[72] (77,603)<div  />
+				[73] (20,603)<div  />
+					[74] (20,603)<div  />
+						[75] (20,603)<span >expand_more />
+				[76] (48,603)<div  />
+					[77] (48,603)<p >More />
+		[78] (72,669)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+			[79] (77,669)<div  />
+				[80] (20,669)<div  />
+					[81] (20,669)<div  />
+						[82] (20,669)<span >note_alt />
+				[83] (59,669)<div  />
+					[84] (59,669)<p >Your Work />
+		[85] (39,715)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+			[86] (20,715)<span >arrow_drop_down />
+			[87] (51,715)<span >Viewed />
+		[88] (66,759)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+			[89] (70,759)<div  />
+				[90] (20,759)<div  />
+					[91] (20,759)<div  />
+						[92] (20,759)<img  />
+				[93] (80,759)<div  />
+					[94] (82,759)<p >Predicting Heart Disease />
+		[95] (66,802)<a aria-label='The best solo model so far | RealMLP | LB: 0.95397' class='sc-eXVaYZ cPXxFg' href='/code/omidbaghchehsaraei/the-best-solo-model-so-far-realmlp-lb-0-95397' role='link' />
+			[96] (70,802)<div  />
+				[97] (20,802)<div  />
+					[98] (20,802)<div  />
+						[99] (20,802)<img  />
+				[100] (80,802)<div  />
+					[101] (82,802)<p >The best solo model so far | RealMLP | LB: 0.95397 />
+		[102] (66,846)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+			[103] (70,846)<div  />
+				[104] (20,846)<div  />
+					[105] (20,846)<div  />
+						[106] (20,846)<img  />
+				[107] (80,846)<div  />
+					[108] (82,846)<p >Deep Past Challenge - Translate Akkadian to English />
+		[109] (66,890)<a aria-label='Fork of Fork of Trinity Akkadian SOTA - Off 00ecb6' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/fork-of-fork-of-trinity-akkadian-sota-off-00ecb6' role='link' />
+			[110] (70,890)<div  />
+				[111] (20,890)<div  />
+					[112] (20,890)<div  />
+						[113] (20,890)<img  />
+				[114] (80,890)<div  />
+					[115] (82,890)<p >Fork of Fork of Trinity Akkadian SOTA - Off 00ecb6 />
+		[116] (66,933)<a aria-label='Trinity Akkadian SOTA V2.0 — Beam Search Upgrade' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/trinity-akkadian-sota-v2-0-beam-search-upgrade' role='link' />
+			[117] (70,933)<div  />
+				[118] (20,933)<div  />
+					[119] (20,933)<div  />
+						[120] (20,933)<img  />
+				[121] (80,933)<div  />
+					[122] (82,933)<p >Trinity Akkadian SOTA V2.0 — Beam Search Upgrade />
+		arrow_right
+		Edited
+	[123] (72,965)<button class='sc-iUBWhR dRWpnJ' />
+		[124] (20,970)<div  />
+			[125] (20,968)<span >auto_awesome_motion />
+			[126] (24,952)<div >2 />
+		[127] (73,970)<p >View Active Events />
+	[128] (570,35)<div  />
+		[129] (570,35)<div  />
+			[130] (252,35)<span >search />
+			[131] (584,35)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r5:' placeholder='Search' />
+	[132] (982,35)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[133] (982,35)<div  />
+	[134] (241,116)<a aria-label='Kaggle's profile' class='sc-lhsSio kfuoVB' href='/organizations/kaggle' />
+		[135] (241,116)<div  />
+	Kaggle
+	·
+	Playground Prediction Competition
+	·
+	5 days to go
+	[136] (836,116)<button class='sc-pYNGo cZrOun' role='button' />
+		[137] (836,116)<span >Submit Prediction />
+	[138] (900,116)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+	Predicting Heart Disease
+	Playground Series - Season 6 Episode 2
+	[139] (829,238)<img  />
+	[140] (258,367)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/overview' role='tab' />
+		[141] (258,367)<span >Overview />
+	[142] (302,367)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/data' role='tab' />
+		[143] (302,367)<span >Data />
+	[144] (337,367)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/code' role='tab' />
+		[145] (337,367)<span >Code />
+	[146] (377,367)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/models' role='tab' />
+		[147] (377,367)<span >Models />
+	[148] (429,367)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/discussion' role='tab' />
+		[149] (429,367)<span >Discussion />
+	[150] (493,367)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/leaderboard' role='tab' />
+		[151] (493,367)<span >Leaderboard />
+	[152] (546,367)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/rules' role='tab' />
+		[153] (546,367)<span >Rules />
+	[154] (583,367)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/team' role='tab' />
+		[155] (583,367)<span >Team />
+	[156] (635,367)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/playground-series-s6e2/submissions' role='tab' />
+		[157] (635,367)<span >Submissions />
+	Failed to load the discussion topic
+
+</current_dom>

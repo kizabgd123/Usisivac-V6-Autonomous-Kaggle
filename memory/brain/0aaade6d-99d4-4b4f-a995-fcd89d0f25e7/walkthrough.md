@@ -1,0 +1,17 @@
+# Workspace Dashboard Reconfiguration
+
+## Changes Made
+- Updated `workspace_automation.yaml` to use **Groq** (with `llama-3-8b-8192`) instead of Grok and OpenRouter for file processing insights and routing.
+- Switched the main agent's Mistral model to `mistral-small-latest`.
+- Rewrote `workspace_engine/api_clients.py` to strip out Gemini, Grok, and OpenRouter, implementing `call_groq_insight` and `call_groq_routing` functions, linking to the `.env`'s `GROQ_API_KEY`.
+- Updated `workspace_engine/file_processor.py` to correctly map the new Groq endpoints through the scanning pipeline.
+- Modified the main `workspace_dashboard.py` to scan for `GROQ_API_KEY` instead of Grok.
+- Fixed a `SyntaxError` at the top of `workspace_dashboard.py` (`-- Active: 1768...`).
+- Addressed `ImportError` bugs when switching function endpoints.
+- Resolved a Mistral 400 Bad Request error by removing the conflicting `response_format={"type": "json_object"}` payload when `tools` are passed.
+- Adjusted the `SYSTEM_PROMPT` to remove explicit mentions of "Gemini 2.0 Pro" acting as out of character text, replacing it with a generic mention of the predecessor making mistakes. The focus remains on data integrity and not repeating the `v16` LB 0.4510 mistake.
+
+## Validation Results
+- Dry-run mode (`scan-dry`) works correctly.
+- Mistral API chat initiates without crashing the JSON parser.
+- The pipeline correctly distinguishes ML/Kaggle tasks from general ones and routes them accordingly.

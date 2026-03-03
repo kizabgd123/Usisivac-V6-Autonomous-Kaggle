@@ -1,0 +1,31 @@
+# Competition Tasks
+
+## Stanford RNA 3D Folding 2
+- [x] Analyze competition dataset structure (`train.csv`, `test.csv`, MSA files).
+- [x] Understand the evaluation metric.
+- [x] Setup robust local validation scheme.
+- [x] Establish a rudimentary PyTorch baseline.
+- [ ] Research and implement advanced architectures.
+- [ ] Integrate MSA features efficiently.
+- [ ] Train, tune, and submit.
+
+## Heart Disease S6E2 (KillShot v3.2) — DONE
+- [x] Run optimized V3.2 (Deduplication, Log1p, ExtraTrees).
+- [x] Monitor Fold-wise performance and completion.
+- [x] OOF Rank AUC: **0.955338** | CatBoost 81% | Adversarial 0.503 ✅
+- [x] Submission saved: `submission_heart_v3_2_killshot.csv`
+
+## Heart Disease S6E2 (KillShot v3.3) — IN PROGRESS
+### Iteration 1: Quick Wins (Target: 0.960)
+- [ ] Add Target Encoding (CV) for categorical features.
+- [ ] Add top missing interactions: `Thallium_ChestPain`, `Health_score`, `Sex_ChestPain`, `Age_Sex`.
+- [ ] Add ratio features: `HR_Age_ratio`, `ST_HR_ratio`, `Vessels_Thallium`, `Vessels_Age_ratio`.
+- [ ] Add clinical: `CV_risk_score`, `Multiple_risks`.
+- [ ] OHE for pseudo-categorical columns.
+### Iteration 2: Feature Refinement (Target: 0.962)
+- [ ] Yeo-Johnson instead of log1p.
+- [ ] RFE with CV for feature selection.
+### Iteration 3: Ensemble Enhancement (Target: 0.964)
+- [ ] Hill Climbing for optimal ensemble weights.
+- [ ] 3 seeds instead of 1.
+- [ ] Pseudo-labeling (high-confidence only).

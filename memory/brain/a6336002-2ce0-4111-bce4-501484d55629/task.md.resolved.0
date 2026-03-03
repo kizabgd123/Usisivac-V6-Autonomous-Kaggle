@@ -1,0 +1,11 @@
+# Task: Populate Skills from External Log
+
+- [ ] Locate the source `.gemini/work_log` directory/file <!-- id: 0 -->
+- [ ] Identify and analyze existing skills in the source <!-- id: 1 -->
+- [ ] Initialize the skills directory in the current project <!-- id: 2 -->
+- [ ] Migrating skills: <!-- id: 3 -->
+    - [ ] Create/Update skill structures <!-- id: 4 -->
+    - [ ] Populate `SKILL.md` contents <!-- id: 5 -->
+    - [ ] Migrate scripts and resources <!-- id: 6 -->
+- [ ] Verify skills are correctly formatted <!-- id: 7 -->
+- [ ] Notify completion <!-- id: 8 -->

@@ -1,0 +1,26 @@
+# Heart Disease Pipeline Optimization Plan
+
+The current [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py) pipeline has completed, but the stacking logic is suboptimal, leading to a "Final AUC" (0.95517) that is lower than the best single model (CatBoost: 0.95532). Meanwhile, the `V10 KillShot` is running but appears to be dropping a significant portion of the synthetic data (~44k rows), which may hurt generalized performance.
+
+## Proposed Changes
+
+### [Component] Heart Disease Pipeline (v3_fast)
+
+#### [MODIFY] [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py)
+- **Fix Stacking**: Implement cross-validated stacking (using `Ridge` or `LogisticRegressionCV`) to prevent leakage and optimize weights.
+- **Calibrate Weights**: Add a weighted average fallback if stacking doesn't outperform single models.
+- **Port V10 Interactions**: Integrate "ST_Slope_Oldpeak" and "Age_Cholesterol" interactions which were validated in the V10 protocol.
+
+### [Component] Monitoring / V10
+- **Monitor V10**: Observe if the 44k row drop leads to better or worse internal AUC compared to `v3_fast`.
+
+## Verification Plan
+
+### Automated Tests
+- Run [heart_top5_v3_fast.py](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/heart_top5_v3_fast.py) with the updated stacking logic.
+- Verify that `Final Stacking OOF AUC` >= `max(single model AUC)`.
+- Command: `python3 heart_top5_v3_fast.py`
+
+### Manual Verification
+- Check [training_v3.log](file:///home/kizabgd/Desktop/Istrazivanje/heart_disease/training_v3.log) for the new AUC scores.
+- Compare with leaderboard results (if user provides submission feedback).

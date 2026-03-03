@@ -1,0 +1,83 @@
+# Knowledge Base Orchestrator Walkthrough
+
+I have successfully implemented the **Knowledge Base Orchestrator** workflow. This allows you to sync your Notion Knowledge Base to your local machine and index it for near-instant retrieval within your project.
+
+## 🚀 Accomplishments
+
+### 1. Notion Sync Engine
+Created a dedicated sync script [scripts/sync_notion_kb.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/sync_notion_kb.py) that:
+- Connects to your Notion Database using the `NOTION_API_KEY`.
+- Paginates through all entries.
+- Extracts properties (`Category`, `Summary`, `Insights`, `Local Path`).
+- Fetches all text blocks from each page (Content body).
+- Saves each page as a structured JSON file in `data/notion_raw/` for local indexing.
+
+### 2. Intelligent Indexing (Trinity KB)
+Updated the existing `trinity_kb.py` tool to:
+- Specifically parse the structured JSON files from Notion.
+- Extract title, category, and insights into high-visibility sections in the index.
+- Maintain compatibility with existing `.md` and `.ipynb` files.
+- Index all knowledge into the `trinity_kb.db` SQLite database.
+
+## 🧪 Verification Results
+
+### Sync and Ingestion
+I ran the sync command which successfully indexed **214 Interaction Artifacts**, including local task files, notebooks, and the Notion strategy data.
+
+```bash
+python3 trinity_kb.py sync
+# Result: ✅ Sync Complete. 214 Interaction Artifacts indexed.
+```
+
+### Retrieval (Recall)
+Verification of keyword search ("recall") works across both local artifacts and Notion-synced data.
+
+````carousel
+```bash
+python3 trinity_kb.py recall "Kaggle"
+```
+<!-- slide -->
+📄 **heart_disease_strategy.json**
+  **Insights:** Final blend of LightGBM + CatBoost.
+  **Source:** Kaggle Internal
+````
+
+## 🫀 Heart Disease Pipeline (Optuna Tracking)
+I have enhanced the `heart_disease_top3_colab.py` script to provide deep visibility into the hyperparameter tuning process.
+
+### 1. Optuna Instrumentation
+The `StackingEnsemble` class is now instrumented with Arize Phoenix tracing. Every single trial run by Optuna (XGBoost, LightGBM, and CatBoost) is captured as a distinct span in your trace timeline.
+
+### 2. Metric & Parameter Logging
+For each trial, the system now automatically logs:
+- **`hyperparam.learning_rate`**: Track how the LR evolves across trials.
+- **`metric.auc`**: See the exact performance of each parameter combination.
+- **All other parameters**: Every parameter suggested by Optuna is captured in the span attributes.
+
+```python
+# Each trial now generates a span like this:
+with self.tracer.start_as_current_span(f"XGBoost_Trial_{trial.number}") as span:
+    span.set_attribute("metric.auc", mean_auc)
+    # ...
+```
+
+## 🛠️ How to use
+
+### Knowledge Base
+1. **Update .env**: Ensure `NOTION_API_KEY` and `NOTION_DATABASE_ID` are set.
+2. **Sync**:
+   ```bash
+   python3 scripts/sync_notion_kb.py
+   python3 trinity_kb.py sync
+   ```
+3. **Recall**: `python3 trinity_kb.py recall "topic"`
+
+### Heart Disease Pipeline
+1. Open `heart_disease_top3_colab.py` in Colab.
+2. Ensure Cell 1 installs Phoenix.
+3. Run the pipeline.
+4. Launch the Phoenix UI via the link provided in the output.
+5. In the **Tracing** tab, you will see `XGBoost_Trial_X`, `LightGBM_Trial_X`, etc., each with their specific LR and AUC.
+
+> [!TIP]
+> Use the Phoenix UI to compare different trials and understand which parameter ranges are yielding the highest AUC scores!

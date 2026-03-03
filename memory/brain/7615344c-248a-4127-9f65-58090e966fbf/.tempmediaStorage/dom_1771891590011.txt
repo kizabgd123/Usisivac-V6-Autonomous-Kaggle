@@ -1,0 +1,221 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (59,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (59,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (59,184)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,184)<div  />
+			[23] (16,184)<div  />
+				[24] (16,184)<div  />
+					[25] (16,184)<span >table_chart />
+			[26] (45,184)<div  />
+				[27] (45,184)<p >Datasets />
+	[28] (59,217)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,217)<div  />
+			[30] (16,217)<div  />
+				[31] (16,217)<div  />
+					[32] (16,217)<span >tenancy />
+			[33] (42,217)<div  />
+				[34] (42,217)<p >Models />
+	[35] (59,250)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,250)<div  />
+			[37] (16,250)<div  />
+				[38] (16,250)<div  />
+					[39] (16,250)<span >leaderboard />
+			[40] (51,250)<div  />
+				[41] (51,250)<p >Benchmarks />
+	[42] (59,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (59,317)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,317)<div  />
+			[51] (16,317)<div  />
+				[52] (16,317)<div  />
+					[53] (16,317)<span >code />
+			[54] (39,317)<div  />
+				[55] (39,317)<p >Code />
+	[56] (59,350)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,350)<div  />
+			[58] (16,350)<div  />
+				[59] (16,350)<div  />
+					[60] (16,350)<span >comment />
+			[61] (50,350)<div  />
+				[62] (50,350)<p >Discussions />
+	[63] (59,383)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,383)<div  />
+			[65] (16,383)<div  />
+				[66] (16,383)<div  />
+					[67] (16,383)<span >school />
+			[68] (39,383)<div  />
+				[69] (39,383)<p >Learn />
+	[70] (59,416)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,416)<div  />
+			[72] (16,416)<div  />
+				[73] (16,416)<div  />
+					[74] (16,416)<span >expand_more />
+			[75] (38,416)<div  />
+				[76] (38,416)<p >More />
+	[77] (59,462)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,462)<div  />
+			[79] (16,462)<div  />
+				[80] (16,462)<div  />
+					[81] (16,462)<span >note_alt />
+			[82] (47,462)<div  />
+				[83] (47,462)<p >Your Work />
+	[84] (31,494)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,494)<span >arrow_drop_down />
+		[86] (40,494)<span >Viewed />
+	[87] (54,524)<a aria-label='Bidding Predictions for Construction' class='sc-eXVaYZ cPXxFg' href='/competitions/bidding-predictions-for-construction' role='link' />
+		[88] (58,524)<div  />
+			[89] (16,524)<div  />
+				[90] (16,524)<div  />
+					[91] (16,524)<img  />
+			[92] (66,524)<div  />
+				[93] (68,524)<p >Bidding Predictions for Construction />
+	[94] (54,554)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[95] (58,554)<div  />
+			[96] (16,554)<div  />
+				[97] (16,554)<div  />
+					[98] (16,554)<img  />
+			[99] (66,554)<div  />
+				[100] (68,554)<p >Predicting Heart Disease />
+	[101] (54,584)<a aria-label='Heart Disease S6E2 V10.12 Final' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/heart-disease-s6e2-v10-12-final' role='link' />
+		[102] (58,584)<div  />
+			[103] (16,584)<div  />
+				[104] (16,584)<div  />
+					[105] (16,584)<img  />
+			[106] (66,584)<div  />
+				[107] (68,584)<p >Heart Disease S6E2 V10.12 Final />
+	[108] (54,615)<a aria-label='Fork of Fork of Heart Disease S6E2: Top 3% KillSho' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/fork-of-fork-of-heart-disease-s6e2-top-3-killsho' role='link' />
+		[109] (58,615)<div  />
+			[110] (16,615)<div  />
+				[111] (16,615)<div  />
+					[112] (16,615)<img  />
+			[113] (66,615)<div  />
+				[114] (68,615)<p >Fork of Fork of Heart Disease S6E2: Top 3% KillSho />
+	[115] (54,645)<a aria-label='Harmonizing the Data of your Data' class='sc-eXVaYZ cPXxFg' href='/competitions/harmonizing-the-data-of-your-data' role='link' />
+		[116] (58,645)<div  />
+			[117] (16,645)<div  />
+				[118] (16,645)<div  />
+					[119] (16,645)<img  />
+			[120] (66,645)<div  />
+				[121] (68,645)<p >Harmonizing the Data of your Data />
+	[122] (30,681)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,681)<span >arrow_right />
+		[124] (40,681)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >auto_awesome_motion />
+		[128] (58,979)<p >View Active Events />
+	[129] (556,24)<div  />
+		[130] (556,24)<div  />
+			[131] (302,24)<span >search />
+			[132] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r9:' placeholder='Search' />
+	[133] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[134] (986,24)<div  />
+	[135] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		Bidding Predictions for Construction
+		[136] (768,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[137] (768,62)<span >Submit Prediction />
+		[138] (820,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[139] (307,94)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview' role='tab' />
+			[140] (307,93)<span >Overview />
+		[141] (342,94)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/data' role='tab' />
+			[142] (342,93)<span >Data />
+		[143] (369,94)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/code' role='tab' />
+			[144] (369,93)<span >Code />
+		[145] (402,94)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/models' role='tab' />
+			[146] (402,93)<span >Models />
+		[147] (444,94)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/discussion' role='tab' />
+			[148] (444,93)<span >Discussion />
+		[149] (495,94)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/leaderboard' role='tab' />
+			[150] (495,93)<span >Leaderboard />
+		[151] (537,94)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/rules' role='tab' />
+			[152] (537,93)<span >Rules />
+		[153] (566,94)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/team' role='tab' />
+			[154] (566,93)<span >Team />
+		[155] (608,94)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/bidding-predictions-for-construction/submissions' role='tab' />
+			[156] (608,93)<span >Submissions />
+		Description
+		link
+		keyboard_arrow_up
+		There are multiple predictors that are shared in the attached datasets. Every column besides "amount" (unit price) will be available for prediction. Models will be evaluated based on total bid prediction, not individual line-item amounts that the dataset provides.
+		[157] (488,156)<div  />
+			[158] (478,156)<div  />
+				[159] (478,156)<div  />
+					[160] (309,156)<div  />
+						[161] (309,156)<div  />
+							[162] (309,156)<h3 >Evaluation />
+					[163] (659,156)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[164] (680,156)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[165] (466,494)<div >Submissions are evaluated using Root Mean Squared Logarithmic Error (RMSLE) between the predicted and actual total bid amounts.
+RMSLE is a unitless metric; lower values indicate better performance. Predictions must be non-negative. Any negative predictions will be clipped to zero prior to scoring.
+Submissions are evaluated on RMSLE for the testing dataset.
+Submission File
+For each ID in the test set, you must predict a total bid, individual pay-item predictions are optional and not used for evaluation. The file should contain a header and have the following format: />
+			Submissions are evaluated using Root Mean Squared Logarithmic Error (RMSLE) between the predicted and actual total bid amounts.
+			RMSLE is a unitless metric; lower values indicate better performance. Predictions must be non-negative. Any negative predictions will be clipped to zero prior to scoring.
+			Submissions are evaluated on RMSLE for the testing dataset.
+			Submission File
+			For each ID in the test set, you must predict a total bid, individual pay-item predictions are optional and not used for evaluation. The file should contain a header and have the following format:
+			row_id,
+			total_bid
+			"JOB_000022_CON_000039"
+			,
+			4014359.20
+			etc.
+		[166] (488,846)<div  />
+			[167] (478,846)<div  />
+				[168] (478,846)<div  />
+					[169] (300,846)<div  />
+						[170] (300,846)<div  />
+							[171] (300,846)<h3 >Prizes />
+					[172] (659,846)<button aria-label='Copy link' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Copy link'>link />
+			[173] (680,846)<button aria-label='Collapse ' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Collapse '>keyboard_arrow_up />
+		[174] (466,954)<div >Describe how many participants will win and what they'll receive. You can edit the list below.
+Total Prizes Available: USD$250 cash />
+			Describe how many participants will win and what they'll receive. You can edit the list below.
+			Total Prizes Available: USD$250 cash
+			1st Place
+			- $400
+			2nd Place
+			- $100
+		Table of Contents
+		[175] (820,134)<button aria-label='Collapse all sections' class='sc-koBvLg jxMomE google-symbols notranslate' title='Collapse all sections'>collapse_all />
+		[176] (764,213)<div  />
+			[177] (723,158)<a aria-label='Overview, 1 of 5' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview/abstract' id='623462' role='tab' />
+				[178] (723,158)<span >Overview />
+			[179] (726,186)<a aria-label='Description, 2 of 5' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview/description' id='623459' role='tab' />
+				[180] (726,186)<span >Description />
+			[181] (724,213)<a aria-label='Evaluation, 3 of 5' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview/evaluation' id='623460' role='tab' />
+				[182] (724,213)<span >Evaluation />
+			[183] (718,240)<a aria-label='Prizes, 4 of 5' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview/prizes' id='623463' role='tab' />
+				[184] (718,240)<span >Prizes />
+			[185] (720,267)<a aria-label='Citation, 5 of 5' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/bidding-predictions-for-construction/overview/citation' id='99999' role='tab' />
+				[186] (720,267)<span >Citation />
+
+</current_dom>

@@ -1,0 +1,46 @@
+# Digital Workspace Automation — Walkthrough
+
+## What Was Built
+
+An event-driven file routing system + **interactive terminal dashboard** for managing it.
+
+## All Files
+
+| Action | File | Purpose |
+|--------|------|---------|
+| **NEW** | [workspace_dashboard.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py) | 🎯 Interactive TUI dashboard (Rich) |
+| **NEW** | [launch_dashboard.sh](file:///home/kizabgd/Desktop/Istrazivanje/launch_dashboard.sh) | Launcher — works from anywhere |
+| **NEW** | [antigravity-workspace.desktop](file:///home/kizabgd/.local/share/applications/antigravity-workspace.desktop) | Taskbar/dock shortcut |
+| **NEW** | [workspace_main.py](file:///home/kizabgd/Desktop/Istrazivanje/workspace_main.py) | CLI entry point |
+| **NEW** | [workspace_engine/](file:///home/kizabgd/Desktop/Istrazivanje/workspace_engine/) | Core module (5 files) |
+| **NEW** | [workspace_automation.yaml](file:///home/kizabgd/Desktop/Istrazivanje/configs/workspace_automation.yaml) | Config |
+| **NEW** | [.env.example](file:///home/kizabgd/Desktop/Istrazivanje/.env.example) | API key template |
+| **NEW** | [test_workspace_engine.py](file:///home/kizabgd/Desktop/Istrazivanje/tests/test_workspace_engine.py) | 15 unit tests |
+
+## Dashboard Commands
+
+| Komanda | Šta radi |
+|---------|----------|
+| [status](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#67-156) | System overview (Inbox, folderi, API ključevi) |
+| [scan](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#197-204) | Jednokratno skeniranje Inbox-a |
+| `scan-dry` | Simulacija bez pomeranja |
+| [watch](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#206-222) | Real-time Watchdog praćenje |
+| [inbox](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#224-253) | Lista fajlova u Inbox-u |
+| [log](file:///home/kizabgd/Desktop/Istrazivanje/alerts.log) | Poslednji log zapisi |
+| [config](file:///home/kizabgd/Desktop/Istrazivanje/workspace_dashboard.py#273-282) | Trenutna YAML konfiguracija |
+| [setup](file:///home/kizabgd/Desktop/Istrazivanje/ask.py#22-30) | Kreiraj folder strukturu |
+
+## How to Pin to Taskbar
+
+Ikona **"Antigravity Workspace"** je registrovana u sistemu. Za pin:
+- **GNOME**: Otvori Activities → traži "Antigravity" → desni klik → "Add to Favorites"
+- **KDE**: Traži u Application Launcher → desni klik → "Pin to Task Manager"
+- **XFCE**: Panel → Add New Items → Launcher → odaberi "Antigravity Workspace"
+
+## Test Results
+
+```
+15 passed in 1.62s ✅
+```
+
+Dashboard smoke test: ✅ radi iz `~/` bez `cd` u projekat

@@ -1,0 +1,6 @@
+{
+  "artifactType": "ARTIFACT_TYPE_TASK",
+  "summary": "Updated task list to include the Proactive Hardening phase (v3.15).\nNew tasks:\n- Standardize `guard_alert.json` schema (Encapsulation).\n- Implement Sandbox Profiling guardrails (Timeout limits).\n- Design Pre-flight Architecture checks (Pre-training veto).\n- Update `GEMINI.md` and `trinity_config.json` with new protocols.",
+  "updatedAt": "2026-02-27T15:44:03.258241532Z",
+  "version": "22"
+}

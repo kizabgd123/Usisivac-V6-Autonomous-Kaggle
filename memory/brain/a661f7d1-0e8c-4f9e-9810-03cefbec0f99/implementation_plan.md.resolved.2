@@ -1,0 +1,23 @@
+# Implementation Plan - Kaggle Bidding Synthesis
+
+## Goal
+Maximize LB score for "Bidding Predictions for Construction" within the final 2-hour window.
+
+## Proposed Changes
+
+### Construction Bidding Component
+
+#### [NEW] [bidding_v24_synthesis.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v24_synthesis.py)
+- Unified estimator incorporating v17 (Inflation), v23 (Bayesian Priors), and Registry (Ensemble 35/35/20/10).
+- Implementation of `con_bid_variance` to penalize inconsistent bidders.
+- Interaction features for job complexity.
+
+## Verification Plan
+
+### Automated Tests
+- Multi-fold CV reporting RMSE (Log-space) and RMSLE (Exp-space).
+- Leakage check: Ensure OOF RMSLE > 0.30.
+
+### Manual Verification
+- Generate `submission_v24_synthesis.csv`.
+- Verify total bids are within reasonable boundaries (no negative or zero bids).

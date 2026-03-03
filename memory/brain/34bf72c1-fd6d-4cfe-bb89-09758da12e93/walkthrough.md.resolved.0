@@ -1,0 +1,31 @@
+# Kaggle Playground S6E3: Environment Ready Walkthrough
+
+I have prepared your environment for the **Playground Series Season 6, Episode 3** competition.
+
+## 1. Data & Competition Basics
+- **Competition:** [Customer Churn Prediction](https://www.kaggle.com/competitions/playground-series-s6e3)
+- **Files Location:** `/home/kizabgd/Desktop/new-challenge/data/`
+- **Goal:** Predict the `Churn` (binary) using **ROC AUC** as the primary metric.
+- **Initial Data Inspection:**
+    - `train.csv` (76MB): Contains features like `tenure`, `MonthlyCharges`, `TotalCharges`, and services.
+    - `sample_submission.csv`: Requires `id` and `Churn` (probability).
+
+## 2. Usisivac Research Node
+I have created a comprehensive research report based on **2025-2026 Academic SOTA**:
+- **Location:** [research_report.md](file:///home/kizabgd/.gemini/antigravity/brain/34bf72c1-fd6d-4cfe-bb89-09758da12e93/research_report.md)
+- **Key Takeaways:** 
+    - Use **CatBoost** for categorical feature handling.
+    - Focus on **Profit-Driven Modeling** (ProfTree).
+    - Implement **SHAP** for interpretability.
+    - Use **SMOTE-ENN** for class imbalance.
+
+## 3. Gemini CLI & Monitoring
+- **Configuration:** Gemini CLI is logged in and ready.
+- **Monitoring Rules:** See [monitor_rules.txt](file:///home/kizabgd/Desktop/new-challenge/data/monitor_rules.txt) for context and logging instructions.
+- **Logs:** Activity will be logged to [agent_activity.log](file:///home/kizabgd/Desktop/new-challenge/agent_activity.log).
+
+---
+### Next Steps
+1. Review the [Research Report](file:///home/kizabgd/.gemini/antigravity/brain/34bf72c1-fd6d-4cfe-bb89-09758da12e93/research_report.md).
+2. Start Feature Engineering based on the suggested `Ratio_Charges` and `Service_Diversity`.
+3. Initialize the first CatBoost baseline.

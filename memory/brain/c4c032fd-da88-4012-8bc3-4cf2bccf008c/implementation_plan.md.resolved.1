@@ -1,0 +1,27 @@
+# Plan: Phase 1 — Elite Transformation (v9)
+
+Ovaj plan fokusira se na prelazak sa statičnih baseline modela na dinamički tuned ansambl koristeći Optuna.
+
+## Proposed Changes
+
+### [ML Engine Evolution]
+#### [NEW] [elite_tuner.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/elite_tuner.py)
+Novi orchestrator koji koristi Optuna za pronalaženje optimalnih parametara za:
+- CatBoost (sa focal loss-om ako je potrebno)
+- LightGBM (sa dart/goss varijacijama)
+- XGBoost (sa tree_method='hist')
+
+#### [MODIFY] [trinity_config.json](file:///home/kizabgd/Desktop/kaggle-arena/trinity_config.json)
+Dodavanje `optuna_params` sekcije za praćenje trials-a i pruning strategija.
+
+#### [NEW] [feature_factory.py](file:///home/kizabgd/Desktop/kaggle-arena/scripts/utils/feature_factory.py)
+Modul za generisanje interakcija i bininga po Tanaka principima identifikovanim u [heart_disease.md](file:///home/kizabgd/Desktop/kaggle-arena/tactic_registries/heart_disease.md) registry-u.
+
+## Verification Plan
+
+### Automated Tests
+1. **CV Consistency**: Provera da li novi tuned modeli imaju niži STD između foldova.
+2. **Improvement Check**: Potvrda da je OOF AUC barem 0.0002 veći od baseline-a.
+
+### Manual Verification
+1. **Report Review**: Pregled Optuna vizuelizacija (feature importance, trial history).

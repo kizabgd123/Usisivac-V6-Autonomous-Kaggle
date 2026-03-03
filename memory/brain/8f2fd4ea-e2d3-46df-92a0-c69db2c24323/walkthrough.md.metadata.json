@@ -1,0 +1,5 @@
+{
+  "artifactType": "ARTIFACT_TYPE_WALKTHROUGH",
+  "summary": "Walkthrough of the Heart Disease S6E2 V10.14 SOTA Upgrade. Documents the implementation of Flipped Label scrubbing, Gaussian Periodic Embeddings (RealMLP style), and the transition to 10-fold CV for maximum leaderboard stability. Includes the Kaggle submission link.",
+  "updatedAt": "2026-02-24T04:52:38.832883938Z"
+}

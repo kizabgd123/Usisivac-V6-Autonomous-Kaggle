@@ -1,0 +1,247 @@
+<current_dom_explanation>
+This is a temporary snapshot of the current page's DOM structure. The DOM will change if you navigate to or interact with another page. Use a tool like browser_get_dom to capture and preserve the DOM in your trajectory if needed for later reference.
+</current_dom_explanation>
+<current_dom>
+[0] (500,500)<div  />
+	[1] (16,24)<button aria-label='Navigation menu' class='sc-koBvLg hnfHyX google-symbols notranslate' title='Navigation menu'>menu />
+	[2] (49,33)<a aria-label='Return to Kaggle home page' href='/' />
+		[3] (49,26)<img  />
+	[4] (33,75)<button class='sc-eHqVIu fXRbiY' />
+		[5] (41,75)<span >Create />
+	[6] (60,118)<a aria-label='Home' class='sc-eXVaYZ cPXxFg' href='/' role='link' />
+		[7] (63,118)<div  />
+			[8] (16,118)<div  />
+				[9] (16,118)<div  />
+					[10] (16,118)<span >explore />
+			[11] (40,118)<div  />
+				[12] (40,118)<p >Home />
+	[13] (60,151)<a aria-label='Competitions' class='sc-eXVaYZ cPXxFg' href='/competitions' role='link' />
+		[14] (63,151)<div  />
+			[15] (16,151)<div  />
+				[16] (16,151)<div  />
+					[17] (16,151)<span >emoji_events />
+			[18] (52,151)<div  />
+				[19] (52,151)<p >Competitions />
+				[20] (115,151)<div  />
+	[21] (60,185)<a aria-label='Datasets' class='sc-eXVaYZ cPXxFg' href='/datasets' role='link' />
+		[22] (63,185)<div  />
+			[23] (16,185)<div  />
+				[24] (16,185)<div  />
+					[25] (16,185)<span >table_chart />
+			[26] (45,185)<div  />
+				[27] (45,185)<p >Datasets />
+	[28] (60,218)<a aria-label='Models' class='sc-eXVaYZ cPXxFg' href='/models' role='link' />
+		[29] (63,218)<div  />
+			[30] (16,218)<div  />
+				[31] (16,218)<div  />
+					[32] (16,218)<span >tenancy />
+			[33] (42,218)<div  />
+				[34] (42,218)<p >Models />
+	[35] (60,251)<a aria-label='Benchmarks' class='sc-eXVaYZ cPXxFg' href='/benchmarks' role='link' />
+		[36] (63,251)<div  />
+			[37] (16,251)<div  />
+				[38] (16,251)<div  />
+					[39] (16,251)<span >leaderboard />
+			[40] (51,251)<div  />
+				[41] (51,251)<p >Benchmarks />
+	[42] (60,284)<a aria-label='Game Arena' class='sc-eXVaYZ cPXxFg' href='/game-arena' role='link' />
+		[43] (63,284)<div  />
+			[44] (16,284)<div  />
+				[45] (16,284)<div  />
+					[46] (16,284)<span >smart_toy />
+			[47] (51,284)<div  />
+				[48] (51,284)<p >Game Arena />
+	[49] (60,318)<a aria-label='Code' class='sc-eXVaYZ cPXxFg' href='/code' role='link' />
+		[50] (63,318)<div  />
+			[51] (16,318)<div  />
+				[52] (16,318)<div  />
+					[53] (16,318)<span >code />
+			[54] (39,318)<div  />
+				[55] (39,318)<p >Code />
+	[56] (60,351)<a aria-label='Discussions' class='sc-eXVaYZ cPXxFg' href='/discussions' role='link' />
+		[57] (63,351)<div  />
+			[58] (16,351)<div  />
+				[59] (16,351)<div  />
+					[60] (16,351)<span >comment />
+			[61] (50,351)<div  />
+				[62] (50,351)<p >Discussions />
+	[63] (60,384)<a aria-label='Kaggle Learn' class='sc-eXVaYZ cPXxFg' href='/learn' role='link' />
+		[64] (63,384)<div  />
+			[65] (16,384)<div  />
+				[66] (16,384)<div  />
+					[67] (16,384)<span >school />
+			[68] (39,384)<div  />
+				[69] (39,384)<p >Learn />
+	[70] (60,418)<a aria-label='More on Kaggle' class='sc-eXVaYZ cPXxFg' href='#' role='link' />
+		[71] (63,418)<div  />
+			[72] (16,418)<div  />
+				[73] (16,418)<div  />
+					[74] (16,418)<span >expand_more />
+			[75] (39,418)<div  />
+				[76] (39,418)<p >More />
+	[77] (60,464)<a aria-label='Your Work' class='sc-eXVaYZ cPXxFg' href='/work' role='link' />
+		[78] (63,464)<div  />
+			[79] (16,464)<div  />
+				[80] (16,464)<div  />
+					[81] (16,464)<span >note_alt />
+			[82] (48,464)<div  />
+				[83] (48,464)<p >Your Work />
+	[84] (31,495)<button aria-label='Collapse Viewed' class='sc-fdOGDD cVwPuh' />
+		[85] (16,495)<span >arrow_drop_down />
+		[86] (40,495)<span >Viewed />
+	[87] (54,526)<a aria-label='March Machine Learning Mania 2026' class='sc-eXVaYZ cPXxFg' href='/competitions/march-machine-learning-mania-2026' role='link' />
+		[88] (58,526)<div  />
+			[89] (16,526)<div  />
+				[90] (16,526)<div  />
+					[91] (16,526)<img  />
+			[92] (66,526)<div  />
+				[93] (68,526)<p >March Machine Learning Mania 2026 />
+	[94] (54,556)<a aria-label='Predicting Heart Disease' class='sc-eXVaYZ cPXxFg' href='/competitions/playground-series-s6e2' role='link' />
+		[95] (58,556)<div  />
+			[96] (16,556)<div  />
+				[97] (16,556)<div  />
+					[98] (16,556)<img  />
+			[99] (66,556)<div  />
+				[100] (68,556)<p >Predicting Heart Disease />
+	[101] (54,586)<a aria-label='Deep Past Challenge - Translate Akkadian to English' class='sc-eXVaYZ cPXxFg' href='/competitions/deep-past-initiative-machine-translation' role='link' />
+		[102] (58,586)<div  />
+			[103] (16,586)<div  />
+				[104] (16,586)<div  />
+					[105] (16,586)<img  />
+			[106] (66,586)<div  />
+				[107] (68,586)<p >Deep Past Challenge - Translate Akkadian to English />
+	[108] (54,616)<a aria-label='Fork of Heart Disease S6E2: Top 3% KillShot' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/fork-of-heart-disease-s6e2-top-3-killshot' role='link' />
+		[109] (58,616)<div  />
+			[110] (16,616)<div  />
+				[111] (16,616)<div  />
+					[112] (16,616)<img  />
+			[113] (66,616)<div  />
+				[114] (68,616)<p >Fork of Heart Disease S6E2: Top 3% KillShot />
+	[115] (54,647)<a aria-label='Trinity Akkadian SOTA - Road to Top 50' class='sc-eXVaYZ cPXxFg' href='/code/kiza123123/trinity-akkadian-sota-road-to-top-50' role='link' />
+		[116] (58,647)<div  />
+			[117] (16,647)<div  />
+				[118] (16,647)<div  />
+					[119] (16,647)<img  />
+			[120] (66,647)<div  />
+				[121] (68,647)<p >Trinity Akkadian SOTA - Road to Top 50 />
+	[122] (30,683)<button aria-label='Expand Edited' class='sc-fdOGDD cVwPuh' />
+		[123] (16,683)<span >arrow_right />
+		[124] (40,683)<span >Edited />
+	[125] (58,976)<button class='sc-iUBWhR dRWpnJ' />
+		[126] (16,979)<div  />
+			[127] (16,978)<span >update />
+			[128] (19,967)<div >4 />
+		[129] (59,979)<p >View Active Events />
+	[130] (556,24)<div  />
+		[131] (556,24)<div  />
+			[132] (302,24)<span >search />
+			[133] (567,24)<input class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedStart css-iyhe1a' id=':r9:' placeholder='Search' />
+	[134] (986,24)<div aria-label='Kizabgd' class='sc-lhsSio kXhNmm sc-eEfxbP qjTBF' role='button' />
+		[135] (986,24)<div  />
+	[136] (558,524)<div class='sc-mqDxO dZaYa-d legacy-less-dark-theme' id='site-content' role='main' scrollable='true' />
+		March Machine Learning Mania 2026
+		[137] (769,62)<button class='sc-pYNGo cZrOun' role='button' />
+			[138] (769,62)<span >Submit Prediction />
+		[139] (820,62)<button aria-label='Competition options menu collapsed' class='sc-koBvLg jxMomE google-symbols notranslate' title='Competition Options'>more_horiz />
+		[140] (307,94)<a aria-label='Overview, 1 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/overview' role='tab' />
+			[141] (307,94)<span >Overview />
+		[142] (342,94)<a aria-label='Data, 2 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/data' role='tab' />
+			[143] (342,94)<span >Data />
+		[144] (369,94)<a aria-label='Code, 3 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/code' role='tab' />
+			[145] (369,94)<span >Code />
+		[146] (402,94)<a aria-label='Models, 4 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/models' role='tab' />
+			[147] (402,94)<span >Models />
+		[148] (444,94)<a aria-label='Discussion, 5 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/discussion' role='tab' />
+			[149] (444,94)<span >Discussion />
+		[150] (495,94)<a aria-label='Leaderboard, 6 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/leaderboard' role='tab' />
+			[151] (495,94)<span >Leaderboard />
+		[152] (537,94)<a aria-label='Rules, 7 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules' role='tab' />
+			[153] (537,94)<span >Rules />
+		[154] (566,94)<a aria-label='Team, 8 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/team' role='tab' />
+			[155] (566,94)<span >Team />
+		[156] (608,94)<a aria-label='Submissions, 9 of 9' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH kxhyLO css-1ewydek' href='/competitions/march-machine-learning-mania-2026/submissions' role='tab' />
+			[157] (608,94)<span >Submissions />
+		You agree to use reasonable and suitable measures to prevent persons who have not formally agreed to these Rules from gaining access to the Competition Data. You agree not to transmit, duplicate, publish, redistribute or otherwise provide or make available the Competition Data to any party not participating in the Competition. You agree to notify Kaggle immediately upon learning of any possible unauthorized transmission of or unauthorized access to the Competition Data and agree to work with Kaggle to rectify any unauthorized transmission or access.
+		5. WINNER LICENSE
+		a. Under Section 2.8 (Winners Obligations) of the General Rules below, you hereby grant and will grant the Competition Sponsor the following license(s) with respect to your Submission if you are a Competition winner:
+		Not Applicable
+		b. You may be required by the Sponsor to provide a detailed description of how the winning Submission was generated, to the Competition Sponsor’s specifications, as outlined in Section 2.8, Winner’s Obligations. This may include a detailed description of methodology, where one must be able to reproduce the approach by reading the description, and includes a detailed explanation of the architecture, preprocessing, loss function, training details, hyper-parameters, etc. The description should also include a link to a code repository with complete and detailed instructions so that the results obtained can be reproduced.
+		6. EXTERNAL DATA AND TOOLS
+		a. You may use data other than the Competition Data (“External Data”) to develop and test your Submissions. However, you will ensure the External Data is either publicly available and equally accessible to use by all Participants of the Competition for purposes of the competition at no cost to the other Participants, or satisfies the Reasonableness criteria as outlined in Section 2.6.b below. The ability to use External Data under this Section does not limit your other obligations under these Competition Rules, including but not limited to Section 2.8 (Winners Obligations).
+		b. The use of external data and models is acceptable unless specifically prohibited by the Host. Because of the potential costs or restrictions (e.g., “geo restrictions”) associated with obtaining rights to use external data or certain software and associated tools, their use must be “reasonably accessible to all” and of “minimal cost”. Also, regardless of the cost challenges as they might affect all Participants during the course of the competition, the costs of potentially procuring a license for software used to generate a Submission, must also be considered. The Host will employ an assessment of whether or not the following criteria can exclude the use of the particular LLM, data set(s), or tool(s):
+		Are Participants being excluded from a competition because of the "excessive" costs for access to certain LLMs, external data, or tools that might be used by other Participants. The Host will assess the excessive cost concern by applying a “Reasonableness” standard (the “Reasonableness Standard”). The Reasonableness Standard will be determined and applied by the Host in light of things like cost thresholds and accessibility.
+		By way of example only, a small subscription charge to use additional elements of a large language model such as Gemini Advanced are acceptable if meeting the Reasonableness Standard of Sec. 8.2. Purchasing a license to use a proprietary dataset that exceeds the cost of a prize in the competition would not be considered reasonable.
+		c. Automated Machine Learning Tools (“AMLT”)
+		Individual Participants and Teams may use automated machine learning tool(s) (“AMLT”) (e.g., Google toML, H2O Driverless AI, etc.) to create a Submission, provided that the Participant or Team ensures that they have an appropriate license to the AMLT such that they are able to comply with the Competition Rules.
+		7. ELIGIBILITY
+		a. Unless otherwise stated in the Competition-Specific Rules above or prohibited by internal policies of the Competition Entities, employees, interns, contractors, officers and directors of Competition Entities may enter and participate in the Competition, but are not eligible to win any Prizes. "Competition Entities" means the Competition Sponsor, Kaggle Inc., and their respective parent companies, subsidiaries and affiliates. If you are such a Participant from a Competition Entity, you are subject to all applicable internal policies of your employer with respect to your participation.
+		8. WINNER’S OBLIGATIONS
+		a. As a condition to being awarded a Prize, a Prize winner must fulfill the following obligations:
+		Provide a detailed description of how the winning Submission was generated in the Competition forums, to the Competition Sponsor’s specifications. This may include a detailed description of methodology, where one must be able to reproduce the approach by reading the description, and includes a detailed explanation of the architecture, preprocessing, loss function, training details, hyper-parameters, etc. The description should also include a link to a code repository with complete and detailed instructions so that the results obtained can be reproduced.
+		[158] (766,562)<div class='MuiPaper-root MuiPaper-elevation MuiPaper-elevation0 MuiDrawer-paper MuiDrawer-paperAnchorRight MuiDrawer-paperAnchorDockedRight css-240b6p' scrollable='true' />
+			Rules
+			[159] (739,162)<a aria-label='Competition Rules, 1 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#competition-rules' role='tab' />
+				[160] (739,162)<span >Competition Rules />
+			[161] (768,189)<a aria-label='ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES., 2 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#entry-in-this-competition-constitutes-your-acceptance-of-these-official-competition-rules.' role='tab' />
+				[162] (768,189)<span >ENTRY IN THIS COMPETITION CONSTITUTES YOUR ACCEPTANCE OF THESE OFFICIAL COMPETITION RULES. />
+			[163] (764,216)<a aria-label='1. COMPETITION-SPECIFIC TERMS, 3 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#1.-competition-specific-terms' role='tab' />
+				[164] (764,216)<span >1. COMPETITION-SPECIFIC TERMS />
+			[165] (754,244)<a aria-label='1. COMPETITION TITLE, 4 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#1.-competition-title' role='tab' />
+				[166] (754,244)<span >1. COMPETITION TITLE />
+			[167] (761,271)<a aria-label='2. COMPETITION SPONSOR, 5 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#2.-competition-sponsor' role='tab' />
+				[168] (761,271)<span >2. COMPETITION SPONSOR />
+			[169] (776,298)<a aria-label='3. COMPETITION SPONSOR ADDRESS, 6 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#3.-competition-sponsor-address' role='tab' />
+				[170] (776,298)<span >3. COMPETITION SPONSOR ADDRESS />
+			[171] (760,325)<a aria-label='4. COMPETITION WEBSITE, 7 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#4.-competition-website' role='tab' />
+				[172] (760,325)<span >4. COMPETITION WEBSITE />
+			[173] (776,352)<a aria-label='5. TOTAL PRIZES AVAILABLE: $50,000, 8 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#5.-total-prizes-available-50000' role='tab' />
+				[174] (776,352)<span >5. TOTAL PRIZES AVAILABLE: $50,000 />
+			[175] (758,380)<a aria-label='6. WINNER LICENSE TYPE, 9 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#6.-winner-license-type' role='tab' />
+				[176] (758,380)<span >6. WINNER LICENSE TYPE />
+			[177] (759,407)<a aria-label='7. DATA ACCESS AND USE, 10 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#7.-data-access-and-use' role='tab' />
+				[178] (759,407)<span >7. DATA ACCESS AND USE />
+			[179] (764,434)<a aria-label='2. COMPETITION-SPECIFIC RULES, 11 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#2.-competition-specific-rules' role='tab' />
+				[180] (764,434)<span >2. COMPETITION-SPECIFIC RULES />
+			[181] (742,461)<a aria-label='1. TEAM LIMITS, 12 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#1.-team-limits' role='tab' />
+				[182] (742,461)<span >1. TEAM LIMITS />
+			[183] (754,489)<a aria-label='2. SUBMISSION LIMITS, 13 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#2.-submission-limits' role='tab' />
+				[184] (754,489)<span >2. SUBMISSION LIMITS />
+			[185] (760,516)<a aria-label='3. COMPETITION TIMELINE, 14 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#3.-competition-timeline' role='tab' />
+				[186] (760,516)<span >3. COMPETITION TIMELINE />
+			[187] (754,543)<a aria-label='4. COMPETITION DATA, 15 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#4.-competition-data' role='tab' />
+				[188] (754,543)<span >4. COMPETITION DATA />
+			[189] (749,570)<a aria-label='5. WINNER LICENSE, 16 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#5.-winner-license' role='tab' />
+				[190] (749,570)<span >5. WINNER LICENSE />
+			[191] (767,597)<a aria-label='6. EXTERNAL DATA AND TOOLS, 17 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary Mui-selected sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#6.-external-data-and-tools' role='tab' />
+				[192] (767,597)<span >6. EXTERNAL DATA AND TOOLS />
+			[193] (740,625)<a aria-label='7. ELIGIBILITY, 18 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#7.-eligibility' role='tab' />
+				[194] (740,625)<span >7. ELIGIBILITY />
+			[195] (760,652)<a aria-label='8. WINNER’S OBLIGATIONS, 19 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#8.-winners-obligations' role='tab' />
+				[196] (760,652)<span >8. WINNER’S OBLIGATIONS />
+			[197] (749,679)<a aria-label='9. GOVERNING LAW, 20 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#9.-governing-law' role='tab' />
+				[198] (749,679)<span >9. GOVERNING LAW />
+			[199] (768,706)<a aria-label='3. GENERAL COMPETITION RULES - BINDING AGREEMENT, 21 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH hOJiJW css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#3.-general-competition-rules-binding-agreement' role='tab' />
+				[200] (768,706)<span >3. GENERAL COMPETITION RULES - BINDING AGREEMENT />
+			[201] (740,734)<a aria-label='1. ELIGIBILITY, 22 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#1.-eligibility' role='tab' />
+				[202] (740,734)<span >1. ELIGIBILITY />
+			[203] (776,761)<a aria-label='2. SPONSOR AND HOSTING PLATFORM, 23 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#2.-sponsor-and-hosting-platform' role='tab' />
+				[204] (776,761)<span >2. SPONSOR AND HOSTING PLATFORM />
+			[205] (757,788)<a aria-label='3. COMPETITION PERIOD, 24 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#3.-competition-period' role='tab' />
+				[206] (757,788)<span >3. COMPETITION PERIOD />
+			[207] (756,815)<a aria-label='4. COMPETITION ENTRY, 25 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#4.-competition-entry' role='tab' />
+				[208] (756,815)<span >4. COMPETITION ENTRY />
+			[209] (762,842)<a aria-label='5. INDIVIDUALS AND TEAMS, 26 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#5.-individuals-and-teams' role='tab' />
+				[210] (762,842)<span >5. INDIVIDUALS AND TEAMS />
+			[211] (776,870)<a aria-label='6. SUBMISSION CODE REQUIREMENTS, 27 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#6.-submission-code-requirements' role='tab' />
+				[212] (776,870)<span >6. SUBMISSION CODE REQUIREMENTS />
+			[213] (760,897)<a aria-label='7. DETERMINING WINNERS, 28 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#7.-determining-winners' role='tab' />
+				[214] (760,897)<span >7. DETERMINING WINNERS />
+			[215] (776,924)<a aria-label='8. NOTIFICATION OF WINNERS & DISQUALIFICATION, 29 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#8.-notification-of-winners-and-disqualification' role='tab' />
+				[216] (776,924)<span >8. NOTIFICATION OF WINNERS & DISQUALIFICATION />
+			[217] (734,951)<a aria-label='9. PRIZES, 30 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#9.-prizes' role='tab' />
+				[218] (734,951)<span >9. PRIZES />
+			[219] (734,979)<a aria-label='10. TAXES, 31 of 39' class='MuiButtonBase-root MuiTab-root MuiTab-textColorPrimary sc-hwMtKH gXaMQI css-1ewydek' href='/competitions/march-machine-learning-mania-2026/rules#10.-taxes' role='tab' />
+				[220] (734,979)<span >10. TAXES />
+			11. GENERAL CONDITIONS
+
+</current_dom>

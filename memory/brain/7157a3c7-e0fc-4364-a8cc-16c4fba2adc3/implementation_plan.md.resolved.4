@@ -1,0 +1,33 @@
+# Trinity Protocol v3.3.1 — UCI Data Integration (V6 Base)
+
+Upgrade the "V6: Pseudo-Labeling Boost" script to incorporate the UCI dataset ([heart_disease_uci.csv](file:///home/kizabgd/heart_disease_uci.csv)) as ground-truth training data.
+
+## User Review Required
+
+> [!IMPORTANT]
+> The UCI dataset uses natural language labels (e.g., "typical angina", "male") while the competition data uses codes (e.g., "TA", "M"). 
+> I am implementing a `map_uci_to_s6e1` function to normalize these before training.
+
+## Proposed Changes
+
+### [heart_top5_v3_3_uci.py](file:///home/kizabgd/heart_top5_v3_3_uci.py)
+
+#### [NEW]
+- **Base Logic**: Port the OOF/Pseudo-labeling pipeline from the provided V6 snippet.
+- **UCI Loader**:
+    - Load [heart_disease_uci.csv](file:///home/kizabgd/heart_disease_uci.csv).
+    - Map `sex` (Male/Female -> M/F).
+    - Map `cp` (typical angina -> TA, etc.).
+    - Map `rest_ecg` (normal -> Normal, etc.).
+    - Map `slope` (up -> Up, down -> Down, flat -> Flat).
+    - Map `target` (Presence/Absence or 0/1 -> 0/1).
+- **Expansion**: Concatenate mapped UCI data to the competition `train` dataframe before the first training pass.
+- **Feature Engineering**: Apply the "Domain Features" and "Log/Interactions" from the V6 snippet.
+
+## Verification Plan
+
+### Automated Tests
+- Run `python3 heart_top5_v3_3_uci.py`.
+- Verify training count: `len(original_train) + len(uci_data)`.
+- Check OOF AUC: Expecting >0.9560 due to increased signal.
+- 7-Gate Audit: Ensure distribution remains healthy.

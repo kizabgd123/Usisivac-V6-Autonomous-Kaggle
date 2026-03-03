@@ -1,0 +1,20 @@
+# S6E2 Elite Optimizer Strategy
+
+This plan outlines the final consolidation of the Heart Disease prediction pipeline to achieve > 0.954 AUC.
+
+## Proposed Changes
+
+### [Component] s6e2_submission_8_elite_denoise.py
+- [NEW] Rewriting the script to be clean and production-ready.
+- [X] Integrated `lightgbm` and fixed `NameError`.
+- [X] Integrated `scipy.optimize.minimize_scalar` for Nelder-Mead weight tuning.
+- [X] Fixed numeric conversion for Duke Score.
+- [X] Added robust inf/nan sanitation for XGBoost/LGBM safety.
+- [X] Maintained UCI Anchor dataset integration.
+
+## Verification Plan
+
+### Automated Tests
+- Run [s6e2_submission_8_elite_denoise.py](file:///home/kizabgd/Desktop/Istrazivanje/playground-s6e2-heart-disease/s6e2_submission_8_elite_denoise.py) directly.
+- Monitor `trinity.log` for Phase 1 (Noise removed) and Phase 2 (Optimal weights found).
+- Verify the generation of `submission_elite_opt_XX.csv`.

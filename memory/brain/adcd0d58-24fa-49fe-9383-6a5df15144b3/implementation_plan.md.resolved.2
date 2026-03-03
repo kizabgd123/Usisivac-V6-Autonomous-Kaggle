@@ -1,0 +1,36 @@
+# Bidding Challenge Recovery: "Total Domination" Strategy
+
+The goal is to recover the performance for the "Bidding Predictions for Construction" competition, rectifying the dataset mismatch and implementing the "Namazani" attack to reach Rank 1 (Score < 0.28).
+
+## User Review Required
+
+> [!IMPORTANT]
+> **Dataset Correction**: I found that the local [train_summary.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/train_summary.csv) was truncated (missing ~800 rows). I have extracted the official Kaggle dataset from the zip file.
+> **Feature Strategy**: We are pivoting from the basic [v14](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v14_trinity_fix.py#108-191) to a "Phase 7: Total Domination" approach using granular item intelligence from [raw_train.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/raw_train.csv).
+
+## Proposed Changes
+
+### Model Training
+
+#### [NEW] [bidding_v15_total_domination.py](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/bidding_v15_total_domination.py)
+1. **Official Data Loading**: Use full 10,621-row [train_summary.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/train_summary.csv) and 140MB [raw_train.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/raw_train.csv).
+2. **Namazani Features**:
+   - Granular item aggregations (pay_item_id count, category uniqueness).
+   - Inflation indexing (2018-2025).
+   - Temporal lag (days since last bid for contractor).
+   - Contractor clustering (KMeans on adjusted bid history).
+3. **Robust Ensembling**:
+   - 10-fold Stratified GroupKFold (grouped by `job_id`).
+   - Blend of XGBoost, LightGBM, CatBoost, and Ridge Regression.
+4. **Calibration**: Corrected Isotonic Regression on OOF predictions.
+
+## Verification Plan
+
+### Automated Tests
+1. **Data Audit**: Verify [train_summary.csv](file:///home/kizabgd/Desktop/Istrazivanje/construction_bidding/train_summary.csv) row count is 10,621 before training.
+2. **Local CV**: Target OOF RMSLE < 0.35.
+3. **Kaggle CLI**: Submit using `kaggle competitions submit` and verify Rank.
+
+### Manual Verification
+1. Run `python3 bidding_v15_total_domination.py`.
+2. check `v15_prod.log` for fold-by-fold performance.

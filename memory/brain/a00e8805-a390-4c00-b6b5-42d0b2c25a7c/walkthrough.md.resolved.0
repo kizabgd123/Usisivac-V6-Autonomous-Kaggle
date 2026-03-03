@@ -1,0 +1,18 @@
+# Gemini CLI Fix Walkthrough
+
+## Prblem
+Korisnik nije mogao da pokrene `gemini` CLI komandu zbog `ENOENT` greške (file not found). Alat je očekivao postojanje lokalnog `.gemini` direktorijuma i [telemetry.log](file:///home/kizabgd/Desktop/new-challenge/.gemini/telemetry.log) fajla u root-u radnog prostora.
+
+## Rešenje
+1. Kreiran je direktorijum `/home/kizabgd/Desktop/new-challenge/.gemini`.
+2. Kreiran je prazan log fajl `/home/kizabgd/Desktop/new-challenge/.gemini/telemetry.log`.
+
+## Verifikacija
+- Komanda `gemini --help` sada ispravno ispisuje pomoćni meni.
+- Komanda `gemini --version` potvrđuje verziju `0.31.0`.
+- Proverom `telemetry.log` potvrđeno je da se događaji ispravno loguju.
+
+```bash
+(base) kizabgd@kizabgd:~/Desktop/new-challenge$ gemini --version
+0.31.0
+```

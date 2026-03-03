@@ -1,0 +1,13 @@
+# Novi Čist Kaggle Workspace
+
+## Kreiranje Workspace-a
+- [/] Kreiranje direktorijumske strukture (`kaggle-arena/`)
+- [ ] Prenos [.env](file:///home/kizabgd/Desktop/Istrazivanje/.env) fajla sa svim API ključevima
+- [ ] Prenos [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) ustava
+- [ ] Kreiranje očišćenog [ORCHESTRATION_RULES.json](file:///home/kizabgd/Desktop/Istrazivanje/.agent/rules/ORCHESTRATION_RULES.json)
+- [ ] Kreiranje resetovanog [trinity_config.json](file:///home/kizabgd/Desktop/Istrazivanje/trinity_config.json)
+- [ ] Prenos univerzalnih workflow-a (7 od 20)
+- [ ] Kreiranje [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile), [WORK_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/WORK_LOG.md), [GUARD_LOG.md](file:///home/kizabgd/Desktop/Istrazivanje/GUARD_LOG.md), [README.md](file:///home/kizabgd/Desktop/Istrazivanje/README.md)
+- [ ] Kreiranje čistog [tactic_registries/competition_tracker.md](file:///home/kizabgd/Desktop/Istrazivanje/tactic_registries/competition_tracker.md)
+- [ ] Kreiranje [.gitignore](file:///home/kizabgd/Desktop/Istrazivanje/.gitignore)
+- [ ] Verifikacija — JSON validacija, API ključevi, struktura

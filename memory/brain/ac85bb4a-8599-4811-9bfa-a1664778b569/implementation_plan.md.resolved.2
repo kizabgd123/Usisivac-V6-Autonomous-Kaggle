@@ -1,0 +1,45 @@
+# Trinity Protocol Evolution Plan
+
+This plan outlines the steps to implement the improvements proposed in the Trinity Protocol Roadmap.
+
+## User Review Required
+
+> [!IMPORTANT]
+> This plan introduces a centralized `trinity` CLI and `Makefile` which will become the standard entry points for all project repositories. This will change the workflow for autonomous agents.
+
+## Proposed Changes
+
+### Documentation & Governance
+
+#### [MODIFY] [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md)
+- Populate with the Project Constitution (Trinity Protocol Ecosystem Q&A).
+- Establish as the primary reference for system behavior.
+
+### Unification (Launch Mechanism)
+
+#### [NEW] [Makefile](file:///home/kizabgd/Desktop/Istrazivanje/Makefile)
+- Define standard targets: `train`, `predict`, `validate`, `clean`.
+- Abstract environment setup and dependency execution.
+
+#### [NEW] [trinity.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/trinity.py)
+- A CLI tool to act as a single entry point.
+- Usage: `python scripts/trinity.py <task> <parameters>`.
+
+#### [NEW] [manifest.json](file:///home/kizabgd/Desktop/Istrazivanje/manifest.json)
+- Declarative metadata for the project (version, scripts, data dependencies).
+
+### Hardening (ProcessGuard)
+
+#### [NEW] [process_guard.py](file:///home/kizabgd/Desktop/Istrazivanje/scripts/process_guard.py)
+- Real-time performance monitoring.
+- Integration with ensembling scripts to prevent poor model merging.
+
+## Verification Plan
+
+### Automated Tests
+- `make validate` to run JudgeGuard and ProcessGuard checks.
+- Smoke tests for the CLI tool.
+
+### Manual Verification
+- Verify that `trinity train` correctly invokes the appropriate training script.
+- Check [GEMINI.md](file:///home/kizabgd/Desktop/Istrazivanje/GEMINI.md) for readability and accuracy.

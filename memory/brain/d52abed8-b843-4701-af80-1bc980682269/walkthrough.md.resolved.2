@@ -1,0 +1,48 @@
+# 🏛️ Verifikacija Popravki — Status Report
+
+**Datum**: 2026-03-01 00:18
+
+---
+
+## ✅ Šta JE popravljeno
+
+| Fajl | Popravka | Status |
+|:---|:---|:---:|
+| [trinity_refinery.py](file:///home/kizabgd/Desktop/kaggle-arena/trinity_refinery.py) | [run_refinery()](file:///home/kizabgd/Desktop/kaggle-arena/trinity_refinery.py#27-58) + `__main__` blok + data source | ✅ OK |
+| [refinery_dashboard.py](file:///home/kizabgd/Desktop/kaggle-arena/refinery_dashboard.py) | Kreiran u root-u, koristi `trinity_knowledge` / `trinity_audit` | ✅ Postoji |
+| [prepare_kaggle_dataset.py](file:///home/kizabgd/Desktop/kaggle-arena/prepare_kaggle_dataset.py) | ZIP pakovanje za Kaggle upload | ✅ Kreiran |
+| [ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/ingest.py) | Collection name → `trinity_knowledge` | ✅ Ažuriran |
+| [audit_ingest.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/audit_ingest.py) | Collection name → `trinity_audit` | ✅ Ažuriran |
+
+---
+
+## 🔴 CRITICAL: ChromaDB kolekcije NISU migrirane
+
+> [!CAUTION]
+> Svi skriptovi su preimenovali kolekcije u kodu, ali **baza na disku** i dalje sadrži STARE kolekcije:
+
+| Šta skripte traže | Šta POSTOJI u bazi | Rezultat |
+|:---|:---|:---:|
+| `trinity_knowledge` | `portfolio_knowledge` (37,996) | ❌ 0 items |
+| `trinity_audit` | `agent_intelligence` (482) | ❌ 0 items |
+
+**Dashboard ĆE prikazati `0, 0`** jer te kolekcije ne postoje.
+
+---
+
+## 🟡 WARNING: [generate_report.py](file:///home/kizabgd/Desktop/kaggle-arena/.agent/skills/project/proposal-generator/src/generate_report.py) NIJE ažuriran
+
+Ovaj fajl i dalje koristi `COLLECTION_NAME = "portfolio_knowledge"` (linija 12). Ironično, to je jedini skripta koji će raditi jer se poklapa sa starim imenom u bazi.
+
+---
+
+## 🛠️ Preporučena akcija
+
+Potrebna je **migracija kolekcija** — kopiranje podataka iz starih u nove:
+
+```
+portfolio_knowledge (37,996) → trinity_knowledge
+agent_intelligence (482) → trinity_audit
+```
+
+Tada će SVE komponente raditi sa jednim imenom.
