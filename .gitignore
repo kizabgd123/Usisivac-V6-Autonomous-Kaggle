@@ -3,10 +3,5 @@ data/*.csv
 chroma_db/
 __pycache__/
 *.zip
-*.webp
-*.png
-*.jpg
-*.mp4
-*.mov
-# Exclude conversation logs if they contain sensitive info, but we want to keep them for memory
-# memory/brain/*/conversations/
+.gemini/
+memory/
