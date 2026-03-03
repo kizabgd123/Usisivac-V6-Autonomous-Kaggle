@@ -25,7 +25,7 @@ Kada se pokrene, Usisivač će:
 3.  **Napisati Kod**: Na osnovu ta dva odgovora, `CoderAgent` će generisati Python kod u `Usisivac/src/agents/generated_features.py`.
 4.  **Izvršiti**: `FeatureAgent` će primeniti taj kod na tvoj `train.csv`.
 
-## 📦 Pakovanje za GitHub (Uputstvo za Agent IDE)
+## 📦 Pakovanje za GitHub (Uputstvo za Gemini CLI)
 
 1.  Inicijalizuj git u novom folderu `usisivac_work_pack`.
 2.  Dodaj `.gitignore` (obavezno isključi `.env` i `data/*.csv`).

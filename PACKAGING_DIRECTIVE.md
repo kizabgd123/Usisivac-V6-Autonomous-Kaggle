@@ -1,4 +1,4 @@
-# 📡 Directive for Agent IDE: GitHub Deployment
+# 📡 Directive for Gemini CLI: GitHub Deployment
 
 **Status**: RESEARCH & CRITIC phases complete. PROTOTYPE V6 SUCCESSFUL.
 **Goal**: Package Usisivac V6 for GitHub.

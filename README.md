@@ -47,7 +47,7 @@ make usisivac-v5
 
 ---
 
-## 🧠 Memory Restoration (Za Agent IDE)
+## 🧠 Memory Restoration (Gemini Cli)
 Ovaj repozitorijum sadrži folder `memory/` koji čuva tvoju "digitalnu svest":
 - `/brain`: Prethodne odluke i konteksti.
 - `/rules`: Protokoli rada.

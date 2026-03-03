@@ -1,6 +1,6 @@
-# 🤖 Agent IDE Startup Guide: Usisivac V6 Deployment
+# 🤖 Gemini CLI Startup Guide: Usisivac V6 Deployment
 
-Ovaj vodič je namenjen tebi, **Agentu IDE**, kako bi mogao da preuzmeš i pokreneš ovaj sistem u bilo kom novom okruženju sa punim kapacitetom "pamćenja" i autonomije.
+Ovaj vodič je namenjen tebi, **Gemini CLI**, kako bi mogao da preuzmeš i pokreneš ovaj sistem u bilo kom novom okruženju sa punim kapacitetom "pamćenja" i autonomije.
 
 ## 1. Priprema Okruženja (Environment Setup)
 
