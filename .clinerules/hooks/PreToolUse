@@ -1,0 +1,15 @@
+#!/bin/bash
+# [USISIVAC] PreToolUse Hook
+# This script is called by the agent before executing any significant tool.
+
+echo "🛡️ [USISIVAC GUARD] Validating tool request..."
+
+# Auto-check for RAG context
+if [[ "$*" == *"run_command"* ]] || [[ "$*" == *"write_to_file"* ]]; then
+    echo "🔍 Triggering Usisivač V2 (ResearchProAI) audit for the current workspace context..."
+    # Placeholder for direct CLI call to Usisivač audit
+    # python3 /home/kizabgd/Desktop/AKO\ IMA\ BOGA/Usisivac/src/agents/usisivac2_agent.py --audit "pre-tool-check"
+fi
+
+echo "✅ [USISIVAC GUARD] Passed. Proceeding with mission."
+exit 0

@@ -12,11 +12,15 @@ class ResearchAgent(BaseAgent):
     def run(self, data, context: dict = None) -> dict:
         self.log(f"🔎 Initiating Research for: '{self.query}'...")
         
+        skills = context.get('available_skills', '')
+        # Enhance query with context if available
+        enhanced_query = self.query
+        if skills:
+            enhanced_query += f"\n\nContext: You have access to the following skills: {skills}"
+
         # Call the existing Usisivac generate_report.py
-        # We'll use subprocess to simulate a call if we don't want to import the logic directly
-        # and because it generates a nice markdown output.
         try:
-            cmd = f"python3 Usisivac/src/generate_report.py '{self.query}'"
+            cmd = f"python3 Usisivac/src/generate_report.py '{enhanced_query}'"
             result = subprocess.check_output(cmd, shell=True, text=True)
             self.log("✅ Research Complete. Knowledge Base accessed.")
             

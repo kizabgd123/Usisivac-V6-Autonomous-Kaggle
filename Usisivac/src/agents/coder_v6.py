@@ -14,9 +14,13 @@ class CoderAgentV6(BaseAgent):
         
         research = context.get('ResearchAgent', {}).get('findings', '')
         critic = context.get('CriticAgent', {}).get('anti_patterns', '')
+        skills = context.get('available_skills', 'No expert skills available.')
         
         # Stricter prompt to ensure the function name matches
         prompt = f"""
+        Available Expert Skills:
+        {skills}
+
         Based on the following Research and Critic findings, 
         write a Python function `dynamic_engineer_features(df, original_df=None)`.
         

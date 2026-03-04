@@ -1,7 +1,9 @@
 ---
-description: "Smart Test" Workflow (Merge)
+name: generate-unit-tests
+description: Smart Test Workflow that generates, runs, and self-corrects unit tests.
 ---
 
-Logika: Generiše test → Pokreće test (pytest) → Ako padne, čita error log → Ispravlja kod → Ponovo pokreće (Max 3 iteracije).
+# Skill: Smart Test Generation
 
-Merge: Spoji logiku testiranja sa logikom refaktorisanja. 
+- Logika: Generiše test → Pokreće test (pytest) → Ako padne, čita error log → Ispravlja kod → Ponovo pokreće (Max 3 iteracije).
+- Merge: Spoji logiku testiranja sa logikom refaktorisanja.

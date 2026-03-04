@@ -40,7 +40,12 @@ def get_context(query, n_results=40):
     """Retrieve relevant chunks with filename-based metadata filtering for high precision."""
     client = chromadb.PersistentClient(path=DB_DIR)
     ef = embedding_functions.SentenceTransformerEmbeddingFunction(model_name=EMBEDDING_MODEL)
-    collection = client.get_collection(name=COLLECTION_NAME, embedding_function=ef)
+    try:
+        collection = client.get_collection(name=COLLECTION_NAME, embedding_function=ef)
+    except Exception:
+        # If it doesn't exist, Create it (empty) to avoid crashing the pipeline
+        collection = client.create_collection(name=COLLECTION_NAME, embedding_function=ef)
+        print(f"⚠️ Collection '{COLLECTION_NAME}' was missing and has been initialized.")
     
     safe_query = sanitize_input(query).lower()
     

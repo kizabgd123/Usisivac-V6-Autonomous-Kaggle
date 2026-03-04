@@ -15,7 +15,7 @@ class CriticAgent(BaseAgent):
         try:
             # Call the RAG system to find what NOT to do
             cmd = f"python3 Usisivac/src/generate_report.py '{self.query}'"
-            result = subprocess.check_output(cmd, shell=True, text=True)
+            result = subprocess.check_output(cmd, shell=True, text=True, timeout=30)
             self.log("✅ Anti-Pattern Audit Complete.")
             
             # Store in state
@@ -26,6 +26,9 @@ class CriticAgent(BaseAgent):
             print(result[:1500] + "...")
             print("!" * 90 + "\n")
             
+        except subprocess.TimeoutExpired:
+            self.log("⚠️ Audit Timed Out. Using default safety guidelines.", level='WARNING')
+            self.state = {'anti_patterns': "Standard competitive safety guidelines: Avoid over-engineering, check for data leakage, and ensure cross-validation stability.", 'query': self.query}
         except Exception as e:
             self.log(f"❌ Audit Failed: {e}", level='ERROR')
             self.state = {'anti_patterns': "No anti-patterns identified.", 'query': self.query}

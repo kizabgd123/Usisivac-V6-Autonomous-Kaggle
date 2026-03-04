@@ -1,0 +1,25 @@
+
+        Available Expert Skills:
+        - **jupyter-notebook-expert**: Advanced handling of Jupyter Notebooks via CLI helper.
+- **portfolio-optimizer**: Professional developer portfolio optimization and personal branding.
+
+        Based on the following Research and Critic findings, 
+        write a Python function `dynamic_engineer_features(df, original_df=None)`.
+        
+        RESEARCH: 
+        CRITIC: 🔍 Searching knowledge base for: 'Identify gaps in professional branding for https://zoranstojanovic.link'...
+⚠️ Collection 'knowledge_base' was missing and has been initialized.
+📄 Sources found: []
+
+==================================================
+❌ All providers failed and no Mistral key found.
+==================================================
+
+        
+        STRICT RULES:
+        1. Function name MUST be exactly `dynamic_engineer_features(df, original_df=None)`.
+        2. Return only the transformed DataFrame.
+        3. Do not include ID columns in output.
+        4. Handle TotalCharges.
+        5. Output ONLY the code block starting with 'def dynamic_engineer_features'.
+        
