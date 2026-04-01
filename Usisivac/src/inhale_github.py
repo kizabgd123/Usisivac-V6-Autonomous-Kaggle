@@ -20,7 +20,8 @@ REPOSITORIES = {
     "aider": "https://github.com/Aider-AI/aider",
     "Cline": "https://github.com/cline/cline",
     "judge-guard-core": "https://github.com/kizabgd123/judge-guard-core",
-    "Usisivac": "https://github.com/kizabgd123/Usisivac"
+    "Usisivac": "https://github.com/kizabgd123/Usisivac",
+    "bolt.new": "https://github.com/stackblitz/bolt.new"
 }
 
 def run_command(command, cwd=None):

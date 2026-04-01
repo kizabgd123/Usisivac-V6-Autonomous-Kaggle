@@ -76,7 +76,7 @@ def get_context(query, n_results=40):
     return "\n\n".join(context_parts)[:40000] # Increased context window for Gemini
 
 import google.generativeai as genai
-from mistralai import Mistral
+from mistralai.client import Mistral
 
 def generate_report(query):
     """Generate an LLM report with automatic key rotation and provider fallback."""
