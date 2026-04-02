@@ -1,15 +1,47 @@
 
         Available Expert Skills:
-        - **jupyter-notebook-expert**: Advanced handling of Jupyter Notebooks via CLI helper.
-- **portfolio-optimizer**: Professional developer portfolio optimization and personal branding.
+        - **generate-unit-tests**: Smart Test Workflow that generates, runs, and self-corrects unit tests.
+- **web-scraper**: Resilient web scraping using BeautifulSoup and Selenium with automatic proxy rotation.
+- **code-style-guide**: Project-specific coding standards, naming conventions, and architectural best practices.
+- **agent-discipline-protocol**: Strict guidelines for agent behavior, state management, and error handling.
 
         Based on the following Research and Critic findings, 
         write a Python function `dynamic_engineer_features(df, original_df=None)`.
         
-        RESEARCH: 
-        CRITIC: 🔍 Searching knowledge base for: 'Identify gaps in professional branding for https://zoranstojanovic.link'...
-⚠️ Collection 'knowledge_base' was missing and has been initialized.
+        RESEARCH: 🔍 Searching knowledge base for: 'Best features for ROC AUC in Kaggle Playground S6E3 Telco Churn
+
+Context: You have access to the following skills: - **generate-unit-tests**: Smart Test Workflow that generates, runs, and self-corrects unit tests.
+- **web-scraper**: Resilient web scraping using BeautifulSoup and Selenium with automatic proxy rotation.
+- **code-style-guide**: Project-specific coding standards, naming conventions, and architectural best practices.
+- **agent-discipline-protocol**: Strict guidelines for agent behavior, state management, and error handling.'...
 📄 Sources found: []
+🤖 Generating with Gemini (Key #1)...
+  ❌ Gemini Error: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
+
+==================================================
+❌ All providers failed and no Mistral key found.
+==================================================
+
+        CRITIC: 🔍 Searching knowledge base for: 'What are the biggest mistakes, myths, and anti-patterns in Telco Churn prediction?'...
+📄 Sources found: []
+🤖 Generating with Gemini (Key #1)...
+  ❌ Gemini Error: 400 API key not valid. Please pass a valid API key. [reason: "API_KEY_INVALID"
+domain: "googleapis.com"
+metadata {
+  key: "service"
+  value: "generativelanguage.googleapis.com"
+}
+, locale: "en-US"
+message: "API key not valid. Please pass a valid API key."
+]
 
 ==================================================
 ❌ All providers failed and no Mistral key found.
