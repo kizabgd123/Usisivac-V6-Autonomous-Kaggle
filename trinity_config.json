@@ -11,7 +11,7 @@
     "metric_improvement_required": true,
     "min_improvement": 0.0001,
     "memory_hashing_mode": "milestone_only",
-    "project_name": "s6e3-telco-churn-v6",
+    "project_name": "new-challenge-trinity",
     "version": "1.0.0",
     "competition": "playground-series-s6e3",
     "metrics": {
@@ -30,7 +30,7 @@
       "bagging_fraction": 0.7598006947155067,
       "bagging_freq": 4,
       "min_child_samples": 31,
-      "reg_alpha": 1.7318504168908339e-06,
+      "reg_alpha": 1.7318504168908339e-6,
       "reg_lambda": 9.183962122166921,
       "n_estimators": 1000,
       "max_bin": 63,
@@ -43,7 +43,7 @@
       "subsample": 0.9378768742638254,
       "colsample_bytree": 0.7454722623870976,
       "reg_alpha": 0.26429577502612095,
-      "reg_lambda": 7.42543035297711e-05,
+      "reg_lambda": 7.42543035297711e-5,
       "n_estimators": 1000,
       "n_jobs": 4
     },
@@ -63,20 +63,11 @@
     "default_seed_count": 5,
     "benchmark_seed_count": 3
   },
-  "memory_milestones": [
-    "thesis",
-    "antithesis",
-    "synthesis"
-  ],
+  "memory_milestones": ["thesis", "antithesis", "synthesis"],
   "legacy_patterns": {
     "scripts": "**/*.py",
     "notebooks": "**/*.ipynb",
-    "entry_keywords": [
-      "train",
-      "main",
-      "orchestrator",
-      "pipeline"
-    ],
+    "entry_keywords": ["train", "main", "orchestrator", "pipeline"],
     "dynamic_scaling": {
       "cpu_timeout_s": 300,
       "ram_limit_gb": 2.0,
@@ -89,8 +80,8 @@
     "kaggle_sync_enabled": true,
     "db_path": "chroma_db",
     "search_patterns": [
-      "/app/Usisivac/knowledge_base",
-      "/app/tactic_registries"
+      "/home/kizabgd/Desktop/new-challenge/",
+      "/home/kizabgd/.gemini/antigravity/"
     ]
   },
   "llm_agents": {
