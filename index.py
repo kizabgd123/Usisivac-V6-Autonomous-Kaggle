@@ -1,5 +1,4 @@
-def handle_request(request):
-    return "Usisivač V6 MCP Server"
+from js import Response
 
-if __name__ == "__main__":
-    print("Worker started")
+async def on_fetch(request, env):
+    return Response.new("Usisivač V6 Autonomous Intelligence System - Operational")
