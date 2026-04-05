@@ -1,0 +1,6 @@
+name = "kiza"
+main = "index.py"
+compatibility_date = "2024-03-04"
+
+[vars]
+TRINITY_ROLE = "AGENT"

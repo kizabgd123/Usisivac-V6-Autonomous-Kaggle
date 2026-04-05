@@ -1,0 +1,15 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+catboost
+xgboost
+chromadb
+sentence-transformers
+google-generativeai
+mistralai
+python-dotenv
+scipy
+pyyaml
+mcp
+fastmcp
