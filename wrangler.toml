@@ -1,5 +1,5 @@
 name = "kiza"
-main = "Usisivac/mcp_server.py"
+main = "index.py"
 compatibility_date = "2024-03-04"
 
 [vars]
