@@ -1,0 +1,38 @@
+name: Gemini CLI PR Review & Triage
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  issues:
+    types: [opened, edited]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  triage-and-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Needed to diff against dev branch
+
+      - name: Gemini Issue Triage
+        if: github.event_name == 'issues'
+        uses: google/gemini-cli-action@v1
+        with:
+          task: "triage"
+          api_key: ${{ secrets.GEMINI_API_KEY }}
+
+      - name: Gemini PR Review & Description Generation
+        if: github.event_name == 'pull_request'
+        uses: google/gemini-cli-action@v1
+        with:
+          task: "review"
+          base_branch: "dev"
+          extract_jira_tickets: true
+          generate_pr_description: true
+          api_key: ${{ secrets.GEMINI_API_KEY }}
