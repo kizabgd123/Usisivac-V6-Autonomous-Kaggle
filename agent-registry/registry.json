@@ -1,0 +1,31 @@
+{
+  "agents": [
+    {
+      "id": "ollama-local",
+      "name": "Ollama (llama3.2:3b)",
+      "capabilities": ["code generation", "review", "test generation", "security"],
+      "cost_per_token": 0.0,
+      "latency_ms": 1500,
+      "security_clearance": "high",
+      "description": "Local model for secure, routine, or zero-cost tasks."
+    },
+    {
+      "id": "gemini-cli",
+      "name": "Gemini CLI",
+      "capabilities": ["code generation", "complex architecture", "documentation"],
+      "cost_per_token": 0.005,
+      "latency_ms": 800,
+      "security_clearance": "medium",
+      "description": "Cloud model for complex tasks."
+    },
+    {
+      "id": "codex-sandbox",
+      "name": "OpenAI Codex",
+      "capabilities": ["code review", "code generation"],
+      "cost_per_token": 0.01,
+      "latency_ms": 1200,
+      "security_clearance": "medium",
+      "description": "Advanced coding model running in sandboxed mode."
+    }
+  ]
+}

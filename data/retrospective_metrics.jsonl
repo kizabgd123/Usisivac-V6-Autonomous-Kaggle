@@ -1,0 +1,2 @@
+{"timestamp": "2026-06-20T06:18:14.290366Z", "agent": "ollama", "issue_type": "bug", "resolution_time": 120.5, "quality_score": 0.95, "cost": 0.0}
+{"timestamp": "2026-06-20T06:18:14.290841Z", "agent": "gemini", "issue_type": "feature", "resolution_time": 45.2, "quality_score": 0.4, "cost": 0.02}
