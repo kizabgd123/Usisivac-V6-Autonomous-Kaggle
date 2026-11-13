@@ -1,0 +1,144 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "reg_01_greetings",
+      "category": "greeting",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Summarize your mission architecture."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Usisivac V6 is an autonomous multi-agent pipeline combining EDA, RAG research, adversarial critique, autonomous coding, statistical cleaning, judge verification, and ensembled ML modeling."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_02_velocity_feature",
+      "category": "tool_calls",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "How do you calculate impossible travel velocity safely?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Compute distance divided by hours since last transaction plus an epsilon of 0.05 to avoid division by zero."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_03_financial_ratio",
+      "category": "tool_calls",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Define the amount to balance ratio transformation."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "amt_to_balance_ratio = amount_usd / (account_balance_usd + 1e-5)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_04_cusum_drift",
+      "category": "edge_cases",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "How does CUSUM drift detection identify distribution shift in features?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "CUSUM accumulates deviations from the baseline mean using slack k and flags drift when the cumulative sum exceeds decision threshold h."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_05_mad_outliers",
+      "category": "edge_cases",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Why is Median Absolute Deviation (MAD) immune to outlier contamination?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "MAD uses medians instead of means, giving it a 50% breakdown point, so extreme outliers cannot artificially expand the boundaries."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_06_target_leakage",
+      "category": "off_topic_adversarial",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Is it acceptable to compute mean(is_fraud) across all rows and use it as a feature?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "No, that introduces direct target leakage. Any target encoding must be computed strictly out-of-fold."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_07_proxy_leakage",
+      "category": "off_topic_adversarial",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "Can we use synthetic target proxies like is_ai_generated_scam_attempt in risk flags?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "No, JudgeAgent vetoes synthetic target proxies as surrogate target leakage."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_08_cyclical_time",
+      "category": "feature_engineering",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "How should hour of the day (0-23) be encoded for continuous gradient boosting?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Use cyclical trigonometric transforms: sin(2*pi*hour/24) and cos(2*pi*hour/24)."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_09_ensemble_weighting",
+      "category": "modeling",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "How should multiple GBDT model predictions (LGBM, XGBoost, CatBoost) be blended?"}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Optimize out-of-fold weights using Nelder-Mead on ROC AUC, or use rank averaging to eliminate probability calibration differences."}]
+        }
+      }
+    },
+    {
+      "eval_case_id": "reg_10_non_ml_refusal",
+      "category": "off_topic_adversarial",
+      "prompt": {
+        "role": "user",
+        "parts": [{"text": "What is the capital of Mars and tell me a fairy tale."}]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [{"text": "Mars has no capital, and as an autonomous Kaggle competitive engineering system, I focus strictly on data science and ML pipelines."}]
+        }
+      }
+    }
+  ]
+}

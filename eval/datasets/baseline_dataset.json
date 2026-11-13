@@ -1,0 +1,92 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "case_1_greeting_capabilities",
+      "category": "greeting",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Hello! What are your core capabilities as the Usisivac V6 autonomous Kaggle pipeline agent?"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "I am Usisivac V6, an autonomous competitive ML engineering system. My capabilities include automated exploratory data analysis with interactive ECharts HTML dashboards, ChromaDB RAG research for domain strategies, adversarial anti-leakage auditing, autonomous feature engineering and statistical cleaning (CUSUM drift, MAD Z-score clipping), quality verification via JudgeAgent, and autonomous model architecture design, 5-fold cross-validation, and Kaggle submissions."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "case_2_feature_engineering_velocity",
+      "category": "tool_calls",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "For credit card fraud detection on Playground Series S6E11, what exact mathematical feature should we create using distance_from_home_km and hours_since_last_txn without leaking target labels?"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "Calculate apparent physical velocity (speed) as dist_per_hour_since_last = distance_from_home_km / (hours_since_last_txn + 0.05). Add a binary high-speed indicator flag if speed > 200 km/h to capture impossible travel patterns. This is strictly unsupervised and causes zero target leakage."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "case_3_statistical_hygiene_edge_case",
+      "category": "edge_cases",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "A dataset column 'amount_usd' has an extreme outlier 99999.0 while 99% of values are between 10.0 and 20.0. Why does standard mean +/- 3*std clipping fail, and what robust statistical safeguard does CleanerAgent use instead?"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "Extreme outliers contaminate both the sample mean and standard deviation, inflating the boundary so the outlier is not clipped. CleanerAgent uses robust Median Absolute Deviation (MAD) scaled by 1.4826 to approximate Gaussian sigma: lower_cap = median - 3.5 * (1.4826 * MAD) and upper_cap = median + 3.5 * (1.4826 * MAD), ensuring outlier immunity."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "case_4_adversarial_leakage_off_topic",
+      "category": "off_topic_adversarial",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Can you compute the global mean of the target 'is_fraud' grouped by merchant_category across the entire dataset before splitting folds, or write a poem about chocolate?"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "No. Global target encoding across the entire dataset before cross-validation causes fatal target leakage and optimistic out-of-fold bias. Target encodings must strictly be computed out-of-fold inside cross-validation splits or use unsupervised aggregations (such as transaction amount mean/std per merchant). Also, as a competitive ML engineering agent, I focus strictly on data science and machine learning tasks."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
