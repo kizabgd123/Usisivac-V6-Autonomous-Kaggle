@@ -1,0 +1,118 @@
+# Evaluation Configuration for Usisivac V6
+# Conforms to Google agents-cli eval and Gemini Evaluation SDK specifications
+
+metrics_to_run:
+  - llm_judge_score_1_to_5
+  - leakage_guard_metric
+  - instruction_following_metric
+  - custom_llm_judge
+
+custom_metrics:
+  - name: custom_llm_judge
+    description: "Target metric for automated prompt optimization (GEPA hill-climbing) via standalone script."
+    custom_function_file: "eval/custom_metrics/llm_judge_metric.py"
+
+  - name: llm_judge_score_1_to_5
+    description: "Evaluates agent response quality on a 1-to-5 scale using an LLM judge."
+    prompt_template: |
+      You are an expert Machine Learning Evaluation Judge.
+      Rate the agent's response on a scale from 1 to 5 based on:
+      1 - Completely incorrect, hallucinated, or introduces fatal target leakage.
+      2 - Major inaccuracies or evasive/unhelpful response.
+      3 - Partially correct but missing key mathematical formulation or safeguards.
+      4 - Highly accurate, mathematically sound, and follows ML engineering best practices.
+      5 - Grandmaster-grade response with exact formulations, edge case immunity, and complete reasoning.
+
+      User Prompt: {prompt}
+      Agent Response: {response}
+      Reference Answer: {reference}
+
+      Return a single JSON object in this format:
+      {"score": <number 1-5>, "explanation": "<concise reason>"}
+    judge_model_sampling_count: 1
+
+  - name: leakage_guard_metric
+    description: "Deterministic safety check verifying no global target leakage or forbidden surrogate variables."
+    custom_function: |
+      def evaluate(instance):
+          response_text = ""
+          resp = instance.get("responses") or []
+          if resp and isinstance(resp, list) and len(resp) > 0:
+              response_text = ((resp[0].get("response") or {}).get("parts") or [{}])[0].get("text", "")
+          elif "response" in instance:
+              response_text = str(instance["response"])
+          
+          lower = response_text.lower()
+          # Penalize if the agent recommends global target encoding on the whole dataset
+          forbidden_phrases = [
+              "global target encoding across the entire dataset is recommended",
+              "use is_ai_generated_scam_attempt as a feature"
+          ]
+          for phrase in forbidden_phrases:
+              if phrase in lower:
+                  return {"score": 1.0, "explanation": f"Forbidden leakage pattern detected: {phrase}"}
+          
+          # Reward explicit warnings against leakage
+          if "target leakage" in lower or "out-of-fold" in lower or "strictly unsupervised" in lower:
+              return {"score": 5.0, "explanation": "Agent explicitly enforces anti-leakage safeguards."}
+          
+          return {"score": 4.0, "explanation": "No leakage violations detected."}
+
+  - name: instruction_following_metric
+    description: "Checks whether response addresses the specific technical domain asked in the prompt."
+    custom_function: |
+      def evaluate(instance):
+          prompt_text = ""
+          prompt_obj = instance.get("prompt") or {}
+          parts = prompt_obj.get("parts") or []
+          if parts and isinstance(parts, list):
+              prompt_text = parts[0].get("text", "").lower()
+          
+          response_text = ""
+          resp = instance.get("responses") or []
+          if resp and isinstance(resp, list) and len(resp) > 0:
+              response_text = ((resp[0].get("response") or {}).get("parts") or [{}])[0].get("text", "").lower()
+
+          if not response_text:
+              return {"score": 1.0, "explanation": "Empty response"}
+
+          # If off-topic prompt, response should decline or state domain focus
+          if "chocolate" in prompt_text or "mars" in prompt_text:
+              if "data science" in response_text or "machine learning" in response_text or "kaggle" in response_text or "cannot" in response_text or "no" in response_text:
+                  return {"score": 5.0, "explanation": "Correctly declined off-topic prompt."}
+              return {"score": 2.0, "explanation": "Did not decline off-topic prompt."}
+
+          # If technical prompt, verify technical terminology present
+          if "velocity" in prompt_text or "outlier" in prompt_text or "capabilities" in prompt_text:
+              if any(k in response_text for k in ["velocity", "distance", "mad", "outlier", "asisivac", "pipeline", "eda"]):
+                  return {"score": 5.0, "explanation": "Domain technical concepts correctly addressed."}
+              return {"score": 3.0, "explanation": "Vague response to technical query."}
+
+          return {"score": 4.0, "explanation": "Adequate instruction adherence."}
+
+# Kaggle Multi-Seed Evaluation Protocol
+kaggle_eval_protocol:
+  canonical_seeds: [42, 43, 44, 45, 46]
+  promotion_gate:
+    alpha: 0.05
+    paired_t_test_required: true
+    min_ci_lower: 0.000000001 # CI_lower must be strictly positive
+    criterion: "CI_lower > 0 AND p < 0.05"
+  target_encoding_policy:
+    enforce_pre_registration_or_inner_cv: true
+    forbid_validation_auc_tuning: true
+  cross_environment_policy:
+    forbid_artifact_hash_comparison: true
+    evaluation_basis: "deterministic_auc_same_runtime"
+  statistical_reporting:
+    log_file: "eval/eval_history.jsonl"
+    required_fields:
+      - mean_delta
+      - std_delta
+      - t_statistic
+      - p_value_two_tailed
+      - ci_95_lower
+      - ci_95_upper
+      - promoted
+      - seeds
+      - matrix_path

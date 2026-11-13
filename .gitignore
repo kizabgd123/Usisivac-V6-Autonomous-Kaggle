@@ -5,3 +5,4 @@ __pycache__/
 *.zip
 .gemini/
 memory/
+eval/eval_history.jsonl
