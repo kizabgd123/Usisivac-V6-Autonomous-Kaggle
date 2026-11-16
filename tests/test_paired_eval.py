@@ -73,7 +73,7 @@ def test_run_eval_uses_same_folds_and_complete_oof_predictions():
         p = 1 / (1 + np.exp(-X_valid["signal"].to_numpy()))
         return {"baseline": p, "candidate": p.copy()}
 
-    plan = {"evaluation": {"seeds": list(CANONICAL_SEEDS), "n_splits": 5, "metric": "roc_auc", "alpha": 0.05}}
+    plan = {"evaluation": {"seeds": list(CANONICAL_SEEDS), "n_splits": 5, "metric": "roc_auc", "alpha": 0.05, "confidence_level": 0.95}}
     report = run_multiseed_evaluation(frame, "target", adapter, plan=plan)
     assert len(calls) == 25
     assert report["seeds"] == list(CANONICAL_SEEDS)
