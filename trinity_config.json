@@ -30,7 +30,7 @@
       "bagging_fraction": 0.7598006947155067,
       "bagging_freq": 4,
       "min_child_samples": 31,
-      "reg_alpha": 1.7318504168908339e-6,
+      "reg_alpha": 0.0000017318504168908339,
       "reg_lambda": 9.183962122166921,
       "n_estimators": 1000,
       "max_bin": 63,
@@ -43,7 +43,7 @@
       "subsample": 0.9378768742638254,
       "colsample_bytree": 0.7454722623870976,
       "reg_alpha": 0.26429577502612095,
-      "reg_lambda": 7.42543035297711e-5,
+      "reg_lambda": 0.0000742543035297711,
       "n_estimators": 1000,
       "n_jobs": 4
     },
@@ -63,14 +63,23 @@
     "default_seed_count": 5,
     "benchmark_seed_count": 3
   },
-  "memory_milestones": ["thesis", "antithesis", "synthesis"],
+  "memory_milestones": [
+    "thesis",
+    "antithesis",
+    "synthesis"
+  ],
   "legacy_patterns": {
     "scripts": "**/*.py",
     "notebooks": "**/*.ipynb",
-    "entry_keywords": ["train", "main", "orchestrator", "pipeline"],
+    "entry_keywords": [
+      "train",
+      "main",
+      "orchestrator",
+      "pipeline"
+    ],
     "dynamic_scaling": {
       "cpu_timeout_s": 300,
-      "ram_limit_gb": 2.0,
+      "ram_limit_gb": 2,
       "auto_scale_enabled": true,
       "low_memory_mode": true
     }
@@ -88,5 +97,23 @@
     "vetoboard_enabled": true,
     "boardroom_enabled": true,
     "model": "gemini-2.5-flash"
+  },
+  "evaluation": {
+    "protocol": "paired-multi-seed-v1",
+    "canonical_seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "n_splits": 5,
+    "metric": "roc_auc",
+    "alpha": 0.05,
+    "confidence_level": 0.95,
+    "experiment_plan": "eval/experiment_plan.json",
+    "history_path": "eval/eval_history.jsonl",
+    "latest_report_path": "eval/latest_eval.json",
+    "promotion_gate": "eval/promote_artifacts.py"
   }
 }

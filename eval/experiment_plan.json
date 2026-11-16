@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "experiment_id": "usisivac-v6-target-encoding-default-v1",
+  "status": "pre_registered",
+  "registered_before_evaluation": true,
+  "target_encoding": {
+    "parameter": "smoothing",
+    "smoothing": 1,
+    "policy": "pre_registered",
+    "tuning_policy": "Do not select this value using outer validation AUC. Any alternative must be committed in this plan before CV, or tuned only inside an inner CV on the outer training split."
+  },
+  "evaluation": {
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "n_splits": 5,
+    "metric": "roc_auc",
+    "alpha": 0.05,
+    "confidence_level": 0.95,
+    "paired_test": "two-sided paired t-test",
+    "promotion_requires": [
+      "p_value < 0.05",
+      "ci_lower > 0"
+    ]
+  }
+}
