@@ -5,6 +5,10 @@ Prevents data leakage by using out-of-fold encoding for training data.
 Source: Chris Deotte's notebooks
 """
 
+import json
+import os
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import KFold, StratifiedKFold
@@ -12,6 +16,42 @@ from typing import Dict, List, Tuple, Optional
 import warnings
 
 warnings.filterwarnings('ignore')
+
+
+
+
+def _validate_pre_registered_smoothing(smoothing: float) -> None:
+    """Require smoothing to match the committed experiment plan before outer CV."""
+    try:
+        value = float(smoothing)
+    except (TypeError, ValueError) as exc:
+        raise ValueError("Target-encoding smoothing must be a finite positive number") from exc
+    if not np.isfinite(value) or value <= 0:
+        raise ValueError("Target-encoding smoothing must be a finite positive number")
+
+    project_root = Path(__file__).resolve().parents[3]
+    plan_path = Path(os.environ.get(
+        "USISIVAC_EXPERIMENT_PLAN",
+        str(project_root / "eval" / "experiment_plan.json")
+    ))
+    try:
+        plan = json.loads(plan_path.read_text(encoding="utf-8"))
+        policy = plan["target_encoding"]
+        registered = float(policy["smoothing"])
+        is_registered = (
+            plan.get("status") == "pre_registered"
+            and plan.get("registered_before_evaluation") is True
+            and policy.get("policy") == "pre_registered"
+        )
+    except (OSError, json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
+        raise ValueError(f"Cannot verify target-encoding plan {plan_path}: {exc}") from exc
+    if not is_registered:
+        raise ValueError("Target-encoding smoothing must be pre-registered before outer CV")
+    if not np.isclose(value, registered, rtol=0.0, atol=1e-12):
+        raise ValueError(
+            f"smoothing={value} is not pre-registered (plan value={registered}); "
+            "do not tune against outer validation AUC"
+        )
 
 
 def target_encode_feature(
@@ -41,7 +81,9 @@ def target_encode_feature(
         test_encoded: Encoded test series (if provided)
         encoding_info: Dictionary with encoding statistics
     """
-    # Calculate global mean for smoothing
+    _validate_pre_registered_smoothing(smoothing)
+
+    # Full outer-training statistics are used only for external validation/test mapping.
     global_mean = train_target.mean()
     
     # Calculate target statistics per category
@@ -58,19 +100,20 @@ def target_encode_feature(
     kfold = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=random_state)
     
     for fold_idx, (train_idx, val_idx) in enumerate(kfold.split(train_series, train_target)):
-        # Calculate encoding on training fold only
+        # Calculate encoding and smoothing prior on this fold's training rows only.
         fold_train = train_series.iloc[train_idx]
         fold_target = train_target.iloc[train_idx]
+        fold_global_mean = fold_target.mean()
         
         fold_agg = fold_target.groupby(fold_train).agg(['mean', 'count'])
         fold_agg.columns = ['target_mean', 'count']
         
         # Apply smoothing
         fold_smoothing = 1 / (1 + np.exp(-(fold_agg['count'] - 1) / smoothing))
-        fold_agg['smoothed_mean'] = fold_agg['target_mean'] * fold_smoothing + global_mean * (1 - fold_smoothing)
+        fold_agg['smoothed_mean'] = fold_agg['target_mean'] * fold_smoothing + fold_global_mean * (1 - fold_smoothing)
         
         # Map to validation fold
-        train_encoded[val_idx] = train_series.iloc[val_idx].map(fold_agg['smoothed_mean']).fillna(global_mean)
+        train_encoded[val_idx] = train_series.iloc[val_idx].map(fold_agg['smoothed_mean']).fillna(fold_global_mean)
     
     train_encoded = pd.Series(train_encoded, index=train_series.index, name=f"{train_series.name}_te")
     
